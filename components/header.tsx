@@ -20,13 +20,15 @@ export const Header = () => {
         </Link>
         <nav className="hidden lg:flex items-center space-x-6">
           <Link
-            href="#services"
+            prefetch={true}
+            href="/uslugi"
             className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
           >
             Usługi
           </Link>
           <Link
-            href="#benefits"
+            prefetch={true}
+            href="/korzysci"
             className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
           >
             Korzyści
@@ -39,10 +41,11 @@ export const Header = () => {
             Blog
           </Link>
           <Link
-            href="#contact"
+            prefetch={true}
+            href="/wycena"
             className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
           >
-            Kontakt
+            Wycena
           </Link>
           <div className="flex items-center space-x-4">
             <a
@@ -93,14 +96,16 @@ export const Header = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-md">
           <nav className="flex flex-col items-center py-4 space-y-4">
             <Link
-              href="#services"
+              prefetch={true}
+              href="/uslugi"
               className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
               Usługi
             </Link>
             <Link
-              href="#benefits"
+              prefetch={true}
+              href="/korzysci"
               className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
@@ -115,11 +120,12 @@ export const Header = () => {
               Blog
             </Link>
             <Link
-              href="#contact"
+              prefetch={true}
+              href="/wycena"
               className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
-              Kontakt
+              Wycena
             </Link>
             <div className="flex items-center space-x-4 mt-4">
               <a

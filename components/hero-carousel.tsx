@@ -58,7 +58,8 @@ export const HeroCarousel = () => {
               {slides[currentSlide].subtitle}
             </p>
             <Link
-              href="#contact"
+              prefetch={true}
+              href="/wycena"
               className="bg-[#32CD32] text-white font-semibold py-3 px-6 rounded-full hover:bg-[#2db82d] transition-all duration-300 inline-flex items-center text-lg"
             >
               Darmowa wycena
