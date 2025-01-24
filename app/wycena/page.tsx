@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function WycenaPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,13 +47,13 @@ export default function WycenaPage() {
           <Link
             prefetch={true}
             href="/"
-            className="text-[#800020] hover:text-[#32CD32] font-semibold"
+            className="flex items-center text-[#800020] hover:text-[#32CD32] font-semibold transition-colors"
           >
-            &larr; Powrót do strony głównej
+            <ArrowLeft size={20} className="mr-2" />
+            Powrót do strony głównej
           </Link>
         </div>
       </header>
-
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-[#800020] mb-8">
           Formularz wyceny

@@ -47,29 +47,11 @@ export const HeroCarousel = () => {
 
   return (
     <section className="relative bg-[#800020] overflow-hidden">
-      <div className="container mx-auto px-4 py-12 lg:py-16">
+      <div className="container mx-auto px-4 py-8 lg:py-16">
         <div className="flex flex-col lg:flex-row items-center">
-          {/* Text Content */}
-          <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
-            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              {slides[currentSlide].title}
-            </h1>
-            <p className="text-lg text-white/90 mb-6">
-              {slides[currentSlide].subtitle}
-            </p>
-            <Link
-              prefetch={true}
-              href="/wycena"
-              className="bg-[#32CD32] text-white font-semibold py-3 px-6 rounded-full hover:bg-[#2db82d] transition-all duration-300 inline-flex items-center text-lg"
-            >
-              Darmowa wycena
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </div>
-
-          {/* Image Carousel */}
-          <div className="lg:w-1/2 relative">
-            <div className="relative w-full h-64 lg:h-80 rounded-lg overflow-hidden">
+          {/* Image Carousel - Moved to top for mobile */}
+          <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
+            <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden">
               {slides.map((slide, index) => (
                 <div
                   key={index}
@@ -83,8 +65,9 @@ export const HeroCarousel = () => {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index === 0}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#800020]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#800020]/60 lg:bg-gradient-to-r lg:from-[#800020]/60 lg:to-transparent" />
                 </div>
               ))}
             </div>
@@ -106,6 +89,24 @@ export const HeroCarousel = () => {
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
+          </div>
+
+          {/* Text Content */}
+          <div className="lg:w-1/2 lg:pl-8">
+            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              {slides[currentSlide].title}
+            </h1>
+            <p className="text-lg text-white/90 mb-6">
+              {slides[currentSlide].subtitle}
+            </p>
+            <Link
+              prefetch={true}
+              href="/wycena"
+              className="bg-[#32CD32] text-white font-semibold py-3 px-6 rounded-full hover:bg-[#2db82d] transition-all duration-300 inline-flex items-center text-lg"
+            >
+              Darmowa wycena
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
           </div>
         </div>
       </div>

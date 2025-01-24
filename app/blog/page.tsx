@@ -28,17 +28,16 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-burgundy shadow-md">
-        <div className="container mx-auto px-4 py-6">
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4">
           <Link
             prefetch={true}
             href="/"
-            className="flex items-center hover:text-lime-green transition-colors"
+            className="flex items-center text-[#800020] hover:text-[#32CD32] font-semibold transition-colors"
           >
-            <ArrowLeft className="mr-2" />
+            <ArrowLeft size={20} className="mr-2" />
             Powrót do strony głównej
           </Link>
-          <h1 className="text-3xl font-bold mt-4">Blog Iso-Dach</h1>
         </div>
       </header>
       <main className="container mx-auto px-4 py-8">

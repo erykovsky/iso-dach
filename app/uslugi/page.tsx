@@ -53,20 +53,15 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex justify-between items-center">
-            <Link
-              prefetch={true}
-              href="/"
-              className="flex items-center text-burgundy hover:text-lime-green transition-colors"
-            >
-              <ArrowLeft className="mr-2" />
-              Powrót do strony głównej
-            </Link>
-            <h1 className="text-3xl font-bold text-burgundy">
-              Usługi Iso-Dach
-            </h1>
-          </div>
+        <div className="container mx-auto px-4 py-4">
+          <Link
+            prefetch={true}
+            href="/"
+            className="flex items-center text-[#800020] hover:text-[#32CD32] font-semibold transition-colors"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Powrót do strony głównej
+          </Link>
         </div>
       </header>
       <main className="container mx-auto px-4 py-8 mt-8">
