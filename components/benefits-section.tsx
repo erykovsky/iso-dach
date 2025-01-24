@@ -1,4 +1,4 @@
-import { CheckCircle, Zap, Thermometer, Leaf, TrendingUp } from "lucide-react";
+import { Zap, Thermometer, Leaf, TrendingUp } from "lucide-react";
 
 const benefits = [
   {

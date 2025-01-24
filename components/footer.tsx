@@ -1,11 +1,4 @@
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Facebook,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
 import { RzetelnaFirmaLogo } from "./rzetelna-firma-logo";
 

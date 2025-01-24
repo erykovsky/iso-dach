@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-import { CheckCircle, ArrowRight } from "lucide-react";
 import { BenefitsSection } from "@/components/benefits-section";
 import { ServicesSection } from "@/components/services-section";
 import { ContactSection } from "@/components/contact-section";
