@@ -1,19 +1,12 @@
 import type { Metadata, Viewport } from "next";
 
-import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Manrope } from "next/font/google";
 import { Footer } from "@/components/footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const manrope = Manrope({
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -35,9 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${manrope.className} antialiased`}>
         <Header />
         {children}
         <Footer />
