@@ -19,7 +19,7 @@ export const Header = () => {
           prefetch={true}
           href="/"
           className="flex items-center space-x-2"
-          onClick={toggleMenu}
+          onClick={() => isMenuOpen && setIsMenuOpen(false)}
         >
           <Logo className="h-10 w-auto" />
         </Link>
