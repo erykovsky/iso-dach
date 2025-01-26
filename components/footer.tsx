@@ -1,4 +1,11 @@
-import { Mail, MapPin, Phone, Facebook, Instagram } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Facebook,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import Link from "next/link";
 import { RzetelnaFirmaLogo } from "./rzetelna-firma-logo";
 
@@ -76,20 +83,27 @@ export const Footer = () => {
             <div className="mt-8">
               <h4 className="text-xl font-semibold mb-4">Śledź nas</h4>
               <div className="flex space-x-4">
-                <Link
+                <a
                   href="https://www.facebook.com/iso-dach-1639181143011116"
                   target="_blank"
                   className="text-white hover:text-[#90EE90] transition-colors"
                 >
                   <Facebook size={24} />
-                </Link>
-                <Link
+                </a>
+                <a
                   href="https://www.instagram.com/iso_dach"
                   target="_blank"
                   className="text-white hover:text-[#90EE90] transition-colors"
                 >
                   <Instagram size={24} />
-                </Link>
+                </a>
+                <a
+                  href="https://youtube.com/@iso-dach7799"
+                  target="_blank"
+                  className="text-white hover:text-[#90EE90] transition-colors"
+                >
+                  <Youtube size={24} />
+                </a>
               </div>
             </div>
           </div>

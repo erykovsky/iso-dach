@@ -15,7 +15,12 @@ export const Header = () => {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link prefetch={true} href="/" className="flex items-center space-x-2">
+        <Link
+          prefetch={true}
+          href="/"
+          className="flex items-center space-x-2"
+          onClick={toggleMenu}
+        >
           <Logo className="h-10 w-auto" />
         </Link>
         <nav className="hidden lg:flex items-center space-x-6">

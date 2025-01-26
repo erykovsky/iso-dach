@@ -51,19 +51,7 @@ const benefits = [
 export default function BenefitsPage() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <Link
-            prefetch={true}
-            href="/"
-            className="flex items-center text-[#800020] hover:text-[#32CD32] font-semibold transition-colors"
-          >
-            <ArrowLeft size={20} className="mr-2" />
-            Powrót do strony głównej
-          </Link>
-        </div>
-      </header>
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => (
             <div

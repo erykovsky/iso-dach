@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <GoogleTagManager gtmId="GTM-XYZ" />
       <body className={`${manrope.className} antialiased`}>
         <Header />
         {children}
