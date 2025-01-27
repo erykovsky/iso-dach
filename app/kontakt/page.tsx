@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function WycenaPage() {
+export default function KontaktPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"

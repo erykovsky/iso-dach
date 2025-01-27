@@ -47,10 +47,10 @@ export const Header = () => {
           </Link>
           <Link
             prefetch={true}
-            href="/wycena"
+            href="/kontakt"
             className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
           >
-            Wycena
+            Kontakt
           </Link>
           <div className="flex items-center space-x-4">
             <a
@@ -126,11 +126,11 @@ export const Header = () => {
             </Link>
             <Link
               prefetch={true}
-              href="/wycena"
+              href="/kontakt"
               className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
-              Wycena
+              Kontakt
             </Link>
             <div className="flex items-center space-x-4 mt-4">
               <a

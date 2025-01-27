@@ -22,7 +22,7 @@ export const ContactSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
           <Link
-            href="/wycena"
+            href="/kontakt"
             className="bg-[#800020] text-white font-semibold py-4 px-8 rounded-full hover:bg-[#4B0012] transition duration-300 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Zamów wycenę
