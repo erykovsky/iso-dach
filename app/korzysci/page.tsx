@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowLeft,
+  ArrowRight,
   Shield,
   Zap,
   ThumbsUp,
@@ -8,6 +9,13 @@ import {
   Clock,
   Award,
 } from "lucide-react";
+import { BenefitCard } from "@/components/benefit-card";
+
+export const metadata: Metadata = {
+  title: "Korzyści z Izolacji | Iso-Dach",
+  description:
+    "Odkryj korzyści profesjonalnej izolacji od Iso-Dach: oszczędność energii, komfort mieszkania i długoterminowe oszczędności.",
+};
 
 const benefits = [
   {
@@ -51,30 +59,20 @@ const benefits = [
 export default function BenefitsPage() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-burgundy mb-8 text-center">
+          Korzyści z Izolacji Iso-Dach
+        </h1>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-center w-16 h-16 bg-lime-green rounded-full mb-4">
-                  <benefit.icon className="w-8 h-8 text-white" />
-                </div>
-                <h2 className="text-xl font-semibold mb-2 text-burgundy">
-                  {benefit.title}
-                </h2>
-                <p className="text-gray-600">{benefit.description}</p>
-              </div>
-            </div>
+            <BenefitCard key={index} {...benefit} />
           ))}
         </div>
       </main>
-      <div className="bg-burgundy mt-12 py-16">
+      <section className="bg-burgundy mt-12 py-16">
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-burgundy mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#800020] mb-4">
               Przekonaj się sam!
             </h2>
             <p className="text-gray-600 text-lg mb-6">
@@ -83,14 +81,14 @@ export default function BenefitsPage() {
             </p>
             <Link
               href="/wycena"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-lime-green hover:bg-lime-green/90 transition-colors duration-300 ease-in-out"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#32CD32] hover:bg-lime-500/90 transition-colors duration-300 ease-in-out"
             >
               Zamów bezpłatną wycenę
-              <ArrowLeft className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
+              <ArrowRight className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
