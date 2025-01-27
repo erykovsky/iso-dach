@@ -1,4 +1,4 @@
-import { Shield, Home, Zap } from "lucide-react";
+import { Shield, Home, Zap, Building } from "lucide-react";
 import Link from "next/link";
 
 const services = [
@@ -22,6 +22,14 @@ const services = [
       "Kompleksowa modernizacja energetyczna budynku, obejmująca izolację, wymianę okien i drzwi oraz optymalizację systemu grzewczego.",
     icon: Zap,
     link: "/termomodernizacja",
+  },
+
+  {
+    title: "Ocieplanie stropodachu",
+    description:
+      "Skuteczna izolacja stropodachu, która zapobiega ucieczce ciepła przez dach i zapewnia optymalną temperaturę na najwyższych kondygnacjach.",
+    icon: Building,
+    link: "/ocieplanie-stropodachu",
   },
 ];
 

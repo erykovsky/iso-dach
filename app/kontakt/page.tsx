@@ -1,6 +1,17 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function KontaktPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,127 +53,107 @@ export default function KontaktPage() {
     <div className="min-h-screen bg-gray-100">
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-[#800020] mb-8">
-          Formularz wyceny
+          Formularz kontaktowy
         </h1>
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        >
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="name"
-            >
-              Imię i Nazwisko
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="name"
-              name="name"
-              type="text"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Adres e-mail
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              name="email"
-              type="email"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="phone"
-            >
-              Numer telefonu
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="phone"
-              name="phone"
-              type="tel"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="address"
-            >
-              Adres inwestycji
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="address"
-              name="address"
-              type="text"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="projectType"
-            >
-              Rodzaj projektu
-            </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="projectType"
-              name="projectType"
-              required
-            >
-              <option value="">Wybierz rodzaj projektu</option>
-              <option value="ocieplenie-scian">Ocieplenie ścian</option>
-              <option value="izolacja-poddasza">Izolacja poddasza</option>
-              <option value="termomodernizacja">Termomodernizacja</option>
-              <option value="inne">Inne</option>
-            </select>
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="message"
-            >
-              Dodatkowe informacje
-            </label>
-            <textarea
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="message"
-              name="message"
-              rows={4}
-            ></textarea>
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-[#800020] hover:bg-[#4B0012] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
-            </button>
-          </div>
-          {submitStatus === "success" && (
-            <p className="text-green-500 text-xs italic mt-4">
-              Twoje zapytanie zostało wysłane pomyślnie!
-            </p>
-          )}
-          {submitStatus === "error" && (
-            <p className="text-red-500 text-xs italic mt-4">
-              Wystąpił błąd podczas wysyłania zapytania. Spróbuj ponownie
-              później.
-            </p>
-          )}
-        </form>
+        <div className="flex flex-col gap-6">
+          <Card>
+            <CardContent className="p-6">
+              <form onSubmit={handleSubmit}>
+                <div className="flex flex-col gap-6">
+                  <div className="grid gap-2">
+                    <Label htmlFor="name">Imię i Nazwisko</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Jan Kowalski"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="email">Adres e-mail</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="m@przykład.pl"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="phone">Numer telefonu</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="123 456 789"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="address">Adres inwestycji</Label>
+                    <Input
+                      id="address"
+                      name="address"
+                      type="text"
+                      placeholder="ul. Przykładowa 123, 00-123 Warszawa"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="projectType">Rodzaj projektu</Label>
+                    <Select name="projectType" required>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Wybierz rodzaj projektu" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="termomodernizacja">
+                          Termomodernizacja kompleksowa
+                        </SelectItem>
+                        <SelectItem value="ocieplenie-scian">
+                          Ocieplenie ścian zewnętrznych
+                        </SelectItem>
+                        <SelectItem value="izolacja-poddasza">
+                          Izolacja i ocieplenie poddasza
+                        </SelectItem>
+                        <SelectItem value="izolacja-stropodachu">
+                          Izolacja i ocieplenie stropodachu
+                        </SelectItem>
+                        <SelectItem value="ocieplenie-stropow-piwnic">
+                          Ocieplenie stropów piwnic i garaży
+                        </SelectItem>
+                        <SelectItem value="naprawa-zniszczonej-izolacji">
+                          Naprawa/wymiana zniszczonej izolacji
+                        </SelectItem>
+                        <SelectItem value="inne">Inne usługi</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Button
+                    type="submit"
+                    className="mr-auto"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
+                  </Button>
+
+                  {submitStatus === "success" && (
+                    <p className="text-green-600">
+                      Dziękujemy za wysłanie formularza! Skontaktujemy się
+                      wkrótce.
+                    </p>
+                  )}
+                  {submitStatus === "error" && (
+                    <p className="text-red-600">
+                      Wystąpił błąd podczas wysyłania formularza. Spróbuj
+                      ponownie później.
+                    </p>
+                  )}
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </main>
     </div>
   );

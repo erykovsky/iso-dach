@@ -13,7 +13,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link
           prefetch={true}
@@ -27,28 +27,35 @@ export const Header = () => {
           <Link
             prefetch={true}
             href="/uslugi"
-            className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+            className="text-primary hover:text-secondary transition duration-300 ease-in-out"
           >
             Usługi
           </Link>
           <Link
             prefetch={true}
             href="/korzysci"
-            className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+            className="text-primary hover:text-secondary transition duration-300 ease-in-out"
           >
             Korzyści
           </Link>
           <Link
             prefetch={true}
+            href="/cennik"
+            className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+          >
+            Cennik
+          </Link>
+          <Link
+            prefetch={true}
             href="/blog"
-            className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+            className="text-primary hover:text-secondary transition duration-300 ease-in-out"
           >
             Blog
           </Link>
           <Link
             prefetch={true}
             href="/kontakt"
-            className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+            className="text-primary hover:text-secondary transition duration-300 ease-in-out"
           >
             Kontakt
           </Link>
@@ -82,7 +89,7 @@ export const Header = () => {
             </a>
           </div>
           <a
-            href="tel:+48123456789"
+            href="tel:+48660441941"
             className="flex items-center space-x-2 text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
           >
             <Phone size={20} />
@@ -103,7 +110,7 @@ export const Header = () => {
             <Link
               prefetch={true}
               href="/uslugi"
-              className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+              className="text-primary hover:text-secondary transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
               Usługi
@@ -111,15 +118,23 @@ export const Header = () => {
             <Link
               prefetch={true}
               href="/korzysci"
-              className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+              className="text-primary hover:text-secondary transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
               Korzyści
             </Link>
             <Link
               prefetch={true}
+              href="/cennik"
+              className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+              onClick={toggleMenu}
+            >
+              Cennik
+            </Link>
+            <Link
+              prefetch={true}
               href="/blog"
-              className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+              className="text-primary hover:text-secondary transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
               Blog
@@ -127,7 +142,7 @@ export const Header = () => {
             <Link
               prefetch={true}
               href="/kontakt"
-              className="text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
+              className="text-primary hover:text-secondary transition duration-300 ease-in-out"
               onClick={toggleMenu}
             >
               Kontakt
@@ -162,7 +177,7 @@ export const Header = () => {
               </a>
             </div>
             <a
-              href="tel:+48123456789"
+              href="tel:+48660441941"
               className="flex items-center space-x-2 text-[#800020] hover:text-[#32CD32] transition duration-300 ease-in-out"
             >
               <Phone size={20} />
