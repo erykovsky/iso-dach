@@ -1,158 +1,78 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ContactForm } from "./contact-form";
+import { Building, Mail, Phone } from "lucide-react";
 
 export default function KontaktPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch("/api/send-wycena", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-100">
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-[#800020] mb-8">
-          Formularz kontaktowy
-        </h1>
-        <div className="flex flex-col gap-6">
-          <Card>
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Imię i Nazwisko</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Jan Kowalski"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Adres e-mail</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="m@przykład.pl"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="phone">Numer telefonu</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="123 456 789"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="address">Adres inwestycji</Label>
-                    <Input
-                      id="address"
-                      name="address"
-                      type="text"
-                      placeholder="ul. Przykładowa 123, 00-123 Warszawa"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="projectType">Rodzaj projektu</Label>
-                    <Select name="projectType" required>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz rodzaj projektu" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="termomodernizacja">
-                          Termomodernizacja kompleksowa
-                        </SelectItem>
-                        <SelectItem value="ocieplenie-scian">
-                          Ocieplenie ścian zewnętrznych
-                        </SelectItem>
-                        <SelectItem value="izolacja-poddasza">
-                          Izolacja i ocieplenie poddasza
-                        </SelectItem>
-                        <SelectItem value="izolacja-stropodachu">
-                          Izolacja i ocieplenie stropodachu
-                        </SelectItem>
-                        <SelectItem value="ocieplenie-stropow-piwnic">
-                          Ocieplenie stropów piwnic i garaży
-                        </SelectItem>
-                        <SelectItem value="naprawa-zniszczonej-izolacji">
-                          Naprawa/wymiana zniszczonej izolacji
-                        </SelectItem>
-                        <SelectItem value="inne">Inne usługi</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <Button
-                    type="submit"
-                    className="mr-auto"
-                    disabled={isSubmitting}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-6 md:col-span-2">
+            <h1 className="text-3xl font-bold text-[#800020]">
+              Formularz kontaktowy
+            </h1>
+            <ContactForm />
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Dane kontaktowe
+            </h2>
+            <Card>
+              <CardHeader>
+                <CardTitle>Bezpośredni kontakt</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Phone className="text-primary" />
+                  <a
+                    href="tel:+48660441941"
+                    className="text-primary hover:text-secondary transition-colors"
                   >
-                    {isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
-                  </Button>
-
-                  {submitStatus === "success" && (
-                    <p className="text-green-600">
-                      Dziękujemy za wysłanie formularza! Skontaktujemy się
-                      wkrótce.
-                    </p>
-                  )}
-                  {submitStatus === "error" && (
-                    <p className="text-red-600">
-                      Wystąpił błąd podczas wysyłania formularza. Spróbuj
-                      ponownie później.
-                    </p>
-                  )}
+                    +48 660 441 941
+                  </a>
                 </div>
-              </form>
-            </CardContent>
-          </Card>
+                <div className="flex items-center space-x-2">
+                  <Mail className="text-primary" />
+                  <a
+                    href="mailto:info@iso-dach.eu"
+                    className="text-primary hover:text-secondary transition-colors"
+                  >
+                    info@iso-dach.eu
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="mt-8">
+              <CardHeader>
+                <CardTitle>Adres</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-2">
+                  <Building className="text-primary mt-1 flex-shrink-0" />
+                  <address className="not-italic">
+                    ISO-DACH Dariusz Jagodziński
+                    <br />
+                    ul. Jana Pawła II 34
+                    <br />
+                    73-130 Dobrzany
+                  </address>
+                </div>
+                <div>
+                  <p>
+                    <strong>NIP:</strong> 854-138-69-08
+                  </p>
+                  <p>
+                    <strong>REGON:</strong> 811791710
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+            <p className="mt-8 text-muted-foreground">
+              Jeśli wolisz bezpośredni kontakt, możesz skorzystać z podanych
+              powyżej danych. Odpowiemy na Twoje pytania tak szybko, jak to
+              możliwe.
+            </p>
+          </div>
         </div>
       </main>
     </div>

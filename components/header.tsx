@@ -13,7 +13,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border border-b">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link
           prefetch={true}
