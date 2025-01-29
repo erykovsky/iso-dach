@@ -7,7 +7,7 @@ import {
  Youtube,
 } from "lucide-react";
 import Link from "next/link";
-import { RzetelnaFirmaLogo } from "./rzetelna-firma-logo";
+import Image from "next/image";
 
 export const Footer = () => {
  return (
@@ -28,7 +28,15 @@ export const Footer = () => {
         <span className="font-bold text-sm text-white block mb-2">
          Uczestnik programu
         </span>
-        <RzetelnaFirmaLogo className="h-20 w-auto" />
+        <Image
+         src="/rzetelna-firma.png"
+         alt="Rzetelna Firma"
+         width={150}
+         height={70}
+         loading="eager"
+         decoding="sync"
+         quality={65}
+        />
        </Link>
       </div>
      </div>
