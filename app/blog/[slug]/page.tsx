@@ -331,11 +331,11 @@ const blogPosts = [
  },
 ];
 
-type Props = {
- params: { slug: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+ params,
+}: {
+ params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
  const { slug } = await params;
  const post = blogPosts.find((post) => post.slug === slug);
 
@@ -352,7 +352,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({
+ params,
+}: {
+ params: Promise<{ slug: string }>;
+}) {
  const { slug } = await params;
  const post = blogPosts.find((post) => post.slug === slug);
 
