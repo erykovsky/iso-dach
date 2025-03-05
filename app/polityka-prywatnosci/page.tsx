@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
- title: "Polityka Prywatności | ISO-DACH",
- description: "Informacje o przetwarzaniu danych osobowych przez ISO-DACH",
-};
+import { useState, useLayoutEffect } from "react";
 
-export default function PrivacyPolicyPage() {
+export function PrivacyPolicy() {
+ const [currentDate, setCurrentDate] = useState<string | null>(null);
+
+ useLayoutEffect(() => {
+  setCurrentDate(new Date().toLocaleDateString());
+ }, []);
+
  return (
   <div className="min-h-screen bg-gray-100 py-12">
    <div className="container mx-auto px-4">
@@ -167,9 +170,8 @@ export default function PrivacyPolicyPage() {
       </h2>
       <p className="mb-4">
        Strona internetowa ISO-DACH wykorzystuje pliki cookies (tzw.
-       &quot;ciasteczka&quot;), które stanowią dane informatyczne, w
-       szczególności pliki tekstowe, które przechowywane są w urządzeniu
-       końcowym Użytkownika.
+       "ciasteczka"), które stanowią dane informatyczne, w szczególności pliki
+       tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika.
       </p>
       <p className="mb-4">Pliki cookies wykorzystywane są w celu:</p>
       <ul className="list-disc list-inside mb-4">
@@ -232,9 +234,11 @@ export default function PrivacyPolicyPage() {
       </address>
      </section>
 
-     <p className="mt-8 text-sm text-gray-600">
-      Ostatnia aktualizacja: {new Date().toLocaleDateString()}
-     </p>
+     {currentDate && (
+      <p className="mt-8 text-sm text-gray-600">
+       Ostatnia aktualizacja: {currentDate}
+      </p>
+     )}
     </div>
    </div>
   </div>
