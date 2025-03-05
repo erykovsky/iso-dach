@@ -28,7 +28,6 @@ type BlogPostProps = {
 };
 
 export function BlogPost({ post }: BlogPostProps) {
- const [showShareButtons, setShowShareButtons] = useState(false);
  const [currentUrl, setCurrentUrl] = useState("");
 
  useEffect(() => {

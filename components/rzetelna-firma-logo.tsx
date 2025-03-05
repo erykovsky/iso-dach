@@ -6,10 +6,7 @@ interface RzetelnaFirmaLogoProps
  className?: string;
 }
 
-export const RzetelnaFirmaLogo = ({
- className,
- ...props
-}: RzetelnaFirmaLogoProps) => {
+export const RzetelnaFirmaLogo = ({ className }: RzetelnaFirmaLogoProps) => {
  return (
   <Image
    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rzetelna-firma-uXWdFjsXbjlqUb9hpnPTSEjafMfxaO.webp"

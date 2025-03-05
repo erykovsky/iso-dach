@@ -58,8 +58,8 @@ export const CookiePolicy = () => {
 
      <TabsContent value="overview" className="space-y-4 mt-4">
       <p>
-       Pliki cookies (tzw. "ciasteczka") stanowią dane informatyczne, w
-       szczególności pliki tekstowe, które przechowywane są w urządzeniu
+       Pliki cookies (tzw. &quot;ciasteczka&quot;) stanowią dane informatyczne,
+       w szczególności pliki tekstowe, które przechowywane są w urządzeniu
        końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron
        internetowych Serwisu.
       </p>
