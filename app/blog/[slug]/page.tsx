@@ -365,9 +365,5 @@ export default async function BlogPostPage({
   notFound();
  }
 
- return (
-  <Suspense>
-   <BlogPost post={post} />
-  </Suspense>
- );
+ return <BlogPost post={post} />;
 }
