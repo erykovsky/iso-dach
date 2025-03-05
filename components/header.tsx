@@ -17,6 +17,7 @@ export const Header = () => {
    <div className="container mx-auto px-4 py-4 flex justify-between items-center">
     <Link
      href="/"
+     prefetch={true}
      className="flex items-center space-x-2"
      onClick={() => isMenuOpen && setIsMenuOpen(false)}
     >
@@ -26,24 +27,28 @@ export const Header = () => {
      <Link
       href="/uslugi"
       className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+      prefetch={true}
      >
       Usługi
      </Link>
      <Link
       href="/galeria"
       className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+      prefetch={true}
      >
       Galeria
      </Link>
      <Link
       href="/blog"
       className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+      prefetch={true}
      >
       Blog
      </Link>
      <Link
       href="/kontakt"
       className="text-primary hover:text-secondary transition duration-300 ease-in-out"
+      prefetch={true}
      >
       Kontakt
      </Link>
@@ -99,6 +104,7 @@ export const Header = () => {
        href="/uslugi"
        className="text-primary hover:text-secondary transition duration-300 ease-in-out"
        onClick={toggleMenu}
+       prefetch={true}
       >
        Usługi
       </Link>
@@ -106,6 +112,7 @@ export const Header = () => {
        href="/galeria"
        className="text-primary hover:text-secondary transition duration-300 ease-in-out"
        onClick={toggleMenu}
+       prefetch={true}
       >
        Galeria
       </Link>
@@ -113,6 +120,7 @@ export const Header = () => {
        href="/blog"
        className="text-primary hover:text-secondary transition duration-300 ease-in-out"
        onClick={toggleMenu}
+       prefetch={true}
       >
        Blog
       </Link>
@@ -120,6 +128,7 @@ export const Header = () => {
        href="/kontakt"
        className="text-primary hover:text-secondary transition duration-300 ease-in-out"
        onClick={toggleMenu}
+       prefetch={true}
       >
        Kontakt
       </Link>
