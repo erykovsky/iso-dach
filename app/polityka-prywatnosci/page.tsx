@@ -2,7 +2,7 @@
 
 import { useState, useLayoutEffect } from "react";
 
-export function PrivacyPolicy() {
+export default function PrivacyPolicy() {
  const [currentDate, setCurrentDate] = useState<string | null>(null);
 
  useLayoutEffect(() => {
