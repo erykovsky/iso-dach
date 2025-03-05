@@ -170,8 +170,9 @@ export function PrivacyPolicy() {
       </h2>
       <p className="mb-4">
        Strona internetowa ISO-DACH wykorzystuje pliki cookies (tzw.
-       "ciasteczka"), które stanowią dane informatyczne, w szczególności pliki
-       tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika.
+       &quot;ciasteczka&quot;), które stanowią dane informatyczne, w
+       szczególności pliki tekstowe, które przechowywane są w urządzeniu
+       końcowym Użytkownika.
       </p>
       <p className="mb-4">Pliki cookies wykorzystywane są w celu:</p>
       <ul className="list-disc list-inside mb-4">
