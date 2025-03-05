@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPost } from "./blog-post";
-import { Suspense } from "react";
 
 // Przykładowe artykuły (te same co w blog-list.tsx)
 const blogPosts = [
