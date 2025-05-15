@@ -7,7 +7,7 @@ import {
  Youtube,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import { RzetelnaFirmaLogo } from "./rzetelna-firma-logo";
 
 export const Footer = () => {
  return (
@@ -23,20 +23,13 @@ export const Footer = () => {
        <Link
         href="https://wizytowka.rzetelnafirma.pl/S6GCXOB0"
         target="_blank"
+        rel="noopener noreferrer"
         className="inline-block transition-transform hover:scale-105"
        >
         <span className="font-bold text-sm text-white block mb-2">
          Uczestnik programu
         </span>
-        <Image
-         src="/rzetelna-firma.png"
-         alt="Rzetelna Firma"
-         width={150}
-         height={70}
-         loading="eager"
-         decoding="sync"
-         quality={65}
-        />
+        <RzetelnaFirmaLogo className="h-20 w-auto" />
        </Link>
       </div>
      </div>
@@ -72,11 +65,11 @@ export const Footer = () => {
          className="mr-3 text-[#90EE90] group-hover:text-white transition-colors mt-1"
          size={24}
         />
-        <span className="group-hover:text-[#90EE90] transition-colors">
-         ul. Jana Pawła II 34,
+        <address className="group-hover:text-[#90EE90] transition-colors not-italic">
+         ul. Robotnicza 2,
          <br />
          73-130 Dobrzany
-        </span>
+        </address>
        </li>
       </ul>
      </div>
@@ -93,6 +86,14 @@ export const Footer = () => {
          </Link>
         </li>
        ))}
+       <li>
+        <Link
+         href="/polityka-prywatnosci"
+         className="text-white hover:text-[#90EE90] transition-colors text-lg"
+        >
+         Polityka Prywatności
+        </Link>
+       </li>
       </ul>
       <div className="mt-8">
        <h4 className="text-xl font-semibold mb-4">Śledź nas</h4>
@@ -100,21 +101,27 @@ export const Footer = () => {
         <a
          href="https://www.facebook.com/iso-dach-1639181143011116"
          target="_blank"
+         rel="noopener noreferrer"
          className="text-white hover:text-[#90EE90] transition-colors"
+         aria-label="Facebook"
         >
          <Facebook size={24} />
         </a>
         <a
          href="https://www.instagram.com/iso_dach"
          target="_blank"
+         rel="noopener noreferrer"
          className="text-white hover:text-[#90EE90] transition-colors"
+         aria-label="Instagram"
         >
          <Instagram size={24} />
         </a>
         <a
          href="https://youtube.com/@iso-dach7799"
          target="_blank"
+         rel="noopener noreferrer"
          className="text-white hover:text-[#90EE90] transition-colors"
+         aria-label="YouTube"
         >
          <Youtube size={24} />
         </a>

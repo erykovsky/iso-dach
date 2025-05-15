@@ -1,4 +1,3 @@
-import type { Metadata, Viewport } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import "./globals.css";
@@ -6,6 +5,7 @@ import { Header } from "@/components/header";
 import { Manrope } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
+import type { Metadata, Viewport } from "next";
 
 const manrope = Manrope({
  subsets: ["latin"],
