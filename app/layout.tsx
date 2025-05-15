@@ -32,7 +32,7 @@ export default function RootLayout({
   <html lang="pl">
    <GoogleTagManager gtmId="GTM-XYZ" />
    <body className={`${manrope.className} antialiased`}>
-    <Header />
+    <Header /> 
     {children}
     <Footer />
     <CookiePolicy />
