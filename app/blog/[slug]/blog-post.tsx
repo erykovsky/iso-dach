@@ -1,175 +1,181 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import {
- CalendarIcon,
- Clock,
- ChevronLeft,
- Facebook,
- Twitter,
- Linkedin,
+    ArrowLeft,
+    CalendarIcon,
+    Clock,
+    Facebook,
+    Linkedin,
+    Twitter,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { BlogPost as BlogPostType } from "@/lib/blog";
 
-type BlogPostProps = {
- post: {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  category: string;
-  image: string;
-  date: string;
-  readTime: number;
-  content: string;
- };
-};
+interface BlogPostProps {
+    post: BlogPostType;
+}
 
 export function BlogPost({ post }: BlogPostProps) {
- const [currentUrl, setCurrentUrl] = useState("");
+    // Formatowanie daty
+    const formatDate = (dateString: string) => {
+        if (!dateString) return "";
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleDateString("pl-PL", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+            });
+        } catch (error) {
+            console.error("Error formatting date:", error);
+            return dateString;
+        }
+    };
 
- useEffect(() => {
-  setCurrentUrl(window.location.href);
- }, []);
+    // Funkcje do udostępniania artykułu na różnych platformach
+    const shareOnFacebook = () => {
+        const url = encodeURIComponent(window.location.href);
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+            "_blank"
+        );
+    };
 
- // Formatowanie daty
- const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("pl-PL", {
-   day: "numeric",
-   month: "long",
-   year: "numeric",
-  });
- };
+    const shareOnTwitter = () => {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent(post.title);
+        window.open(
+            `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+            "_blank"
+        );
+    };
 
- const shareOnFacebook = () => {
-  window.open(
-   `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    currentUrl
-   )}`,
-   "_blank"
-  );
- };
+    const shareOnLinkedIn = () => {
+        const url = encodeURIComponent(window.location.href);
+        window.open(
+            `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+            "_blank"
+        );
+    };
 
- const shareOnTwitter = () => {
-  window.open(
-   `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    currentUrl
-   )}&text=${encodeURIComponent(post.title)}`,
-   "_blank"
-  );
- };
+    return (
+        <div className="min-h-screen bg-gray-50">
+            {/* Hero section */}
+            <div className="bg-primary py-16">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            {post.title}
+                        </h1>
+                        <p className="text-white/80 mb-6">{post.excerpt}</p>
+                        <div className="flex items-center justify-center text-white/70 text-sm">
+                            <CalendarIcon size={14} className="mr-1" />
+                            <span>{formatDate(post.date)}</span>
+                            <span className="mx-3">•</span>
+                            <Clock size={14} className="mr-1" />
+                            <span>{post.readTime} min czytania</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
- const shareOnLinkedin = () => {
-  window.open(
-   `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-    currentUrl
-   )}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(
-    post.excerpt
-   )}`,
-   "_blank"
-  );
- };
+            {/* Article content */}
+            <div className="container mx-auto px-4 py-12">
+                <div className="max-w-3xl mx-auto">
+                    {/* Back to blog button */}
+                    <div className="mb-8">
+                        <Button asChild variant="outline" size="sm">
+                            <Link href="/blog" className="flex items-center">
+                                <ArrowLeft size={16} className="mr-2" />
+                                Powrót do bloga
+                            </Link>
+                        </Button>
+                    </div>
 
- return (
-  <div className="min-h-screen bg-gray-50">
-   <article className="container mx-auto px-4 py-12">
-    <div className="max-w-4xl mx-auto">
-     {/* Nawigacja powrotu */}
-     <div className="mb-8">
-      <Button
-       variant="ghost"
-       asChild
-       className="flex items-center text-gray-600 hover:text-primary"
-      >
-       <Link href="/blog">
-        <ChevronLeft className="mr-2 h-4 w-4" />
-        Powrót do bloga
-       </Link>
-      </Button>
-     </div>
+                    {/* Featured image */}
+                    <div className="relative h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
+                        <Image
+                            src={post.image || "/placeholder.svg"}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
 
-     {/* Nagłówek artykułu */}
-     <div className="mb-8">
-      <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-       {post.title}
-      </h1>
-      <div className="flex flex-wrap items-center text-gray-500 text-sm mb-6">
-       <CalendarIcon size={16} className="mr-1" />
-       <span>{formatDate(post.date)}</span>
-       <span className="mx-2">•</span>
-       <Clock size={16} className="mr-1" />
-       <span>{post.readTime} min czytania</span>
-       <span className="mx-2">•</span>
-       <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
-        {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-       </span>
-      </div>
-     </div>
+                    {/* Article body */}
+                    <article className="prose prose-lg max-w-none">
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: post.content || "",
+                            }}
+                        />
+                    </article>
 
-     {/* Obrazek główny */}
-     <div className="relative h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
-      <Image
-       src={post.image || "/placeholder.svg"}
-       alt={post.title}
-       fill
-       className="object-cover"
-      />
-     </div>
+                    {/* Share buttons */}
+                    <div className="mt-12 pt-6 border-t border-gray-200">
+                        <div className="flex flex-wrap justify-end items-center gap-2">
+                            <span className="text-gray-600 mr-2">
+                                Udostępnij:
+                            </span>
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={shareOnFacebook}
+                                className="rounded-full bg-white hover:bg-blue-100 hover:text-blue-600 border-gray-200"
+                            >
+                                <Facebook size={18} />
+                                <span className="sr-only">
+                                    Udostępnij na Facebooku
+                                </span>
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={shareOnTwitter}
+                                className="rounded-full bg-white hover:bg-blue-50 hover:text-blue-400 border-gray-200"
+                            >
+                                <Twitter size={18} />
+                                <span className="sr-only">
+                                    Udostępnij na X (Twitter)
+                                </span>
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={shareOnLinkedIn}
+                                className="rounded-full bg-white hover:bg-blue-50 hover:text-blue-700 border-gray-200"
+                            >
+                                <Linkedin size={18} />
+                                <span className="sr-only">
+                                    Udostępnij na LinkedIn
+                                </span>
+                            </Button>
+                        </div>
+                    </div>
 
-     {/* Treść artykułu */}
-     <div
-      className="prose prose-lg max-w-none mb-12"
-      dangerouslySetInnerHTML={{ __html: post.content }}
-     />
-
-     {/* Przyciski udostępniania */}
-     <div className="border-t border-b border-gray-200 py-6 my-8">
-      <div className="flex items-center justify-between">
-       <div className="text-gray-700 font-medium">Udostępnij ten artykuł:</div>
-       <div className="flex space-x-2">
-        <button
-         onClick={shareOnFacebook}
-         className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-600 transition-colors"
-         aria-label="Udostępnij na Facebook"
-        >
-         <Facebook size={20} />
-        </button>
-        <button
-         onClick={shareOnTwitter}
-         className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-400 transition-colors"
-         aria-label="Udostępnij na Twitter"
-        >
-         <Twitter size={20} />
-        </button>
-        <button
-         onClick={shareOnLinkedin}
-         className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-700 transition-colors"
-         aria-label="Udostępnij na LinkedIn"
-        >
-         <Linkedin size={20} />
-        </button>
-       </div>
-      </div>
-     </div>
-
-     {/* CTA */}
-     <div className="bg-primary/5 rounded-lg p-6 md:p-8 text-center">
-      <h2 className="text-xl md:text-2xl font-semibold mb-4">
-       Potrzebujesz profesjonalnej termomodernizacji?
-      </h2>
-      <p className="text-gray-700 mb-6">
-       Nasi eksperci pomogą Ci wybrać najlepsze rozwiązania dla Twojego domu.
-       Skontaktuj się z nami, aby otrzymać bezpłatną wycenę.
-      </p>
-      <Button size="lg" asChild>
-       <Link href="/kontakt">Skontaktuj się z nami</Link>
-      </Button>
-     </div>
-    </div>
-   </article>
-  </div>
- );
+                    {/* Related articles placeholder */}
+                    <div className="mt-16">
+                        <h2 className="text-2xl font-bold mb-6">
+                            Powiązane artykuły
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Placeholder for related articles */}
+                            <div className="bg-white p-6 rounded-lg shadow-md">
+                                <h3 className="text-lg font-semibold mb-2">
+                                    Artykuły powiązane pojawią się tutaj
+                                </h3>
+                                <p className="text-gray-600">
+                                    W przyszłości będziemy wyświetlać tutaj
+                                    artykuły powiązane z tematyką tego wpisu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }

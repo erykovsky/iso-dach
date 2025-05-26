@@ -138,7 +138,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
                             <Image
-                                src="/cavity-wall-insulation-process.png"
+                                src="/cavity-wall-insulation.png"
                                 alt="Proces ocieplania ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
@@ -232,19 +232,19 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 title: "Granulat Wełny Mineralnej",
                                 description:
                                     "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
-                                image: "/mineral-wool-granulate.png",
+                                image: "/placeholder.svg?height=300&width=400&query=mineral wool granulate",
                             },
                             {
                                 title: "Granulat Styropianowy",
                                 description:
                                     "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i łatwy w aplikacji.",
-                                image: "/eps-granulate.png",
+                                image: "/placeholder.svg?height=300&width=400&query=eps granulate",
                             },
                             {
                                 title: "Pianka Poliuretanowa",
                                 description:
                                     "Nowoczesny materiał o najwyższych parametrach izolacyjnych, tworzący szczelną i jednolitą warstwę izolacji.",
-                                image: "/pur-foam.png",
+                                image: "/placeholder.svg?height=300&width=400&query=polyurethane foam",
                             },
                         ].map((material, index) => (
                             <div
@@ -355,7 +355,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
                             >
                                 <Image
-                                    src={`/cavity-wall-insulation.png?height=400&width=600&query=cavity wall insulation example ${
+                                    src={`/placeholder.svg?height=400&width=600&query=cavity wall insulation example ${
                                         index + 1
                                     }`}
                                     alt={`Realizacja ocieplenia ścian z pustką powietrzną ${
@@ -457,4 +457,3 @@ export default function OciepleniePustkaPowietrznaPage() {
         </div>
     );
 }
- 
