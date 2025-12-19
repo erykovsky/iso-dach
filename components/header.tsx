@@ -25,6 +25,7 @@ const services = [
   href: "/ocieplenie-scian-z-pustka-powietrzna",
  },
  { name: "Naprawa izolacji po kunach", href: "/naprawa-izolacji-po-kunach" },
+ { name: "Badania termowizyjne", href: "/termowizja" },
 ];
 
 export const Header = () => {

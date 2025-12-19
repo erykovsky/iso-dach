@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, Home, Zap, Building, PenToolIcon as Tool } from "lucide-react";
+import { Shield, Home, Zap, Building, PenToolIcon as Tool, Thermometer } from "lucide-react";
 import {
  Card,
  CardContent,
@@ -87,6 +87,20 @@ const services = [
    "Dezynfekcja i oczyszczenie przestrzeni",
    "Montaż nowej, wysokiej jakości izolacji",
    "Zabezpieczenie przed ponownym wtargnięciem kun",
+  ],
+ },
+ {
+  title: "Badania termowizyjne",
+  description:
+   "Zaawansowana diagnostyka termowizyjna pozwala precyzyjnie wykryć miejsca ucieczki ciepła, mostki termiczne i problemy z izolacją. Pierwszy krok do efektywnej termomodernizacji.",
+  icon: Thermometer,
+  link: "/termowizja",
+  image: "/placeholder.svg?height=200&width=400",
+  details: [
+   "Wykrycie mostków termicznych i strat ciepła",
+   "Ocena jakości istniejącej izolacji",
+   "Lokalizacja przecieków powietrza i wilgoci",
+   "Szczegółowy raport z rekomendacjami",
   ],
  },
 ];
