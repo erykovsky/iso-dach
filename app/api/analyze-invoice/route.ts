@@ -8,7 +8,11 @@ import { put } from "@vercel/blob";
 const invoiceSchema = z.object({
   amount: z.number().describe("Kwota brutto z faktury w PLN"),
   date: z.string().describe("Data wystawienia faktury w formacie YYYY-MM-DD"),
-  vendor: z.string().describe("Nazwa dostawcy/sprzedawcy"),
+  vendor: z
+    .string()
+    .describe(
+      "Nazwa SPRZEDAWCY (firmy wystawiającej fakturę) - MANDATORY: zawsze wyciągnij pełną nazwę firmy z sekcji 'Sprzedawca' lub 'Wystawca' lub z nagłówka faktury. Jeśli faktura ma sekcje 'Sprzedawca' i 'Nabywca', wybierz dane z sekcji 'Sprzedawca'. Nazwa musi być kompletna i dokładna, bez skrótów."
+    ),
   category: z
     .enum([
       "materiały",
@@ -69,7 +73,11 @@ export async function POST(req: Request) {
           content: [
             {
               type: "text",
-              text: "Przeanalizuj tę fakturę i wyciągnij z niej najważniejsze informacje. Jeśli faktura jest w języku polskim, zachowaj polskie nazwy. Kwotę podaj w PLN (jeśli jest w innej walucie, zaznacz to w opisie). Data musi być w formacie YYYY-MM-DD.",
+              text: `Przeanalizuj tę fakturę i wyciągnij z niej najważniejsze informacje. Jeśli faktura jest w języku polskim, zachowaj polskie nazwy. Kwotę podaj w PLN (jeśli jest w innej walucie, zaznacz to w opisie). 
+
+WAŻNE INSTRUKCJE:
+1. Data musi być datą WYSTAWIENIA faktury (nie datą sprzedaży ani płatności), w formacie YYYY-MM-DD.
+2. Sprzedawca (vendor): ZAWSZE wyciągnij pełną nazwę firmy z sekcji "Sprzedawca", "Wystawca faktury" lub z nagłówka faktury. Jeśli faktura ma wyraźnie oznaczone sekcje "Sprzedawca" i "Nabywca", wybierz dane z sekcji "Sprzedawca" (firma wystawiająca fakturę). Nazwa musi być kompletna - użyj pełnej nazwy firmy, nie skrótów. Jeśli nie możesz jednoznacznie zidentyfikować sprzedawcy, wpisz "Nieznany sprzedawca".`,
             },
             {
               type: "image",
