@@ -8,7 +8,11 @@ import { PDFDocument } from "pdf-lib";
 // Schema dla wyciągniętych danych z faktury
 const invoiceSchema = z.object({
   amount: z.number().describe("Kwota brutto z faktury w PLN"),
-  date: z.string().describe("Data wystawienia faktury w formacie YYYY-MM-DD"),
+  date: z
+    .string()
+    .describe(
+      "Data WYSTAWIENIA faktury w formacie YYYY-MM-DD - MANDATORY: ZAWSZE użyj daty WYSTAWIENIA faktury (data wystawienia/dokumentu), NIGDY nie używaj terminu płatności, daty sprzedaży, daty wykonania usługi ani innych dat. Szukaj pól oznaczonych jako 'Data wystawienia', 'Data', 'Data dokumentu', 'Data sprzedaży' (ale użyj daty wystawienia, nie daty sprzedaży). Format: YYYY-MM-DD."
+    ),
   vendor: z
     .string()
     .describe(
@@ -55,7 +59,15 @@ async function analyzeInvoiceFile(
             text: `Przeanalizuj tę fakturę i wyciągnij z niej najważniejsze informacje. Jeśli faktura jest w języku polskim, zachowaj polskie nazwy. Kwotę podaj w PLN (jeśli jest w innej walucie, zaznacz to w opisie). 
 
 WAŻNE INSTRUKCJE:
-1. Data musi być datą WYSTAWIENIA faktury (nie datą sprzedaży ani płatności), w formacie YYYY-MM-DD.
+
+1. DATA WYSTAWIENIA (date) - KRYTYCZNIE WAŻNE:
+   - ZAWSZE użyj daty WYSTAWIENIA faktury (data wystawienia dokumentu)
+   - NIGDY nie używaj: terminu płatności, daty płatności, daty wykonania usługi, daty sprzedaży towaru, daty zakupu
+   - Szukaj pól oznaczonych jako: "Data wystawienia", "Data", "Data dokumentu", "Data faktury", "Wystawiono dnia"
+   - Jeśli faktura ma zarówno "Data wystawienia" jak i "Termin płatności" - użyj TYLKO daty wystawienia
+   - Format: YYYY-MM-DD (np. 2024-03-15)
+   - Jeśli nie znajdziesz daty wystawienia, użyj daty z nagłówka faktury, ale NIGDY terminu płatności
+
 2. Sprzedawca (vendor): ZAWSZE wyciągnij pełną nazwę firmy z sekcji "Sprzedawca", "Wystawca faktury" lub z nagłówka faktury. Jeśli faktura ma wyraźnie oznaczone sekcje "Sprzedawca" i "Nabywca", wybierz dane z sekcji "Sprzedawca" (firma wystawiająca fakturę). Nazwa musi być kompletna - użyj pełnej nazwy firmy, nie skrótów. Jeśli nie możesz jednoznacznie zidentyfikować sprzedawcy, wpisz "Nieznany sprzedawca".`,
           },
           {
