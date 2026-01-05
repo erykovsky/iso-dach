@@ -17,7 +17,6 @@ interface Invoice {
   amount: number;
   date: string;
   vendor: string;
-  category: string;
   invoiceNumber: string;
   description: string;
   fileName: string;

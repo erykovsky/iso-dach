@@ -32,7 +32,6 @@ interface Invoice {
   amount: number;
   date: string;
   vendor: string;
-  category: string;
   invoiceNumber: string;
   description: string;
   fileName: string;
@@ -75,7 +74,6 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
 
     const newInvoices: Invoice[] = [];
     const errors: string[] = [];
-
     for (let i = 0; i < selectedFiles.length; i++) {
       const file = selectedFiles[i];
       setProgress({ current: i + 1, total: selectedFiles.length });
@@ -200,11 +198,6 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
     .filter((inv) => inv.date.startsWith(currentMonth))
     .reduce((sum, inv) => sum + inv.amount, 0);
 
-  const categories = invoices.reduce((acc, inv) => {
-    acc[inv.category] = (acc[inv.category] || 0) + inv.amount;
-    return acc;
-  }, {} as Record<string, number>);
-
   return (
     <div className="space-y-8">
       {/* Upload Section */}
@@ -274,7 +267,7 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
       </Card>
 
       {/* Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-gray-600">
@@ -308,32 +301,6 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
                 style: "currency",
                 currency: "PLN",
               })}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">
-              Kategorie
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-1">
-              {Object.entries(categories)
-                .sort(([, a], [, b]) => b - a)
-                .slice(0, 3)
-                .map(([category, amount]) => (
-                  <div key={category} className="flex justify-between text-sm">
-                    <span className="capitalize">{category}</span>
-                    <span className="font-medium">
-                      {amount.toLocaleString("pl-PL", {
-                        style: "currency",
-                        currency: "PLN",
-                      })}
-                    </span>
-                  </div>
-                ))}
             </div>
           </CardContent>
         </Card>
@@ -380,7 +347,7 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
                             <div className="flex items-center gap-2">
                               <DollarSign className="h-4 w-4 text-gray-400" />
                               <span className="font-medium">
@@ -396,11 +363,6 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
                                 {new Date(invoice.date).toLocaleDateString(
                                   "pl-PL"
                                 )}
-                              </span>
-                            </div>
-                            <div className="col-span-2 md:col-span-1">
-                              <span className="inline-block px-2 py-1 bg-primary/10 text-primary rounded text-xs capitalize">
-                                {invoice.category}
                               </span>
                             </div>
                             <div className="text-gray-500 text-xs">

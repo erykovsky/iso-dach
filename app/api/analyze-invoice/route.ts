@@ -17,18 +17,6 @@ const invoiceSchema = z.object({
     .describe(
       "Nazwa SPRZEDAWCY (firmy wystawiającej fakturę) - wyciągnij z sekcji 'Sprzedawca', 'Wystawca faktury' lub z nagłówka faktury. Jeśli faktura ma sekcje 'Sprzedawca' i 'Nabywca', wybierz dane z sekcji 'Sprzedawca'. Użyj pełnej nazwy firmy, jeśli jest dostępna."
     ),
-  category: z
-    .enum([
-      "materiały",
-      "paliwo",
-      "energia",
-      "ubezpieczenia",
-      "wynagrodzenia",
-      "marketing",
-      "oprogramowanie",
-      "inne",
-    ])
-    .describe("Kategoria wydatku"),
   invoiceNumber: z.string().describe("Numer faktury"),
   description: z.string().describe("Krótki opis zakupu"),
 });
@@ -69,7 +57,7 @@ export async function POST(req: Request) {
 
     // Użyj AI do analizy faktury
     const result = await generateObject({
-      model: openai("gpt-4o"),
+      model: openai("gpt-5"),
       schema: invoiceSchema,
       messages: [
         {
