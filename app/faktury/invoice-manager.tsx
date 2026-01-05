@@ -95,22 +95,13 @@ export function InvoiceManager({ initialInvoices }: InvoiceManagerProps) {
           throw new Error(result.error || "Błąd podczas analizy");
         }
 
-        // result.data jest teraz tablicą (nawet dla pojedynczych plików)
-        const results = Array.isArray(result.data) ? result.data : [result.data];
+        const newInvoice: Invoice = {
+          id: `${Date.now()}-${i}`,
+          ...result.data,
+          fileName: file.name,
+        };
 
-        // Dla każdego wyniku utwórz osobny invoice
-        results.forEach((invoiceData: any, resultIndex: number) => {
-          const newInvoice: Invoice = {
-            id: `${Date.now()}-${i}-${resultIndex}`,
-            ...invoiceData.data,
-            fileName: results.length > 1 
-              ? `${file.name.replace(".pdf", "")}-strona-${resultIndex + 1}.pdf`
-              : file.name,
-            fileUrl: invoiceData.fileUrl,
-          };
-
-          newInvoices.push(newInvoice);
-        });
+        newInvoices.push(newInvoice);
       } catch (err) {
         errors.push(
           `${file.name}: ${err instanceof Error ? err.message : "Błąd"}`
