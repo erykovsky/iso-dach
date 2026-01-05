@@ -57,7 +57,7 @@ export async function POST(req: Request) {
 
     // Użyj AI do analizy faktury
     const result = await generateObject({
-      model: openai("gpt-5"),
+      model: openai.chat("gpt-4o-mini-2024-07-18"),
       schema: invoiceSchema,
       messages: [
         {
