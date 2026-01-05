@@ -10,12 +10,12 @@ const invoiceSchema = z.object({
   date: z
     .string()
     .describe(
-      "Data WYSTAWIENIA faktury w formacie YYYY-MM-DD - MANDATORY: ZAWSZE użyj daty WYSTAWIENIA faktury (data wystawienia/dokumentu), NIGDY nie używaj terminu płatności, daty sprzedaży, daty wykonania usługi ani innych dat. Szukaj pól oznaczonych jako 'Data wystawienia', 'Data', 'Data dokumentu', 'Data sprzedaży' (ale użyj daty wystawienia, nie daty sprzedaży). Format: YYYY-MM-DD."
+      "Data WYSTAWIENIA faktury w formacie YYYY-MM-DD - MANDATORY: ZAWSZE użyj daty WYSTAWIENIA faktury (data wystawienia dokumentu), NIGDY nie używaj terminu płatności, daty płatności, daty sprzedaży, daty wykonania usługi ani innych dat. Szukaj pól oznaczonych jako 'Data wystawienia', 'Data', 'Data dokumentu', 'Data faktury', 'Wystawiono dnia'. Format: YYYY-MM-DD."
     ),
   vendor: z
     .string()
     .describe(
-      "Nazwa SPRZEDAWCY (firmy wystawiającej fakturę) - MANDATORY: zawsze wyciągnij pełną nazwę firmy z sekcji 'Sprzedawca' lub 'Wystawca' lub z nagłówka faktury. Jeśli faktura ma sekcje 'Sprzedawca' i 'Nabywca', wybierz dane z sekcji 'Sprzedawca'. Nazwa musi być kompletna i dokładna, bez skrótów."
+      "Nazwa SPRZEDAWCY (firmy wystawiającej fakturę) - wyciągnij z sekcji 'Sprzedawca', 'Wystawca faktury' lub z nagłówka faktury. Jeśli faktura ma sekcje 'Sprzedawca' i 'Nabywca', wybierz dane z sekcji 'Sprzedawca'. Użyj pełnej nazwy firmy, jeśli jest dostępna."
     ),
   category: z
     .enum([
@@ -77,19 +77,22 @@ export async function POST(req: Request) {
           content: [
             {
               type: "text",
-              text: `Przeanalizuj tę fakturę i wyciągnij z niej najważniejsze informacje. Jeśli faktura jest w języku polskim, zachowaj polskie nazwy. Kwotę podaj w PLN (jeśli jest w innej walucie, zaznacz to w opisie). 
+              text: `Przeanalizuj tę fakturę i wyciągnij z niej najważniejsze informacje. Jeśli faktura jest w języku polskim, zachowaj polskie nazwy. Kwotę podaj w PLN (jeśli jest w innej walucie, zaznacz to w opisie).
 
-WAŻNE INSTRUKCJE:
+KRYTYCZNIE WAŻNE INSTRUKCJE:
 
-1. DATA WYSTAWIENIA (date) - KRYTYCZNIE WAŻNE:
+1. DATA WYSTAWIENIA (date):
    - ZAWSZE użyj daty WYSTAWIENIA faktury (data wystawienia dokumentu)
    - NIGDY nie używaj: terminu płatności, daty płatności, daty wykonania usługi, daty sprzedaży towaru, daty zakupu
    - Szukaj pól oznaczonych jako: "Data wystawienia", "Data", "Data dokumentu", "Data faktury", "Wystawiono dnia"
    - Jeśli faktura ma zarówno "Data wystawienia" jak i "Termin płatności" - użyj TYLKO daty wystawienia
    - Format: YYYY-MM-DD (np. 2024-03-15)
-   - Jeśli nie znajdziesz daty wystawienia, użyj daty z nagłówka faktury, ale NIGDY terminu płatności
 
-2. Sprzedawca (vendor): ZAWSZE wyciągnij pełną nazwę firmy z sekcji "Sprzedawca", "Wystawca faktury" lub z nagłówka faktury. Jeśli faktura ma wyraźnie oznaczone sekcje "Sprzedawca" i "Nabywca", wybierz dane z sekcji "Sprzedawca" (firma wystawiająca fakturę). Nazwa musi być kompletna - użyj pełnej nazwy firmy, nie skrótów. Jeśli nie możesz jednoznacznie zidentyfikować sprzedawcy, wpisz "Nieznany sprzedawca".`,
+2. SPRZEDAWCA (vendor):
+   - Wyciągnij nazwę firmy z sekcji "Sprzedawca", "Wystawca faktury" lub z nagłówka faktury
+   - Jeśli faktura ma wyraźnie oznaczone sekcje "Sprzedawca" i "Nabywca", wybierz dane z sekcji "Sprzedawca" (firma wystawiająca fakturę)
+   - Użyj pełnej nazwy firmy, jeśli jest dostępna na fakturze
+   - Jeśli nie możesz jednoznacznie zidentyfikować sprzedawcy, wpisz "Nieznany sprzedawca"`,
             },
             {
               type: "image",
