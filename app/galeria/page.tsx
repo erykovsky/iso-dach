@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { Gallery } from "./gallery";
 
 export const metadata: Metadata = {
-  title: "Galeria | ISO-DACH",
+  title: "Galeria realizacji | ISO-DACH",
   description:
-    "Zobacz nasze realizacje ocieplania i termomodernizacji budynków. Profesjonalne izolacje poddaszy, ścian i stropodachów.",
+    "Zobacz nasze realizacje ocieplania i termomodernizacji. Profesjonalne izolacje poddaszy, ścian i stropodachów.",
   alternates: {
     canonical: "https://www.iso-dach.eu/galeria",
   },

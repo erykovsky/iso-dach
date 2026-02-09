@@ -61,8 +61,9 @@ export function Gallery() {
               <div className="relative aspect-4/3">
                 <Image
                   src={item.image || "/placeholder.svg"}
-                  alt={categoryNameById[item.category]}
+                  alt={`Realizacja ${categoryNameById[item.category]} - ISO-DACH`}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/28 to-transparent" />

@@ -90,7 +90,9 @@ export default function RootLayout({
         <LocalBusinessSchema />
         <GTMWithConsent gtmId="GTM-XYZ" />
         <Header />
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
         {modal}
         <Footer />
         <CookiePolicy />

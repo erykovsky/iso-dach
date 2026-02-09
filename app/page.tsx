@@ -21,13 +21,13 @@ export default function Home() {
                 url="https://www.iso-dach.eu"
             />
         <div className="flex flex-col min-h-screen">
-            <main className="grow">
+            <div className="grow">
                 <HeroCarousel />
                 <ServicesSection />
                 <BenefitsSection />
                 <PartnersSection />
                 <ContactSection />
-            </main>
+            </div>
         </div>
         </>
     );
