@@ -139,7 +139,7 @@ export function BlogList({ posts }: BlogListProps) {
                                     )?.name || "Inne"}
                                 </div>
                             </Link>
-                            <div className="p-6 flex-grow flex flex-col">
+                            <div className="p-6 grow flex flex-col">
                                 <div className="mb-3 flex items-center text-sm text-muted-foreground">
                                     <CalendarIcon size={14} className="mr-1" />
                                     <span>{formatDate(post.date)}</span>
@@ -154,7 +154,7 @@ export function BlogList({ posts }: BlogListProps) {
                                         {post.title}
                                     </Link>
                                 </h2>
-                                <p className="mb-4 flex-grow text-muted-foreground">
+                                <p className="mb-4 grow text-muted-foreground">
                                     {post.excerpt}
                                 </p>
                                 <Button

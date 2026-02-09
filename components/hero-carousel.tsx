@@ -47,7 +47,7 @@ export const HeroCarousel = () => {
   };
 
   return (
-    <section className="section-shell relative overflow-hidden bg-gradient-to-br from-[#800020] via-[#6b001b] to-[#4B0012] text-white">
+    <section className="section-shell relative overflow-hidden bg-linear-to-br from-[#800020] via-[#6b001b] to-[#4B0012] text-white">
       <div className="section-inner container mx-auto px-4 pb-14 pt-10 lg:pb-16 lg:pt-16">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
           <div className="order-2 lg:order-1">
@@ -99,7 +99,7 @@ export const HeroCarousel = () => {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]">
+            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-4/3 overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]">
               {slides.map((slide, index) => (
                 <div
                   key={slide.title}
@@ -115,7 +115,7 @@ export const HeroCarousel = () => {
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     priority={index === 0}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#330009]/55 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
                 </div>
               ))}
 

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[#800020] via-[#6c001b] to-[#4B0012] py-14 text-white">
+    <footer className="relative overflow-hidden bg-linear-to-br from-[#800020] via-[#6c001b] to-[#4B0012] py-14 text-white">
       <div className="absolute inset-0 opacity-[0.12]">
         <div className="absolute -left-32 -top-36 h-80 w-80 rounded-full bg-[#228B22] blur-3xl" />
         <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-[#2a000a] blur-3xl" />
@@ -60,11 +60,14 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
               Nawigacja
             </h3>
-            <ul className="space-y-2 text-white/90">
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-2 text-white/90">
               {[
-                { label: "Usługi", href: "#services" },
-                { label: "Korzyści", href: "#benefits" },
-                { label: "Kontakt", href: "#contact" },
+                { label: "Strona główna", href: "/" },
+                { label: "Galeria", href: "/galeria" },
+                { label: "Blog", href: "/blog" },
+                { label: "Cennik", href: "/cennik" },
+                { label: "Kontakt", href: "/kontakt" },
+                { label: "Polityka Prywatności", href: "/polityka-prywatnosci" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="hover:text-[#90EE90]">
@@ -72,11 +75,6 @@ export const Footer = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/polityka-prywatnosci" className="hover:text-[#90EE90]">
-                  Polityka Prywatności
-                </Link>
-              </li>
             </ul>
 
             <div className="pt-2">

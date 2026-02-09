@@ -1,172 +1,156 @@
 "use client";
 
-import type React from "react";
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
+import { useActionState, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
+import {
+    type ContactFormState,
+    sendWycenaAction,
+} from "./actions";
+
+const initialContactFormState: ContactFormState = {
+    status: "idle",
+    message: "",
+};
 
 export const ContactForm = () => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<
-        "idle" | "success" | "error"
-    >("idle");
+    const [state, formAction, isPending] = useActionState(
+        sendWycenaAction,
+        initialContactFormState
+    );
+    const lastToastKeyRef = useRef<string>("");
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus("idle");
+    useEffect(() => {
+        if (state.status === "idle" || !state.message) {
+            return;
+        }
 
-        const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
+        const toastKey = `${state.status}:${state.message}`;
+        if (lastToastKeyRef.current === toastKey) {
+            return;
+        }
 
-        try {
-            const response = await fetch("/api/send-wycena", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
+        lastToastKeyRef.current = toastKey;
+
+        if (state.status === "success") {
+            toast.success("Wysłano zapytanie", {
+                description: state.message,
             });
 
-            if (response.ok) {
-                setSubmitStatus("success");
-            } else {
-                setSubmitStatus("error");
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            setSubmitStatus("error");
-        } finally {
-            setIsSubmitting(false);
+            return;
         }
-    };
+
+        toast.error("Nie udało się wysłać", {
+            description: state.message,
+        });
+    }, [state.status, state.message]);
 
     return (
-        <Card className="marketing-surface">
-            <CardContent className="p-6">
-                <form onSubmit={handleSubmit}>
-                    <div className="my-4 text-sm text-muted-foreground">
-                        Pola oznaczone * są wymagane
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        <div className="grid gap-2">
-                            <Label htmlFor="name">Imię i Nazwisko *</Label>
+        <section className="soft-card reveal-up rounded-2xl p-4 sm:p-6">
+            <p className="text-sm text-muted-foreground">Pola oznaczone * są wymagane</p>
+            <div className="mt-4 sm:mt-5">
+                <form action={formAction}>
+                    <div className="flex flex-col gap-4 sm:gap-6">
+                        <div className="grid gap-1.5 sm:gap-2">
+                            <Label htmlFor="name">Imię i nazwisko *</Label>
                             <Input
                                 id="name"
                                 name="name"
                                 type="text"
                                 placeholder="Jan Kowalski"
+                                className="h-9 px-3 md:h-10 md:px-3.5"
                                 required
                             />
                         </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="email">Adres e-mail *</Label>
-                            <Input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="m@przykład.pl"
-                                required
-                            />
-                        </div>
-                        <div className="grid gap-2">
+                        <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="phone">Numer telefonu *</Label>
                             <Input
                                 id="phone"
                                 name="phone"
                                 type="tel"
                                 placeholder="123 456 789"
+                                className="h-9 px-3 md:h-10 md:px-3.5"
                                 required
                             />
                         </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="address">Adres inwestycji *</Label>
+                        <div className="grid gap-1.5 sm:gap-2">
+                            <Label htmlFor="email">Adres e-mail *</Label>
                             <Input
-                                id="address"
-                                name="address"
-                                type="text"
-                                placeholder="ul. Przykładowa 123, 00-123 Warszawa"
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="m@przykład.pl"
+                                className="h-9 px-3 md:h-10 md:px-3.5"
                                 required
                             />
                         </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="projectType">
-                                Rodzaj projektu *
-                            </Label>
-                            <Select name="projectType" required>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Wybierz rodzaj projektu" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="termomodernizacja">
-                                        Termomodernizacja kompleksowa
-                                    </SelectItem>
-                                    <SelectItem value="ocieplenie-scian">
-                                        Ocieplenie ścian zewnętrznych
-                                    </SelectItem>
-                                    <SelectItem value="izolacja-poddasza">
-                                        Izolacja i ocieplenie poddasza
-                                    </SelectItem>
-                                    <SelectItem value="izolacja-stropodachu">
-                                        Izolacja i ocieplenie stropodachu
-                                    </SelectItem>
-                                    <SelectItem value="ocieplenie-stropow-piwnic">
-                                        Ocieplenie stropów piwnic i garaży
-                                    </SelectItem>
-                                    <SelectItem value="naprawa-zniszczonej-izolacji">
-                                        Naprawa/wymiana zniszczonej izolacji
-                                    </SelectItem>
-                                    <SelectItem value="inne">
-                                        Inne usługi
-                                    </SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <div className="grid gap-2">
+                        <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="message">
-                                Treść wiadomości (opcjonalne)
+                                Treść wiadomości (podaj kluczowe informacje)
                             </Label>
                             <Textarea
                                 id="message"
                                 name="message"
-                                placeholder="Opisz szczegóły swojego projektu lub dodaj dodatkowe informacje..."
-                                className="min-h-[120px]"
+                                placeholder="Podaj najważniejsze dane: np. lokalizacja inwestycji, rodzaj ocieplenia, orientacyjna grubość izolacji, metraż ocieplenia, stan budynku i dodatkowe uwagi."
+                                className="min-h-[104px] px-3 py-2 md:min-h-[120px] md:px-3.5 md:py-2.5"
                             />
+                        </div>
+                        <div className="space-y-2.5 border-t border-primary/10 pt-3.5 sm:space-y-3 sm:pt-4">
+                            <label
+                                htmlFor="consentPrivacy"
+                                className="flex items-start gap-2.5 text-[13px] leading-5 text-muted-foreground sm:gap-3 sm:text-sm"
+                            >
+                                <input
+                                    id="consentPrivacy"
+                                    name="consentPrivacy"
+                                    type="checkbox"
+                                    required
+                                    className="mt-0.5 h-3.5 w-3.5 rounded border-primary/30 accent-primary sm:h-4 sm:w-4"
+                                />
+                                <span>
+                                    Wyrażam zgodę na przetwarzanie moich danych
+                                    osobowych w celu obsługi zapytania, zgodnie
+                                    z{" "}
+                                    <a
+                                        href="/polityka-prywatnosci"
+                                        className="font-medium text-primary underline-offset-4 hover:underline"
+                                    >
+                                        Polityką prywatności
+                                    </a>
+                                    . *
+                                </span>
+                            </label>
+
+                            <label
+                                htmlFor="consentMarketing"
+                                className="flex items-start gap-2.5 text-[13px] leading-5 text-muted-foreground sm:gap-3 sm:text-sm"
+                            >
+                                <input
+                                    id="consentMarketing"
+                                    name="consentMarketing"
+                                    type="checkbox"
+                                    className="mt-0.5 h-3.5 w-3.5 rounded border-primary/30 accent-primary sm:h-4 sm:w-4"
+                                />
+                                <span>
+                                    Chcę otrzymywać informacje handlowe i
+                                    marketingowe drogą elektroniczną
+                                    (opcjonalnie).
+                                </span>
+                            </label>
                         </div>
                         <Button
                             type="submit"
-                            className="mr-auto"
-                            disabled={isSubmitting}
+                            className="mr-auto h-9 px-3.5 text-sm sm:h-10 sm:px-4"
+                            disabled={isPending}
                         >
-                            {isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
+                            {isPending ? "Wysyłanie..." : "Wyślij zapytanie"}
                         </Button>
-
-                        {submitStatus === "success" && (
-                            <p className="text-[#228B22]">
-                                Dziękujemy za wysłanie formularza! Skontaktujemy
-                                się wkrótce.
-                            </p>
-                        )}
-                        {submitStatus === "error" && (
-                            <p className="text-red-600">
-                                Wystąpił błąd podczas wysyłania formularza.
-                                Spróbuj ponownie później.
-                            </p>
-                        )}
                     </div>
                 </form>
-            </CardContent>
-        </Card>
+            </div>
+        </section>
     );
 };

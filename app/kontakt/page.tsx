@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContactForm } from "./contact-form";
 import { Building, Mail, Phone } from "lucide-react";
 import { Metadata } from "next";
@@ -34,11 +33,9 @@ export default function KontaktPage() {
             <h2 className="text-2xl font-semibold text-primary mb-4">
               Dane kontaktowe
             </h2>
-            <Card>
-              <CardHeader>
-                <CardTitle>Bezpośredni kontakt</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <section className="soft-card rounded-2xl p-5 sm:p-6">
+              <h3 className="text-xl font-semibold text-primary">Bezpośredni kontakt</h3>
+              <div className="mt-4 space-y-4">
                 <div className="flex items-center space-x-2">
                   <Phone className="text-primary" />
                   <a
@@ -57,13 +54,11 @@ export default function KontaktPage() {
                     info@iso-dach.eu
                   </a>
                 </div>
-              </CardContent>
-            </Card>
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle>Adres</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+              </div>
+            </section>
+            <section className="soft-card mt-8 rounded-2xl p-5 sm:p-6">
+              <h3 className="text-xl font-semibold text-primary">Adres</h3>
+              <div className="mt-4 space-y-4">
                 <div className="flex items-start space-x-2">
                   <Building className="text-primary mt-1 shrink-0" />
                   <address className="not-italic">
@@ -82,8 +77,8 @@ export default function KontaktPage() {
                     <strong>REGON:</strong> 811791710
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </section>
             <p className="mt-8 text-muted-foreground">
               Jeśli wolisz bezpośredni kontakt, możesz skorzystać z podanych
               powyżej danych. Odpowiemy na Twoje pytania tak szybko, jak to

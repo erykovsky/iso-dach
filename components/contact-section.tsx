@@ -5,7 +5,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="section-shell relative overflow-hidden bg-gradient-to-br from-[#32CD32] via-[#2ebc2e] to-[#228B22] py-24 text-white"
+      className="section-shell relative overflow-hidden bg-linear-to-br from-[#32CD32] via-[#2ebc2e] to-[#228B22] py-24 text-white"
     >
       <div className="absolute inset-0 opacity-15">
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-white blur-3xl" />
@@ -13,7 +13,7 @@ export const ContactSection = () => {
       </div>
 
       <div className="section-inner container relative z-10 mx-auto px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/25 bg-white/10 p-8 text-center shadow-[0_35px_80px_-45px_rgba(0,0,0,0.65)] backdrop-blur-sm sm:p-12">
+        <div className="mx-auto max-w-4xl rounded-4xl border border-white/25 bg-white/10 p-8 text-center shadow-[0_35px_80px_-45px_rgba(0,0,0,0.65)] backdrop-blur-sm sm:p-12">
           <h2 className="reveal-up text-4xl font-bold tracking-tight sm:text-5xl">
             Skontaktuj się z nami
           </h2>

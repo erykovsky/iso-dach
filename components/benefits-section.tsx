@@ -31,7 +31,7 @@ export const BenefitsSection = () => {
   return (
     <section
       id="benefits"
-      className="section-shell bg-gradient-to-br from-[#800020] via-[#6f001d] to-[#4B0012] py-24 text-white"
+      className="section-shell bg-linear-to-br from-[#800020] via-[#6f001d] to-[#4B0012] py-24 text-white"
     >
       <div className="section-inner container mx-auto px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-14">

@@ -83,7 +83,7 @@ export default function TermowizjaPage() {
             <Card className="border-none shadow-md">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <Thermometer className="text-secondary mt-1 flex-shrink-0 h-8 w-8" />
+                  <Thermometer className="text-secondary mt-1 shrink-0 h-8 w-8" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">
                       Jak to działa?
@@ -101,7 +101,7 @@ export default function TermowizjaPage() {
             <Card className="border-none shadow-md">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <CheckCircle className="text-secondary mt-1 flex-shrink-0 h-8 w-8" />
+                  <CheckCircle className="text-secondary mt-1 shrink-0 h-8 w-8" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">
                       Kiedy wykonać?
@@ -165,7 +165,7 @@ export default function TermowizjaPage() {
               >
                 <CardContent className="p-4 sm:p-5">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
+                    <CheckCircle className="text-secondary mt-1 shrink-0" />
                     <div>
                       <h3 className="font-semibold text-lg mb-2">
                         {benefit.title}
@@ -367,7 +367,7 @@ export default function TermowizjaPage() {
                   <ul className="space-y-3 mb-6">
                     {pakiet.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="text-secondary mt-0.5 flex-shrink-0 h-5 w-5" />
+                        <CheckCircle className="text-secondary mt-0.5 shrink-0 h-5 w-5" />
                         <span className="text-sm">{feature}</span>
                       </li>
                     ))}
@@ -431,7 +431,7 @@ export default function TermowizjaPage() {
                   <AccordionTrigger className="text-left">
                     <div className="flex items-start gap-2">
                       <HelpCircle
-                        className="text-primary mt-1 flex-shrink-0"
+                        className="text-primary mt-1 shrink-0"
                         size={18}
                       />
                       <span>{faq.question}</span>

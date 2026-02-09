@@ -107,7 +107,7 @@ export default function OcieplanieStropodachuPage() {
        >
         <CardContent className="p-4 sm:p-5">
          <div className="flex items-start gap-4">
-          <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
+          <CheckCircle className="text-secondary mt-1 shrink-0" />
           <div>
            <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
            <p className="text-gray-600">{benefit.description}</p>
@@ -156,23 +156,23 @@ export default function OcieplanieStropodachuPage() {
        </h3>
        <ul className="space-y-2 mb-6">
         <li className="flex items-start gap-2">
-         <CheckCircle className="text-secondary mt-1 flex-shrink-0" size={18} />
+         <CheckCircle className="text-secondary mt-1 shrink-0" size={18} />
          <span>Szybka i efektywna realizacja</span>
         </li>
         <li className="flex items-start gap-2">
-         <CheckCircle className="text-secondary mt-1 flex-shrink-0" size={18} />
+         <CheckCircle className="text-secondary mt-1 shrink-0" size={18} />
          <span>Dokładne wypełnienie wszystkich przestrzeni</span>
         </li>
         <li className="flex items-start gap-2">
-         <CheckCircle className="text-secondary mt-1 flex-shrink-0" size={18} />
+         <CheckCircle className="text-secondary mt-1 shrink-0" size={18} />
          <span>Brak konieczności demontażu dachu</span>
         </li>
         <li className="flex items-start gap-2">
-         <CheckCircle className="text-secondary mt-1 flex-shrink-0" size={18} />
+         <CheckCircle className="text-secondary mt-1 shrink-0" size={18} />
          <span>Minimalne zakłócenie funkcjonowania budynku</span>
         </li>
         <li className="flex items-start gap-2">
-         <CheckCircle className="text-secondary mt-1 flex-shrink-0" size={18} />
+         <CheckCircle className="text-secondary mt-1 shrink-0" size={18} />
          <span>Możliwość zastosowania w trudno dostępnych miejscach</span>
         </li>
        </ul>
@@ -355,7 +355,7 @@ export default function OcieplanieStropodachuPage() {
         <AccordionItem key={index} value={`item-${index}`}>
          <AccordionTrigger className="text-left">
           <div className="flex items-start gap-2">
-           <HelpCircle className="text-primary mt-1 flex-shrink-0" size={18} />
+           <HelpCircle className="text-primary mt-1 shrink-0" size={18} />
            <span>{faq.question}</span>
           </div>
          </AccordionTrigger>

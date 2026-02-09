@@ -70,7 +70,7 @@ export const CookiePolicy = () => {
   if (!isOpen) return null;
 
   return (
-    <section className="fixed inset-0 z-[120]">
+    <section className="fixed inset-0 z-120">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
       <div className="relative flex min-h-full items-end justify-center p-2.5 sm:items-center sm:p-6">
         <div

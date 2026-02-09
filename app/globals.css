@@ -323,15 +323,6 @@
       0 14px 26px -18px rgba(23, 32, 48, 0.32);
   }
 
-  .marketing-surface {
-    background-color: color-mix(in srgb, white 94%, transparent);
-    border: 1px solid color-mix(in srgb, var(--brand-maroon) 10%, #ececec);
-    border-radius: 1rem;
-    box-shadow:
-      0 20px 40px -34px rgba(75, 0, 18, 0.62),
-      0 9px 18px -14px rgba(32, 42, 62, 0.22);
-  }
-
   .marketing-image-frame {
     overflow: hidden;
     border-radius: 1rem;

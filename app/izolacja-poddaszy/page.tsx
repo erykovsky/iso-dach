@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
+import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Izolacja Poddaszy | ISO-DACH",
@@ -107,7 +107,7 @@ export default function IzolacjaPoddaszyPage() {
               >
                 <CardContent className="p-4 sm:p-5">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
+                    <CheckCircle className="text-secondary mt-1 shrink-0" />
                     <div>
                       <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
                       <p className="text-gray-600">{benefit.description}</p>
@@ -298,7 +298,7 @@ export default function IzolacjaPoddaszyPage() {
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left">
                     <div className="flex items-start gap-2">
-                      <HelpCircle className="text-primary mt-1 flex-shrink-0" size={18} />
+                      <HelpCircle className="text-primary mt-1 shrink-0" size={18} />
                       <span>{faq.question}</span>
                     </div>
                   </AccordionTrigger>

@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
 import { GTMWithConsent } from "@/components/gtm-with-consent";
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
@@ -18,8 +19,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal?: React.ReactNode;
 }>) {
   return (
     <html lang="pl">
@@ -27,8 +30,10 @@ export default function RootLayout({
         <GTMWithConsent gtmId="GTM-XYZ" />
         <Header />
         {children}
+        {modal}
         <Footer />
         <CookiePolicy />
+        <Toaster position="bottom-right" closeButton />
       </body>
     </html>
   );

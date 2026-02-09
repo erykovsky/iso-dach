@@ -85,14 +85,14 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             </p>
                             <ul className="space-y-4 mb-6">
                                 <li className="flex items-start gap-3">
-                                    <AlertTriangle className="text-red-500 mt-1 flex-shrink-0" />
+                                    <AlertTriangle className="text-red-500 mt-1 shrink-0" />
                                     <span>
                                         Niszczą materiał izolacyjny, tworząc w
                                         nim tunele i gniazda
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <AlertTriangle className="text-red-500 mt-1 flex-shrink-0" />
+                                    <AlertTriangle className="text-red-500 mt-1 shrink-0" />
                                     <span>
                                         Zanieczyszczają izolację odchodami i
                                         moczem, co może prowadzić do
@@ -100,14 +100,14 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <AlertTriangle className="text-red-500 mt-1 flex-shrink-0" />
+                                    <AlertTriangle className="text-red-500 mt-1 shrink-0" />
                                     <span>
                                         Mogą uszkadzać instalacje elektryczne,
                                         co stwarza ryzyko pożaru
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <AlertTriangle className="text-red-500 mt-1 flex-shrink-0" />
+                                    <AlertTriangle className="text-red-500 mt-1 shrink-0" />
                                     <span>
                                         Znacząco obniżają skuteczność izolacji
                                         termicznej, co prowadzi do zwiększonych
@@ -115,7 +115,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <AlertTriangle className="text-red-500 mt-1 flex-shrink-0" />
+                                    <AlertTriangle className="text-red-500 mt-1 shrink-0" />
                                     <span>
                                         Hałasują, szczególnie w nocy, zakłócając
                                         spokój mieszkańców
@@ -412,7 +412,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     <AccordionTrigger className="text-left">
                                         <div className="flex items-start gap-2">
                                             <HelpCircle
-                                                className="text-primary mt-1 flex-shrink-0"
+                                                className="text-primary mt-1 shrink-0"
                                                 size={18}
                                             />
                                             <span>{faq.question}</span>
