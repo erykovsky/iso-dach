@@ -34,6 +34,14 @@ export const metadata: Metadata = {
     description: "Profesjonalna izolacja poddaszy. Oszczędność energii do 40%. Bezpłatna wycena.",
     url: "https://www.iso-dach.eu/izolacja-poddaszy",
     type: "article",
+    images: [
+      {
+        url: "/img/9.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Izolacja poddaszy wełną celulozową - ISO-DACH",
+      },
+    ],
   },
 };
 

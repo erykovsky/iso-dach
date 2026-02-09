@@ -8,6 +8,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { ArrowRight, HelpCircle, AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -17,11 +18,35 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://www.iso-dach.eu/naprawa-izolacji-po-kunach",
     },
+    openGraph: {
+        title: "Naprawa Izolacji Po Kunach | ISO-DACH",
+        description: "Specjalistyczna naprawa izolacji uszkodzonej przez kuny. Zabezpieczenie przed ponownym wtargnięciem.",
+        url: "https://www.iso-dach.eu/naprawa-izolacji-po-kunach",
+        type: "article",
+        images: [
+            {
+                url: "/img/9.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Naprawa izolacji po kunach - ISO-DACH",
+            },
+        ],
+    },
 };
 
 export default function NaprawaIzolacjiPoKunachPage() {
     return (
-        <div className="min-h-screen marketing-page">
+        <>
+            <VideoObjectSchema
+                title="Naprawa izolacji po kunach - zabezpieczenie poddasza"
+                description="Materiał wideo pokazujący proces naprawy izolacji uszkodzonej przez kuny oraz metody skutecznego zabezpieczenia poddasza."
+                thumbnailUrl="https://www.iso-dach.eu/img/9.jpg"
+                uploadDate="2024-01-15"
+                videoUrl="https://www.youtube.com/watch?v=aonxLOo1Poo"
+                embedUrl="https://www.youtube-nocookie.com/embed/aonxLOo1Poo"
+                duration="PT3M"
+            />
+            <div className="min-h-screen marketing-page">
             {/* Hero Section */}
             <section className="marketing-hero py-16 md:py-24">
                 <div className="container mx-auto px-4">
@@ -450,5 +475,6 @@ export default function NaprawaIzolacjiPoKunachPage() {
                 </div>
             </section>
         </div>
+        </>
     );
 }

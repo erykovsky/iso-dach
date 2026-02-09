@@ -63,6 +63,7 @@ export const Footer = () => {
             <ul className="grid grid-cols-2 gap-x-5 gap-y-2 text-white/90">
               {[
                 { label: "Strona główna", href: "/" },
+                { label: "O nas", href: "/o-nas" },
                 { label: "Galeria", href: "/galeria" },
                 { label: "Blog", href: "/blog" },
                 { label: "Cennik", href: "/cennik" },

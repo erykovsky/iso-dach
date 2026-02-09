@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     "",
+    "/o-nas",
     "/ocieplanie-scian",
     "/izolacja-poddaszy",
     "/izolacja-stropow-piwnic",

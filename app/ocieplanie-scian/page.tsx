@@ -34,6 +34,14 @@ export const metadata: Metadata = {
       "Profesjonalne ocieplanie ścian. Zmniejsz straty ciepła o 30%. Bezpłatna wycena.",
     url: "https://www.iso-dach.eu/ocieplanie-scian",
     type: "article",
+    images: [
+      {
+        url: "/img/9.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ocieplanie ścian zewnętrznych - ISO-DACH",
+      },
+    ],
   },
 };
 

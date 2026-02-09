@@ -127,6 +127,9 @@ export const Header = () => {
             </div>
           </div>
 
+          <Link href="/o-nas" prefetch className={desktopLinkClass}>
+            O nas
+          </Link>
           <Link href="/galeria" prefetch className={desktopLinkClass}>
             Galeria
           </Link>
@@ -227,6 +230,14 @@ export const Header = () => {
               )}
             </div>
 
+            <Link
+              href="/o-nas"
+              prefetch
+              className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
+              onClick={toggleMenu}
+            >
+              O nas
+            </Link>
             <Link
               href="/galeria"
               prefetch

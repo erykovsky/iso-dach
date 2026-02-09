@@ -54,6 +54,15 @@ export const ContactForm = () => {
             <div className="mt-4 sm:mt-5">
                 <form action={formAction}>
                     <div className="flex flex-col gap-4 sm:gap-6">
+                        {/* Honeypot - ukryte pole przed botami */}
+                        <div className="absolute opacity-0 -z-10" aria-hidden="true">
+                            <input
+                                type="text"
+                                name="website"
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+                        </div>
                         <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="name">Imię i nazwisko *</Label>
                             <Input

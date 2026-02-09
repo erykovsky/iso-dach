@@ -1,6 +1,10 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { z } from "zod";
+
+// Sprawdź czy jesteśmy w trybie deweloperskim
+const isDevelopment = process.env.NODE_ENV === "development";
 
 export type ContactFormState = {
     status: "idle" | "success" | "error";
@@ -10,42 +14,76 @@ export type ContactFormState = {
 const getFormValue = (value: FormDataEntryValue | null): string =>
     typeof value === "string" ? value.trim() : "";
 
+// Schema walidacji Zod
+const contactFormSchema = z.object({
+    name: z
+        .string()
+        .min(2, "Imię i nazwisko musi mieć co najmniej 2 znaki")
+        .max(100, "Imię i nazwisko nie może przekraczać 100 znaków"),
+    email: z
+        .string()
+        .email("Podaj prawidłowy adres e-mail")
+        .max(100, "Adres e-mail nie może przekraczać 100 znaków"),
+    phone: z
+        .string()
+        .min(9, "Numer telefonu musi mieć co najmniej 9 cyfr")
+        .max(20, "Numer telefonu nie może przekraczać 20 znaków")
+        .regex(/^[\d\s\+\-\(\)]+$/, "Podaj prawidłowy numer telefonu"),
+    message: z
+        .string()
+        .max(2000, "Wiadomość nie może przekraczać 2000 znaków")
+        .optional()
+        .default("-"),
+    consentPrivacy: z.boolean().refine((val) => val === true, {
+        message: "Wymagana zgoda na przetwarzanie danych",
+    }),
+    consentMarketing: z.boolean().optional().default(false),
+});
+
 export async function sendWycenaAction(
     _prevState: ContactFormState,
     formData: FormData
 ): Promise<ContactFormState> {
-    const name = getFormValue(formData.get("name"));
-    const email = getFormValue(formData.get("email"));
-    const phone = getFormValue(formData.get("phone"));
-    const message = getFormValue(formData.get("message")) || "-";
-    const consentPrivacy = formData.get("consentPrivacy") === "on";
-    const consentMarketing = formData.get("consentMarketing") === "on";
-
-    if (!name) {
+    // Honeypot - sprawdzenie czy pole website jest wypełnione (boty wypełniają wszystkie pola)
+    const honeypot = getFormValue(formData.get("website"));
+    if (honeypot) {
+        // Symulacja sukcesu - bot myśli że formularz został wysłany
         return {
-            status: "error",
-            message: "Imię i nazwisko jest wymagane.",
+            status: "success",
+            message: "Dziękujemy za wysłanie formularza! Skontaktujemy się wkrótce.",
         };
     }
 
-    if (!phone) {
+    // Przygotowanie danych do walidacji
+    const rawData = {
+        name: getFormValue(formData.get("name")),
+        email: getFormValue(formData.get("email")),
+        phone: getFormValue(formData.get("phone")),
+        message: getFormValue(formData.get("message")) || "-",
+        consentPrivacy: formData.get("consentPrivacy") === "on",
+        consentMarketing: formData.get("consentMarketing") === "on",
+    };
+
+    // Walidacja Zod
+    const validationResult = contactFormSchema.safeParse(rawData);
+
+    if (!validationResult.success) {
+        // Pobierz pierwszy błąd walidacji
+        const firstError = validationResult.error.issues[0];
         return {
             status: "error",
-            message: "Numer telefonu jest wymagany.",
+            message: firstError.message,
         };
     }
 
-    if (!email) {
-        return {
-            status: "error",
-            message: "Adres e-mail jest wymagany.",
-        };
-    }
+    const { name, email, phone, message, consentMarketing } = validationResult.data;
 
-    if (!consentPrivacy) {
+    // Sprawdź czy zmienne środowiskowe są ustawione
+    if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.error("Brak zmiennych środowiskowych dla SMTP");
         return {
             status: "error",
-            message: "Brak wymaganej zgody na przetwarzanie danych.",
+            message: "Błąd konfiguracji serwera. Skontaktuj się z administratorem.",
         };
     }
 
@@ -57,9 +95,32 @@ export async function sendWycenaAction(
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
         },
+        tls: {
+            rejectUnauthorized: false, // Akceptuj self-signed certyfikaty
+        },
     });
 
     const senderAddress = process.env.EMAIL_USER || "noreply@iso-dach.eu";
+
+    // W trybie deweloperskim - logowanie zamiast wysyłania
+    if (isDevelopment) {
+        console.log("\n=== TRYB DEWELOPERSKI - EMAIL NIE ZOSTAŁ WYSŁANY ===");
+        console.log("Od:", `Formularz ISO-DACH <${senderAddress}>`);
+        console.log("Do:", process.env.EMAIL_TO);
+        console.log("Temat:", `Wycena ${name}`);
+        console.log("Dane formularza:");
+        console.log("  Imię:", name);
+        console.log("  Email:", email);
+        console.log("  Telefon:", phone);
+        console.log("  Wiadomość:", message);
+        console.log("  Zgoda marketingowa:", consentMarketing ? "TAK" : "NIE");
+        console.log("=== KONIEC LOGU ===\n");
+
+        return {
+            status: "success",
+            message: "[DEV] Formularz przetworzony (sprawdź konsolę serwera)",
+        };
+    }
 
     try {
         await transporter.sendMail({

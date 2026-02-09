@@ -21,6 +21,14 @@ export const metadata: Metadata = {
     description: "Skontaktuj się z nami. Bezpłatna wycena w 24h. Tel: +48 660 441 941",
     url: "https://www.iso-dach.eu/kontakt",
     type: "website",
+    images: [
+      {
+        url: "/img/9.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kontakt z ISO-DACH - profesjonalne izolacje",
+      },
+    ],
   },
 };
 
