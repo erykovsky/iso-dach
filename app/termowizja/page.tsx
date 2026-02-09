@@ -44,7 +44,7 @@ export default function TermowizjaPage() {
                 </Button>
                 <Button
                   size="lg"
-                  variant="hero"
+                  variant="secondary"
                   asChild
                 >
                   <Link href="#zalety">Poznaj zalety</Link>
@@ -350,11 +350,10 @@ export default function TermowizjaPage() {
             ].map((pakiet, index) => (
               <Card
                 key={index}
-                className={`${
-                  pakiet.highlighted
+                className={`${pakiet.highlighted
                     ? "border-primary border-2 shadow-xl"
                     : "border-none shadow-md"
-                } hover:shadow-lg transition-shadow`}
+                  } hover:shadow-lg transition-shadow`}
               >
                 <CardContent className="p-6">
                   {pakiet.highlighted && (

@@ -43,7 +43,7 @@ export default function IzolacjaPoddaszyPage() {
                 </Button>
                 <Button
                   size="lg"
-                  variant="hero"
+                  variant="secondary"
                   asChild
                 >
                   <Link href="#zalety">Poznaj zalety</Link>

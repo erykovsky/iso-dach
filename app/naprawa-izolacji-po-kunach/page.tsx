@@ -46,7 +46,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </Button>
                                 <Button
                                     size="lg"
-                                    variant="hero"
+                                    variant="secondary"
                                     asChild
                                 >
                                     <Link href="#problem">Poznaj problem</Link>
@@ -349,12 +349,10 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 className="relative h-64 marketing-image-frame"
                             >
                                 <Image
-                                    src={`/placeholder.svg?height=400&width=600&text=Realizacja ${
-                                        index + 1
-                                    }`}
-                                    alt={`Realizacja naprawy izolacji po kunach ${
-                                        index + 1
-                                    }`}
+                                    src={`/placeholder.svg?height=400&width=600&text=Realizacja ${index + 1
+                                        }`}
+                                    alt={`Realizacja naprawy izolacji po kunach ${index + 1
+                                        }`}
                                     fill
                                     className="object-cover"
                                 />

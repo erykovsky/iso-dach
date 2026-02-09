@@ -47,7 +47,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 </Button>
                                 <Button
                                     size="lg"
-                                    variant="hero"
+                                    variant="secondary"
                                     asChild
                                 >
                                     <Link href="#zalety">Poznaj zalety</Link>
@@ -354,12 +354,10 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 className="relative h-64 marketing-image-frame"
                             >
                                 <Image
-                                    src={`/placeholder.svg?height=400&width=600&query=cavity wall insulation example ${
-                                        index + 1
-                                    }`}
-                                    alt={`Realizacja ocieplenia ścian z pustką powietrzną ${
-                                        index + 1
-                                    }`}
+                                    src={`/placeholder.svg?height=400&width=600&query=cavity wall insulation example ${index + 1
+                                        }`}
+                                    alt={`Realizacja ocieplenia ścian z pustką powietrzną ${index + 1
+                                        }`}
                                     fill
                                     className="object-cover"
                                 />
