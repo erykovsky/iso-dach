@@ -95,7 +95,7 @@ export const ContactForm = () => {
                                 id="message"
                                 name="message"
                                 placeholder="Podaj najważniejsze dane: np. lokalizacja inwestycji, rodzaj ocieplenia, orientacyjna grubość izolacji, metraż ocieplenia, stan budynku i dodatkowe uwagi."
-                                className="min-h-[104px] px-3 py-2 md:min-h-[120px] md:px-3.5 md:py-2.5"
+                                className="min-h-[130px] px-3 py-2 md:px-3.5 md:py-2.5"
                             />
                         </div>
                         <div className="space-y-2.5 border-t border-primary/10 pt-3.5 sm:space-y-3 sm:pt-4">

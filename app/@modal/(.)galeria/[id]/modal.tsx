@@ -28,7 +28,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
  return (
   <section
-   className="fixed inset-0 z-[120] bg-black/72 backdrop-blur-[3px]"
+   className="fixed inset-0 z-120 bg-black/72 backdrop-blur-[3px]"
    onClick={closeModal}
    aria-label="Podgląd zdjęcia"
   >

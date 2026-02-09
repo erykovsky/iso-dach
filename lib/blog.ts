@@ -1,6 +1,3 @@
-// Ten plik będzie używany tylko po stronie serwera
-// Nie będzie działać w środowisku klienta (Next.js)
-
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -61,9 +58,20 @@ export async function getBlogPostBySlug(
 ): Promise<BlogPost | null> {
     try {
         const fileNames = fs.readdirSync(contentDirectory);
-        const fileName = fileNames.find(
-            (fileName) => fileName.endsWith(".md") && fileName.includes(slug)
-        );
+        let fileName: string | null = null;
+
+        for (const candidate of fileNames.filter((name) =>
+            name.endsWith(".md")
+        )) {
+            const fullPath = path.join(contentDirectory, candidate);
+            const fileContents = fs.readFileSync(fullPath, "utf8");
+            const matterResult = matter(fileContents);
+
+            if (matterResult.data.slug === slug) {
+                fileName = candidate;
+                break;
+            }
+        }
 
         if (!fileName) {
             return null;
@@ -109,9 +117,7 @@ export function getAllBlogSlugs() {
                 const matterResult = matter(fileContents);
 
                 return {
-                    params: {
-                        slug: matterResult.data.slug,
-                    },
+                    slug: matterResult.data.slug,
                 };
             });
     } catch (error) {

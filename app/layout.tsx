@@ -4,12 +4,77 @@ import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
 import { GTMWithConsent } from "@/components/gtm-with-consent";
 import { Toaster } from "@/components/ui/sonner";
+import { OrganizationSchema } from "@/components/schema/organization-schema";
+import { LocalBusinessSchema } from "@/components/schema/local-business-schema";
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
+  metadataBase: new URL("https://www.iso-dach.eu"),
+  title: {
+    default: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
+    template: "%s | ISO-DACH",
+  },
   description:
-    "Zajmujemy się ocieplaniem budynków mieszkalnych, przemysłowych i firmowych. Wykorzystujemy w tym celu wełnę celulozową. Zapoznaj się z naszą ofertą na stronie.",
+    "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%. Bezpłatna wycena. Działamy na terenie woj. zachodniopomorskiego.",
+  keywords: [
+    "izolacja poddasza",
+    "ocieplanie ścian",
+    "wełna celulozowa",
+    "izolacja stropów",
+    "termomodernizacja",
+    "ocieplanie piwnic",
+    "izolacja celulozowa",
+    "ocieplanie domu",
+    "firma ociepleniowa",
+    "Szczecin",
+    "zachodniopomorskie",
+  ],
+  authors: [{ name: "ISO-DACH" }],
+  creator: "ISO-DACH",
+  publisher: "ISO-DACH",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "pl_PL",
+    url: "https://www.iso-dach.eu",
+    siteName: "ISO-DACH",
+    title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
+    description:
+      "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%.",
+    images: [
+      {
+        url: "/img/9.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ISO-DACH - profesjonalne izolacje budynków",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
+    description:
+      "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic.",
+    images: ["/img/9.jpg"],
+  },
+  alternates: {
+    canonical: "https://www.iso-dach.eu",
+  },
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+  },
+  category: "business",
+  classification: "Construction Services",
 };
 
 export const viewport: Viewport = {
@@ -27,6 +92,8 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className="antialiased">
+        <OrganizationSchema />
+        <LocalBusinessSchema />
         <GTMWithConsent gtmId="GTM-XYZ" />
         <Header />
         {children}

@@ -3,9 +3,25 @@ import { Building, Mail, Phone } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kontakt | ISO-DACH",
+  title: "Kontakt | ISO-DACH - Bezpłatna wycena izolacji",
   description:
-    "Skontaktuj się z nami, aby uzyskać więcej informacji o naszych usługach. Odpowiadamy szybko i konkretnie. Napisz lub zadzwoń, a przygotujemy ofertę dopasowaną do Twojego budynku.",
+    "Skontaktuj się z ISO-DACH. Tel: +48 660 441 941. Bezpłatna wycena izolacji poddasza, ścian i stropów w 24h. Działamy na terenie woj. zachodniopomorskiego. Siedziba: Dobrzany k. Szczecina.",
+  keywords: [
+    "kontakt ISO-DACH",
+    "wycena izolacji",
+    "ocieplanie Szczecin",
+    "izolacja poddasza wycena",
+    "firma ociepleniowa kontakt",
+  ],
+  alternates: {
+    canonical: "https://www.iso-dach.eu/kontakt",
+  },
+  openGraph: {
+    title: "Kontakt | ISO-DACH - Bezpłatna wycena",
+    description: "Skontaktuj się z nami. Bezpłatna wycena w 24h. Tel: +48 660 441 941",
+    url: "https://www.iso-dach.eu/kontakt",
+    type: "website",
+  },
 };
 
 export default function KontaktPage() {

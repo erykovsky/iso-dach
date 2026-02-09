@@ -6,10 +6,11 @@ import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog";
 export async function generateMetadata({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+    const { slug } = await params;
     // Pobierz post z pliku Markdown na podstawie sluga
-    const post = await getBlogPostBySlug(params.slug);
+    const post = await getBlogPostBySlug(slug);
 
     if (!post) {
         return {
@@ -28,10 +29,11 @@ export async function generateMetadata({
 export default async function BlogPostPage({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
+    const { slug } = await params;
     // Pobierz post z pliku Markdown na podstawie sluga
-    const post = await getBlogPostBySlug(params.slug);
+    const post = await getBlogPostBySlug(slug);
 
     if (!post) {
         notFound();
@@ -42,6 +44,5 @@ export default async function BlogPostPage({
 
 export function generateStaticParams() {
     // Pobierz wszystkie slugi z plików Markdown
-    const paths = getAllBlogSlugs();
-    return paths;
+    return getAllBlogSlugs();
 }

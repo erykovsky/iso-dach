@@ -9,24 +9,74 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Izolacja Poddaszy | ISO-DACH",
+  title: "Izolacja Poddaszy Wełną Celulozową | ISO-DACH",
   description:
-    "Profesjonalna izolacja poddaszy. Zwiększ komfort mieszkania i zmniejsz koszty ogrzewania dzięki skutecznej izolacji termicznej i akustycznej.",
+    "Profesjonalna izolacja poddaszy wełną celulozową. Zmniejsz straty ciepła przez dach o 30-40%, obniż koszty ogrzewania. Ekologiczny materiał z recyklingu. Bezpłatna wycena. Szczecin i okolice.",
+  keywords: [
+    "izolacja poddasza",
+    "wełna celulozowa",
+    "ocieplanie poddasza",
+    "izolacja dachu",
+    "ocieplanie wełną celulozową",
+    "izolacja termiczna poddasza",
+    "Szczecin",
+    "zachodniopomorskie",
+  ],
+  alternates: {
+    canonical: "https://www.iso-dach.eu/izolacja-poddaszy",
+  },
+  openGraph: {
+    title: "Izolacja Poddaszy Wełną Celulozową | ISO-DACH",
+    description: "Profesjonalna izolacja poddaszy. Oszczędność energii do 40%. Bezpłatna wycena.",
+    url: "https://www.iso-dach.eu/izolacja-poddaszy",
+    type: "article",
+  },
 };
+
+const atticInsulationFAQs = [
+  {
+    question: "Jaka jest optymalna grubość izolacji poddasza wełną celulozową?",
+    answer:
+      "Według norm energetycznych WT 2021, optymalna grubość izolacji poddasza wełną celulozową wynosi 25-35 cm. Badania przeprowadzone przez Politechnikę Warszawską pokazują, że taka grubość pozwala uzyskać współczynnik przenikania ciepła U na poziomie 0,12-0,15 W/(m²·K), co przekłada się na zmniejszenie strat ciepła przez dach o 30-40%. Dla domu o powierzchni 150 m² oznacza to oszczędność na ogrzewaniu wynoszącą 1000-1500 zł rocznie.",
+  },
+  {
+    question: "Czy izolacja poddasza wymaga wentylacji?",
+    answer:
+      "Tak, prawidłowa wentylacja poddasza jest absolutnie kluczowa dla skuteczności izolacji. Należy zapewnić szczelinę wentylacyjną o szerokości minimum 5 cm między izolacją a poszyciem dachu, aby umożliwić swobodny przepływ powietrza. Zgodnie z badaniami ITB (Instytut Techniki Budowlanej), brak odpowiedniej wentylacji może prowadzić do kondensacji pary wodnej, co w konsekwencji powoduje zawilgocenie izolacji (zmniejszenie jej skuteczności o 40-60%), rozwój pleśni i grzybów oraz uszkodzenie konstrukcji dachu.",
+  },
+  {
+    question: "Czy można izolować poddasze zimą?",
+    answer:
+      "Tak, izolację poddasza wełną celulozową można wykonywać przez cały rok, również zimą, ponieważ prace prowadzone są wewnątrz budynku. Metoda wdmuchiwania celulozy nie wymaga specjalnych warunków temperaturowych - materiał można aplikować w temperaturze od -5°C do +40°C. Jest to znacząca zaleta w porównaniu do pianek poliuretanowych, które wymagają temperatury min. +10°C. Dla zapewnienia najlepszej jakości, zalecamy utrzymanie temperatury wewnątrz poddasza powyżej +5°C podczas prac.",
+  },
+  {
+    question: "Jak długo trwa izolacja poddasza i ile kosztuje?",
+    answer:
+      "Czas realizacji izolacji poddasza zależy od powierzchni i zakresu prac. Dla standardowego poddasza o powierzchni 100-120 m² proces trwa zazwyczaj od 3 do 5 dni: przygotowanie (1 dzień), montaż folii paroizolacyjnej (1 dzień), wdmuchiwanie celulozy (1-2 dni), wykończenie (1 dzień). Koszt izolacji wełną celulozową wynosi średnio 45-65 zł/m² (wraz z materiałem i montażem). Dla poddasza 100 m² oznacza to koszt 4500-6500 zł. Okres zwrotu inwestycji wynosi zazwyczaj 4-6 lat dzięki oszczędnościom na ogrzewaniu.",
+  },
+  {
+    question: "Czy izolacja poddasza wymaga pozwolenia na budowę?",
+    answer:
+      "W większości przypadków izolacja poddasza wewnętrznego nie wymaga pozwolenia na budowę ani zgłoszenia, jeśli nie wiąże się ze zmianą konstrukcji dachu ani zmianą sposobu użytkowania poddasza. Jeśli jednak planowana jest adaptacja poddasza nieużytkowego na cele mieszkalne (zgodnie z przepisami prawa budowlanego), wymagane jest zgłoszenie robót budowlanych lub uzyskanie pozwolenia w przypadku przekroczenia określonych parametrów. Nasi specjaliści pomogą w przygotowaniu niezbędnej dokumentacji i kompleksowo załatwią wszystkie formalności.",
+  },
+];
 
 export default function IzolacjaPoddaszyPage() {
   return (
-    <div className="min-h-screen marketing-page">
-      {/* Hero Section */}
+    <>
+      <FAQPageSchema faqs={atticInsulationFAQs} />
+      <div className="min-h-screen marketing-page">
+        {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Profesjonalna Izolacja Poddaszy
+                Profesjonalna izolacja poddaszy
               </h1>
               <p className="text-white/90 text-lg mb-8">
                 Skuteczna izolacja termiczna i akustyczna poddasza, która zapewnia
@@ -52,7 +102,7 @@ export default function IzolacjaPoddaszyPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/9.jpg"
                 alt="Izolacja poddasza"
                 fill
                 className="object-cover"
@@ -66,7 +116,7 @@ export default function IzolacjaPoddaszyPage() {
       <section id="zalety" className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Zalety Izolacji Poddasza
+            Zalety izolacji poddasza
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -124,7 +174,7 @@ export default function IzolacjaPoddaszyPage() {
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Jak Wygląda Proces Izolacji Poddasza?
+            Jak wygląda proces izolacji poddasza?
           </h2>
           <div className="max-w-3xl mx-auto">
             <ol className="relative border-l border-primary/30">
@@ -187,18 +237,18 @@ export default function IzolacjaPoddaszyPage() {
       <section className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Materiały Izolacyjne, Które Stosujemy
+            Materiały izolacyjne, które stosujemy
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Wełna Mineralna",
+                title: "Wełna skalna",
                 description:
-                  "Doskonała izolacja termiczna i akustyczna, niepalna i paroprzepuszczalna. Dostępna w postaci mat lub płyt o różnej gęstości.",
+                  "Wytrzymały materiał izolacyjny o bardzo dobrych właściwościach termicznych i akustycznych, niepalny i paroprzepuszczalny, dostępny w postaci mat i płyt.",
                 image: "/placeholder.svg?height=300&width=400",
               },
               {
-                title: "Wełna Szklana",
+                title: "Wełna szklana",
                 description:
                   "Lekki materiał o dobrych właściwościach izolacyjnych, łatwy w montażu i przyjazny dla alergików.",
                 image: "/placeholder.svg?height=300&width=400",
@@ -232,39 +282,11 @@ export default function IzolacjaPoddaszyPage() {
         </div>
       </section>
 
-      {/* Realizacje Section */}
-      <section className="marketing-section-alt py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Nasze Realizacje</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, index) => (
-              <div
-                key={index}
-                className="relative h-64 marketing-image-frame"
-              >
-                <Image
-                  src={`/placeholder.svg?height=400&width=600&text=Realizacja ${index + 1
-                    }`}
-                  alt={`Realizacja izolacji poddasza ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button asChild>
-              <Link href="/galeria">Zobacz więcej realizacji</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Najczęściej Zadawane Pytania
+            Najczęściej zadawane pytania
           </h2>
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
@@ -329,5 +351,6 @@ export default function IzolacjaPoddaszyPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

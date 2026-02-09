@@ -9,18 +9,68 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ocieplanie Ścian | ISO-DACH",
+  title: "Ocieplanie Ścian Zewnętrznych | ISO-DACH",
   description:
-    "Profesjonalne ocieplanie ścian zewnętrznych. Zwiększ efektywność energetyczną swojego domu i obniż rachunki za ogrzewanie.",
+    "Profesjonalne ocieplanie ścian zewnętrznych wełną celulozową i styropianem. Zmniejsz straty ciepła o 30%, obniż rachunki za ogrzewanie. Bezpłatna wycena w 24h. Działamy w woj. zachodniopomorskim.",
+  keywords: [
+    "ocieplanie ścian",
+    "izolacja ścian zewnętrznych",
+    "styropian grafitowy",
+    "wełna mineralna",
+    "ocieplanie domu",
+    "termomodernizacja ścian",
+    "Szczecin",
+  ],
+  alternates: {
+    canonical: "https://www.iso-dach.eu/ocieplanie-scian",
+  },
+  openGraph: {
+    title: "Ocieplanie Ścian Zewnętrznych | ISO-DACH",
+    description:
+      "Profesjonalne ocieplanie ścian. Zmniejsz straty ciepła o 30%. Bezpłatna wycena.",
+    url: "https://www.iso-dach.eu/ocieplanie-scian",
+    type: "article",
+  },
 };
+
+const wallInsulationFAQs = [
+  {
+    question: "Jaka jest optymalna grubość izolacji ścian zewnętrznych?",
+    answer:
+      "Według obecnych norm energetycznych WT 2021, optymalna grubość izolacji ścian zewnętrznych wynosi 15-20 cm dla styropianu EPS lub 15-18 cm dla wełny mineralnej. Badania pokazują, że taka grubość pozwala zmniejszyć straty ciepła nawet o 30%, co przekłada się na realne oszczędności na ogrzewaniu wynoszące 800-1200 zł rocznie dla domu o powierzchni 150 m².",
+  },
+  {
+    question: "Jak długo trwa ocieplanie ścian zewnętrznych?",
+    answer:
+      "Czas realizacji ocieplania ścian zależy od wielkości budynku i warunków pogodowych. Dla standardowego domu jednorodzinnego o powierzchni 150 m² proces trwa zazwyczaj od 2 do 4 tygodni. Dokładny harmonogram prac: przygotowanie powierzchni (2-3 dni), montaż izolacji (5-7 dni), warstwa zbrojąca (3-4 dni), wykończenie elewacji (4-6 dni).",
+  },
+  {
+    question: "Czy ocieplanie ścian można wykonywać zimą?",
+    answer:
+      "Prace ociepleniowe najlepiej wykonywać w temperaturze powyżej +5°C i wilgotności poniżej 80%. Optymalny okres to wiosna, lato i wczesna jesień. Zimowe wykonywanie prac w temperaturze poniżej 0°C może negatywnie wpłynąć na przyczepność klejów i jakość tynków, dlatego nie zalecamy tego rozwiązania.",
+  },
+  {
+    question: "Czy potrzebuję pozwolenia na ocieplenie ścian?",
+    answer:
+      "W większości przypadków ocieplenie ścian zewnętrznych nie wymaga pozwolenia na budowę, a jedynie zgłoszenia robót budowlanych do 30 dni przed rozpoczęciem prac. Zgłoszenie nie jest wymagane, gdy grubość izolacji nie przekracza 10 cm. W przypadku budynków zabytkowych lub położonych w obszarach ochrony konserwatorskiej może być wymagane uzyskanie zgody.",
+  },
+  {
+    question: "Jaki jest okres gwarancji na ocieplenie ścian?",
+    answer:
+      "ISO-DACH udziela 5-letniej gwarancji na wykonane prace ociepleniowe. Na zastosowane materiały obowiązuje gwarancja producenta wynosząca od 5 do 10 lat. Przy prawidłowej konserwacji i odświeżaniu tynków co 15-20 lat, dobrze wykonane ocieplenie ścian może służyć nawet 30-40 lat bez utraty właściwości izolacyjnych.",
+  },
+];
 
 export default function OcieplanieScianPage() {
   return (
-    <div className="min-h-screen marketing-page">
-      {/* Hero Section */}
+    <>
+      <FAQPageSchema faqs={wallInsulationFAQs} />
+      <div className="min-h-screen marketing-page">
+        {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -325,5 +375,6 @@ export default function OcieplanieScianPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

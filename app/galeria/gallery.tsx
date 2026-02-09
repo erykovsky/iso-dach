@@ -61,7 +61,7 @@ export function Gallery() {
               <div className="relative aspect-4/3">
                 <Image
                   src={item.image || "/placeholder.svg"}
-                  alt={item.title}
+                  alt={categoryNameById[item.category]}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
