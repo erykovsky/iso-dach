@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const partners = [
-  { name: "Termex", logo: "/images/termex-fiber-logo.png" },
-  { name: "Knauf", logo: "/images/knauf-insulation-logo.png" },
-  { name: "Białe Ciepło", logo: "/images/biale-cieplo-logo.png" },
-  { name: "URSA", logo: "/images/ursa-logo.png" },
+  { name: "Termex", logo: "/img/termex-fiber-logo.png" },
+  { name: "Knauf", logo: "/img/knauf-insulation-logo.png" },
+  { name: "Białe Ciepło", logo: "/img/biale-cieplo-logo.png" },
+  { name: "URSA", logo: "/img/ursa-logo.png" },
 ];
 
 export const PartnersSection = () => {
@@ -24,9 +24,8 @@ export const PartnersSection = () => {
           {partners.map((partner, index) => (
             <article
               key={partner.name}
-              className={`soft-card group flex min-h-28 items-center justify-center rounded-2xl p-4 reveal-up ${
-                index === 0 ? "reveal-delay-1" : "reveal-delay-2"
-              }`}
+              className={`soft-card group flex min-h-28 items-center justify-center rounded-2xl p-4 reveal-up ${index === 0 ? "reveal-delay-1" : "reveal-delay-2"
+                }`}
             >
               <Image
                 src={partner.logo || "/placeholder.svg"}
