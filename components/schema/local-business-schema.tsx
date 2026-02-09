@@ -36,14 +36,6 @@ export function LocalBusinessSchema() {
         closes: "14:00",
       },
     ],
-    serviceType: [
-      "Izolacja poddaszy",
-      "Ocieplanie ścian",
-      "Izolacja stropów",
-      "Ocieplanie piwnic",
-      "Termomodernizacja",
-      "Termowizja",
-    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Usługi ociepleniowe",
