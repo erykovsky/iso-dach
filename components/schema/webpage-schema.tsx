@@ -29,7 +29,7 @@ export function WebPageSchema({
       name: "ISO-DACH",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.iso-dach.eu/logo.png",
+        url: "https://www.iso-dach.eu/logo.svg",
       },
     },
     breadcrumb: {

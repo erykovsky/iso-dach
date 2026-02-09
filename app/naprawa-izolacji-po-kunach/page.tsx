@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: "Naprawa Izolacji Po Kunach | ISO-DACH",
     description:
         "Specjalistyczna usługa naprawy i odtworzenia izolacji uszkodzonej przez kuny. Zabezpieczamy przed ponownym wtargnięciem tych zwierząt.",
+    alternates: {
+        canonical: "https://www.iso-dach.eu/naprawa-izolacji-po-kunach",
+    },
 };
 
 export default function NaprawaIzolacjiPoKunachPage() {

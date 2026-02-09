@@ -6,6 +6,19 @@ import { InvoiceManager } from "./invoice-manager";
 export const metadata: Metadata = {
   title: "Faktury | ISO-DACH",
   description: "Zarządzanie fakturami i kosztami firmowymi",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+      "max-snippet": 0,
+      "max-image-preview": "none",
+      "max-video-preview": 0,
+    },
+  },
 };
 
 // Wyłącz cache dla tej strony

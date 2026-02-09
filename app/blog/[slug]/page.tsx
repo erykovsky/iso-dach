@@ -23,6 +23,22 @@ export async function generateMetadata({
     return {
         title: `${post.title} | ISO-DACH Blog`,
         description: post.excerpt,
+        alternates: {
+            canonical: `https://www.iso-dach.eu/blog/${post.slug}`,
+        },
+        openGraph: {
+            type: "article",
+            title: post.title,
+            description: post.excerpt,
+            url: `https://www.iso-dach.eu/blog/${post.slug}`,
+            images: post.image ? [post.image] : undefined,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.excerpt,
+            images: post.image ? [post.image] : undefined,
+        },
     };
 }
 

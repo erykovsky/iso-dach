@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Cennik | ISO-DACH",
   description:
     "Cennik usług ocieplenia i izolacji. Sprawdź nasze konkurencyjne ceny i zamów bezpłatną wycenę.",
+  alternates: {
+    canonical: "https://www.iso-dach.eu/cennik",
+  },
 };
 
 export default function PricingPage() {

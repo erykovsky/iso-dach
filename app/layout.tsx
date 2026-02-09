@@ -67,12 +67,6 @@ export const metadata: Metadata = {
       "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic.",
     images: ["/img/9.jpg"],
   },
-  alternates: {
-    canonical: "https://www.iso-dach.eu",
-  },
-  verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
-  },
   category: "business",
   classification: "Construction Services",
 };

@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "Termomodernizacja | ISO-DACH",
   description:
     "Kompleksowa termomodernizacja budynków. Zwiększ efektywność energetyczną, obniż koszty ogrzewania i podnieś wartość nieruchomości.",
+  alternates: {
+    canonical: "https://www.iso-dach.eu/termomodernizacja",
+  },
 };
 
 export default function TermomodernizacjaPage() {
