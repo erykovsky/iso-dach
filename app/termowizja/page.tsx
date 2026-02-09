@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle, Thermometer } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Badania Termowizyjne | ISO-DACH",
+  title: "Badania termowizyjne | ISO-DACH",
   description:
     "Profesjonalne badania termowizyjne budynków. Wykrywamy mostki termiczne, straty ciepła i problemy z izolacją. Kompleksowa analiza efektywności energetycznej.",
   alternates: {
@@ -29,7 +29,7 @@ export default function TermowizjaPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Profesjonalne Badania Termowizyjne
+                Profesjonalne badania termowizyjne
               </h1>
               <p className="text-white/90 text-lg mb-8">
                 Zaawansowana diagnostyka termowizyjna pozwala precyzyjnie
@@ -66,12 +66,12 @@ export default function TermowizjaPage() {
         </div>
       </section>
 
-      {/* Czym jest termowizja Section */}
+      {/* Czym jest badanie termowizyjne Section */}
       <section className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-6">
-              Czym Jest Badanie Termowizyjne?
+              Czym jest badanie termowizyjne?
             </h2>
             <p className="text-lg text-gray-700">
               Badanie termowizyjne to nieinwazyjna metoda diagnostyczna, która
@@ -127,7 +127,7 @@ export default function TermowizjaPage() {
       <section id="zalety" className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Zalety Badań Termowizyjnych
+            Zalety badań termowizyjnych
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -183,11 +183,11 @@ export default function TermowizjaPage() {
         </div>
       </section>
 
-      {/* Co wykrywamy Section */}
+      {/* Co wykrywamy podczas badania Section */}
       <section className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Co Wykrywamy Podczas Badania?
+            Co wykrywamy podczas badania?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
@@ -254,7 +254,7 @@ export default function TermowizjaPage() {
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Jak Przebiega Badanie Termowizyjne?
+            Jak przebiega badanie termowizyjne?
           </h2>
           <div className="max-w-3xl mx-auto">
             <ol className="relative border-l border-primary/30">
@@ -308,91 +308,11 @@ export default function TermowizjaPage() {
         </div>
       </section>
 
-      {/* Pakiety Section */}
-      <section className="marketing-section py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Nasze Pakiety Badań
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                title: "Pakiet Podstawowy",
-                description: "Badanie zewnętrzne budynku",
-                features: [
-                  "Zdjęcia termowizyjne fasad",
-                  "Identyfikacja mostków termicznych",
-                  "Podstawowy raport (PDF)",
-                  "Konsultacja telefoniczna",
-                ],
-              },
-              {
-                title: "Pakiet Rozszerzony",
-                description: "Kompleksowe badanie wewnętrzne i zewnętrzne",
-                features: [
-                  "Badanie zewnętrzne i wewnętrzne",
-                  "Wykrycie mostków i przecieków",
-                  "Szczegółowy raport z opisem",
-                  "Rekomendacje działań naprawczych",
-                  "Konsultacja na miejscu",
-                ],
-                highlighted: true,
-              },
-              {
-                title: "Pakiet Premium",
-                description: "Kompleksowa diagnostyka energetyczna",
-                features: [
-                  "Wszystko z pakietu rozszerzonego",
-                  "Test szczelności Blower Door",
-                  "Analiza efektywności energetycznej",
-                  "Plan termomodernizacji",
-                  "Szacunkowe koszty i oszczędności",
-                  "Dedykowany doradca energetyczny",
-                ],
-              },
-            ].map((pakiet, index) => (
-              <Card
-                key={index}
-                className={`${pakiet.highlighted
-                    ? "border-primary border-2 shadow-xl"
-                    : "border-none shadow-md"
-                  } hover:shadow-lg transition-shadow`}
-              >
-                <CardContent className="p-6">
-                  {pakiet.highlighted && (
-                    <div className="text-primary text-sm font-semibold mb-2">
-                      NAJPOPULARNIEJSZY
-                    </div>
-                  )}
-                  <h3 className="font-bold text-xl mb-2">{pakiet.title}</h3>
-                  <p className="text-gray-600 mb-6">{pakiet.description}</p>
-                  <ul className="space-y-3 mb-6">
-                    {pakiet.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="text-secondary mt-0.5 shrink-0 h-5 w-5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    asChild
-                    variant={pakiet.highlighted ? "default" : "outline"}
-                    className="w-full"
-                  >
-                    <Link href="/kontakt">Zapytaj o cenę</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Najczęściej Zadawane Pytania
+            Najczęściej zadawane pytania
           </h2>
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">

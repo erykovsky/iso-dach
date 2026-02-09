@@ -196,7 +196,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <div className="relative h-auto min-h-[300px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-4 md:p-6 flex items-center justify-center">
+              <div className="relative h-auto min-h-[300px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl bg-linear-to-br from-primary/5 to-primary/10 p-4 md:p-6 flex items-center justify-center">
                 <div className="relative w-full h-full min-h-[250px] md:min-h-[350px]">
                   <Image
                     src="/img/zachodniopomorskie-mapa.png"

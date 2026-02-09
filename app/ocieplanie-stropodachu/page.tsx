@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ocieplanie Stropodachu | ISO-DACH",
+  title: "Ocieplanie stropodachu | ISO-DACH",
   description:
     "Profesjonalne ocieplanie stropodachu metodą wdmuchiwania. Skuteczna izolacja termiczna, która zapobiega ucieczce ciepła przez dach.",
   alternates: {
@@ -29,7 +29,7 @@ export default function OcieplanieStropodachuPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Profesjonalne Ocieplanie Stropodachu
+                Profesjonalne ocieplanie stropodachu
               </h1>
               <p className="text-white/90 text-lg mb-8">
                 Skuteczna izolacja stropodachu, która zapobiega ucieczce ciepła przez
@@ -69,7 +69,7 @@ export default function OcieplanieStropodachuPage() {
       <section id="zalety" className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4" >
           <h2 className="text-3xl font-bold text-center mb-12">
-            Zalety Ocieplania Stropodachu
+            Zalety ocieplania stropodachu
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -127,7 +127,7 @@ export default function OcieplanieStropodachuPage() {
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Technologia Ocieplania Stropodachu
+            Technologia ocieplania stropodachu
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-64 md:h-96 marketing-image-frame">
@@ -139,7 +139,7 @@ export default function OcieplanieStropodachuPage() {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Metoda Wdmuchiwania</h3>
+              <h3 className="text-2xl font-semibold mb-6">Metoda wdmuchiwania</h3>
               <p className="text-gray-700 mb-6">
                 Ocieplanie stropodachu metodą wdmuchiwania to nowoczesna i efektywna
                 technologia izolacji termicznej. Polega ona na wprowadzeniu materiału
@@ -188,24 +188,24 @@ export default function OcieplanieStropodachuPage() {
       <section className="marketing-section py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Materiały Izolacyjne, Które Stosujemy
+            Materiały izolacyjne, które stosujemy
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Granulat Wełny Mineralnej",
+                title: "Granulat wełny mineralnej",
                 description:
                   "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
                 image: "/placeholder.svg?height=300&width=400",
               },
               {
-                title: "Granulat Wełny Szklanej",
+                title: "Granulat wełny szklanej",
                 description:
                   "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
                 image: "/placeholder.svg?height=300&width=400",
               },
               {
-                title: "Granulat Celulozowy",
+                title: "Granulat celulozowy",
                 description:
                   "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
                 image: "/placeholder.svg?height=300&width=400",
@@ -237,7 +237,7 @@ export default function OcieplanieStropodachuPage() {
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Jak Wygląda Proces Ocieplania Stropodachu?
+            Jak wygląda proces ocieplania stropodachu?
           </h2>
           <div className="max-w-3xl mx-auto">
             <ol className="relative border-l border-primary/30">
@@ -291,39 +291,11 @@ export default function OcieplanieStropodachuPage() {
         </div>
       </section>
 
-      {/* Realizacje Section */}
-      <section className="marketing-section py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Nasze Realizacje</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, index) => (
-              <div
-                key={index}
-                className="relative h-64 marketing-image-frame"
-              >
-                <Image
-                  src={`/placeholder.svg?height=400&width=600&text=Realizacja ${index + 1
-                    }`}
-                  alt={`Realizacja ocieplania stropodachu ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button asChild>
-              <Link href="/galeria">Zobacz więcej realizacji</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="marketing-section-alt py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Najczęściej Zadawane Pytania
+            Najczęściej zadawane pytania
           </h2>
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
