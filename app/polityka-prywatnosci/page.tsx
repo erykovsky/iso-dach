@@ -26,9 +26,9 @@ export default function PrivacyPolicy() {
        ze strony internetowej ISO-DACH.
       </p>
       <p className="mb-4">
-       Administratorem danych osobowych zawartych na stronie jest ISO-DACH
+       Administratorem danych osobowych zawartych na stronie jest ISO DACH
        Dariusz Jagodziński z siedzibą przy ul. Jana Pawła II 34, 73-130
-       Dobrzany, NIP: 854-138-69-08, REGON: 811791710.
+       Dobrzany, NIP: 8541386908, REGON: 811791710.
       </p>
       <p>
        Administrator dokłada szczególnej staranności w celu ochrony interesów
@@ -227,7 +227,7 @@ export default function PrivacyPolicy() {
        Prywatności lub przetwarzania danych osobowych, prosimy o kontakt:
       </p>
       <address className="not-italic">
-       <p>ISO-DACH Dariusz Jagodziński</p>
+       <p>ISO DACH Dariusz Jagodziński</p>
        <p>ul. Jana Pawła II 34</p>
        <p>73-130 Dobrzany</p>
        <p>E-mail: info@iso-dach.eu</p>

@@ -71,10 +71,16 @@ export const Header = () => {
         <Link
           href="/"
           prefetch
-          className="group flex items-center rounded-xl p-1"
+          aria-label="ISO-DACH - strona główna"
           onClick={() => isMenuOpen && setIsMenuOpen(false)}
         >
-          <Logo className="h-10 w-auto drop-shadow-[0_8px_20px_rgba(128,0,32,0.2)] transition-transform duration-300 group-hover:scale-[1.02]" />
+          <span className="sr-only">ISO-DACH - strona główna</span>
+          <Logo
+            aria-hidden="true"
+            focusable="false"
+            width={118}
+            height={47}
+          />
         </Link>
 
         <nav className="hidden items-center gap-2 lg:flex">

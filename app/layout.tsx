@@ -1,42 +1,35 @@
-import { GoogleTagManager } from "@next/third-parties/google";
-
 import "./globals.css";
 import { Header } from "@/components/header";
-import { Manrope } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
+import { GTMWithConsent } from "@/components/gtm-with-consent";
 import type { Metadata, Viewport } from "next";
 
-const manrope = Manrope({
- subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
- title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
- description:
-  "Zajmujemy się ocieplaniem budynków mieszkalnych, przemysłowych i firmowych. Wykorzystujemy w tym celu wełnę celulozową. Zapoznaj się z naszą ofertą na stronie.",
+  title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
+  description:
+    "Zajmujemy się ocieplaniem budynków mieszkalnych, przemysłowych i firmowych. Wykorzystujemy w tym celu wełnę celulozową. Zapoznaj się z naszą ofertą na stronie.",
 };
 
 export const viewport: Viewport = {
- userScalable: false,
- width: "device-width",
- initialScale: 1,
+  width: "device-width",
+  initialScale: 5,
 };
 
 export default function RootLayout({
- children,
+  children,
 }: Readonly<{
- children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
- return (
-  <html lang="pl">
-   <GoogleTagManager gtmId="GTM-XYZ" />
-   <body className={`${manrope.className} antialiased`}>
-    <Header />
-    {children}
-    <Footer />
-    <CookiePolicy />
-   </body>
-  </html>
- );
+  return (
+    <html lang="pl">
+      <body className="antialiased">
+        <GTMWithConsent gtmId="GTM-XYZ" />
+        <Header />
+        {children}
+        <Footer />
+        <CookiePolicy />
+      </body>
+    </html>
+  );
 }

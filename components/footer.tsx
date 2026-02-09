@@ -11,15 +11,17 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#800020] via-[#6c001b] to-[#4B0012] py-14 text-white">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute -left-20 -top-24 h-72 w-72 rounded-full bg-[#32CD32] blur-3xl" />
+      <div className="absolute inset-0 opacity-[0.12]">
+        <div className="absolute -left-32 -top-36 h-80 w-80 rounded-full bg-[#228B22] blur-3xl" />
         <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-[#2a000a] blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <section className="reveal-up space-y-4">
-            <h3 className="text-2xl font-bold">ISO-DACH</h3>
+            <h3 className="text-2xl font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
+              ISO-DACH
+            </h3>
             <p className="max-w-sm leading-relaxed text-white/85">
               Profesjonalne ocieplenia dla domów, firm i budynków użytkowych.
               Rzetelna realizacja i trwały efekt na lata.
@@ -27,7 +29,9 @@ export const Footer = () => {
           </section>
 
           <section className="reveal-up reveal-delay-1 space-y-4">
-            <h3 className="text-2xl font-bold">Kontakt</h3>
+            <h3 className="text-2xl font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
+              Kontakt
+            </h3>
             <ul className="space-y-3 text-white/90">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-[#90EE90]" />
@@ -53,7 +57,9 @@ export const Footer = () => {
           </section>
 
           <section className="reveal-up reveal-delay-2 space-y-4">
-            <h3 className="text-2xl font-bold">Nawigacja</h3>
+            <h3 className="text-2xl font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
+              Nawigacja
+            </h3>
             <ul className="space-y-2 text-white/90">
               {[
                 { label: "Usługi", href: "#services" },
