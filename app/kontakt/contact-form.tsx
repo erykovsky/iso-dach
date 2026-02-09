@@ -53,10 +53,10 @@ export const ContactForm = () => {
     };
 
     return (
-        <Card>
+        <Card className="marketing-surface">
             <CardContent className="p-6">
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4 text-sm text-gray-500">
+                    <div className="my-4 text-sm text-muted-foreground">
                         Pola oznaczone * są wymagane
                     </div>
                     <div className="flex flex-col gap-6">
@@ -153,7 +153,7 @@ export const ContactForm = () => {
                         </Button>
 
                         {submitStatus === "success" && (
-                            <p className="text-green-600">
+                            <p className="text-[#228B22]">
                                 Dziękujemy za wysłanie formularza! Skontaktujemy
                                 się wkrótce.
                             </p>

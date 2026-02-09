@@ -107,8 +107,8 @@ const services = [
 
 export default function ServicesPage() {
  return (
-  <div className="min-h-screen bg-gray-50">
-   <div className="bg-primary py-16">
+  <div className="min-h-screen marketing-page">
+   <div className="marketing-hero py-16">
     <div className="container mx-auto px-4">
      <h1 className="text-4xl font-bold text-white text-center">Nasze Usługi</h1>
      <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
@@ -118,16 +118,16 @@ export default function ServicesPage() {
     </div>
    </div>
 
-   <div className="container mx-auto px-4 py-16">
+   <div className="container mx-auto px-4 py-14 md:py-16">
     <div className="grid gap-12">
      {services.map((service, index) => (
       <div
        key={index}
-       className={`grid md:grid-cols-2 gap-8 items-center ${
-        index % 2 !== 0 ? "md:flex-row-reverse" : ""
+       className={`grid gap-8 md:grid-cols-2 md:items-center ${
+        index % 2 !== 0 ? "md:[&>*:first-child]:order-2" : ""
        }`}
       >
-       <div className="relative h-64 md:h-80 rounded-lg overflow-hidden">
+       <div className="relative h-64 md:h-80 marketing-image-frame">
         <Image
          src={service.image || "/placeholder.svg"}
          alt={service.title}
@@ -167,9 +167,9 @@ export default function ServicesPage() {
      ))}
     </div>
 
-    <div className="mt-16 text-center">
+    <div className="marketing-cta-band mt-16 rounded-2xl p-8 text-center sm:p-10">
      <h2 className="text-2xl font-bold mb-4">Potrzebujesz wyceny?</h2>
-     <p className="mb-8 max-w-2xl mx-auto">
+     <p className="mb-8 max-w-2xl mx-auto text-foreground/80">
       Skontaktuj się z nami, aby otrzymać bezpłatną wycenę dla Twojego projektu.
       Nasi specjaliści pomogą dobrać najlepsze rozwiązanie dla Twojego domu.
      </p>

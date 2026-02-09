@@ -4,13 +4,23 @@ import { Building, Mail, Phone } from "lucide-react";
 
 export default function KontaktPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-screen marketing-page">
+      <section className="marketing-hero py-14">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold text-white">Skontaktuj się z nami</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-white/80">
+            Odpowiadamy szybko i konkretnie. Napisz lub zadzwoń, a przygotujemy
+            ofertę dopasowaną do Twojego budynku.
+          </p>
+        </div>
+      </section>
+
+      <main className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col gap-6 md:col-span-2">
-            <h1 className="text-3xl font-bold text-[#800020]">
+            <h2 className="text-3xl font-bold text-[#800020]">
               Formularz kontaktowy
-            </h1>
+            </h2>
             <ContactForm />
           </div>
           <div>
@@ -48,9 +58,9 @@ export default function KontaktPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-2">
-                  <Building className="text-primary mt-1 flex-shrink-0" />
+                  <Building className="text-primary mt-1 shrink-0" />
                   <address className="not-italic">
-                    ISO-DACH Dariusz Jagodziński
+                    ISO DACH Dariusz Jagodziński
                     <br />
                     ul. Jana Pawła II 34
                     <br />
@@ -59,7 +69,7 @@ export default function KontaktPage() {
                 </div>
                 <div>
                   <p>
-                    <strong>NIP:</strong> 854-138-69-08
+                    <strong>NIP:</strong> 8541386908
                   </p>
                   <p>
                     <strong>REGON:</strong> 811791710

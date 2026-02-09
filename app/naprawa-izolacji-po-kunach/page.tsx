@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 
 export default function NaprawaIzolacjiPoKunachPage() {
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen marketing-page">
             {/* Hero Section */}
-            <section className="bg-primary py-16 md:py-24">
+            <section className="marketing-hero py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
@@ -46,15 +46,14 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </Button>
                                 <Button
                                     size="lg"
-                                    variant="outline"
+                                    variant="hero"
                                     asChild
-                                    className="text-white border-white hover:bg-white/10"
                                 >
                                     <Link href="#problem">Poznaj problem</Link>
                                 </Button>
                             </div>
                         </div>
-                        <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
+                        <div className="relative h-64 md:h-96 marketing-image-frame">
                             <Image
                                 src="/placeholder.svg?height=600&width=800"
                                 alt="Naprawa izolacji po kunach"
@@ -67,7 +66,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             </section>
 
             {/* Problem Section */}
-            <section id="problem" className="py-16 md:py-24">
+            <section id="problem" className="marketing-section py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">
                         Problem Kun w Izolacji
@@ -132,7 +131,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             </p>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="relative h-48 rounded-lg overflow-hidden">
+                            <div className="relative h-48 marketing-image-frame">
                                 <Image
                                     src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 1"
                                     alt="Uszkodzenia izolacji przez kuny"
@@ -140,7 +139,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     className="object-cover"
                                 />
                             </div>
-                            <div className="relative h-48 rounded-lg overflow-hidden">
+                            <div className="relative h-48 marketing-image-frame">
                                 <Image
                                     src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 2"
                                     alt="Uszkodzenia izolacji przez kuny"
@@ -148,7 +147,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     className="object-cover"
                                 />
                             </div>
-                            <div className="relative h-48 rounded-lg overflow-hidden">
+                            <div className="relative h-48 marketing-image-frame">
                                 <Image
                                     src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 3"
                                     alt="Uszkodzenia izolacji przez kuny"
@@ -156,7 +155,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     className="object-cover"
                                 />
                             </div>
-                            <div className="relative h-48 rounded-lg overflow-hidden">
+                            <div className="relative h-48 marketing-image-frame">
                                 <Image
                                     src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 4"
                                     alt="Uszkodzenia izolacji przez kuny"
@@ -169,8 +168,38 @@ export default function NaprawaIzolacjiPoKunachPage() {
                 </div>
             </section>
 
+            {/* Video Section */}
+            <section id="film" className="marketing-section py-16 md:py-24">
+                <div className="container mx-auto px-4">
+                    <div className="mx-auto max-w-5xl">
+                        <h2 className="text-3xl font-bold text-center mb-6">
+                            Zobacz materiał wideo
+                        </h2>
+                        <p className="text-center text-muted-foreground mb-10 max-w-3xl mx-auto">
+                            Krótkie nagranie pokazujące temat naprawy izolacji
+                            po kunach i działania, które pomagają skutecznie
+                            zabezpieczyć poddasze.
+                        </p>
+
+                        <div className="marketing-surface p-3 sm:p-4">
+                            <div className="aspect-video w-full overflow-hidden rounded-xl border border-primary/10 bg-black">
+                                <iframe
+                                    className="h-full w-full"
+                                    src="https://www.youtube-nocookie.com/embed/aonxLOo1Poo?rel=0"
+                                    title="Naprawa izolacji po kunach - materiał wideo"
+                                    loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                    allowFullScreen
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Nasze Rozwiązanie Section */}
-            <section className="py-16 md:py-24 bg-gray-100">
+            <section className="marketing-section-alt py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">
                         Nasze Rozwiązanie
@@ -237,7 +266,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             </section>
 
             {/* Zabezpieczenia Section */}
-            <section className="py-16 md:py-24">
+            <section className="marketing-section py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">
                         Metody Zabezpieczenia Przed Kunami
@@ -283,7 +312,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                         ].map((method, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                                className="marketing-tile"
                             >
                                 <div className="relative h-48">
                                     <Image
@@ -308,7 +337,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             </section>
 
             {/* Realizacje Section */}
-            <section className="py-16 md:py-24 bg-gray-100">
+            <section className="marketing-section-alt py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">
                         Nasze Realizacje
@@ -317,7 +346,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                         {[...Array(6)].map((_, index) => (
                             <div
                                 key={index}
-                                className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                                className="relative h-64 marketing-image-frame"
                             >
                                 <Image
                                     src={`/placeholder.svg?height=400&width=600&text=Realizacja ${
@@ -343,7 +372,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-16 md:py-24">
+            <section className="marketing-section py-16 md:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">
                         Najczęściej Zadawane Pytania
@@ -400,7 +429,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 md:py-24 bg-primary/10">
+            <section className="marketing-cta-band py-16 md:py-24">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl font-bold mb-6">
                         Masz problem z kunami?

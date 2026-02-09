@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function IzolacjaPoddaszyPage() {
  return (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen marketing-page">
    {/* Hero Section */}
-   <section className="bg-primary py-16 md:py-24">
+   <section className="marketing-hero py-16 md:py-24">
     <div className="container mx-auto px-4">
      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
@@ -43,15 +43,14 @@ export default function IzolacjaPoddaszyPage() {
         </Button>
         <Button
          size="lg"
-         variant="outline"
+         variant="hero"
          asChild
-         className="text-white border-white hover:bg-white/10"
         >
          <Link href="#zalety">Poznaj zalety</Link>
         </Button>
        </div>
       </div>
-      <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
+      <div className="relative h-64 md:h-96 marketing-image-frame">
        <Image
         src="/placeholder.svg?height=600&width=800"
         alt="Izolacja poddasza"
@@ -64,7 +63,7 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* Zalety Section */}
-   <section id="zalety" className="py-16 md:py-24">
+   <section id="zalety" className="marketing-section py-16 md:py-24">
     <div className="container mx-auto px-4">
      <h2 className="text-3xl font-bold text-center mb-12">
       Zalety Izolacji Poddasza
@@ -122,7 +121,7 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* Proces Section */}
-   <section className="py-16 md:py-24 bg-gray-100">
+   <section className="marketing-section-alt py-16 md:py-24">
     <div className="container mx-auto px-4">
      <h2 className="text-3xl font-bold text-center mb-12">
       Jak Wygląda Proces Izolacji Poddasza?
@@ -185,7 +184,7 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* Materiały Section */}
-   <section className="py-16 md:py-24">
+   <section className="marketing-section py-16 md:py-24">
     <div className="container mx-auto px-4">
      <h2 className="text-3xl font-bold text-center mb-12">
       Materiały Izolacyjne, Które Stosujemy
@@ -231,7 +230,7 @@ export default function IzolacjaPoddaszyPage() {
       ].map((material, index) => (
        <div
         key={index}
-        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+        className="marketing-tile"
        >
         <div className="relative h-48">
          <Image
@@ -252,14 +251,14 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* Realizacje Section */}
-   <section className="py-16 md:py-24 bg-gray-100">
+   <section className="marketing-section-alt py-16 md:py-24">
     <div className="container mx-auto px-4">
      <h2 className="text-3xl font-bold text-center mb-12">Nasze Realizacje</h2>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {[...Array(6)].map((_, index) => (
        <div
         key={index}
-        className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+        className="relative h-64 marketing-image-frame"
        >
         <Image
          src={`/placeholder.svg?height=400&width=600&text=Realizacja ${
@@ -281,7 +280,7 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* FAQ Section */}
-   <section className="py-16 md:py-24">
+   <section className="marketing-section py-16 md:py-24">
     <div className="container mx-auto px-4">
      <h2 className="text-3xl font-bold text-center mb-12">
       Najczęściej Zadawane Pytania
@@ -331,7 +330,7 @@ export default function IzolacjaPoddaszyPage() {
    </section>
 
    {/* CTA Section */}
-   <section className="py-16 md:py-24 bg-primary/10">
+   <section className="marketing-cta-band py-16 md:py-24">
     <div className="container mx-auto px-4 text-center">
      <h2 className="text-3xl font-bold mb-6">
       Gotowy na ciepłe i komfortowe poddasze?

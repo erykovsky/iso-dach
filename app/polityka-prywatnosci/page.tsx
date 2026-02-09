@@ -10,14 +10,14 @@ export default function PrivacyPolicy() {
  }, []);
 
  return (
-  <div className="min-h-screen bg-gray-100 py-12">
+  <div className="min-h-screen marketing-page py-12">
    <div className="container mx-auto px-4">
-    <h1 className="text-4xl font-bold text-burgundy mb-8">
+    <h1 className="text-4xl font-bold text-primary mb-8">
      Polityka Prywatności
     </h1>
-    <div className="bg-white rounded-lg shadow-md p-8">
+    <div className="marketing-surface p-8">
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        1. Informacje ogólne
       </h2>
       <p className="mb-4">
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        2. Rodzaj przetwarzanych danych
       </h2>
       <p className="mb-4">
@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        3. Cel przetwarzania danych
       </h2>
       <p className="mb-4">Dane osobowe Użytkowników przetwarzane są w celu:</p>
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        4. Podstawa prawna przetwarzania danych
       </h2>
       <p className="mb-4">
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        5. Okres przechowywania danych
       </h2>
       <p className="mb-4">
@@ -117,7 +117,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        6. Prawa Użytkowników
       </h2>
       <p className="mb-4">
@@ -149,7 +149,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        7. Odbiorcy danych
       </h2>
       <p className="mb-4">
@@ -165,7 +165,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        8. Pliki cookies
       </h2>
       <p className="mb-4">
@@ -198,7 +198,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        9. Bezpieczeństwo danych
       </h2>
       <p className="mb-4">
@@ -210,7 +210,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">
+      <h2 className="text-2xl font-semibold text-primary mb-4">
        10. Zmiany Polityki Prywatności
       </h2>
       <p className="mb-4">
@@ -221,7 +221,7 @@ export default function PrivacyPolicy() {
      </section>
 
      <section>
-      <h2 className="text-2xl font-semibold text-burgundy mb-4">11. Kontakt</h2>
+      <h2 className="text-2xl font-semibold text-primary mb-4">11. Kontakt</h2>
       <p className="mb-4">
        W przypadku jakichkolwiek pytań lub wątpliwości dotyczących Polityki
        Prywatności lub przetwarzania danych osobowych, prosimy o kontakt:
@@ -236,7 +236,7 @@ export default function PrivacyPolicy() {
      </section>
 
      {currentDate && (
-      <p className="mt-8 text-sm text-gray-600">
+      <p className="mt-8 text-sm text-muted-foreground">
        Ostatnia aktualizacja: {currentDate}
       </p>
      )}

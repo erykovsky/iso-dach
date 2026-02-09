@@ -38,6 +38,10 @@
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --brand-maroon: #800020;
+  --brand-maroon-dark: #4b0012;
+  --brand-green: #32cd32;
+  --brand-green-dark: #228b22;
 }
 
 @theme inline {
@@ -84,9 +88,274 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(
+        circle at 10% 20%,
+        color-mix(in srgb, var(--brand-maroon) 7%, transparent) 0%,
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 90% 10%,
+        color-mix(in srgb, var(--brand-green) 8%, transparent) 0%,
+        transparent 35%
+      ),
+      linear-gradient(180deg, #ffffff 0%, #fcfcfc 100%);
+  }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
   }
   button {
     @apply cursor-pointer;
+  }
+  a {
+    @apply transition-colors duration-300;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--brand-maroon) 25%, white);
+    color: #1f1316;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .section-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        120deg,
+        color-mix(in srgb, var(--brand-maroon) 4%, transparent) 0%,
+        transparent 45%,
+        color-mix(in srgb, var(--brand-green) 5%, transparent) 100%
+      );
+    opacity: 0.7;
+  }
+
+  .section-inner {
+    @apply relative z-10;
+  }
+
+  .soft-card {
+    background-color: color-mix(in srgb, white 86%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 10%, #e8e8e8);
+    box-shadow:
+      0 20px 40px -28px rgba(75, 0, 18, 0.42),
+      0 10px 18px -16px rgba(12, 18, 38, 0.24);
+    backdrop-filter: blur(3px);
+  }
+
+  .brand-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --tw-ring-color: color-mix(in srgb, var(--brand-green) 55%, white);
+    --tw-ring-offset-color: color-mix(in srgb, white 88%, transparent);
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: reveal-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 90ms;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 180ms;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 270ms;
+  }
+
+  .hero-glow::after {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--brand-green) 32%, transparent) 0%,
+      transparent 68%
+    );
+    filter: blur(18px);
+    pointer-events: none;
+  }
+
+  .marketing-page {
+    min-height: 100vh;
+    background-image:
+      radial-gradient(
+        circle at 8% -5%,
+        color-mix(in srgb, var(--brand-maroon) 9%, transparent) 0%,
+        transparent 36%
+      ),
+      radial-gradient(
+        circle at 95% 4%,
+        color-mix(in srgb, var(--brand-green) 8%, transparent) 0%,
+        transparent 36%
+      ),
+      linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  }
+
+  .marketing-hero {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid color-mix(in srgb, var(--brand-maroon) 24%, transparent);
+    background:
+      linear-gradient(128deg, #800020 0%, #6b001b 55%, #4b0012 100%);
+    box-shadow: 0 32px 64px -52px rgba(75, 0, 18, 0.85);
+  }
+
+  .marketing-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 18% 0%,
+        color-mix(in srgb, var(--brand-green) 20%, transparent) 0%,
+        transparent 30%
+      ),
+      linear-gradient(
+        160deg,
+        color-mix(in srgb, white 8%, transparent) 0%,
+        transparent 45%
+      );
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .marketing-hero > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .marketing-section {
+    position: relative;
+  }
+
+  .marketing-section-alt {
+    position: relative;
+    border-block: 1px solid color-mix(in srgb, var(--brand-maroon) 10%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, #f9f9f9 78%, white) 0%,
+        color-mix(in srgb, #f4f4f4 72%, white) 100%
+      );
+  }
+
+  .marketing-cta-band {
+    position: relative;
+    border-block: 1px solid color-mix(in srgb, var(--brand-green) 22%, transparent);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--brand-green) 14%, white) 0%,
+        color-mix(in srgb, var(--brand-maroon) 6%, white) 100%
+      );
+  }
+
+  .marketing-tile {
+    background-color: color-mix(in srgb, white 94%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 12%, #ececec);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow:
+      0 22px 44px -36px rgba(75, 0, 18, 0.7),
+      0 10px 20px -18px rgba(27, 37, 56, 0.34);
+    transition:
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 320ms ease;
+  }
+
+  .marketing-tile:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 28px 54px -34px rgba(75, 0, 18, 0.65),
+      0 14px 26px -18px rgba(23, 32, 48, 0.32);
+  }
+
+  .marketing-surface {
+    background-color: color-mix(in srgb, white 94%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 10%, #ececec);
+    border-radius: 1rem;
+    box-shadow:
+      0 20px 40px -34px rgba(75, 0, 18, 0.62),
+      0 9px 18px -14px rgba(32, 42, 62, 0.22);
+  }
+
+  .marketing-image-frame {
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 18%, transparent);
+    box-shadow:
+      0 22px 44px -34px rgba(75, 0, 18, 0.72),
+      0 14px 28px -18px rgba(0, 0, 0, 0.25);
+  }
+
+  .marketing-image-frame img {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .marketing-image-frame:hover img {
+    transform: scale(1.03);
+  }
+
+  .marketing-page .prose {
+    color: color-mix(in srgb, var(--foreground) 88%, #2f3847);
+  }
+
+  .marketing-page .prose h1,
+  .marketing-page .prose h2,
+  .marketing-page .prose h3 {
+    color: color-mix(in srgb, var(--brand-maroon) 88%, #2a1220);
+  }
+
+  .pill-filter {
+    @apply rounded-full border border-primary/15 bg-white/88 px-4 py-2 text-sm font-semibold text-primary/80 transition-all duration-300;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --tw-ring-color: color-mix(in srgb, var(--brand-green) 55%, white);
+    --tw-ring-offset-color: color-mix(in srgb, white 88%, transparent);
+  }
+
+  .pill-filter:hover {
+    background-color: color-mix(in srgb, var(--brand-maroon) 6%, white);
+    color: color-mix(in srgb, var(--brand-maroon) 88%, #240a14);
+  }
+
+  .pill-filter-active {
+    @apply rounded-full border border-primary/35 bg-primary px-4 py-2 text-sm font-semibold text-white shadow-[0_14px_24px_-16px_rgba(75,0,18,0.8)];
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

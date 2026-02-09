@@ -31,26 +31,42 @@ export const BenefitsSection = () => {
   return (
     <section
       id="benefits"
-      className="py-20 bg-gradient-to-br from-[#800020] to-[#4B0012] text-white"
+      className="section-shell bg-gradient-to-br from-[#800020] via-[#6f001d] to-[#4B0012] py-24 text-white"
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Korzyści z Ocieplenia
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="section-inner container mx-auto px-4">
+        <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
+          <p className="reveal-up mb-4 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white/90">
+            Dlaczego warto
+          </p>
+          <h2 className="reveal-up reveal-delay-1 text-4xl font-bold sm:text-5xl">
+            Korzyści z ocieplenia
+          </h2>
+          <p className="reveal-up reveal-delay-2 mt-5 text-lg leading-relaxed text-white/80">
+            Lepsza izolacja to nie tylko niższe koszty ogrzewania, ale też
+            większy komfort codziennego życia i wyższa wartość nieruchomości.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="flex items-start bg-white/10 rounded-lg p-6 transition-all duration-300 hover:bg-white/20 hover:shadow-xl"
+            <article
+              key={benefit.title}
+              className={`group rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 reveal-up ${
+                index % 2 === 0 ? "reveal-delay-1" : "reveal-delay-2"
+              }`}
             >
-              <benefit.icon className="text-[#FFD700] mr-4 flex-shrink-0 w-8 h-8" />
-              <div>
-                <h3 className="text-2xl font-semibold mb-3">{benefit.title}</h3>
-                <p className="text-[#FFE4E1] leading-relaxed">
-                  {benefit.description}
-                </p>
+              <div className="flex items-start gap-4">
+                <div className="mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFD700]/20 text-[#FFD700]">
+                  <benefit.icon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold">{benefit.title}</h3>
+                  <p className="mt-3 leading-relaxed text-[#FFE4E1]">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

@@ -117,8 +117,8 @@ export function Gallery() {
    : null;
 
  return (
-  <div className="min-h-screen bg-gray-50">
-   <div className="bg-primary py-16">
+  <div className="min-h-screen marketing-page">
+   <div className="marketing-hero py-16">
     <div className="container mx-auto px-4">
      <h1 className="text-4xl font-bold text-white text-center">
       Galeria Realizacji
@@ -139,10 +139,10 @@ export function Gallery() {
        <button
         key={category.id}
         onClick={() => setActiveCategory(category.id)}
-        className={`px-4 py-2 rounded-full transition-all duration-300 ${
+        className={`${
          activeCategory === category.id
-          ? "bg-primary text-white shadow-md"
-          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+          ? "pill-filter-active"
+          : "pill-filter"
         }`}
        >
         {category.name}
@@ -156,7 +156,7 @@ export function Gallery() {
      {filteredImages.map((item) => (
       <div
        key={item.id}
-       className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+       className="marketing-tile"
        onClick={() => openLightbox(item.id)}
       >
        <div className="relative h-64 cursor-pointer">
@@ -169,7 +169,7 @@ export function Gallery() {
        </div>
        <div className="p-4">
         <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-        <p className="text-gray-600 text-sm line-clamp-2">{item.description}</p>
+        <p className="text-muted-foreground text-sm line-clamp-2">{item.description}</p>
        </div>
       </div>
      ))}
@@ -206,7 +206,7 @@ export function Gallery() {
      </button>
 
      <div
-      className="max-w-4xl w-full bg-white rounded-lg overflow-hidden"
+      className="max-w-4xl w-full marketing-surface overflow-hidden"
       onClick={(e) => e.stopPropagation()}
      >
       <div className="relative h-[50vh] md:h-[60vh]">

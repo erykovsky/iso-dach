@@ -71,8 +71,8 @@ export function BlogList({ posts }: BlogListProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="bg-primary py-16">
+        <div className="min-h-screen marketing-page">
+            <div className="marketing-hero py-16">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl font-bold text-white text-center">
                         Blog ISO-DACH
@@ -104,10 +104,10 @@ export function BlogList({ posts }: BlogListProps) {
                             <button
                                 key={category.id}
                                 onClick={() => setActiveCategory(category.id)}
-                                className={`px-4 py-2 rounded-full transition-all duration-300 ${
+                                className={`${
                                     activeCategory === category.id
-                                        ? "bg-primary text-white shadow-md"
-                                        : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                                        ? "pill-filter-active"
+                                        : "pill-filter"
                                 }`}
                             >
                                 {category.name}
@@ -121,7 +121,7 @@ export function BlogList({ posts }: BlogListProps) {
                     {filteredPosts.map((post) => (
                         <article
                             key={post.id}
-                            className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+                            className="marketing-tile flex flex-col"
                         >
                             <Link
                                 href={`/blog/${post.slug}`}
@@ -140,7 +140,7 @@ export function BlogList({ posts }: BlogListProps) {
                                 </div>
                             </Link>
                             <div className="p-6 flex-grow flex flex-col">
-                                <div className="flex items-center text-gray-500 text-sm mb-3">
+                                <div className="mb-3 flex items-center text-sm text-muted-foreground">
                                     <CalendarIcon size={14} className="mr-1" />
                                     <span>{formatDate(post.date)}</span>
                                     <span className="mx-2">•</span>
@@ -154,7 +154,7 @@ export function BlogList({ posts }: BlogListProps) {
                                         {post.title}
                                     </Link>
                                 </h2>
-                                <p className="text-gray-600 mb-4 flex-grow">
+                                <p className="mb-4 flex-grow text-muted-foreground">
                                     {post.excerpt}
                                 </p>
                                 <Button

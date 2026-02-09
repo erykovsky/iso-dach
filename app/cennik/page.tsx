@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen marketing-page">
       {/* Hero Section */}
-      <section className="bg-primary py-16">
+      <section className="marketing-hero py-16">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-white mb-4">Cennik</h1>
@@ -39,7 +39,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16">
+      <section className="marketing-section py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
@@ -126,7 +126,7 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="bg-gray-100 p-6 rounded-lg mb-12">
+            <div className="marketing-surface p-6 mb-12">
               <h3 className="text-xl font-semibold mb-4">Pozostałe usługi</h3>
               <p className="text-gray-700">
                 Dla pozostałych usług oferujemy indywidualne wyceny, dostosowane
@@ -198,7 +198,7 @@ export default function PricingPage() {
       </section>
 
       {/* Notes Section */}
-      <section className="py-12 bg-gray-100">
+      <section className="marketing-section-alt py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold text-primary mb-6">
@@ -232,7 +232,7 @@ export default function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary/10">
+      <section className="marketing-cta-band py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
             Gotowy na ciepły i energooszczędny dom?

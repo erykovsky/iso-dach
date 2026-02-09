@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 const slides = [
   {
@@ -22,7 +22,7 @@ const slides = [
   {
     image: "/image.webp",
     title: "Kompleksowa obsługa od A do Z",
-    subtitle: "Od konsultacji po realizację - zajmiemy się wszystkim",
+    subtitle: "Od konsultacji po realizację, zajmiemy się wszystkim",
     highlight: "10 lat gwarancji",
   },
 ];
@@ -34,6 +34,7 @@ export const HeroCarousel = () => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -46,16 +47,63 @@ export const HeroCarousel = () => {
   };
 
   return (
-    <section className="relative bg-[#800020] overflow-hidden">
-      <div className="container mx-auto px-4 py-8 lg:py-16">
-        <div className="flex flex-col lg:flex-row items-center">
-          {/* Image Carousel - Moved to top for mobile */}
-          <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
-            <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden">
+    <section className="section-shell relative overflow-hidden bg-gradient-to-br from-[#800020] via-[#6b001b] to-[#4B0012] text-white">
+      <div className="section-inner container mx-auto px-4 pb-14 pt-10 lg:pb-16 lg:pt-16">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+          <div className="order-2 lg:order-1">
+            <span className="reveal-up inline-flex items-center rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+              <Sparkles className="mr-2 h-4 w-4 text-[#32CD32]" />
+              {slides[currentSlide].highlight}
+            </span>
+
+            <h1 className="reveal-up reveal-delay-1 mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              {slides[currentSlide].title}
+            </h1>
+
+            <p className="reveal-up reveal-delay-2 mt-5 max-w-2xl text-lg leading-relaxed text-white/88 sm:text-xl">
+              {slides[currentSlide].subtitle}
+            </p>
+
+            <div className="reveal-up reveal-delay-3 mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
+              <Link
+                prefetch
+                href="/kontakt"
+                className="brand-focus inline-flex items-center justify-center rounded-full border border-[#32CD32] bg-[#32CD32] px-7 py-3.5 text-lg font-semibold text-[#123100] shadow-[0_20px_32px_-20px_rgba(50,205,50,0.95)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#44d944]"
+              >
+                Darmowa wycena
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+
+              <a
+                href="tel:+48660441941"
+                className="brand-focus inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/18"
+              >
+                +48 660 441 941
+              </a>
+            </div>
+
+            <div className="mt-7 flex items-center gap-2 sm:mt-8">
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.title}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`brand-focus h-2.5 rounded-full transition-all ${
+                    currentSlide === index
+                      ? "w-10 bg-[#32CD32]"
+                      : "w-5 bg-white/35 hover:bg-white/55"
+                  }`}
+                  aria-label={`Przejdź do slajdu ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]">
               {slides.map((slide, index) => (
                 <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                  key={slide.title}
+                  className={`absolute inset-0 transition-opacity duration-700 ${
                     currentSlide === index ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -64,55 +112,35 @@ export const HeroCarousel = () => {
                     alt={slide.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
                     priority={index === 0}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#800020]/60 lg:bg-gradient-to-r lg:from-[#800020]/60 lg:to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#330009]/55 via-transparent to-transparent" />
                 </div>
               ))}
-            </div>
 
-            {/* Navigation Buttons */}
-            <div className="absolute bottom-4 right-4 flex space-x-2">
-              <button
-                onClick={prevSlide}
-                className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                aria-label="Poprzedni slajd"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                aria-label="Następny slajd"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+              <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+                <button
+                  onClick={prevSlide}
+                  className="brand-focus rounded-full border border-white/25 bg-[#4b0012]/75 p-2.5 text-white backdrop-blur-sm transition-colors hover:bg-[#640018]"
+                  aria-label="Poprzedni slajd"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="brand-focus rounded-full border border-white/25 bg-[#4b0012]/75 p-2.5 text-white backdrop-blur-sm transition-colors hover:bg-[#640018]"
+                  aria-label="Następny slajd"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* Text Content */}
-          <div className="lg:w-1/2 lg:pl-8">
-            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              {slides[currentSlide].title}
-            </h1>
-            <p className="text-lg text-white/90 mb-6">
-              {slides[currentSlide].subtitle}
-            </p>
-            <Link
-              prefetch={true}
-              href="/kontakt"
-              className="bg-[#32CD32] text-white font-semibold py-3 px-6 rounded-full hover:bg-[#2db82d] transition-all duration-300 inline-flex items-center text-lg"
-            >
-              Darmowa wycena
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
           </div>
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+      <div className="absolute bottom-0 left-0 h-1 w-full bg-white/20">
         <div
           className="h-full bg-[#32CD32] transition-all duration-500"
           style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}

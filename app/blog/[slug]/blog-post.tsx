@@ -61,9 +61,9 @@ export function BlogPost({ post }: BlogPostProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen marketing-page">
             {/* Hero section */}
-            <div className="bg-primary py-16">
+            <div className="marketing-hero py-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto text-center">
                         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -95,7 +95,7 @@ export function BlogPost({ post }: BlogPostProps) {
                     </div>
 
                     {/* Featured image */}
-                    <div className="relative h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
+                    <div className="relative h-64 md:h-96 mb-8 marketing-image-frame">
                         <Image
                             src={post.image || "/placeholder.svg"}
                             alt={post.title}
@@ -115,9 +115,9 @@ export function BlogPost({ post }: BlogPostProps) {
                     </article>
 
                     {/* Share buttons */}
-                    <div className="mt-12 pt-6 border-t border-gray-200">
+                    <div className="mt-12 border-t border-primary/10 pt-6">
                         <div className="flex flex-wrap justify-end items-center gap-2">
-                            <span className="text-gray-600 mr-2">
+                            <span className="mr-2 text-muted-foreground">
                                 Udostępnij:
                             </span>
                             <Button
@@ -163,11 +163,11 @@ export function BlogPost({ post }: BlogPostProps) {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Placeholder for related articles */}
-                            <div className="bg-white p-6 rounded-lg shadow-md">
+                            <div className="marketing-surface p-6">
                                 <h3 className="text-lg font-semibold mb-2">
                                     Artykuły powiązane pojawią się tutaj
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-muted-foreground">
                                     W przyszłości będziemy wyświetlać tutaj
                                     artykuły powiązane z tematyką tego wpisu.
                                 </p>
