@@ -1,6 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContactForm } from "./contact-form";
 import { Building, Mail, Phone } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kontakt | ISO-DACH",
+  description:
+    "Skontaktuj się z nami, aby uzyskać więcej informacji o naszych usługach. Odpowiadamy szybko i konkretnie. Napisz lub zadzwoń, a przygotujemy ofertę dopasowaną do Twojego budynku.",
+};
 
 export default function KontaktPage() {
   return (

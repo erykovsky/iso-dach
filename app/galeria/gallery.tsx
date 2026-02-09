@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -103,18 +103,25 @@ export function Gallery() {
 
  const openLightbox = (id: number) => {
   setSelectedImage(id);
-  document.body.style.overflow = "hidden";
  };
 
  const closeLightbox = () => {
   setSelectedImage(null);
-  document.body.style.overflow = "auto";
  };
 
  const selectedItem =
   selectedImage !== null
    ? galleryItems.find((item) => item.id === selectedImage)
    : null;
+
+ useEffect(() => {
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = selectedImage !== null ? "hidden" : "";
+
+  return () => {
+   document.body.style.overflow = previousOverflow;
+  };
+ }, [selectedImage]);
 
  return (
   <div className="min-h-screen marketing-page">

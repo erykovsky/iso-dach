@@ -1,6 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Izolacja Stropów Piwnic | ISO-DACH",
+  description:
+    "Profesjonalna izolacja stropów piwnic. Kompleksowe rozwiązania poprawiające komfort cieplny domu, ograniczające straty energii i chroniące konstrukcję przed wilgocią.",
+};
+
 
 export default function IzolacjaStropowPiwnicPage() {
   return (

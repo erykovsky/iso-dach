@@ -109,7 +109,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 key={index}
                                 className="border-none shadow-md hover:shadow-lg transition-shadow"
                             >
-                                <CardContent className="p-6">
+                                <CardContent className="p-4 sm:p-5">
                                     <div className="flex items-start gap-4">
                                         <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
                                         <div>
@@ -234,16 +234,16 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 image: "/placeholder.svg?height=300&width=400&query=mineral wool granulate",
                             },
                             {
-                                title: "Granulat Styropianowy",
+                                title: "Granulat Wełny Szklanej",
                                 description:
-                                    "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i łatwy w aplikacji.",
-                                image: "/placeholder.svg?height=300&width=400&query=eps granulate",
+                                    "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
+                                image: "/placeholder.svg?height=300&width=400&query=glass wool granulate",
                             },
                             {
-                                title: "Pianka Poliuretanowa",
+                                title: "Granulat Celulozowy",
                                 description:
-                                    "Nowoczesny materiał o najwyższych parametrach izolacyjnych, tworzący szczelną i jednolitą warstwę izolacji.",
-                                image: "/placeholder.svg?height=300&width=400&query=polyurethane foam",
+                                    "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
+                                image: "/placeholder.svg?height=300&width=400&query=cellulose insulation",
                             },
                         ].map((material, index) => (
                             <div
@@ -260,7 +260,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                         className="object-cover"
                                     />
                                 </div>
-                                <div className="p-6">
+                                <div className="p-4 sm:p-5">
                                     <h3 className="font-semibold text-lg mb-2">
                                         {material.title}
                                     </h3>

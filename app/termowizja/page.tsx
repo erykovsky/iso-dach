@@ -163,7 +163,7 @@ export default function TermowizjaPage() {
                 key={index}
                 className="border-none shadow-md hover:shadow-lg transition-shadow"
               >
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-5">
                   <div className="flex items-start gap-4">
                     <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
                     <div>
@@ -469,4 +469,3 @@ export default function TermowizjaPage() {
     </div>
   );
 }
-

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,19 +17,12 @@ interface PasswordProtectProps {
 }
 
 export function PasswordProtect({ children }: PasswordProtectProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem("faktury_auth") === "authenticated";
+  });
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Sprawdź czy użytkownik jest już zalogowany
-    const auth = sessionStorage.getItem("faktury_auth");
-    if (auth === "authenticated") {
-      setIsAuthenticated(true);
-    }
-    setIsLoading(false);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,14 +51,6 @@ export function PasswordProtect({ children }: PasswordProtectProps) {
       setError("Błąd połączenia");
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
-      </div>
-    );
-  }
 
   if (!isAuthenticated) {
     return (

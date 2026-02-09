@@ -2,49 +2,45 @@
 
 import Link from "next/link";
 import { Settings2, ShieldCheck } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import {
   getStoredCookieConsent,
+  isCookieConsentCurrent,
   saveCookieConsent,
-  shouldShowCookieBanner,
 } from "@/lib/cookie-consent";
 
 export const CookiePolicy = () => {
-  const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const isHydrated = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+
+  const [isDismissed, setIsDismissed] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
   const [marketingEnabled, setMarketingEnabled] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-
-    const consent = getStoredCookieConsent();
-    if (consent) {
-      setAnalyticsEnabled(consent.analytics);
-      setMarketingEnabled(consent.marketing);
-    }
-
-    setIsOpen(shouldShowCookieBanner());
-  }, []);
+  const currentConsent = isHydrated ? getStoredCookieConsent() : null;
+  const isOpen =
+    isHydrated && !isDismissed && !isCookieConsentCurrent(currentConsent);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = previousOverflow;
-    }
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [isOpen, mounted]);
+  }, [isOpen]);
 
-  const closeBanner = () => setIsOpen(false);
+  const closeBanner = () => {
+    setShowSettings(false);
+    setIsDismissed(true);
+  };
 
   const acceptAll = () => {
     saveCookieConsent({ analytics: true, marketing: true });
@@ -64,17 +60,24 @@ export const CookiePolicy = () => {
     closeBanner();
   };
 
-  if (!mounted || !isOpen) return null;
+  const openSettings = () => {
+    const consent = getStoredCookieConsent();
+    setAnalyticsEnabled(Boolean(consent?.analytics));
+    setMarketingEnabled(Boolean(consent?.marketing));
+    setShowSettings(true);
+  };
+
+  if (!isOpen) return null;
 
   return (
     <section className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
-      <div className="relative flex min-h-full items-center justify-center p-4 sm:p-6">
+      <div className="relative flex min-h-full items-end justify-center p-2.5 sm:items-center sm:p-6">
         <div
           role="dialog"
           aria-modal="true"
           aria-labelledby="cookie-consent-title"
-          className="w-full max-w-2xl rounded-2xl border border-primary/15 bg-white p-5 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] sm:p-6"
+          className="w-full max-w-2xl max-h-[calc(100dvh-0.75rem)] overflow-y-auto rounded-2xl border border-primary/15 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] sm:max-h-[calc(100dvh-3rem)] sm:p-6"
         >
           <div className="flex items-start gap-3">
             <div className="mt-0.5 rounded-xl bg-primary/10 p-2 text-primary">
@@ -105,20 +108,20 @@ export const CookiePolicy = () => {
           </div>
 
           {showSettings && (
-            <div className="mt-4 space-y-2 rounded-xl border border-primary/10 bg-primary/5 p-3">
-              <div className="flex items-start justify-between gap-3 rounded-lg bg-white/70 px-3 py-2.5">
+            <div className="mt-4 space-y-2 rounded-xl border border-primary/10 bg-primary/5 p-2.5 sm:p-3">
+              <div className="flex items-start justify-between gap-2 rounded-lg bg-white/70 px-2.5 py-2 sm:gap-3 sm:px-3 sm:py-2.5">
                 <div>
                   <p className="text-sm font-semibold text-primary">Niezbędne</p>
                   <p className="text-xs text-muted-foreground">
                     Konieczne do poprawnego działania strony.
                   </p>
                 </div>
-                <span className="rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">
+                <span className="shrink-0 self-start rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-[11px] leading-none font-semibold text-primary sm:self-center sm:text-xs">
                   Zawsze aktywne
                 </span>
               </div>
 
-              <label className="flex items-start justify-between gap-3 rounded-lg bg-white/70 px-3 py-2.5">
+              <label className="flex items-start justify-between gap-2 rounded-lg bg-white/70 px-2.5 py-2 sm:gap-3 sm:px-3 sm:py-2.5">
                 <div>
                   <p className="text-sm font-semibold text-primary">
                     Analityczne
@@ -135,7 +138,7 @@ export const CookiePolicy = () => {
                 />
               </label>
 
-              <label className="flex items-start justify-between gap-3 rounded-lg bg-white/70 px-3 py-2.5">
+              <label className="flex items-start justify-between gap-2 rounded-lg bg-white/70 px-2.5 py-2 sm:gap-3 sm:px-3 sm:py-2.5">
                 <div>
                   <p className="text-sm font-semibold text-primary">
                     Marketingowe
@@ -154,44 +157,54 @@ export const CookiePolicy = () => {
             </div>
           )}
 
-        <div className="mt-4 flex flex-wrap justify-end gap-2">
+        <div className="mt-4">
           {showSettings ? (
-            <>
+            <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={savePreferences}
+                  className="w-full"
+                >
+                  Zapisz ustawienia
+                </Button>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={rejectOptional}
+                  className="w-full"
+                >
+                  Odrzuć opcjonalne
+                </Button>
+              </div>
               <Button
                 type="button"
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowSettings(false)}
+                className="w-full"
               >
                 Powrót
               </Button>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={rejectOptional}
-              >
-                Odrzuć opcjonalne
-              </Button>
-              <Button type="button" size="sm" onClick={savePreferences}>
-                Zapisz ustawienia
-              </Button>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <Button
                 type="button"
                 variant="outline"
                 size="sm"
-                onClick={() => setShowSettings(true)}
+                onClick={openSettings}
+                className="w-full"
               >
                 <Settings2 className="h-4 w-4" />
                 Ustawienia
               </Button>
-              <Button type="button" size="sm" onClick={acceptAll}>
+              <Button type="button" size="sm" onClick={acceptAll} className="w-full">
                 Akceptuj wszystkie
               </Button>
-            </>
+            </div>
           )}
         </div>
       </div>

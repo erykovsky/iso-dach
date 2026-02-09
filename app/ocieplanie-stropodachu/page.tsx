@@ -64,7 +64,7 @@ export default function OcieplanieStropodachuPage() {
 
    {/* Zalety Section */}
    <section id="zalety" className="marketing-section py-16 md:py-24">
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4" >
      <h2 className="text-3xl font-bold text-center mb-12">
       Zalety Ocieplania Stropodachu
      </h2>
@@ -105,7 +105,7 @@ export default function OcieplanieStropodachuPage() {
         key={index}
         className="border-none shadow-md hover:shadow-lg transition-shadow"
        >
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-5">
          <div className="flex items-start gap-4">
           <CheckCircle className="text-secondary mt-1 flex-shrink-0" />
           <div>
@@ -207,24 +207,6 @@ export default function OcieplanieStropodachuPage() {
          "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
         image: "/placeholder.svg?height=300&width=400",
        },
-       {
-        title: "Granulat Styropianowy",
-        description:
-         "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i łatwy w aplikacji.",
-        image: "/placeholder.svg?height=300&width=400",
-       },
-       {
-        title: "Perlit Ekspandowany",
-        description:
-         "Naturalny materiał pochodzenia wulkanicznego, niepalny, odporny na szkodniki i o doskonałych właściwościach izolacyjnych.",
-        image: "/placeholder.svg?height=300&width=400",
-       },
-       {
-        title: "Pianka Poliuretanowa",
-        description:
-         "Nowoczesny materiał o najwyższych parametrach izolacyjnych, tworzący szczelną i jednolitą warstwę izolacji.",
-        image: "/placeholder.svg?height=300&width=400",
-       },
       ].map((material, index) => (
        <div
         key={index}
@@ -238,7 +220,7 @@ export default function OcieplanieStropodachuPage() {
           className="object-cover"
          />
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-5">
          <h3 className="font-semibold text-lg mb-2">{material.title}</h3>
          <p className="text-gray-600">{material.description}</p>
         </div>

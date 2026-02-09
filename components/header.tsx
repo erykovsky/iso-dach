@@ -107,7 +107,7 @@ export const Header = () => {
             <div className="absolute left-0 top-full h-2 w-full" />
 
             <div
-              className={`absolute left-0 top-[calc(100%+3px)] w-80 rounded-2xl border border-primary/15 bg-white/95 p-2 shadow-[0_20px_55px_-30px_rgba(75,0,18,0.7)] backdrop-blur transition-all duration-200 ${
+              className={`absolute left-0 top-[calc(100%+3px)] w-80 rounded-2xl border border-primary/15 bg-white p-2 shadow-[0_20px_55px_-30px_rgba(75,0,18,0.7)] transition-all duration-200 ${
                 isServicesOpen
                   ? "visible translate-y-0 opacity-100"
                   : "invisible -translate-y-1 opacity-0"
@@ -191,9 +191,9 @@ export const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute left-0 right-0 top-full border-b border-primary/10 bg-white/96 px-4 pb-5 pt-2 shadow-xl backdrop-blur lg:hidden">
+        <div className="absolute left-0 right-0 top-full border-b border-primary/10 bg-white px-4 pb-5 pt-2 shadow-xl lg:hidden">
           <nav className="flex flex-col gap-2">
-            <div className="rounded-2xl border border-primary/10 bg-primary/5 p-2">
+            <div className="rounded-2xl border border-primary/10 bg-white p-2">
               <button
                 className="brand-focus flex w-full items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-primary"
                 onClick={toggleMobileServices}
