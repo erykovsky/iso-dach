@@ -88,10 +88,10 @@ export default function RootLayout({
       <body className="antialiased">
         <OrganizationSchema />
         <LocalBusinessSchema />
-        <GTMWithConsent gtmId="GTM-XYZ" />
+        <GTMWithConsent gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
         >
           Przejdź do treści
         </a>
