@@ -46,14 +46,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Environment Variables
 
-Create a `.env.local` file in the root directory and add the following variables:
+Create a `.env` or `.env.local` file in the root directory and add the following variables:
 
 ```
-SMTP_HOST=your-smtp-host
-SMTP_PORT=your-smtp-port
-SMTP_USER=your-smtp-username
-SMTP_PASSWORD=your-smtp-password
+EMAIL_HOST=your-smtp-host
+EMAIL_PORT=465
+EMAIL_SECURE=true
+EMAIL_USER=your-smtp-username
+EMAIL_PASS=your-smtp-password
+EMAIL_TO=recipient@example.com
+
+# Optional secondary SMTP
+EMAIL_SECONDARY_ENABLED=true
+EMAIL_SECONDARY_HOST=your-secondary-smtp-host
+EMAIL_SECONDARY_PORT=587
+EMAIL_SECONDARY_SECURE=false
+EMAIL_SECONDARY_USER=your-secondary-user
+EMAIL_SECONDARY_PASS=your-secondary-password
+EMAIL_SECONDARY_TO=secondary-recipient@example.com
 ```
+
+Set `EMAIL_SECONDARY_ENABLED=false` to disable backup delivery.
 
 ## Tech Stack
 

@@ -3,9 +3,6 @@
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
-// Sprawdź czy jesteśmy w trybie deweloperskim
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export type ContactFormState = {
     status: "idle" | "success" | "error";
     message: string;
@@ -18,6 +15,26 @@ export type ContactFormState = {
 
 const getFormValue = (value: FormDataEntryValue | null): string =>
     typeof value === "string" ? value.trim() : "";
+
+const isSmtpAuthError = (error: unknown): boolean => {
+    if (!error || typeof error !== "object") return false;
+    const candidate = error as { code?: string; responseCode?: number };
+    return candidate.code === "EAUTH" || candidate.responseCode === 535;
+};
+
+const parseEnvBoolean = (
+    value: string | undefined,
+    defaultValue: boolean
+): boolean => {
+    if (value == null) return defaultValue;
+
+    const normalized = value.trim().toLowerCase();
+    if (!normalized) return defaultValue;
+    if (["1", "true", "yes", "on"].includes(normalized)) return true;
+    if (["0", "false", "no", "off"].includes(normalized)) return false;
+
+    return defaultValue;
+};
 
 // Schema walidacji Zod
 const contactFormSchema = z.object({
@@ -84,7 +101,12 @@ export async function sendWycenaAction(
     const { name, email, phone, message, consentMarketing } = validationResult.data;
 
     // Sprawdź czy zmienne środowiskowe są ustawione
-    if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (
+        !process.env.EMAIL_HOST ||
+        !process.env.EMAIL_USER ||
+        !process.env.EMAIL_PASS ||
+        !process.env.EMAIL_TO
+    ) {
         console.error("Brak zmiennych środowiskowych dla SMTP");
         return {
             status: "error",
@@ -92,10 +114,16 @@ export async function sendWycenaAction(
         };
     }
 
+    const primaryPort = Number.parseInt(process.env.EMAIL_PORT || "465", 10);
+    const primarySecure =
+        process.env.EMAIL_SECURE != null
+            ? process.env.EMAIL_SECURE === "true"
+            : primaryPort === 465;
+
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
-        port: Number.parseInt(process.env.EMAIL_PORT || "465"),
-        secure: true,
+        port: primaryPort,
+        secure: primarySecure,
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
@@ -126,70 +154,102 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
 <p><strong>Zgoda marketingowa:</strong> ${consentMarketing ? "TAK" : "NIE"}</p>
     `.trim();
 
-    // W trybie deweloperskim - logowanie zamiast wysyłania
-    if (isDevelopment) {
-        console.log("\n=== TRYB DEWELOPERSKI - EMAIL NIE ZOSTAŁ WYSŁANY ===");
-        console.log("Do (główny):", process.env.EMAIL_TO);
-        console.log("Do (zapasowy):", process.env.EMAIL_SECONDARY_TO);
-        console.log("Temat:", `Wycena ${name}`);
-        console.log("Dane formularza:");
-        console.log("  Imię:", name);
-        console.log("  Email:", email);
-        console.log("  Telefon:", phone);
-        console.log("=== KONIEC LOGU ===\n");
+    const recipients = Array.from(
+        new Set(
+            [process.env.EMAIL_TO, process.env.EMAIL_SECONDARY_TO]
+                .map((value) => (value ? value.trim() : ""))
+                .filter(Boolean)
+        )
+    );
 
-        return {
-            status: "success",
-            message: "[DEV] Formularz przetworzony (sprawdź konsolę serwera)",
-        };
-    }
+    let primaryError: unknown = null;
+    let secondaryError: unknown = null;
+    let sentPrimary = false;
+    let sentSecondary = false;
 
     try {
-        // Wyślij na główny serwer (e-kei)
         await transporter.sendMail({
             from: `Formularz ISO-DACH <${senderAddress}>`,
             ...(email ? { replyTo: email } : {}),
-            to: process.env.EMAIL_TO,
+            to: recipients,
             subject: `Wycena ${name}`,
             text: emailText,
             html: emailHtml,
         });
+        sentPrimary = true;
+    } catch (error) {
+        primaryError = error;
+        console.error("Błąd wysyłania emaila (SMTP główny):", error);
+    }
 
-        // Wyślij na zapasowy serwer (Interia) jeśli skonfigurowany
-        if (process.env.EMAIL_SECONDARY_HOST && process.env.EMAIL_SECONDARY_USER) {
-            const secondaryTransporter = nodemailer.createTransport({
-                host: process.env.EMAIL_SECONDARY_HOST,
-                port: Number.parseInt(process.env.EMAIL_SECONDARY_PORT || "587"),
-                secure: false, // STARTTLS
-                auth: {
-                    user: process.env.EMAIL_SECONDARY_USER,
-                    pass: process.env.EMAIL_SECONDARY_PASS,
-                },
-                tls: {
-                    ciphers: 'SSLv3',
-                    rejectUnauthorized: false
-                }
-            });
+    // Wyślij przez zapasowy SMTP tylko jeśli główny nie wysłał.
+    const secondaryEnabled = parseEnvBoolean(
+        process.env.EMAIL_SECONDARY_ENABLED,
+        false
+    );
+    if (
+        !sentPrimary &&
+        secondaryEnabled &&
+        process.env.EMAIL_SECONDARY_HOST &&
+        process.env.EMAIL_SECONDARY_USER &&
+        process.env.EMAIL_SECONDARY_PASS &&
+        recipients.length > 0
+    ) {
+        const secondaryPort = Number.parseInt(
+            process.env.EMAIL_SECONDARY_PORT || "587",
+            10
+        );
+        const secondarySecure =
+            process.env.EMAIL_SECONDARY_SECURE != null
+                ? process.env.EMAIL_SECONDARY_SECURE === "true"
+                : secondaryPort === 465;
 
+        const secondaryTransporter = nodemailer.createTransport({
+            host: process.env.EMAIL_SECONDARY_HOST,
+            port: secondaryPort,
+            secure: secondarySecure,
+            auth: {
+                user: process.env.EMAIL_SECONDARY_USER,
+                pass: process.env.EMAIL_SECONDARY_PASS,
+            },
+            tls: {
+                rejectUnauthorized: false,
+            },
+        });
+
+        try {
             await secondaryTransporter.sendMail({
                 from: `Formularz ISO-DACH <${process.env.EMAIL_SECONDARY_USER}>`,
                 ...(email ? { replyTo: email } : {}),
-                to: process.env.EMAIL_SECONDARY_TO,
+                to: recipients,
                 subject: `Wycena ${name}`,
                 text: emailText,
                 html: emailHtml,
             });
+            sentSecondary = true;
+        } catch (error) {
+            secondaryError = error;
+            console.error("Błąd wysyłania emaila (SMTP zapasowy):", error);
         }
+    }
 
+    if (sentPrimary || sentSecondary) {
         return {
             status: "success",
             message: "Dziękujemy za wysłanie formularza! Skontaktujemy się wkrótce.",
         };
-    } catch (error) {
-        console.error("Błąd wysyłania emaila:", error);
+    }
+
+    if (isSmtpAuthError(primaryError) || isSmtpAuthError(secondaryError)) {
         return {
             status: "error",
-            message: "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie później.",
+            message:
+                "Błąd autoryzacji SMTP (login/hasło). Sprawdź konfigurację skrzynki nadawczej.",
         };
     }
+
+    return {
+        status: "error",
+        message: "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie później.",
+    };
 }

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useActionState, useRef } from "react";
+import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import {
     type ContactFormState,
@@ -26,9 +27,8 @@ export const ContactForm = () => {
     const [state, formAction, isPending] = useActionState(
         async (prevState: ContactFormState, formData: FormData) => {
             const result = await sendWycenaAction(prevState, formData);
-            
-            // Zachowaj dane formularza w stanie przy błędzie
-            return {
+
+            const nextState = {
                 ...result,
                 name: formData.get("name") as string,
                 phone: formData.get("phone") as string,
@@ -37,29 +37,39 @@ export const ContactForm = () => {
                 consentPrivacy: formData.get("consentPrivacy") === "on",
                 consentMarketing: formData.get("consentMarketing") === "on",
             };
+
+            if (result.status === "success") {
+                formRef.current?.reset();
+
+                // Keep client state empty after successful send.
+                nextState.name = "";
+                nextState.phone = "";
+                nextState.email = "";
+                nextState.message = "";
+                nextState.consentPrivacy = false;
+                nextState.consentMarketing = false;
+
+                // Reset hidden status to avoid stale state-driven effects in future UI changes.
+                nextState.status = "idle";
+                nextState.message = "";
+
+                toast.success("Wiadomość została wysłana", {
+                    description: "Odezwiemy się do Ciebie niebawem.",
+                });
+            } else if (result.status === "error") {
+                toast.error("Nie udało się wysłać wiadomości", {
+                    description: "Spróbuj ponownie za chwilę albo zadzwoń do nas.",
+                });
+            }
+
+            return nextState;
         },
         initialContactFormState,
     );
 
-    // Reset formularza po sukcesie
-    if (state.status === "success" && formRef.current) {
-        formRef.current.reset();
-    }
-
     return (
         <section className="soft-card reveal-up rounded-2xl p-4 sm:p-6">
             <p className="text-sm text-muted-foreground">Pola oznaczone * są wymagane</p>
-            
-            {/* Komunikat o błędzie/sukcesie */}
-            {state.status !== "idle" && state.message && (
-                <div className={`mt-4 rounded-lg p-3 text-sm ${
-                    state.status === "success" 
-                        ? "bg-green-50 text-green-800 border border-green-200" 
-                        : "bg-red-50 text-red-800 border border-red-200"
-                }`}>
-                    {state.message}
-                </div>
-            )}
 
             <div className="mt-4 sm:mt-5">
                 <form ref={formRef} action={formAction}>
