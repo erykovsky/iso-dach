@@ -53,11 +53,6 @@ export const galleryItems: GalleryItem[] = [
     {
         id: "7",
         category: "naprawa-izolacji",
-        image: "/img/7.jpg",
-    },
-    {
-        id: "8",
-        category: "naprawa-izolacji",
         image: "/img/8.jpg",
     },
 ];
