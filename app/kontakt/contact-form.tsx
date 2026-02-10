@@ -61,7 +61,7 @@ export const ContactForm = () => {
                             tabIndex={-1}
                             autoComplete="off"
                             aria-label="Nie wypełniaj tego pola"
-                            className="absolute w-[1px] h-[1px] p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0"
+                            className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
                             style={{ clip: 'rect(0, 0, 0, 0)', clipPath: 'inset(50%)' }}
                         />
                         <div className="grid gap-1.5 sm:gap-2">

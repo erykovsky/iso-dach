@@ -154,12 +154,16 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
         if (process.env.EMAIL_SECONDARY_HOST && process.env.EMAIL_SECONDARY_USER) {
             const secondaryTransporter = nodemailer.createTransport({
                 host: process.env.EMAIL_SECONDARY_HOST,
-                port: Number.parseInt(process.env.EMAIL_SECONDARY_PORT || "465"),
-                secure: true,
+                port: Number.parseInt(process.env.EMAIL_SECONDARY_PORT || "587"),
+                secure: false, // STARTTLS
                 auth: {
                     user: process.env.EMAIL_SECONDARY_USER,
                     pass: process.env.EMAIL_SECONDARY_PASS,
                 },
+                tls: {
+                    ciphers: 'SSLv3',
+                    rejectUnauthorized: false
+                }
             });
 
             await secondaryTransporter.sendMail({
