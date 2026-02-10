@@ -102,25 +102,35 @@ export async function sendWycenaAction(
 
     const senderAddress = process.env.EMAIL_USER || "noreply@iso-dach.eu";
 
-    // Przygotuj adresy docelowe (główny + opcjonalnie drugi)
-    const primaryEmail = process.env.EMAIL_TO;
-    const secondaryEmail = process.env.EMAIL_TO_SECONDARY;
-    const recipients = secondaryEmail 
-        ? `${primaryEmail}, ${secondaryEmail}` 
-        : primaryEmail;
+    // Przygotuj zawartość emaila
+    const emailText = `
+Nowe zapytanie o wycenę:
+Imię i nazwisko: ${name}
+Email: ${email}
+Telefon: ${phone}
+Treść wiadomości: ${message}
+Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
+    `.trim();
+
+    const emailHtml = `
+<h2>Nowe zapytanie o wycenę</h2>
+<p><strong>Imię i nazwisko:</strong> ${name}</p>
+<p><strong>Email:</strong> ${email}</p>
+<p><strong>Telefon:</strong> ${phone}</p>
+<p><strong>Treść wiadomości:</strong> ${message}</p>
+<p><strong>Zgoda marketingowa:</strong> ${consentMarketing ? "TAK" : "NIE"}</p>
+    `.trim();
 
     // W trybie deweloperskim - logowanie zamiast wysyłania
     if (isDevelopment) {
         console.log("\n=== TRYB DEWELOPERSKI - EMAIL NIE ZOSTAŁ WYSŁANY ===");
-        console.log("Od:", `Formularz ISO-DACH <${senderAddress}>`);
-        console.log("Do:", recipients);
+        console.log("Do (główny):", process.env.EMAIL_TO);
+        console.log("Do (zapasowy):", process.env.EMAIL_SECONDARY_TO);
         console.log("Temat:", `Wycena ${name}`);
         console.log("Dane formularza:");
         console.log("  Imię:", name);
         console.log("  Email:", email);
         console.log("  Telefon:", phone);
-        console.log("  Wiadomość:", message);
-        console.log("  Zgoda marketingowa:", consentMarketing ? "TAK" : "NIE");
         console.log("=== KONIEC LOGU ===\n");
 
         return {
@@ -130,28 +140,37 @@ export async function sendWycenaAction(
     }
 
     try {
+        // Wyślij na główny serwer (e-kei)
         await transporter.sendMail({
             from: `Formularz ISO-DACH <${senderAddress}>`,
             ...(email ? { replyTo: email } : {}),
-            to: recipients,
+            to: process.env.EMAIL_TO,
             subject: `Wycena ${name}`,
-            text: `
-Nowe zapytanie o wycenę:
-Imię i nazwisko: ${name}
-Email: ${email}
-Telefon: ${phone}
-Treść wiadomości: ${message}
-Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
-            `.trim(),
-            html: `
-<h2>Nowe zapytanie o wycenę</h2>
-<p><strong>Imię i nazwisko:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Telefon:</strong> ${phone}</p>
-<p><strong>Treść wiadomości:</strong> ${message}</p>
-<p><strong>Zgoda marketingowa:</strong> ${consentMarketing ? "TAK" : "NIE"}</p>
-            `.trim(),
+            text: emailText,
+            html: emailHtml,
         });
+
+        // Wyślij na zapasowy serwer (Interia) jeśli skonfigurowany
+        if (process.env.EMAIL_SECONDARY_HOST && process.env.EMAIL_SECONDARY_USER) {
+            const secondaryTransporter = nodemailer.createTransport({
+                host: process.env.EMAIL_SECONDARY_HOST,
+                port: Number.parseInt(process.env.EMAIL_SECONDARY_PORT || "465"),
+                secure: true,
+                auth: {
+                    user: process.env.EMAIL_SECONDARY_USER,
+                    pass: process.env.EMAIL_SECONDARY_PASS,
+                },
+            });
+
+            await secondaryTransporter.sendMail({
+                from: `Formularz ISO-DACH <${process.env.EMAIL_SECONDARY_USER}>`,
+                ...(email ? { replyTo: email } : {}),
+                to: process.env.EMAIL_SECONDARY_TO,
+                subject: `Wycena ${name}`,
+                text: emailText,
+                html: emailHtml,
+            });
+        }
 
         return {
             status: "success",
