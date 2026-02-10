@@ -3,7 +3,7 @@ title: 'System izolacji termiczno-akustycznej „Białe Ciepło®" - innowacyjne
 slug: "system-izolacji-biale-cieplo"
 excerpt: "Poznaj innowacyjny system izolacji termiczno-akustycznej Białe Ciepło. Szybka aplikacja, doskonałe parametry izolacyjne i certyfikowana jakość."
 category: "technologie"
-image: "/placeholder.svg?height=600&width=800"
+image: "/img/biale-cieplo.jpg"
 date: "2021-07-19"
 readTime: 8
 ---
