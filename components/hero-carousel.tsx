@@ -99,7 +99,11 @@ export const HeroCarousel = () => {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]" style={{ minHeight: '400px' }}>
+            <div className="hero-glow reveal-up reveal-delay-1 relative w-full overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]"
+                 style={{ 
+                   aspectRatio: '4/3',
+                   minHeight: 'clamp(200px, 50vw, 400px)'
+                 }}>
               {slides.map((slide, index) => (
                 <div
                   key={slide.title}
@@ -111,7 +115,7 @@ export const HeroCarousel = () => {
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     priority={index === 0}
                     loading={index === 0 ? "eager" : "lazy"}
