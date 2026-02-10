@@ -15,27 +15,27 @@ export async function generateMetadata({
 
     if (!item) {
         return {
-            title: "Nie znaleziono | ISO-DACH",
+            title: "Nie znaleziono",
         };
     }
 
     const categoryName = categoryNameById[item.category];
 
     return {
-        title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
+        title: `${categoryName} - Realizacja ${id}`,
         description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH. Zobacz efekty naszej przy izolacjach budynków.`,
         alternates: {
             canonical: `https://iso-dach.eu/galeria/${id}`,
         },
         openGraph: {
-            title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
+            title: `${categoryName} - Realizacja ${id}`,
             description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH.`,
             images: [
                 {
                     url: item.image,
                     width: 1200,
                     height: 630,
-                    alt: `Realizacja ${categoryName} - zdjęcie ${id} | ISO-DACH`,
+                    alt: `Realizacja ${categoryName} - zdjęcie ${id}`,
                 },
             ],
         },
