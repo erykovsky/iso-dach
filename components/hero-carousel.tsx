@@ -99,7 +99,7 @@ export const HeroCarousel = () => {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-4/3 overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]">
+            <div className="hero-glow reveal-up reveal-delay-1 relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]" style={{ minHeight: '400px' }}>
               {slides.map((slide, index) => (
                 <div
                   key={slide.title}
@@ -114,6 +114,7 @@ export const HeroCarousel = () => {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
                 </div>

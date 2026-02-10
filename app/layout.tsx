@@ -85,6 +85,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <link rel="preconnect" href="https://www.iso-dach.eu" />
+        <link rel="dns-prefetch" href="https://www.iso-dach.eu" />
+      </head>
       <body className="antialiased">
         <OrganizationSchema />
         <LocalBusinessSchema />
