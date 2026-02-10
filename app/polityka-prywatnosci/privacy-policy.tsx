@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
         <div className="min-h-screen marketing-page py-12">
             <div className="container mx-auto px-4">
                 <h1 className="text-4xl font-bold text-primary mb-8">
-                    Polityka Prywatności
+                    Polityka prywatności
                 </h1>
                 <div className="marketing-surface p-8">
                     <section className="mb-8">
@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
                             1. Informacje ogólne
                         </h2>
                         <p className="mb-4">
-                            Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony
+                            Niniejsza polityka prywatności określa zasady przetwarzania i ochrony
                             danych osobowych przekazanych przez Użytkowników w związku z korzystaniem
                             ze strony internetowej ISO-DACH.
                         </p>

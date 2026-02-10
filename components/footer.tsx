@@ -68,7 +68,7 @@ export const Footer = () => {
                 { label: "Blog", href: "/blog" },
                 { label: "Cennik", href: "/cennik" },
                 { label: "Kontakt", href: "/kontakt" },
-                { label: "Polityka Prywatności", href: "/polityka-prywatnosci" },
+                { label: "Polityka prywatności", href: "/polityka-prywatnosci" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="hover:text-[#90EE90]">
