@@ -102,11 +102,18 @@ export async function sendWycenaAction(
 
     const senderAddress = process.env.EMAIL_USER || "noreply@iso-dach.eu";
 
+    // Przygotuj adresy docelowe (główny + opcjonalnie drugi)
+    const primaryEmail = process.env.EMAIL_TO;
+    const secondaryEmail = process.env.EMAIL_TO_SECONDARY;
+    const recipients = secondaryEmail 
+        ? `${primaryEmail}, ${secondaryEmail}` 
+        : primaryEmail;
+
     // W trybie deweloperskim - logowanie zamiast wysyłania
     if (isDevelopment) {
         console.log("\n=== TRYB DEWELOPERSKI - EMAIL NIE ZOSTAŁ WYSŁANY ===");
         console.log("Od:", `Formularz ISO-DACH <${senderAddress}>`);
-        console.log("Do:", process.env.EMAIL_TO);
+        console.log("Do:", recipients);
         console.log("Temat:", `Wycena ${name}`);
         console.log("Dane formularza:");
         console.log("  Imię:", name);
@@ -126,7 +133,7 @@ export async function sendWycenaAction(
         await transporter.sendMail({
             from: `Formularz ISO-DACH <${senderAddress}>`,
             ...(email ? { replyTo: email } : {}),
-            to: process.env.EMAIL_TO,
+            to: recipients,
             subject: `Wycena ${name}`,
             text: `
 Nowe zapytanie o wycenę:

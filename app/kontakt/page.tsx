@@ -1,5 +1,5 @@
 import { ContactForm } from "./contact-form";
-import { Building, Mail, Phone } from "lucide-react";
+import { Building, Mail, Phone, AlertTriangle } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -72,14 +72,31 @@ export default function KontaktPage() {
                 <div className="flex items-center space-x-2">
                   <Mail className="text-primary" />
                   <a
-                    href="mailto:info@iso-dach.eu"
+                    href="mailto:zudarek@interia.eu"
                     className="text-primary hover:text-secondary transition-colors"
                   >
-                    info@iso-dach.eu
+                    zudarek@interia.eu
                   </a>
                 </div>
               </div>
             </section>
+
+            <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+                <div>
+                    <p className="text-sm font-medium text-amber-800">
+                      Ważna informacja
+                    </p>
+                    <p className="mt-1 text-sm text-amber-700">
+                      Ze względu na migrację serwera pocztowego, wiadomości wysyłane bezpośrednio na adres <strong>info@iso-dach.eu</strong> mogą nie dochodzić. Formularz kontaktowy działa prawidłowo i wysyła wiadomości jednocześnie na dwa adresy, więc możesz z niego śmiało korzystać.
+                    </p>
+                    <p className="mt-2 text-xs text-amber-600">
+                      Przepraszamy za utrudnienia.
+                    </p>
+                </div>
+              </div>
+            </div>
             <section className="soft-card mt-8 rounded-2xl p-5 sm:p-6">
               <h3 className="text-xl font-semibold text-primary">Adres</h3>
               <div className="mt-4 space-y-4">
