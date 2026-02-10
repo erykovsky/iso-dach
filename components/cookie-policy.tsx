@@ -194,14 +194,14 @@ export const CookiePolicy = () => {
               <Button
                 type="button"
                 variant="outline"
-                size="sm"
+                size="default"
                 onClick={openSettings}
                 className="w-full"
               >
                 <Settings2 className="h-4 w-4" />
                 Ustawienia
               </Button>
-              <Button type="button" size="sm" onClick={acceptAll} className="w-full">
+              <Button type="button" size="default" onClick={acceptAll} className="w-full">
                 Akceptuj wszystkie
               </Button>
             </div>

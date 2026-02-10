@@ -201,7 +201,7 @@ export default function AboutPage() {
               <div className="relative h-auto min-h-[300px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl bg-linear-to-br from-primary/5 to-primary/10 p-4 md:p-6 flex items-center justify-center">
                 <div className="relative w-full h-full min-h-[250px] md:min-h-[350px]">
                   <Image
-                    src="/img/zachodniopomorskie-mapa.png"
+                    src="/img/mapa-dzialania.png"
                     alt="Mapa województwa zachodniopomorskiego - obszar działania ISO-DACH"
                     fill
                     className="object-contain"
@@ -217,8 +217,9 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  Działamy głównie na terenie województwa zachodniopomorskiego,
-                  obsługując klientów w promieniu do 100 km od naszej siedziby w Dobrzanach.
+                  Działamy na terenie całej Polski, jednak nasz główny obszar
+                  realizacji koncentruje się na województwie zachodniopomorskim
+                  i okolicach naszej siedziby w Dobrzanach.
                 </p>
                 <p>
                   <strong>Główne miasta w naszym zasięgu:</strong>
@@ -234,8 +235,10 @@ export default function AboutPage() {
                   <li>Gryfino</li>
                 </ul>
                 <p className="mt-4">
-                  Realizujemy również projekty w innych lokalizacjach - skontaktuj się z nami, aby ustalić szczegóły.
-                  Izolacje stropów piwnic realizujemy na terenie całej Polski.
+                  Realizujemy również projekty poza tym obszarem. Jeśli dany
+                  zakres prac lub lokalizacja wykracza poza nasze możliwości
+                  terminowe, kierujemy klientów do sprawdzonych firm
+                  współpracujących.
                 </p>
               </div>
             </div>
