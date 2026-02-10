@@ -55,18 +55,7 @@ EMAIL_SECURE=true
 EMAIL_USER=your-smtp-username
 EMAIL_PASS=your-smtp-password
 EMAIL_TO=recipient@example.com
-
-# Optional secondary SMTP
-EMAIL_SECONDARY_ENABLED=true
-EMAIL_SECONDARY_HOST=your-secondary-smtp-host
-EMAIL_SECONDARY_PORT=587
-EMAIL_SECONDARY_SECURE=false
-EMAIL_SECONDARY_USER=your-secondary-user
-EMAIL_SECONDARY_PASS=your-secondary-password
-EMAIL_SECONDARY_TO=secondary-recipient@example.com
 ```
-
-Set `EMAIL_SECONDARY_ENABLED=false` to disable backup delivery.
 
 ## Tech Stack
 

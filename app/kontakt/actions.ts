@@ -22,20 +22,6 @@ const isSmtpAuthError = (error: unknown): boolean => {
     return candidate.code === "EAUTH" || candidate.responseCode === 535;
 };
 
-const parseEnvBoolean = (
-    value: string | undefined,
-    defaultValue: boolean
-): boolean => {
-    if (value == null) return defaultValue;
-
-    const normalized = value.trim().toLowerCase();
-    if (!normalized) return defaultValue;
-    if (["1", "true", "yes", "on"].includes(normalized)) return true;
-    if (["0", "false", "no", "off"].includes(normalized)) return false;
-
-    return defaultValue;
-};
-
 // Schema walidacji Zod
 const contactFormSchema = z.object({
     name: z
@@ -154,24 +140,14 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
 <p><strong>Zgoda marketingowa:</strong> ${consentMarketing ? "TAK" : "NIE"}</p>
     `.trim();
 
-    const recipients = Array.from(
-        new Set(
-            [process.env.EMAIL_TO, process.env.EMAIL_SECONDARY_TO]
-                .map((value) => (value ? value.trim() : ""))
-                .filter(Boolean)
-        )
-    );
-
     let primaryError: unknown = null;
-    let secondaryError: unknown = null;
     let sentPrimary = false;
-    let sentSecondary = false;
 
     try {
         await transporter.sendMail({
             from: `Formularz ISO-DACH <${senderAddress}>`,
             ...(email ? { replyTo: email } : {}),
-            to: recipients,
+            to: process.env.EMAIL_TO,
             subject: `Wycena ${name}`,
             text: emailText,
             html: emailHtml,
@@ -182,65 +158,14 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
         console.error("Błąd wysyłania emaila (SMTP główny):", error);
     }
 
-    // Wyślij przez zapasowy SMTP tylko jeśli główny nie wysłał.
-    const secondaryEnabled = parseEnvBoolean(
-        process.env.EMAIL_SECONDARY_ENABLED,
-        false
-    );
-    if (
-        !sentPrimary &&
-        secondaryEnabled &&
-        process.env.EMAIL_SECONDARY_HOST &&
-        process.env.EMAIL_SECONDARY_USER &&
-        process.env.EMAIL_SECONDARY_PASS &&
-        recipients.length > 0
-    ) {
-        const secondaryPort = Number.parseInt(
-            process.env.EMAIL_SECONDARY_PORT || "587",
-            10
-        );
-        const secondarySecure =
-            process.env.EMAIL_SECONDARY_SECURE != null
-                ? process.env.EMAIL_SECONDARY_SECURE === "true"
-                : secondaryPort === 465;
-
-        const secondaryTransporter = nodemailer.createTransport({
-            host: process.env.EMAIL_SECONDARY_HOST,
-            port: secondaryPort,
-            secure: secondarySecure,
-            auth: {
-                user: process.env.EMAIL_SECONDARY_USER,
-                pass: process.env.EMAIL_SECONDARY_PASS,
-            },
-            tls: {
-                rejectUnauthorized: false,
-            },
-        });
-
-        try {
-            await secondaryTransporter.sendMail({
-                from: `Formularz ISO-DACH <${process.env.EMAIL_SECONDARY_USER}>`,
-                ...(email ? { replyTo: email } : {}),
-                to: recipients,
-                subject: `Wycena ${name}`,
-                text: emailText,
-                html: emailHtml,
-            });
-            sentSecondary = true;
-        } catch (error) {
-            secondaryError = error;
-            console.error("Błąd wysyłania emaila (SMTP zapasowy):", error);
-        }
-    }
-
-    if (sentPrimary || sentSecondary) {
+    if (sentPrimary) {
         return {
             status: "success",
             message: "Dziękujemy za wysłanie formularza! Skontaktujemy się wkrótce.",
         };
     }
 
-    if (isSmtpAuthError(primaryError) || isSmtpAuthError(secondaryError)) {
+    if (isSmtpAuthError(primaryError)) {
         return {
             status: "error",
             message:
