@@ -22,6 +22,12 @@ const isSmtpAuthError = (error: unknown): boolean => {
     return candidate.code === "EAUTH" || candidate.responseCode === 535;
 };
 
+const maskEmail = (email: string): string => {
+    const [name, domain] = email.split("@");
+    if (!domain) return "***";
+    return `${(name || "").slice(0, 2)}***@${domain}`;
+};
+
 // Schema walidacji Zod
 const contactFormSchema = z.object({
     name: z
@@ -52,16 +58,6 @@ export async function sendWycenaAction(
     _prevState: ContactFormState,
     formData: FormData
 ): Promise<ContactFormState> {
-    // Honeypot - sprawdzenie czy pole website jest wypełnione (boty wypełniają wszystkie pola)
-    const honeypot = getFormValue(formData.get("website"));
-    if (honeypot) {
-        // Symulacja sukcesu - bot myśli że formularz został wysłany
-        return {
-            status: "success",
-            message: "Dziękujemy za wysłanie formularza! Skontaktujemy się wkrótce.",
-        };
-    }
-
     // Przygotowanie danych do walidacji
     const rawData = {
         name: getFormValue(formData.get("name")),
@@ -101,10 +97,7 @@ export async function sendWycenaAction(
     }
 
     const primaryPort = Number.parseInt(process.env.EMAIL_PORT || "465", 10);
-    const primarySecure =
-        process.env.EMAIL_SECURE != null
-            ? process.env.EMAIL_SECURE === "true"
-            : primaryPort === 465;
+    const primarySecure = primaryPort === 465;
 
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
@@ -144,7 +137,15 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
     let sentPrimary = false;
 
     try {
-        await transporter.sendMail({
+        console.log("[kontakt] SMTP send attempt", {
+            host: process.env.EMAIL_HOST,
+            port: primaryPort,
+            secure: primarySecure,
+            user: maskEmail(process.env.EMAIL_USER),
+            to: maskEmail(process.env.EMAIL_TO),
+        });
+
+        const info = await transporter.sendMail({
             from: `Formularz ISO-DACH <${senderAddress}>`,
             ...(email ? { replyTo: email } : {}),
             to: process.env.EMAIL_TO,
@@ -152,6 +153,18 @@ Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
             text: emailText,
             html: emailHtml,
         });
+
+        console.log("[kontakt] SMTP send result", {
+            messageId: info.messageId,
+            accepted: info.accepted,
+            rejected: info.rejected,
+            response: info.response,
+        });
+
+        if ((info.accepted?.length ?? 0) === 0) {
+            throw new Error("SMTP accepted list is empty");
+        }
+
         sentPrimary = true;
     } catch (error) {
         primaryError = error;

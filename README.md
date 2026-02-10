@@ -51,7 +51,6 @@ Create a `.env` or `.env.local` file in the root directory and add the following
 ```
 EMAIL_HOST=your-smtp-host
 EMAIL_PORT=465
-EMAIL_SECURE=true
 EMAIL_USER=your-smtp-username
 EMAIL_PASS=your-smtp-password
 EMAIL_TO=recipient@example.com

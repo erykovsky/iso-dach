@@ -76,16 +76,6 @@ export const ContactForm = () => {
             <div className="mt-4 sm:mt-5">
                 <form ref={formRef} action={formAction}>
                     <div className="flex flex-col gap-4 sm:gap-6">
-                        {/* Honeypot - ukryte pole przed botami */}
-                        <input
-                            type="text"
-                            name="website"
-                            tabIndex={-1}
-                            autoComplete="off"
-                            aria-label="Nie wypełniaj tego pola"
-                            className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
-                            style={{ clip: 'rect(0, 0, 0, 0)', clipPath: 'inset(50%)' }}
-                        />
                         <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="name">Imię i nazwisko *</Label>
                             <Input
