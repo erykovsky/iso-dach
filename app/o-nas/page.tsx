@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Award, Users, Clock, MapPin, Phone, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "O nas | ISO-DACH - Profesjonalne Izolacje",
+  title: "O nas",
   description:
     "Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków. Profesjonalne ocieplanie wełną celulozową. Szczecin i okolice.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/o-nas",
   },
   openGraph: {
-    title: "O nas | ISO-DACH - Profesjonalne Izolacje",
+    title: "O nas",
     description: "Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków.",
     url: "https://iso-dach.eu/o-nas",
     type: "website",

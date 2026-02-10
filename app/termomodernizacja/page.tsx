@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termomodernizacja | ISO-DACH",
+  title: "Termomodernizacja",
   description:
     "Kompleksowa termomodernizacja budynków. Zwiększ efektywność energetyczną, obniż koszty ogrzewania i podnieś wartość nieruchomości.",
   alternates: {

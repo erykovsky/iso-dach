@@ -12,14 +12,14 @@ import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { ArrowRight, HelpCircle, AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Naprawa izolacji po kunach | ISO-DACH",
+    title: "Naprawa izolacji po kunach",
     description:
         "Specjalistyczna usługa naprawy i odtworzenia izolacji uszkodzonej przez kuny. Zabezpieczamy przed ponownym wtargnięciem tych zwierząt.",
     alternates: {
         canonical: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
     },
     openGraph: {
-        title: "Naprawa izolacji po kunach | ISO-DACH",
+        title: "Naprawa izolacji po kunach",
         description: "Specjalistyczna naprawa izolacji uszkodzonej przez kuny. Zabezpieczenie przed ponownym wtargnięciem.",
         url: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
         type: "article",

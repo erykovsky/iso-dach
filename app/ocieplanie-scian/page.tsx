@@ -13,7 +13,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ocieplanie Ścian Zewnętrznych | ISO-DACH",
+  title: "Ocieplanie ścian zewnętrznych",
   description:
     "Profesjonalne ocieplanie ścian zewnętrznych wełną celulozową i styropianem. Zmniejsz straty ciepła o 30%, obniż rachunki za ogrzewanie. Bezpłatna wycena w 24h. Działamy w woj. zachodniopomorskim.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/ocieplanie-scian",
   },
   openGraph: {
-    title: "Ocieplanie Ścian Zewnętrznych | ISO-DACH",
+    title: "Ocieplanie ścian zewnętrznych",
     description:
       "Profesjonalne ocieplanie ścian. Zmniejsz straty ciepła o 30%. Bezpłatna wycena.",
     url: "https://iso-dach.eu/ocieplanie-scian",

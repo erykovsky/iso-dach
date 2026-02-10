@@ -3,7 +3,7 @@ import { BlogList } from "./blog-list";
 import { getSortedBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-    title: "Blog | ISO-DACH",
+    title: "Blog",
     description:
         "Artykuły i porady na temat ocieplania, termomodernizacji i efektywności energetycznej budynków.",
     alternates: {

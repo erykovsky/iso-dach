@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ocieplanie stropodachu | ISO-DACH",
+  title: "Ocieplanie stropodachu",
   description:
     "Profesjonalne ocieplanie stropodachu metodą wdmuchiwania. Skuteczna izolacja termiczna, która zapobiega ucieczce ciepła przez dach.",
   alternates: {

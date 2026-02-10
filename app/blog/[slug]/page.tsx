@@ -14,7 +14,7 @@ export async function generateMetadata({
 
     if (!post) {
         return {
-            title: "Artykuł nie znaleziony | ISO-DACH",
+            title: "Artykuł nie znaleziony",
             description:
                 "Przepraszamy, nie znaleziono artykułu o podanym adresie.",
         };

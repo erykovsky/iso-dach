@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Cennik | ISO-DACH",
+  title: "Cennik",
   description:
     "Cennik usług ocieplenia i izolacji. Sprawdź nasze konkurencyjne ceny i zamów bezpłatną wycenę.",
   alternates: {

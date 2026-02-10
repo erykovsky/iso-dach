@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle, Thermometer } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Badania termowizyjne | ISO-DACH",
+  title: "Badania termowizyjne",
   description:
     "Profesjonalne badania termowizyjne budynków. Wykrywamy mostki termiczne, straty ciepła i problemy z izolacją. Kompleksowa analiza efektywności energetycznej.",
   alternates: {

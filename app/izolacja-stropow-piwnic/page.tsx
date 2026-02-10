@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Izolacja stropów piwnic | ISO-DACH",
+  title: "Izolacja stropów piwnic",
   description:
     "Profesjonalna izolacja stropów piwnic. Kompleksowe rozwiązania poprawiające komfort cieplny domu, ograniczające straty energii i chroniące konstrukcję przed wilgocią.",
   alternates: {

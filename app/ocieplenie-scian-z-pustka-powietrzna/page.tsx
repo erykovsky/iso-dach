@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Ocieplenie ścian z pustką powietrzną | ISO-DACH",
+    title: "Ocieplenie ścian z pustką powietrzną",
     description:
         "Specjalistyczna metoda ocieplania ścian z pustką powietrzną poprzez wdmuchiwanie materiału izolacyjnego, bez konieczności ingerencji w elewację.",
     alternates: {
