@@ -112,9 +112,10 @@ export const HeroCarousel = () => {
                     alt={slide.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     priority={index === 0}
                     loading={index === 0 ? "eager" : "lazy"}
+                    quality={80}
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
                 </div>

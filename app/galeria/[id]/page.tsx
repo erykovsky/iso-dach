@@ -76,8 +76,9 @@ export default async function GalleryImagePage({
                             alt={`Realizacja ${categoryNameById[item.category]} - zdjęcie ${item.id}`}
                             fill
                             className="object-contain"
-                            sizes="(max-width: 768px) 92vw, (max-width: 1280px) 78vw, 1000px"
+                            sizes="(max-width: 768px) 92vw, (max-width: 1280px) 78vw, 900px"
                             priority
+                            quality={85}
                         />
                     </div>
                     

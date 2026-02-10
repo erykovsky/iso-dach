@@ -63,8 +63,10 @@ export function Gallery() {
                   src={item.image || "/placeholder.svg"}
                   alt={`Realizacja ${categoryNameById[item.category]} - ISO-DACH`}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  quality={75}
+                  loading="lazy"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/28 to-transparent" />
               </div>
