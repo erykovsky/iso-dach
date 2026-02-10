@@ -55,17 +55,15 @@ export const ContactForm = () => {
                 <form action={formAction}>
                     <div className="flex flex-col gap-4 sm:gap-6">
                         {/* Honeypot - ukryte pole przed botami */}
-                        <div className="hidden" aria-hidden="true">
-                            <label htmlFor="website" className="sr-only">Nie wypełniaj tego pola</label>
-                            <input
-                                id="website"
-                                type="text"
-                                name="website"
-                                tabIndex={-1}
-                                autoComplete="off"
-                                aria-hidden="true"
-                            />
-                        </div>
+                        <input
+                            type="text"
+                            name="website"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-label="Nie wypełniaj tego pola"
+                            className="absolute w-[1px] h-[1px] p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0"
+                            style={{ clip: 'rect(0, 0, 0, 0)', clipPath: 'inset(50%)' }}
+                        />
                         <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="name">Imię i nazwisko *</Label>
                             <Input

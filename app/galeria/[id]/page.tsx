@@ -22,20 +22,20 @@ export async function generateMetadata({
     const categoryName = categoryNameById[item.category];
 
     return {
-        title: `${categoryName} | ISO-DACH Galeria`,
-        description: `Realizacja ${categoryName.toLowerCase()} przez ISO-DACH. Profesjonalne izolacje budynków.`,
+        title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
+        description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH. Zobacz efekty naszej przy izolacjach budynków.`,
         alternates: {
             canonical: `https://www.iso-dach.eu/galeria/${id}`,
         },
         openGraph: {
-            title: `${categoryName} | ISO-DACH`,
-            description: `Realizacja ${categoryName.toLowerCase()} przez ISO-DACH.`,
+            title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
+            description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH.`,
             images: [
                 {
                     url: item.image,
                     width: 1200,
                     height: 630,
-                    alt: `Realizacja ${categoryName} - ISO-DACH`,
+                    alt: `Realizacja ${categoryName} - zdjęcie ${id} | ISO-DACH`,
                 },
             ],
         },

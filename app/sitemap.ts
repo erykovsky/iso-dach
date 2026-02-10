@@ -36,5 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  // Galeria - 8 zdjęć
+  const galleryRoutes: MetadataRoute.Sitemap = [1, 2, 3, 4, 5, 6, 7, 8].map((id) => ({
+    url: `${baseUrl}/galeria/${id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...galleryRoutes];
 }

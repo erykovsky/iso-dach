@@ -31,7 +31,7 @@ export default function IzolacjaStropowPiwnicPage() {
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-12 md:py-16">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <section className="marketing-section mb-14">
           <div className="relative h-64 md:h-96 marketing-image-frame">
             <Image
@@ -176,7 +176,7 @@ export default function IzolacjaStropowPiwnicPage() {
             <Link href="/kontakt">Bezpłatna konsultacja</Link>
           </Button>
         </section>
-      </main>
+      </div>
     </div>
   );
 }
