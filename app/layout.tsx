@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { OrganizationSchema } from "@/components/schema/organization-schema";
 import { LocalBusinessSchema } from "@/components/schema/local-business-schema";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.iso-dach.eu"),
@@ -88,6 +89,41 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://www.iso-dach.eu" />
         <link rel="dns-prefetch" href="https://www.iso-dach.eu" />
+        <Script
+          id="google-consent-mode"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'wait_for_update': 500
+              });
+              
+              // Check for stored consent and update if exists
+              try {
+                const consent = localStorage.getItem('cookieConsent');
+                if (consent) {
+                  const parsed = JSON.parse(consent);
+                  if (parsed && typeof parsed.analytics === 'boolean' && typeof parsed.marketing === 'boolean') {
+                    gtag('consent', 'update', {
+                      'ad_storage': parsed.marketing ? 'granted' : 'denied',
+                      'ad_user_data': parsed.marketing ? 'granted' : 'denied',
+                      'ad_personalization': parsed.marketing ? 'granted' : 'denied',
+                      'analytics_storage': parsed.analytics ? 'granted' : 'denied'
+                    });
+                  }
+                }
+              } catch (e) {
+                // Silent fail if localStorage not available
+              }
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">
         <OrganizationSchema />

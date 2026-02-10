@@ -78,6 +78,20 @@ export const shouldShowCookieBanner = (): boolean => {
   return !isCookieConsentCurrent(getStoredCookieConsent());
 };
 
+export const updateGoogleConsent = (analytics: boolean, marketing: boolean) => {
+  if (!isBrowser()) return;
+
+  const gtag = (window as Record<string, unknown>).gtag;
+  if (typeof gtag === "function") {
+    gtag("consent", "update", {
+      ad_storage: marketing ? "granted" : "denied",
+      ad_user_data: marketing ? "granted" : "denied",
+      ad_personalization: marketing ? "granted" : "denied",
+      analytics_storage: analytics ? "granted" : "denied",
+    });
+  }
+};
+
 export const saveCookieConsent = (input: CookieConsentInput): CookieConsent => {
   if (!isBrowser()) {
     return toConsentRecord(input);
@@ -86,6 +100,10 @@ export const saveCookieConsent = (input: CookieConsentInput): CookieConsent => {
   const consent = toConsentRecord(input);
   localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(consent));
   localStorage.removeItem(LEGACY_COOKIE_POLICY_KEY);
+
+  // Update Google Consent Mode
+  updateGoogleConsent(input.analytics, input.marketing);
+
   window.dispatchEvent(new Event(COOKIE_CONSENT_UPDATED_EVENT));
 
   return consent;
