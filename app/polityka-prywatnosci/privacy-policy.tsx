@@ -205,7 +205,7 @@ export default function PrivacyPolicy() {
 
                     <section className="mb-8">
                         <h2 className="text-2xl font-semibold text-primary mb-4">
-                            10. Zmiany Polityki Prywatności
+                            10. Zmiany polityki prywatności
                         </h2>
                         <p className="mb-4">
                             Administrator zastrzega sobie prawo do zmiany niniejszej Polityki

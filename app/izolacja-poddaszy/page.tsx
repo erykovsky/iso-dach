@@ -13,7 +13,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Izolacja Poddaszy Wełną Celulozową | ISO-DACH",
+  title: "Izolacja poddaszy wełną celulozową | ISO-DACH",
   description:
     "Profesjonalna izolacja poddaszy wełną celulozową. Zmniejsz straty ciepła przez dach o 30-40%, obniż koszty ogrzewania. Ekologiczny materiał z recyklingu. Bezpłatna wycena. Szczecin i okolice.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/izolacja-poddaszy",
   },
   openGraph: {
-    title: "Izolacja Poddaszy Wełną Celulozową | ISO-DACH",
+    title: "Izolacja poddaszy wełną celulozową | ISO-DACH",
     description: "Profesjonalna izolacja poddaszy. Oszczędność energii do 40%. Bezpłatna wycena.",
     url: "https://iso-dach.eu/izolacja-poddaszy",
     type: "article",
