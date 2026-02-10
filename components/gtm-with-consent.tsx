@@ -6,6 +6,7 @@ import {
   COOKIE_CONSENT_STORAGE_KEY,
   COOKIE_CONSENT_UPDATED_EVENT,
   getStoredCookieConsent,
+  isCookieConsentCurrent,
 } from "@/lib/cookie-consent";
 
 type GTMWithConsentProps = {
@@ -13,12 +14,16 @@ type GTMWithConsentProps = {
 };
 
 export const GTMWithConsent = ({ gtmId }: GTMWithConsentProps) => {
-  const [canLoadAnalytics, setCanLoadAnalytics] = useState(false);
+  const [canLoadTracking, setCanLoadTracking] = useState(false);
 
   useEffect(() => {
     const syncConsent = () => {
       const consent = getStoredCookieConsent();
-      setCanLoadAnalytics(Boolean(consent?.analytics));
+      const canTrack =
+        isCookieConsentCurrent(consent) &&
+        Boolean(consent.analytics || consent.marketing);
+
+      setCanLoadTracking(canTrack);
     };
 
     const onStorage = (event: StorageEvent) => {
@@ -36,7 +41,7 @@ export const GTMWithConsent = ({ gtmId }: GTMWithConsentProps) => {
     };
   }, []);
 
-  if (!canLoadAnalytics) return null;
+  if (!gtmId || !canLoadTracking) return null;
 
   return <GoogleTagManager gtmId={gtmId} />;
 };

@@ -6,6 +6,7 @@ import { GTMWithConsent } from "@/components/gtm-with-consent";
 import { Toaster } from "@/components/ui/sonner";
 import { OrganizationSchema } from "@/components/schema/organization-schema";
 import { LocalBusinessSchema } from "@/components/schema/local-business-schema";
+import { COOKIE_CONSENT_VERSION } from "@/lib/cookie-consent";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
@@ -84,6 +85,8 @@ export default function RootLayout({
   children: React.ReactNode;
   modal?: React.ReactNode;
 }>) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html lang="pl">
       <head>
@@ -100,7 +103,10 @@ export default function RootLayout({
                 'ad_storage': 'denied',
                 'ad_user_data': 'denied',
                 'ad_personalization': 'denied',
+                'personalization_storage': 'denied',
                 'analytics_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted',
                 'wait_for_update': 500
               });
               
@@ -109,11 +115,18 @@ export default function RootLayout({
                 const consent = localStorage.getItem('cookieConsent');
                 if (consent) {
                   const parsed = JSON.parse(consent);
-                  if (parsed && typeof parsed.analytics === 'boolean' && typeof parsed.marketing === 'boolean') {
+                  if (
+                    parsed &&
+                    parsed.version === ${COOKIE_CONSENT_VERSION} &&
+                    parsed.necessary === true &&
+                    typeof parsed.analytics === 'boolean' &&
+                    typeof parsed.marketing === 'boolean'
+                  ) {
                     gtag('consent', 'update', {
                       'ad_storage': parsed.marketing ? 'granted' : 'denied',
                       'ad_user_data': parsed.marketing ? 'granted' : 'denied',
                       'ad_personalization': parsed.marketing ? 'granted' : 'denied',
+                      'personalization_storage': parsed.marketing ? 'granted' : 'denied',
                       'analytics_storage': parsed.analytics ? 'granted' : 'denied'
                     });
                   }
@@ -128,7 +141,7 @@ export default function RootLayout({
       <body className="antialiased">
         <OrganizationSchema />
         <LocalBusinessSchema />
-        <GTMWithConsent gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+        {gtmId ? <GTMWithConsent gtmId={gtmId} /> : null}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"

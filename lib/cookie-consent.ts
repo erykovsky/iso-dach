@@ -1,6 +1,6 @@
 export const COOKIE_CONSENT_STORAGE_KEY = "cookieConsent";
 export const LEGACY_COOKIE_POLICY_KEY = "cookiePolicyAccepted";
-export const COOKIE_CONSENT_VERSION = 1;
+export const COOKIE_CONSENT_VERSION = 2;
 export const COOKIE_CONSENT_UPDATED_EVENT = "cookie-consent-updated";
 
 export type CookieConsent = {
@@ -55,14 +55,10 @@ export const getStoredCookieConsent = (): CookieConsent | null => {
   }
 
   const legacyAccepted = localStorage.getItem(LEGACY_COOKIE_POLICY_KEY);
-  if (legacyAccepted === "true") {
-    return {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      version: COOKIE_CONSENT_VERSION,
-      updatedAt: "",
-    };
+  if (legacyAccepted) {
+    // Legacy value was binary and could incorrectly auto-enable optional cookies.
+    // We remove it and force explicit consent using the current consent model.
+    localStorage.removeItem(LEGACY_COOKIE_POLICY_KEY);
   }
 
   return null;
@@ -70,7 +66,7 @@ export const getStoredCookieConsent = (): CookieConsent | null => {
 
 export const isCookieConsentCurrent = (
   consent: CookieConsent | null
-): boolean => {
+): consent is CookieConsent => {
   return Boolean(consent && consent.version === COOKIE_CONSENT_VERSION);
 };
 
@@ -92,6 +88,70 @@ export const updateGoogleConsent = (analytics: boolean, marketing: boolean) => {
   }
 };
 
+const ANALYTICS_COOKIE_PREFIXES = [
+  "_ga",
+  "_gid",
+  "_gat",
+  "_gac_",
+  "_gcl_",
+  "_dc_gtm_",
+  "_gtm_",
+];
+
+const MARKETING_COOKIE_PREFIXES = [
+  "_fbp",
+  "_fbc",
+];
+
+const deleteCookie = (name: string) => {
+  const expires = "Thu, 01 Jan 1970 00:00:00 GMT";
+  const hostname = window.location.hostname;
+  const parts = hostname.split(".");
+  const domains = new Set<string>([hostname, `.${hostname}`]);
+
+  if (parts.length >= 2) {
+    const rootDomain = parts.slice(-2).join(".");
+    domains.add(rootDomain);
+    domains.add(`.${rootDomain}`);
+  }
+
+  document.cookie = `${name}=; expires=${expires}; path=/; SameSite=Lax`;
+  document.cookie = `${name}=; expires=${expires}; path=/; SameSite=None; Secure`;
+
+  domains.forEach((domain) => {
+    document.cookie = `${name}=; expires=${expires}; path=/; domain=${domain}; SameSite=Lax`;
+    document.cookie = `${name}=; expires=${expires}; path=/; domain=${domain}; SameSite=None; Secure`;
+  });
+};
+
+const clearOptionalCookies = ({
+  clearAnalytics,
+  clearMarketing,
+}: {
+  clearAnalytics: boolean;
+  clearMarketing: boolean;
+}) => {
+  if (!isBrowser()) return;
+
+  const prefixes = [
+    ...(clearAnalytics ? ANALYTICS_COOKIE_PREFIXES : []),
+    ...(clearMarketing ? MARKETING_COOKIE_PREFIXES : []),
+  ];
+
+  if (prefixes.length === 0) return;
+
+  const cookieNames = document.cookie
+    .split(";")
+    .map((entry) => entry.trim().split("=")[0])
+    .filter(Boolean);
+
+  cookieNames.forEach((cookieName) => {
+    if (prefixes.some((prefix) => cookieName.startsWith(prefix))) {
+      deleteCookie(cookieName);
+    }
+  });
+};
+
 export const saveCookieConsent = (input: CookieConsentInput): CookieConsent => {
   if (!isBrowser()) {
     return toConsentRecord(input);
@@ -100,6 +160,11 @@ export const saveCookieConsent = (input: CookieConsentInput): CookieConsent => {
   const consent = toConsentRecord(input);
   localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(consent));
   localStorage.removeItem(LEGACY_COOKIE_POLICY_KEY);
+
+  clearOptionalCookies({
+    clearAnalytics: !input.analytics,
+    clearMarketing: !input.marketing,
+  });
 
   // Update Google Consent Mode
   updateGoogleConsent(input.analytics, input.marketing);
