@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description:
         "Polityka prywatności ISO-DACH. Informacje o zbieraniu, przetwarzaniu i ochronie danych osobowych Użytkowników strony internetowej ISO-DACH.",
     alternates: {
-        canonical: "https://www.iso-dach.eu/polityka-prywatnosci",
+        canonical: "https://iso-dach.eu/polityka-prywatnosci",
     },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Profesjonalne badania termowizyjne budynków. Wykrywamy mostki termiczne, straty ciepła i problemy z izolacją. Kompleksowa analiza efektywności energetycznej.",
   alternates: {
-    canonical: "https://www.iso-dach.eu/termowizja",
+    canonical: "https://iso-dach.eu/termowizja",
   },
 };
 

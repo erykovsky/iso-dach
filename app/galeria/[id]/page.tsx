@@ -25,7 +25,7 @@ export async function generateMetadata({
         title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
         description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH. Zobacz efekty naszej przy izolacjach budynków.`,
         alternates: {
-            canonical: `https://www.iso-dach.eu/galeria/${id}`,
+            canonical: `https://iso-dach.eu/galeria/${id}`,
         },
         openGraph: {
             title: `${categoryName} - Realizacja ${id} | ISO-DACH`,
@@ -81,28 +81,28 @@ export default async function GalleryImagePage({
                             quality={85}
                         />
                     </div>
-                    
+
                     <div className="mt-8 max-w-3xl mx-auto">
                         <h2 className="text-xl font-semibold text-primary mb-4">
                             Szczegóły realizacji
                         </h2>
                         <p className="text-gray-700 mb-4">
-                            Prezentujemy efekt naszej pracy w kategorii: <strong>{categoryNameById[item.category]}</strong>. 
-                            Każdy projekt realizujemy z najwyższą starannością, wykorzystując sprawdzone technologie i materiały 
-                            najwyższej jakości. Dzięki wieloletniemu doświadczeniu i zespołowi wykwalifikowanych specjalistów 
+                            Prezentujemy efekt naszej pracy w kategorii: <strong>{categoryNameById[item.category]}</strong>.
+                            Każdy projekt realizujemy z najwyższą starannością, wykorzystując sprawdzone technologie i materiały
+                            najwyższej jakości. Dzięki wieloletniemu doświadczeniu i zespołowi wykwalifikowanych specjalistów
                             możemy zagwarantować trwały efekt i pełne zadowolenie klienta.
                         </p>
                         <p className="text-gray-700 mb-4">
-                            Nasze realizacje obejmują izolację termiczną i akustyczną poddaszy, ścian, stropów oraz piwnic. 
-                            Współpracujemy zarówno z klientami indywidualnymi, jak i firmami oraz instytucjami publicznymi. 
+                            Nasze realizacje obejmują izolację termiczną i akustyczną poddaszy, ścian, stropów oraz piwnic.
+                            Współpracujemy zarówno z klientami indywidualnymi, jak i firmami oraz instytucjami publicznymi.
                             Każdy projekt poprzedzamy szczegółową analizą i bezpłatną wyceną.
                         </p>
                         <p className="text-gray-700">
-                            Jeśli chcesz uzyskać więcej informacji o tej lub podobnych realizacjach, skontaktuj się z nami. 
-                            Chętnie odpowiemy na wszystkie pytania i przygotujemy indywidualną ofertę dostosowaną do 
+                            Jeśli chcesz uzyskać więcej informacji o tej lub podobnych realizacjach, skontaktuj się z nami.
+                            Chętnie odpowiemy na wszystkie pytania i przygotujemy indywidualną ofertę dostosowaną do
                             Twoich potrzeb i oczekiwań.
                         </p>
-                        
+
                         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                             <Button size="lg" asChild>
                                 <Link href="/kontakt">Bezpłatna wycena</Link>

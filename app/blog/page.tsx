@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description:
         "Artykuły i porady na temat ocieplania, termomodernizacji i efektywności energetycznej budynków.",
     alternates: {
-        canonical: "https://www.iso-dach.eu/blog",
+        canonical: "https://iso-dach.eu/blog",
     },
 };
 

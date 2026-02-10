@@ -11,7 +11,7 @@ export function WebPageSchema({
   title,
   description,
   url,
-  image = "https://www.iso-dach.eu/img/9.jpg",
+  image = "https://iso-dach.eu/img/9.jpg",
   datePublished = "2024-01-01",
   dateModified = new Date().toISOString().split("T")[0],
 }: WebPageSchemaProps) {
@@ -29,7 +29,7 @@ export function WebPageSchema({
       name: "ISO-DACH",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.iso-dach.eu/logo.svg",
+        url: "https://iso-dach.eu/logo.svg",
       },
     },
     breadcrumb: {
@@ -39,7 +39,7 @@ export function WebPageSchema({
           "@type": "ListItem",
           position: 1,
           name: "Strona główna",
-          item: "https://www.iso-dach.eu",
+          item: "https://iso-dach.eu",
         },
       ],
     },

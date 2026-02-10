@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "firma ociepleniowa kontakt",
   ],
   alternates: {
-    canonical: "https://www.iso-dach.eu/kontakt",
+    canonical: "https://iso-dach.eu/kontakt",
   },
   openGraph: {
     title: "Kontakt | ISO-DACH - Bezpłatna wycena",
     description: "Skontaktuj się z nami. Bezpłatna wycena w 24h. Tel: +48 660 441 941",
-    url: "https://www.iso-dach.eu/kontakt",
+    url: "https://iso-dach.eu/kontakt",
     type: "website",
     images: [
       {

@@ -7,9 +7,9 @@ import { WebPageSchema } from "@/components/schema/webpage-schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: "https://www.iso-dach.eu",
-  },
+    alternates: {
+        canonical: "https://iso-dach.eu",
+    },
 };
 
 export default function Home() {
@@ -18,17 +18,17 @@ export default function Home() {
             <WebPageSchema
                 title="Izolacje dachów, stropów i piwnic – firma ISO-DACH"
                 description="Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%."
-                url="https://www.iso-dach.eu"
+                url="https://iso-dach.eu"
             />
-        <div className="flex flex-col min-h-screen">
-            <div className="grow">
-                <HeroCarousel />
-                <ServicesSection />
-                <BenefitsSection />
-                <PartnersSection />
-                <ContactSection />
+            <div className="flex flex-col min-h-screen">
+                <div className="grow">
+                    <HeroCarousel />
+                    <ServicesSection />
+                    <BenefitsSection />
+                    <PartnersSection />
+                    <ContactSection />
+                </div>
             </div>
-        </div>
         </>
     );
 }

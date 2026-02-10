@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     description:
         "Specjalistyczna usługa naprawy i odtworzenia izolacji uszkodzonej przez kuny. Zabezpieczamy przed ponownym wtargnięciem tych zwierząt.",
     alternates: {
-        canonical: "https://www.iso-dach.eu/naprawa-izolacji-po-kunach",
+        canonical: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
     },
     openGraph: {
         title: "Naprawa izolacji po kunach | ISO-DACH",
         description: "Specjalistyczna naprawa izolacji uszkodzonej przez kuny. Zabezpieczenie przed ponownym wtargnięciem.",
-        url: "https://www.iso-dach.eu/naprawa-izolacji-po-kunach",
+        url: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
         type: "article",
         images: [
             {
@@ -40,7 +40,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
             <VideoObjectSchema
                 title="Naprawa izolacji po kunach - zabezpieczenie poddasza"
                 description="Materiał wideo pokazujący proces naprawy izolacji uszkodzonej przez kuny oraz metody skutecznego zabezpieczenia poddasza."
-                thumbnailUrl="https://www.iso-dach.eu/img/9.jpg"
+                thumbnailUrl="https://iso-dach.eu/img/9.jpg"
                 uploadDate="2024-01-15"
                 videoUrl="https://www.youtube.com/watch?v=aonxLOo1Poo"
                 embedUrl="https://www.youtube-nocookie.com/embed/aonxLOo1Poo"

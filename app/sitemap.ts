@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getSortedBlogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.iso-dach.eu";
+  const baseUrl = "https://iso-dach.eu";
 
   const routes = [
     "",

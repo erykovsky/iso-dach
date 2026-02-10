@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     "ocieplanie Szczecin",
   ],
   alternates: {
-    canonical: "https://www.iso-dach.eu/o-nas",
+    canonical: "https://iso-dach.eu/o-nas",
   },
   openGraph: {
     title: "O nas | ISO-DACH - Profesjonalne Izolacje",
     description: "Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków.",
-    url: "https://www.iso-dach.eu/o-nas",
+    url: "https://iso-dach.eu/o-nas",
     type: "website",
     images: [
       {

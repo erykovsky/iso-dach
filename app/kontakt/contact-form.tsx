@@ -94,7 +94,7 @@ export const ContactForm = () => {
                                 id="phone"
                                 name="phone"
                                 type="tel"
-                                placeholder="123 456 789"
+                                placeholder="123456789"
                                 className="h-9 px-3 md:h-10 md:px-3.5"
                                 required
                                 defaultValue={state.phone || ""}

@@ -4,8 +4,8 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "ISO-DACH",
     alternateName: "ISO DACH Dariusz Jagodziński",
-    url: "https://www.iso-dach.eu",
-    logo: "https://www.iso-dach.eu/logo.svg",
+    url: "https://iso-dach.eu",
+    logo: "https://iso-dach.eu/logo.svg",
     description:
       "Profesjonalne usługi ocieplania budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic.",
     foundingDate: "2010",

@@ -32,7 +32,7 @@ export function VideoObjectSchema({
       name: "ISO-DACH",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.iso-dach.eu/logo.png",
+        url: "https://iso-dach.eu/logo.png",
       },
     },
   };

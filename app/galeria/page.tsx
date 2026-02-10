@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Zobacz nasze realizacje ocieplania i termomodernizacji. Profesjonalne izolacje poddaszy, ścian i stropodachów.",
   alternates: {
-    canonical: "https://www.iso-dach.eu/galeria",
+    canonical: "https://iso-dach.eu/galeria",
   },
 };
 

@@ -24,13 +24,13 @@ export async function generateMetadata({
         title: `${post.title} | ISO-DACH Blog`,
         description: post.excerpt,
         alternates: {
-            canonical: `https://www.iso-dach.eu/blog/${post.slug}`,
+            canonical: `https://iso-dach.eu/blog/${post.slug}`,
         },
         openGraph: {
             type: "article",
             title: post.title,
             description: post.excerpt,
-            url: `https://www.iso-dach.eu/blog/${post.slug}`,
+            url: `https://iso-dach.eu/blog/${post.slug}`,
             images: post.image ? [post.image] : undefined,
         },
         twitter: {

@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "zachodniopomorskie",
   ],
   alternates: {
-    canonical: "https://www.iso-dach.eu/izolacja-poddaszy",
+    canonical: "https://iso-dach.eu/izolacja-poddaszy",
   },
   openGraph: {
     title: "Izolacja Poddaszy Wełną Celulozową | ISO-DACH",
     description: "Profesjonalna izolacja poddaszy. Oszczędność energii do 40%. Bezpłatna wycena.",
-    url: "https://www.iso-dach.eu/izolacja-poddaszy",
+    url: "https://iso-dach.eu/izolacja-poddaszy",
     type: "article",
     images: [
       {

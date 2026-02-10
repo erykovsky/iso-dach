@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Profesjonalne ocieplanie stropodachu metodą wdmuchiwania. Skuteczna izolacja termiczna, która zapobiega ucieczce ciepła przez dach.",
   alternates: {
-    canonical: "https://www.iso-dach.eu/ocieplanie-stropodachu",
+    canonical: "https://iso-dach.eu/ocieplanie-stropodachu",
   },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
         "Specjalistyczna metoda ocieplania ścian z pustką powietrzną poprzez wdmuchiwanie materiału izolacyjnego, bez konieczności ingerencji w elewację.",
     alternates: {
-        canonical: "https://www.iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna",
+        canonical: "https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna",
     },
 };
 

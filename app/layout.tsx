@@ -11,7 +11,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.iso-dach.eu"),
+  metadataBase: new URL("https://iso-dach.eu"),
   title: {
     default: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
     template: "%s | ISO-DACH",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pl_PL",
-    url: "https://www.iso-dach.eu",
+    url: "https://iso-dach.eu",
     siteName: "ISO-DACH",
     title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
     description:
@@ -90,8 +90,8 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        <link rel="preconnect" href="https://www.iso-dach.eu" />
-        <link rel="dns-prefetch" href="https://www.iso-dach.eu" />
+        <link rel="preconnect" href="https://iso-dach.eu" />
+        <link rel="dns-prefetch" href="https://iso-dach.eu" />
         <Script
           id="google-consent-mode"
           strategy="beforeInteractive"
