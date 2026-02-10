@@ -9,6 +9,11 @@ const isDevelopment = process.env.NODE_ENV === "development";
 export type ContactFormState = {
     status: "idle" | "success" | "error";
     message: string;
+    name?: string;
+    phone?: string;
+    email?: string;
+    consentPrivacy?: boolean;
+    consentMarketing?: boolean;
 };
 
 const getFormValue = (value: FormDataEntryValue | null): string =>
@@ -89,7 +94,7 @@ export async function sendWycenaAction(
 
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
-        port: Number.parseInt(process.env.EMAIL_PORT || "587"),
+        port: Number.parseInt(process.env.EMAIL_PORT || "465"),
         secure: true,
         auth: {
             user: process.env.EMAIL_USER,
