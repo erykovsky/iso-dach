@@ -58,7 +58,9 @@ export const ContactForm = () => {
                 });
             } else if (result.status === "error") {
                 toast.error("Nie udało się wysłać wiadomości", {
-                    description: "Spróbuj ponownie za chwilę albo zadzwoń do nas.",
+                    description:
+                        result.message ||
+                        "Spróbuj ponownie za chwilę albo zadzwoń do nas.",
                 });
             }
 
