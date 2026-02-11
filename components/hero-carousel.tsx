@@ -29,7 +29,6 @@ const slides = [
 
 export const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const isLcpSlide = currentSlide === 0;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -111,9 +110,9 @@ export const HeroCarousel = () => {
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                  priority={isLcpSlide}
-                  loading={isLcpSlide ? "eager" : "lazy"}
-                  fetchPriority={isLcpSlide ? "high" : "auto"}
+                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   quality={70}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
