@@ -97,7 +97,7 @@ export const ServicesSection = () => {
               </p>
 
               <Link
-                href={service.link}
+                href={service.link} prefetch={false}
                 className="mt-6 inline-flex items-center text-sm font-semibold text-secondary-foreground transition-colors hover:text-secondary"
               >
                 Dowiedz się więcej

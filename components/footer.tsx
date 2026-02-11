@@ -71,7 +71,7 @@ export const Footer = () => {
                 { label: "Polityka prywatności", href: "/polityka-prywatnosci" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="hover:text-[#90EE90]">
+                  <Link href={item.href} prefetch={false} className="hover:text-[#90EE90]">
                     {item.label}
                   </Link>
                 </li>

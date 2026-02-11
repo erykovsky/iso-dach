@@ -88,8 +88,6 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        <link rel="preconnect" href="https://iso-dach.eu" />
-        <link rel="dns-prefetch" href="https://iso-dach.eu" />
         <Script
           id="google-consent-mode"
           strategy="beforeInteractive"

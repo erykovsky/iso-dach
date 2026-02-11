@@ -10,18 +10,21 @@ const cspHeader = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https:",
-  "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
-  "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+  "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://analytics.google.com https://region1.analytics.google.com",
+  "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com",
 ].join("; ");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   turbopack: {
     root: process.cwd(),
   },
   images: {
     formats: ["image/webp", "image/avif"],
-    deviceSizes: [320, 420, 640, 750, 828, 960],
+    deviceSizes: [320, 420, 640, 750, 828],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     qualities: [70, 75, 85],
   },

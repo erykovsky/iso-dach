@@ -110,8 +110,6 @@ export default function TermowizjaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  loading="eager"
-                  fetchPriority="high"
                   quality={70}
                 />
               </div>

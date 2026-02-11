@@ -145,8 +145,6 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  loading="eager"
-                  fetchPriority="high"
                   quality={70}
                 />
               </div>
@@ -283,9 +281,7 @@ export default function AboutPage() {
                     fill
                     className="object-contain p-2"
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                    loading="eager"
-                    fetchPriority="high"
+                    loading="lazy"
                   />
                 </div>
               </article>

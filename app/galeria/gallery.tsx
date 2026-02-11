@@ -57,6 +57,7 @@ export function Gallery() {
               <Link
                 key={item.id}
                 href={`/galeria/${item.id}`}
+                prefetch={false}
                 scroll={false}
                 className="group relative block overflow-hidden rounded-xl border border-primary/12 bg-white shadow-[0_14px_30px_-24px_rgba(75,0,18,0.72)]"
               >
@@ -70,9 +71,8 @@ export function Gallery() {
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    priority={index < 3}
-                    loading={index < 3 ? "eager" : "lazy"}
-                    fetchPriority={index < 3 ? "high" : "auto"}
+                    priority={index === 0}
+                    decoding="async"
                     quality={70}
                   />
                 </div>
@@ -95,7 +95,7 @@ export function Gallery() {
             Skontaktuj się z nami i umów bezpłatną konsultację.
           </p>
           <Button size="lg" asChild>
-            <Link href="/kontakt">Skontaktuj się z nami</Link>
+            <Link href="/kontakt" prefetch={false}>Skontaktuj się z nami</Link>
           </Button>
         </div>
       </section>

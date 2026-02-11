@@ -114,8 +114,6 @@ export default function TermomodernizacjaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  loading="eager"
-                  fetchPriority="high"
                   quality={70}
                 />
               </div>

@@ -128,8 +128,6 @@ export default function IzolacjaStropowPiwnicPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  loading="eager"
-                  fetchPriority="high"
                   quality={70}
                 />
               </div>
@@ -226,9 +224,7 @@ export default function IzolacjaStropowPiwnicPage() {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      priority={index < 2}
-                      loading={index < 2 ? "eager" : "lazy"}
-                      fetchPriority={index < 2 ? "high" : "auto"}
+                      loading="lazy"
                       quality={70}
                     />
                   </div>

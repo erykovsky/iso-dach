@@ -68,7 +68,7 @@ export default async function GalleryImagePage({
             <section className="container mx-auto px-4 py-8 md:py-12">
                 <div className="mb-6">
                     <Button variant="outline" asChild>
-                        <Link href="/galeria">Powrót do galerii</Link>
+                        <Link href="/galeria" prefetch={false}>Powrót do galerii</Link>
                     </Button>
                 </div>
 
@@ -87,8 +87,6 @@ export default async function GalleryImagePage({
                             className="object-contain"
                             sizes="(max-width: 768px) 92vw, (max-width: 1280px) 78vw, 900px"
                             priority
-                            loading="eager"
-                            fetchPriority="high"
                             quality={70}
                         />
                     </div>
@@ -96,14 +94,14 @@ export default async function GalleryImagePage({
                     <nav className="mt-6 flex flex-wrap items-center justify-center gap-3">
                         {adjacentItems.previous ? (
                             <Button variant="outline" asChild>
-                                <Link href={`/galeria/${adjacentItems.previous.id}`}>
+                                <Link href={`/galeria/${adjacentItems.previous.id}`} prefetch={false}>
                                     Poprzednie zdjęcie
                                 </Link>
                             </Button>
                         ) : null}
                         {adjacentItems.next ? (
                             <Button variant="outline" asChild>
-                                <Link href={`/galeria/${adjacentItems.next.id}`}>
+                                <Link href={`/galeria/${adjacentItems.next.id}`} prefetch={false}>
                                     Następne zdjęcie
                                 </Link>
                             </Button>
@@ -133,10 +131,10 @@ export default async function GalleryImagePage({
 
                         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                             <Button size="lg" asChild>
-                                <Link href="/kontakt">Bezpłatna wycena</Link>
+                                <Link href="/kontakt" prefetch={false}>Bezpłatna wycena</Link>
                             </Button>
                             <Button size="lg" variant="outline" asChild>
-                                <Link href="/galeria">Zobacz więcej realizacji</Link>
+                                <Link href="/galeria" prefetch={false}>Zobacz więcej realizacji</Link>
                             </Button>
                         </div>
                     </div>

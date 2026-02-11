@@ -115,6 +115,7 @@ export function BlogList({
                                             ? "/blog"
                                             : `/blog/kategoria/${category.id}`
                                     }
+                                    prefetch={false}
                                     className={`${
                                         activeCategory === category.id
                                             ? "pill-filter-active"
@@ -135,6 +136,7 @@ export function BlogList({
                             >
                                 <Link
                                     href={`/blog/${post.slug}`}
+                                    prefetch={false}
                                     className="group block"
                                 >
                                     <div className="relative h-48 overflow-hidden">
@@ -144,9 +146,8 @@ export function BlogList({
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                                            priority={index < 4}
-                                            loading={index < 4 ? "eager" : "lazy"}
-                                            fetchPriority={index < 4 ? "high" : "auto"}
+                                            priority={index === 0}
+                                            decoding="async"
                                             quality={70}
                                         />
                                         <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/35 to-transparent" />
@@ -166,7 +167,7 @@ export function BlogList({
                                         </span>
                                     </div>
                                     <h2 className="mb-3 text-xl font-semibold hover:text-primary transition-colors">
-                                        <Link href={`/blog/${post.slug}`}>
+                                        <Link href={`/blog/${post.slug}`} prefetch={false}>
                                             {post.title}
                                         </Link>
                                     </h2>
@@ -178,7 +179,7 @@ export function BlogList({
                                         variant="outline"
                                         className="mt-auto w-full border-primary/20 hover:bg-primary/5"
                                     >
-                                        <Link href={`/blog/${post.slug}`}>
+                                        <Link href={`/blog/${post.slug}`} prefetch={false}>
                                             Czytaj więcej
                                         </Link>
                                     </Button>

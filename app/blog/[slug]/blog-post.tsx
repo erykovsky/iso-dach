@@ -218,8 +218,6 @@ export function BlogPost({ post }: BlogPostProps) {
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 768px"
                                 priority
-                                loading="eager"
-                                fetchPriority="high"
                                 quality={70}
                             />
                         </div>

@@ -29,6 +29,7 @@ const slides = [
 
 export const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isLcpSlide = currentSlide === 0;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -66,7 +67,7 @@ export const HeroCarousel = () => {
 
             <div className="reveal-up reveal-delay-3 mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
               <Link
-                prefetch
+                prefetch={false}
                 href="/kontakt"
                 className="brand-focus inline-flex items-center justify-center rounded-full border border-[#32CD32] bg-[#32CD32] px-7 py-3.5 text-lg font-semibold text-[#123100] shadow-[0_20px_32px_-20px_rgba(50,205,50,0.95)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#44d944]"
               >
@@ -110,9 +111,9 @@ export const HeroCarousel = () => {
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                  priority
-                  loading="eager"
-                  fetchPriority="high"
+                  priority={isLcpSlide}
+                  loading={isLcpSlide ? "eager" : "lazy"}
+                  fetchPriority={isLcpSlide ? "high" : "auto"}
                   quality={70}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />

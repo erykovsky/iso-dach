@@ -152,7 +152,7 @@ export const Header = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
         <Link
           href="/"
-          prefetch
+          prefetch={false}
           aria-label="ISO-DACH - strona główna"
           onClick={() => isMenuOpen && setIsMenuOpen(false)}
         >
@@ -207,7 +207,7 @@ export const Header = () => {
                 <Link
                   key={service.href}
                   href={service.href}
-                  prefetch
+                  prefetch={false}
                   role="menuitem"
                   data-service-link="true"
                   className="brand-focus block rounded-xl px-4 py-3 text-sm font-medium text-primary/85 hover:bg-primary/10 hover:text-primary"
@@ -219,19 +219,19 @@ export const Header = () => {
             </div>
           </div>
 
-          <Link href="/o-nas" prefetch className={desktopLinkClass}>
+          <Link href="/o-nas" prefetch={false} className={desktopLinkClass}>
             O nas
           </Link>
-          <Link href="/galeria" prefetch className={desktopLinkClass}>
+          <Link href="/galeria" prefetch={false} className={desktopLinkClass}>
             Galeria
           </Link>
-          <Link href="/blog" prefetch className={desktopLinkClass}>
+          <Link href="/blog" prefetch={false} className={desktopLinkClass}>
             Blog
           </Link>
-          <Link href="/cennik" prefetch className={desktopLinkClass}>
+          <Link href="/cennik" prefetch={false} className={desktopLinkClass}>
             Cennik
           </Link>
-          <Link href="/kontakt" prefetch className={desktopLinkClass}>
+          <Link href="/kontakt" prefetch={false} className={desktopLinkClass}>
             Kontakt
           </Link>
 
@@ -313,7 +313,7 @@ export const Header = () => {
                     <Link
                       key={service.href}
                       href={service.href}
-                      prefetch
+                      prefetch={false}
                       className="brand-focus block rounded-lg px-3 py-2 text-center text-sm font-medium text-primary/85 hover:bg-white"
                       onClick={() => {
                         setIsMobileServicesOpen(false);
@@ -329,7 +329,7 @@ export const Header = () => {
 
             <Link
               href="/o-nas"
-              prefetch
+              prefetch={false}
               className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
               onClick={toggleMenu}
             >
@@ -337,7 +337,7 @@ export const Header = () => {
             </Link>
             <Link
               href="/galeria"
-              prefetch
+              prefetch={false}
               className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
               onClick={toggleMenu}
             >
@@ -345,7 +345,7 @@ export const Header = () => {
             </Link>
             <Link
               href="/blog"
-              prefetch
+              prefetch={false}
               className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
               onClick={toggleMenu}
             >
@@ -353,7 +353,7 @@ export const Header = () => {
             </Link>
             <Link
               href="/cennik"
-              prefetch
+              prefetch={false}
               className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
               onClick={toggleMenu}
             >
@@ -361,7 +361,7 @@ export const Header = () => {
             </Link>
             <Link
               href="/kontakt"
-              prefetch
+              prefetch={false}
               className="rounded-xl px-4 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/10"
               onClick={toggleMenu}
             >

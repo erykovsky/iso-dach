@@ -32,9 +32,7 @@ export const PartnersSection = () => {
                 alt={`Logo ${partner.name}`}
                 width={180}
                 height={72}
-                priority={index < 2}
-                loading={index < 2 ? "eager" : "lazy"}
-                fetchPriority={index < 2 ? "high" : "auto"}
+                loading="lazy"
                 className="h-auto max-w-full object-contain grayscale transition duration-300 group-hover:scale-[1.03] group-hover:grayscale-0"
               />
             </article>
