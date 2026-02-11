@@ -3,6 +3,7 @@ import { ServicesSection } from "@/components/services-section";
 import { ContactSection } from "@/components/contact-section";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { PartnersSection } from "@/components/partners-section";
+import { ReviewsSection } from "@/components/reviews-section";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 import type { Metadata } from "next";
 
@@ -25,6 +26,7 @@ export default function Home() {
                     <HeroCarousel />
                     <ServicesSection />
                     <BenefitsSection />
+                    <ReviewsSection />
                     <PartnersSection />
                     <ContactSection />
                 </div>
