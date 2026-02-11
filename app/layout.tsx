@@ -4,8 +4,6 @@ import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
 import { GTMWithConsent } from "@/components/gtm-with-consent";
 import { Toaster } from "@/components/ui/sonner";
-import { OrganizationSchema } from "@/components/schema/organization-schema";
-import { LocalBusinessSchema } from "@/components/schema/local-business-schema";
 import { COOKIE_CONSENT_VERSION } from "@/lib/cookie-consent";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
@@ -17,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | ISO-DACH",
   },
   description:
-    "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%. Bezpłatna wycena. Działamy na terenie woj. zachodniopomorskiego.",
+    "Profesjonalne ocieplanie budynków wełną celulozową: poddasza, ściany, stropy i piwnice. Oszczędność energii do 40% i bezpłatna wycena.",
   keywords: [
     "izolacja poddasza",
     "ocieplanie ścian",
@@ -139,8 +137,6 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <OrganizationSchema />
-        <LocalBusinessSchema />
         {gtmId ? <GTMWithConsent gtmId={gtmId} /> : null}
         <a
           href="#main-content"

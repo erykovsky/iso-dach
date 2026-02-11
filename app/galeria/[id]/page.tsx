@@ -3,7 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { categoryNameById, getGalleryItemById } from "../gallery-data";
+import {
+    categoryNameById,
+    getAdjacentGalleryItems,
+    getGalleryItemById,
+} from "../gallery-data";
 
 export async function generateMetadata({
     params,
@@ -22,14 +26,18 @@ export async function generateMetadata({
     const categoryName = categoryNameById[item.category];
 
     return {
-        title: `${categoryName} - Realizacja ${id}`,
-        description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH. Zobacz efekty naszej przy izolacjach budynków.`,
+        title: `Realizacja ${id}: ${categoryName}`,
+        description: `Zdjęcie realizacji nr ${id} w kategorii ${categoryName.toLowerCase()}. Zobacz przykład wykonania izolacji przez zespół ISO-DACH i sprawdź jakość prac.`,
         alternates: {
             canonical: `https://iso-dach.eu/galeria/${id}`,
         },
+        robots: {
+            index: false,
+            follow: true,
+        },
         openGraph: {
-            title: `${categoryName} - Realizacja ${id}`,
-            description: `Zdjęcie ${id}: Realizacja ${categoryName.toLowerCase()} przez ISO-DACH.`,
+            title: `Realizacja ${id}: ${categoryName}`,
+            description: `Zdjęcie realizacji nr ${id} w kategorii ${categoryName.toLowerCase()} wykonanej przez ISO-DACH.`,
             images: [
                 {
                     url: item.image,
@@ -49,6 +57,7 @@ export default async function GalleryImagePage({
 }) {
     const { id } = await params;
     const item = getGalleryItemById(id);
+    const adjacentItems = item ? getAdjacentGalleryItems(item.id) : { previous: null, next: null };
 
     if (!item) {
         notFound();
@@ -78,9 +87,28 @@ export default async function GalleryImagePage({
                             className="object-contain"
                             sizes="(max-width: 768px) 92vw, (max-width: 1280px) 78vw, 900px"
                             priority
-                            quality={85}
+                            loading="eager"
+                            fetchPriority="high"
+                            quality={70}
                         />
                     </div>
+
+                    <nav className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                        {adjacentItems.previous ? (
+                            <Button variant="outline" asChild>
+                                <Link href={`/galeria/${adjacentItems.previous.id}`}>
+                                    Poprzednie zdjęcie
+                                </Link>
+                            </Button>
+                        ) : null}
+                        {adjacentItems.next ? (
+                            <Button variant="outline" asChild>
+                                <Link href={`/galeria/${adjacentItems.next.id}`}>
+                                    Następne zdjęcie
+                                </Link>
+                            </Button>
+                        ) : null}
+                    </nav>
 
                     <div className="mt-8 max-w-3xl mx-auto">
                         <h2 className="text-xl font-semibold text-primary mb-4">

@@ -103,25 +103,20 @@ export const HeroCarousel = () => {
                 aspectRatio: '4/3',
                 minHeight: 'clamp(200px, 50vw, 400px)'
               }}>
-              {slides.map((slide, index) => (
-                <div
-                  key={slide.title}
-                  className={`absolute inset-0 transition-opacity duration-700 ${currentSlide === index ? "opacity-100" : "opacity-0"
-                    }`}
-                >
-                  <Image
-                    src={slide.image || "/placeholder.svg"}
-                    alt={slide.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    priority={index === 0}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    quality={80}
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
-                </div>
-              ))}
+              <div key={slides[currentSlide].title} className="absolute inset-0 transition-opacity duration-500">
+                <Image
+                  src={slides[currentSlide].image || "/placeholder.svg"}
+                  alt={slides[currentSlide].title}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
+              </div>
 
               <div className="absolute bottom-4 right-4 z-20 flex gap-2">
                 <button

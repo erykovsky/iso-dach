@@ -3,9 +3,9 @@ import { Gallery } from "./gallery";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 
 export const metadata: Metadata = {
-  title: "Galeria realizacji",
+  title: "Galeria realizacji izolacji i ociepleń",
   description:
-    "Zobacz nasze realizacje ocieplania i termomodernizacji. Profesjonalne izolacje poddaszy, ścian i stropodachów.",
+    "Zobacz realizacje ocieplania i termomodernizacji wykonane przez ISO-DACH: poddasza, stropodachy, ściany z pustką oraz naprawy izolacji po kunach.",
   keywords: [
     "galeria realizacji ociepleń",
     "zdjęcia ocieplenia poddasza",

@@ -115,6 +115,9 @@ export default function OcieplanieStropodachuPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>
@@ -212,7 +215,7 @@ export default function OcieplanieStropodachuPage() {
               Realizacje ocieplania stropodachu
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
-              {stropodachGalleryImages.map((image) => (
+              {stropodachGalleryImages.map((image, index) => (
                 <article
                   key={image.src}
                   className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
@@ -224,6 +227,10 @@ export default function OcieplanieStropodachuPage() {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      priority={index < 2}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      fetchPriority={index < 2 ? "high" : "auto"}
+                      quality={70}
                     />
                   </div>
                 </article>

@@ -23,6 +23,18 @@
 | `/blog` | informacyjna | blog o ocieplaniu domu | porady izolacja, termomodernizacja poradnik | Polska |
 | `/galeria` | trust/proof | galeria realizacji ociepleń | zdjęcia ocieplenia poddasza, realizacje izolacji | zachodniopomorskie |
 
+## Wdrożone wpisy P3 (long-tail)
+
+| URL | Intencja | Primary keyword | Secondary keywords |
+|---|---|---|---|
+| `/blog/ile-kosztuje-ocieplenie-poddasza-celuloza-2026` | informacyjna/transakcyjna | ile kosztuje ocieplenie poddasza celulozą 2026 | cennik ocieplenia poddasza, koszt izolacji poddasza |
+| `/blog/jak-naprawic-izolacje-po-kunach-bez-zrywania-poddasza` | problem/solution | naprawa izolacji po kunach bez zrywania poddasza | kuna na poddaszu, naprawa ocieplenia |
+| `/blog/kiedy-warto-zrobic-badanie-termowizyjne-domu` | informacyjna | kiedy zrobić badanie termowizyjne domu | termowizja budynku, mostki termiczne |
+| `/blog/ocieplenie-scian-z-pustka-powietrzna-jak-to-wyglada` | informacyjna/transakcyjna | ocieplenie ścian z pustką powietrzną | termoizolacja ścian warstwowych, wdmuchiwanie izolacji |
+| `/blog/ocieplanie-stropodachu-w-starym-budynku-co-warto-wiedziec` | informacyjna/transakcyjna | ocieplanie stropodachu w starszym budynku | izolacja dachu płaskiego, modernizacja energetyczna |
+| `/blog/dofinansowanie-termomodernizacji-2026-jak-przygotowac-wniosek` | informacyjna | dofinansowanie termomodernizacji 2026 | jak przygotować wniosek, dokumenty do termomodernizacji |
+| `/blog/realizacja-ocieplenia-poddasza-zachodniopomorskie-jak-wyglada` | informacyjna/lokalna | realizacja ocieplenia poddasza zachodniopomorskie | ocieplenie poddasza Szczecin, etapy realizacji |
+
 ## Frazy long-tail do rozwijania w treściach (P3)
 - ile kosztuje ocieplenie poddasza celulozą w 2026
 - jak naprawić izolację po kunach bez zrywania całego poddasza

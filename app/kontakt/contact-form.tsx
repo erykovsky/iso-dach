@@ -117,9 +117,12 @@ export const ContactForm = () => {
                         </div>
                         <div className="grid gap-1.5 sm:gap-2">
                             <Label htmlFor="phone">Numer telefonu</Label>
+                            <Label htmlFor="phoneCountry" className="sr-only">
+                                Wybierz kraj numeru telefonu
+                            </Label>
                             <div className="flex h-9 overflow-hidden rounded-md border border-input bg-background md:h-10">
                                 <select
-                                    aria-label="Kraj numeru telefonu"
+                                    id="phoneCountry"
                                     className="h-full min-w-[96px] border-r border-input bg-muted/40 px-2 text-xs text-foreground outline-hidden sm:min-w-[112px] sm:px-3 sm:text-sm"
                                     value={phoneCountry}
                                     onChange={(event) => {
@@ -199,7 +202,6 @@ export const ContactForm = () => {
                         </div>
                         <div className="space-y-2.5 border-t border-primary/10 pt-3.5 sm:space-y-3 sm:pt-4">
                             <label
-                                htmlFor="consentPrivacy"
                                 className="flex items-start gap-2.5 text-[13px] leading-5 text-muted-foreground sm:gap-3 sm:text-sm"
                             >
                                 <input

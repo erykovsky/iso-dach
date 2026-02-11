@@ -5,25 +5,25 @@ export const BLOG_CATEGORIES = [
     id: "porady",
     name: "Porady",
     description:
-      "Praktyczne porady dotyczące ocieplania, izolacji i poprawy komfortu cieplnego budynku.",
+      "Praktyczne wskazówki dotyczące ocieplania, izolacji i poprawy komfortu cieplnego budynku, przygotowane na podstawie realnych realizacji.",
   },
   {
     id: "technologie",
     name: "Technologie",
     description:
-      "Nowoczesne technologie izolacyjne i sprawdzone metody stosowane w realizacjach ISO-DACH.",
+      "Nowoczesne technologie izolacyjne oraz sprawdzone metody wykonawcze, które stosujemy podczas prac na poddaszach, stropach i ścianach.",
   },
   {
     id: "dotacje",
     name: "Dotacje",
     description:
-      "Informacje o programach wsparcia i dofinansowaniach na prace ociepleniowe i termomodernizacyjne.",
+      "Informacje o dostępnych programach wsparcia i dofinansowaniach na ocieplenie, termomodernizację oraz poprawę efektywności energetycznej budynków.",
   },
   {
     id: "realizacje",
     name: "Realizacje",
     description:
-      "Przykładowe realizacje ociepleń i napraw izolacji wykonane przez zespół ISO-DACH.",
+      "Przykładowe realizacje ociepleń i napraw izolacji wykonane przez zespół ISO-DACH, wraz z opisem zakresu prac i zastosowanych rozwiązań.",
   },
 ] as const;
 
@@ -37,4 +37,4 @@ export const getBlogCategoryName = (value: string) =>
 
 export const getBlogCategoryDescription = (value: string) =>
   BLOG_CATEGORIES.find((category) => category.id === value)?.description ??
-  "Artykuły i poradniki dotyczące ocieplania, termomodernizacji i efektywności energetycznej budynków.";
+  "Artykuły i poradniki dotyczące ocieplania, termomodernizacji i poprawy efektywności energetycznej budynków mieszkalnych oraz użytkowych.";

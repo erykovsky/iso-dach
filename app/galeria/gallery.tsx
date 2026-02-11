@@ -34,10 +34,12 @@ export function Gallery() {
 
       <section className="section-shell py-10 md:py-14">
         <div className="section-inner container mx-auto px-4">
+          <h2 className="sr-only">Kategorie galerii realizacji</h2>
           <div className="soft-card mb-8 rounded-2xl p-3 md:p-4">
             <div className="flex flex-wrap justify-center gap-2 md:gap-3">
               {galleryCategories.map((category) => (
                 <button
+                  type="button"
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`${
@@ -51,7 +53,7 @@ export function Gallery() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {filteredImages.map((item) => (
+            {filteredImages.map((item, index) => (
               <Link
                 key={item.id}
                 href={`/galeria/${item.id}`}
@@ -68,8 +70,10 @@ export function Gallery() {
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    quality={75}
-                    loading="lazy"
+                    priority={index < 3}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
+                    quality={70}
                   />
                 </div>
               </Link>

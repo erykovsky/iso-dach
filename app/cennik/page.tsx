@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/table";
 
 export const metadata: Metadata = {
-  title: "Cennik",
+  title: "Cennik usług izolacji i ocieplenia",
   description:
-    "Cennik usług ocieplenia i izolacji. Sprawdź nasze konkurencyjne ceny i zamów bezpłatną wycenę.",
+    "Sprawdź orientacyjne ceny usług ocieplenia i izolacji w ISO-DACH. Porównaj warianty prac i zamów bezpłatną, indywidualną wycenę dla swojego budynku.",
   keywords: [
     "cennik ocieplenia poddasza",
     "cena ocieplenia stropodachu",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/cennik",
   },
   openGraph: {
-    title: "Cennik usług izolacji | ISO-DACH",
+    title: "Cennik usług izolacji i ocieplenia",
     description:
       "Sprawdź orientacyjne ceny ocieplenia poddaszy, stropodachów i innych usług izolacyjnych.",
     url: "https://iso-dach.eu/cennik",

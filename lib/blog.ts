@@ -7,6 +7,10 @@ import html from "remark-html";
 const contentDirectory = path.join(process.cwd(), "content/blog");
 
 export type BlogPost = {
+    faqs?: {
+        question: string;
+        answer: string;
+    }[];
     id: number;
     title: string;
     slug: string;

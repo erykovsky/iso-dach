@@ -88,7 +88,8 @@ export const Footer = () => {
                   className="brand-focus rounded-full border border-white/30 p-2.5 text-white transition hover:bg-white/10 hover:text-[#90EE90]"
                   aria-label="Facebook"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} aria-hidden="true" />
+                  <span className="sr-only">Facebook</span>
                 </a>
                 <a
                   href="https://www.instagram.com/iso_dach"
@@ -97,7 +98,8 @@ export const Footer = () => {
                   className="brand-focus rounded-full border border-white/30 p-2.5 text-white transition hover:bg-white/10 hover:text-[#90EE90]"
                   aria-label="Instagram"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} aria-hidden="true" />
+                  <span className="sr-only">Instagram</span>
                 </a>
                 <a
                   href="https://youtube.com/@iso-dach7799"
@@ -106,7 +108,8 @@ export const Footer = () => {
                   className="brand-focus rounded-full border border-white/30 p-2.5 text-white transition hover:bg-white/10 hover:text-[#90EE90]"
                   aria-label="YouTube"
                 >
-                  <Youtube size={20} />
+                  <Youtube size={20} aria-hidden="true" />
+                  <span className="sr-only">YouTube</span>
                 </a>
               </div>
             </div>

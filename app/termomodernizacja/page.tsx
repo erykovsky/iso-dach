@@ -16,7 +16,7 @@ import { GeoAnswerSection } from "@/components/geo-answer-section";
 import { CheckCircle, ArrowRight, HelpCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termomodernizacja",
+  title: "Kompleksowa termomodernizacja budynków",
   description:
     "Kompleksowa termomodernizacja budynków. Zwiększ efektywność energetyczną, obniż koszty ogrzewania i podnieś wartość nieruchomości.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/termomodernizacja",
   },
   openGraph: {
-    title: "Termomodernizacja budynków | ISO-DACH",
+    title: "Kompleksowa termomodernizacja budynków",
     description:
       "Kompleksowa termomodernizacja: izolacja, modernizacja instalacji i poprawa efektywności energetycznej.",
     url: "https://iso-dach.eu/termomodernizacja",
@@ -114,6 +114,9 @@ export default function TermomodernizacjaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>

@@ -10,9 +10,9 @@ import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
 
 export const metadata: Metadata = {
-  title: "Naprawa izolacji dachu zniszczonej przez bytowanie kuny",
+  title: "Naprawa izolacji po kunach",
   description:
-    "Naprawa izolacji po kunach oraz odtworzenie ocieplenia poddasza wełną celulozową. Diagnostyka termowizyjna, naprawa i skuteczne zabezpieczenie dachu.",
+    "Naprawa izolacji po kunach i odtworzenie ocieplenia poddasza wełną celulozową. Diagnostyka termowizyjna oraz skuteczne zabezpieczenie dachu.",
   keywords: [
     "naprawa izolacji po kunach",
     "kuna na poddaszu naprawa",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
   },
   openGraph: {
-    title: "Naprawa izolacji dachu zniszczonej przez bytowanie kuny",
+    title: "Naprawa izolacji po kunach | ISO-DACH",
     description:
       "Szybka i skuteczna naprawa izolacji dachu po kunach. Wełna celulozowa, termowizja i sprawdzone metody naprawcze.",
     url: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
@@ -36,6 +36,13 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Naprawa izolacji po kunach - ISO-DACH",
+      },
+    ],
+    videos: [
+      {
+        url: "https://www.youtube-nocookie.com/embed/aonxLOo1Poo?rel=0",
+        width: 1280,
+        height: 720,
       },
     ],
   },
@@ -89,6 +96,27 @@ const martenRepairGalleryImages = Array.from({ length: 10 }, (_, index) => ({
   alt: `Naprawa izolacji po kunach - realizacja ${index + 1}`,
 }));
 
+const martenRepairVideoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Naprawa izolacji po kunach",
+  description:
+    "Materiał wideo o naprawie izolacji poddasza po zniszczeniach powodowanych przez kuny.",
+  thumbnailUrl: "https://iso-dach.eu/img/naprawa-izolacji-po-kunach/hero.jpg",
+  uploadDate: "2024-01-15T08:00:00+01:00",
+  duration: "PT3M",
+  contentUrl: "https://www.youtube.com/watch?v=aonxLOo1Poo",
+  embedUrl: "https://www.youtube-nocookie.com/embed/aonxLOo1Poo?rel=0",
+  publisher: {
+    "@type": "Organization",
+    name: "ISO-DACH",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://iso-dach.eu/logo.svg",
+    },
+  },
+};
+
 export default function NaprawaIzolacjiPoKunachPage() {
   return (
     <>
@@ -103,10 +131,15 @@ export default function NaprawaIzolacjiPoKunachPage() {
         title="Naprawa izolacji po kunach"
         description="Materiał wideo o naprawie izolacji poddasza po zniszczeniach powodowanych przez kuny."
         thumbnailUrl="https://iso-dach.eu/img/naprawa-izolacji-po-kunach/hero.jpg"
-        uploadDate="2024-01-15"
+        uploadDate="2024-01-15T08:00:00+01:00"
         videoUrl="https://www.youtube.com/watch?v=aonxLOo1Poo"
-        embedUrl="https://www.youtube-nocookie.com/embed/aonxLOo1Poo"
+        embedUrl="https://www.youtube-nocookie.com/embed/aonxLOo1Poo?rel=0"
+        pageUrl="https://iso-dach.eu/naprawa-izolacji-po-kunach#film"
         duration="PT3M"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(martenRepairVideoSchema) }}
       />
 
       <div className="min-h-screen marketing-page">
@@ -144,6 +177,9 @@ export default function NaprawaIzolacjiPoKunachPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>
@@ -302,7 +338,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
               Realizacje napraw izolacji po kunach
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
-              {martenRepairGalleryImages.map((image) => (
+              {martenRepairGalleryImages.map((image, index) => (
                 <article
                   key={image.src}
                   className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
@@ -314,6 +350,10 @@ export default function NaprawaIzolacjiPoKunachPage() {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      priority={index < 2}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      fetchPriority={index < 2 ? "high" : "auto"}
+                      quality={70}
                     />
                   </div>
                 </article>
@@ -337,7 +377,9 @@ export default function NaprawaIzolacjiPoKunachPage() {
                     className="h-full w-full"
                     src="https://www.youtube-nocookie.com/embed/aonxLOo1Poo?rel=0"
                     title="Naprawa izolacji po kunach"
-                    loading="lazy"
+                    width={1280}
+                    height={720}
+                    loading="eager"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen

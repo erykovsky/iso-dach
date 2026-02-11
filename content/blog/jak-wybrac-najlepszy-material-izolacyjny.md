@@ -4,8 +4,15 @@ slug: "jak-wybrac-najlepszy-material-izolacyjny"
 excerpt: "Porównanie najpopularniejszych materiałów izolacyjnych dostępnych na rynku. Dowiedz się, który będzie najlepszy dla Twojego domu."
 category: "porady"
 image: "/img/blog/3.jpg"
-date: "2023-10-15"
+date: "2024-09-23"
 readTime: 8
+faqs:
+  - question: "Jaki materiał izolacyjny najczęściej sprawdza się na poddaszu?"
+    answer: "Najczęściej porównuje się wełnę mineralną i celulozę. Ostateczny wybór zależy od konstrukcji dachu i sposobu wykonania izolacji."
+  - question: "Czy sam współczynnik lambda wystarczy do wyboru materiału?"
+    answer: "Nie. Poza lambdą liczy się szczelność wykonania, trwałość, odporność na wilgoć i dopasowanie technologii do przegrody."
+  - question: "Czy można dobrać materiał bez oględzin budynku?"
+    answer: "Wstępnie tak, ale najlepszy dobór wymaga oględzin lub diagnostyki, żeby uniknąć błędów i mostków termicznych."
 ---
 
 ## Wprowadzenie

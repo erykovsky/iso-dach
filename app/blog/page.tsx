@@ -5,9 +5,9 @@ import { WebPageSchema } from "@/components/schema/webpage-schema";
 import { BLOG_ALL_CATEGORY_ID } from "@/lib/blog-categories";
 
 export const metadata: Metadata = {
-    title: "Blog",
+    title: "Blog o izolacji i termomodernizacji",
     description:
-        "Artykuły i porady na temat ocieplania, termomodernizacji i efektywności energetycznej budynków.",
+        "Artykuły i praktyczne porady o ocieplaniu, termomodernizacji i poprawie efektywności energetycznej domów oraz budynków użytkowych.",
     keywords: [
         "blog o ociepleniu domu",
         "porady izolacja poddasza",
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
         canonical: "https://iso-dach.eu/blog",
     },
     openGraph: {
-        title: "Blog ISO-DACH",
+        title: "Blog o izolacji i termomodernizacji",
         description:
-            "Artykuły i porady o ocieplaniu, termomodernizacji i efektywności energetycznej budynków.",
+            "Artykuły i praktyczne porady o ocieplaniu, termomodernizacji i poprawie efektywności energetycznej budynków.",
         url: "https://iso-dach.eu/blog",
         type: "website",
         images: [
@@ -44,7 +44,7 @@ export default function BlogPage() {
     return (
         <>
             <WebPageSchema
-                title="Blog ISO-DACH"
+                title="Blog"
                 description="Artykuły, poradniki i aktualności ze świata ocieplania, izolacji i termomodernizacji."
                 url="https://iso-dach.eu/blog"
                 breadcrumbs={[

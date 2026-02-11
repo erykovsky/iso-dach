@@ -5,6 +5,7 @@ interface VideoObjectSchemaProps {
   uploadDate: string;
   videoUrl: string;
   embedUrl: string;
+  pageUrl?: string;
   duration?: string;
 }
 
@@ -15,26 +16,54 @@ export function VideoObjectSchema({
   uploadDate,
   videoUrl,
   embedUrl,
+  pageUrl,
   duration = "PT3M",
 }: VideoObjectSchemaProps) {
+  const resolvedPageUrl = pageUrl ?? videoUrl;
+  const videoId = `${videoUrl}#video`;
+
   const schema = {
     "@context": "https://schema.org",
-    "@type": "VideoObject",
-    name: title,
-    description: description,
-    thumbnailUrl: thumbnailUrl,
-    uploadDate: uploadDate,
-    duration: duration,
-    contentUrl: videoUrl,
-    embedUrl: embedUrl,
-    publisher: {
-      "@type": "Organization",
-      name: "ISO-DACH",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://iso-dach.eu/logo.svg",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": resolvedPageUrl,
+        url: resolvedPageUrl,
+        name: title,
+        hasPart: {
+          "@id": videoId,
+        },
       },
-    },
+      {
+        "@type": "VideoObject",
+        "@id": videoId,
+        name: title,
+        description,
+        url: videoUrl,
+        thumbnailUrl: [thumbnailUrl],
+        uploadDate,
+        duration,
+        contentUrl: videoUrl,
+        embedUrl,
+        inLanguage: "pl-PL",
+        isFamilyFriendly: true,
+        mainEntityOfPage: {
+          "@id": resolvedPageUrl,
+        },
+        potentialAction: {
+          "@type": "WatchAction",
+          target: embedUrl,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "ISO-DACH",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://iso-dach.eu/logo.svg",
+          },
+        },
+      },
+    ],
   };
 
   return (

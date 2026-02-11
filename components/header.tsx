@@ -245,7 +245,8 @@ export const Header = () => {
               className="brand-focus rounded-full p-2 text-primary/90 hover:bg-primary/10 hover:text-[#1877F2]"
               aria-label="Facebook"
             >
-              <Facebook size={18} />
+              <Facebook size={18} aria-hidden="true" />
+              <span className="sr-only">Facebook</span>
             </a>
             <a
               href="https://instagram.com/iso_dach"
@@ -254,7 +255,8 @@ export const Header = () => {
               className="brand-focus rounded-full p-2 text-primary/90 hover:bg-primary/10 hover:text-[#E4405F]"
               aria-label="Instagram"
             >
-              <Instagram size={18} />
+              <Instagram size={18} aria-hidden="true" />
+              <span className="sr-only">Instagram</span>
             </a>
             <a
               href="https://youtube.com/@iso-dach7799"
@@ -263,7 +265,8 @@ export const Header = () => {
               className="brand-focus rounded-full p-2 text-primary/90 hover:bg-primary/10 hover:text-[#FF0000]"
               aria-label="YouTube"
             >
-              <Youtube size={18} />
+              <Youtube size={18} aria-hidden="true" />
+              <span className="sr-only">YouTube</span>
             </a>
           </div>
 
@@ -375,7 +378,8 @@ export const Header = () => {
                 className="brand-focus rounded-full p-2 text-primary hover:bg-primary/10 hover:text-[#1877F2]"
                 aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <Facebook size={20} aria-hidden="true" />
+                <span className="sr-only">Facebook</span>
               </a>
               <a
                 href="https://instagram.com/iso_dach"
@@ -384,7 +388,8 @@ export const Header = () => {
                 className="brand-focus rounded-full p-2 text-primary hover:bg-primary/10 hover:text-[#E4405F]"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={20} aria-hidden="true" />
+                <span className="sr-only">Instagram</span>
               </a>
               <a
                 href="https://youtube.com/@iso-dach7799"
@@ -393,7 +398,8 @@ export const Header = () => {
                 className="brand-focus rounded-full p-2 text-primary hover:bg-primary/10 hover:text-[#FF0000]"
                 aria-label="YouTube"
               >
-                <Youtube size={20} />
+                <Youtube size={20} aria-hidden="true" />
+                <span className="sr-only">YouTube</span>
               </a>
             </div>
 

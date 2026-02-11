@@ -17,7 +17,7 @@ import { ArrowRight, CheckCircle, HelpCircle } from "lucide-react";
 export const metadata: Metadata = {
   title: "Naprawa ocieplenia poddasza",
   description:
-    "Naprawa izolacji dachu i ocieplenia poddasza metodą wdmuchiwania celulozy. Diagnostyka termowizyjna, usuwanie mostków termicznych i szybkie prace bez dużego remontu.",
+    "Naprawa izolacji dachu i ocieplenia poddasza metodą wdmuchiwania celulozy. Diagnostyka termowizyjna oraz usuwanie mostków termicznych bez dużego remontu.",
   keywords: [
     "naprawa ocieplenia poddasza",
     "naprawa izolacji dachu",
@@ -128,6 +128,9 @@ export default function NaprawaOciepleniaPoddaszaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>
@@ -261,7 +264,7 @@ export default function NaprawaOciepleniaPoddaszaPage() {
               Realizacje napraw ocieplenia poddasza
             </h2>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-              {atticRepairGalleryImages.map((image) => (
+              {atticRepairGalleryImages.map((image, index) => (
                 <article
                   key={image.src}
                   className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
@@ -273,6 +276,10 @@ export default function NaprawaOciepleniaPoddaszaPage() {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       sizes="(max-width: 640px) 100vw, 50vw"
+                      priority={index < 2}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      fetchPriority={index < 2 ? "high" : "auto"}
+                      quality={70}
                     />
                   </div>
                 </article>

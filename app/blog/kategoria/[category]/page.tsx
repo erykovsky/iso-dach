@@ -33,7 +33,7 @@ export async function generateMetadata({
   const categoryUrl = `https://iso-dach.eu/blog/kategoria/${category}`;
 
   return {
-    title: `${categoryName} | Blog ISO-DACH`,
+    title: `${categoryName}: artykuły i poradniki`,
     description: categoryDescription,
     keywords: [
       `${categoryName.toLowerCase()} blog`,
@@ -46,10 +46,18 @@ export async function generateMetadata({
       canonical: categoryUrl,
     },
     openGraph: {
-      title: `${categoryName} | Blog ISO-DACH`,
+      title: `${categoryName}: artykuły i poradniki`,
       description: categoryDescription,
       url: categoryUrl,
       type: "website",
+      images: [
+        {
+          url: "/img/blog/1.jpg",
+          width: 1200,
+          height: 630,
+          alt: `Kategoria bloga: ${categoryName}`,
+        },
+      ],
     },
   };
 }

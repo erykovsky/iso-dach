@@ -3,9 +3,16 @@ title: "Termomodernizacja budynku - od czego zacząć?"
 slug: "termomodernizacja-budynku-od-czego-zaczac"
 excerpt: "Kompleksowy przewodnik po procesie termomodernizacji budynku. Poznaj kluczowe etapy, od audytu energetycznego po wykonanie prac, i dowiedz się jak zaplanować cały proces."
 category: "porady"
-image: "/img/blog/2.jpg"
-date: "2023-09-28"
+image: "/img/blog/10.jpg"
+date: "2024-06-10"
 readTime: 10
+faqs:
+  - question: "Od czego najlepiej zacząć termomodernizację domu?"
+    answer: "Najlepiej od audytu lub diagnostyki miejsc strat ciepła, a potem od prac dających największy efekt energetyczny."
+  - question: "Czy można robić termomodernizację etapami?"
+    answer: "Tak, ale warto zaplanować etapy w jednej strategii, żeby nie dublować kosztów i prac."
+  - question: "Czy termomodernizacja zawsze oznacza duży remont?"
+    answer: "Nie zawsze. Część zakresu można zrealizować metodami mniej inwazyjnymi, zależnie od konstrukcji budynku."
 ---
 
 ## Czym jest termomodernizacja?

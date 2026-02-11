@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CalendarIcon, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import type { BlogPost } from "@/lib/blog";
 import {
     BLOG_ALL_CATEGORY_ID,
@@ -89,7 +90,12 @@ export function BlogList({
                 <div className="section-inner container mx-auto px-4">
                     <div className="soft-card mb-8 rounded-2xl p-4 md:p-5">
                         <div className="mx-auto max-w-md">
+                            <Label htmlFor="blog-search" className="sr-only">
+                                Wyszukaj artykuły na blogu
+                            </Label>
                             <Input
+                                id="blog-search"
+                                name="blog-search"
                                 type="text"
                                 placeholder="Szukaj artykułów..."
                                 value={searchQuery}
@@ -122,7 +128,7 @@ export function BlogList({
                     </div>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                        {filteredPosts.map((post) => (
+                        {filteredPosts.map((post, index) => (
                             <article
                                 key={post.id}
                                 className="marketing-tile flex flex-col"
@@ -137,6 +143,11 @@ export function BlogList({
                                             alt={post.title || ""}
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                                            priority={index < 4}
+                                            loading={index < 4 ? "eager" : "lazy"}
+                                            fetchPriority={index < 4 ? "high" : "auto"}
+                                            quality={70}
                                         />
                                         <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/35 to-transparent" />
                                         <span className="absolute right-3 top-3 rounded-full border border-white/50 bg-white/88 px-2.5 py-1 text-[11px] font-semibold text-primary shadow-sm backdrop-blur-sm">
@@ -147,7 +158,7 @@ export function BlogList({
                                 <div className="flex grow flex-col p-5 md:p-6">
                                     <div className="mb-3 flex items-center text-sm text-muted-foreground">
                                         <CalendarIcon size={14} className="mr-1" />
-                                        <span>{formatDate(post.date)}</span>
+                                        <time dateTime={post.date}>{formatDate(post.date)}</time>
                                         <span className="mx-2">•</span>
                                         <Clock size={14} className="mr-1" />
                                         <span>

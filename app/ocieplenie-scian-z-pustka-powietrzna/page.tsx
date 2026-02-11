@@ -113,6 +113,9 @@ export default function OciepleniePustkaPowietrznaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>
@@ -162,6 +165,10 @@ export default function OciepleniePustkaPowietrznaPage() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1280px) 100vw, 1200px"
+                  priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>

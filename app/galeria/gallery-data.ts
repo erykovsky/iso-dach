@@ -123,3 +123,15 @@ export const categoryNameById = Object.fromEntries(
 
 export const getGalleryItemById = (id: string) =>
     galleryItems.find((item) => item.id === id);
+
+export const getAdjacentGalleryItems = (id: string) => {
+    const currentIndex = galleryItems.findIndex((item) => item.id === id);
+    if (currentIndex < 0) {
+        return { previous: null, next: null };
+    }
+
+    return {
+        previous: galleryItems[currentIndex - 1] ?? null,
+        next: galleryItems[currentIndex + 1] ?? null,
+    };
+};

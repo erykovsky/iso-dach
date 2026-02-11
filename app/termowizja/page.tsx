@@ -15,7 +15,7 @@ import { GeoAnswerSection } from "@/components/geo-answer-section";
 import { CheckCircle, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termowizja",
+  title: "Badania termowizyjne budynków",
   description:
     "Badania termowizyjne budynków: wykrywanie mostków termicznych, strat ciepła i ocena jakości izolacji poddasza, ścian oraz stropodachu.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/termowizja",
   },
   openGraph: {
-    title: "Termowizja",
+    title: "Badania termowizyjne budynków",
     description:
       "Profesjonalna diagnostyka termowizyjna i wsparcie w naprawie izolacji budynku.",
     url: "https://iso-dach.eu/termowizja",
@@ -110,6 +110,9 @@ export default function TermowizjaPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>

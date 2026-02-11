@@ -3,10 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
     ArrowLeft,
+    ArrowRight,
     CalendarIcon,
     Clock,
     Facebook,
+    HelpCircle,
     Linkedin,
     Twitter,
 } from "lucide-react";
@@ -18,7 +26,87 @@ interface BlogPostProps {
     post: BlogPostType;
 }
 
+type RelatedLink = {
+    href: string;
+    label: string;
+};
+
+const relatedLinksByCategory: Record<string, RelatedLink[]> = {
+    porady: [
+        { href: "/kontakt", label: "Bezpłatna wycena" },
+        { href: "/termowizja", label: "Badania termowizyjne" },
+        { href: "/termomodernizacja", label: "Termomodernizacja" },
+    ],
+    technologie: [
+        {
+            href: "/ocieplenie-scian-z-pustka-powietrzna",
+            label: "Ocieplenie ścian z pustką powietrzną",
+        },
+        { href: "/izolacja-poddaszy", label: "Izolacja poddaszy" },
+        { href: "/ocieplanie-stropodachu", label: "Ocieplanie stropodachu" },
+    ],
+    realizacje: [
+        { href: "/galeria", label: "Galeria realizacji" },
+        { href: "/naprawa-ocieplenia-poddasza", label: "Naprawa ocieplenia poddasza" },
+        { href: "/naprawa-izolacji-po-kunach", label: "Naprawa izolacji po kunach" },
+    ],
+    dotacje: [
+        { href: "/termomodernizacja", label: "Termomodernizacja" },
+        { href: "/cennik", label: "Cennik usług" },
+        { href: "/kontakt", label: "Kontakt i wycena" },
+    ],
+};
+
+const relatedLinksBySlug: Record<string, RelatedLink[]> = {
+    "ile-kosztuje-ocieplenie-poddasza-celuloza-2026": [
+        { href: "/izolacja-poddaszy", label: "Ocieplenie poddasza celulozą" },
+        { href: "/cennik", label: "Cennik ocieplenia" },
+        { href: "/kontakt", label: "Poproś o wycenę" },
+    ],
+    "jak-naprawic-izolacje-po-kunach-bez-zrywania-poddasza": [
+        { href: "/naprawa-izolacji-po-kunach", label: "Naprawa izolacji po kunach" },
+        { href: "/naprawa-ocieplenia-poddasza", label: "Naprawa ocieplenia poddasza" },
+        { href: "/termowizja", label: "Diagnostyka termowizyjna" },
+    ],
+    "kiedy-warto-zrobic-badanie-termowizyjne-domu": [
+        { href: "/termowizja", label: "Umów badanie termowizyjne" },
+        { href: "/izolacja-poddaszy", label: "Izolacja poddaszy" },
+        { href: "/ocieplanie-stropodachu", label: "Ocieplanie stropodachu" },
+    ],
+    "ocieplenie-scian-z-pustka-powietrzna-jak-to-wyglada": [
+        {
+            href: "/ocieplenie-scian-z-pustka-powietrzna",
+            label: "Usługa: ściany z pustką powietrzną",
+        },
+        { href: "/termomodernizacja", label: "Kompleksowa termomodernizacja" },
+        { href: "/kontakt", label: "Zapytaj o realizację" },
+    ],
+    "ocieplanie-stropodachu-w-starym-budynku-co-warto-wiedziec": [
+        { href: "/ocieplanie-stropodachu", label: "Usługa: ocieplanie stropodachu" },
+        { href: "/termowizja", label: "Termowizja przed realizacją" },
+        { href: "/kontakt", label: "Wycena dla budynku" },
+    ],
+    "dofinansowanie-termomodernizacji-2026-jak-przygotowac-wniosek": [
+        { href: "/termomodernizacja", label: "Zakres termomodernizacji" },
+        { href: "/cennik", label: "Orientacyjny cennik" },
+        { href: "/kontakt", label: "Konsultacja i wycena" },
+    ],
+    "realizacja-ocieplenia-poddasza-zachodniopomorskie-jak-wyglada": [
+        { href: "/izolacja-poddaszy", label: "Usługa: izolacja poddaszy" },
+        { href: "/galeria", label: "Zobacz realizacje" },
+        { href: "/kontakt", label: "Zapytaj o termin" },
+    ],
+};
+
 export function BlogPost({ post }: BlogPostProps) {
+    const publishedDateIso = (() => {
+        try {
+            return new Date(post.date).toISOString();
+        } catch {
+            return post.date;
+        }
+    })();
+
     const formatDate = (dateString: string) => {
         if (!dateString) return "";
         try {
@@ -59,6 +147,23 @@ export function BlogPost({ post }: BlogPostProps) {
         );
     };
 
+    const relatedLinks = (() => {
+        const links = [
+            ...(relatedLinksBySlug[post.slug] ?? []),
+            ...(relatedLinksByCategory[post.category] ?? []),
+        ];
+
+        const unique = new Map<string, RelatedLink>();
+        links.forEach((link) => {
+            if (!unique.has(link.href)) {
+                unique.set(link.href, link);
+            }
+        });
+
+        return Array.from(unique.values()).slice(0, 4);
+    })();
+    const articleFaqs = post.faqs?.filter((faq) => faq.question && faq.answer) ?? [];
+
     return (
         <div className="min-h-screen marketing-page">
             <section className="marketing-hero py-16 md:py-20">
@@ -70,12 +175,19 @@ export function BlogPost({ post }: BlogPostProps) {
                         <p className="mb-6 text-white/85">{post.excerpt}</p>
                         <div className="flex flex-wrap items-center justify-center gap-y-1 text-sm text-white/70">
                             <CalendarIcon size={14} className="mr-1" />
-                            <span>{formatDate(post.date)}</span>
+                            <time dateTime={publishedDateIso}>{formatDate(post.date)}</time>
                             <span className="mx-3">•</span>
                             <Clock size={14} className="mr-1" />
                             <span>{post.readTime} min czytania</span>
                             <span className="mx-3">•</span>
                             <span>{getBlogCategoryName(post.category)}</span>
+                            <span className="mx-3">•</span>
+                            <span>
+                                Autor:{" "}
+                                <Link href="/o-nas" rel="author" className="underline decoration-white/40 underline-offset-2">
+                                    Zespół ISO-DACH
+                                </Link>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -106,6 +218,9 @@ export function BlogPost({ post }: BlogPostProps) {
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 768px"
                                 priority
+                                loading="eager"
+                                fetchPriority="high"
+                                quality={70}
                             />
                         </div>
 
@@ -117,6 +232,58 @@ export function BlogPost({ post }: BlogPostProps) {
                                 }}
                             />
                         </article>
+
+                        {articleFaqs.length > 0 && (
+                            <section className="mt-6 rounded-2xl border border-primary/12 bg-white/85 p-5 sm:p-6">
+                                <h2 className="text-xl font-semibold text-primary">
+                                    Najczęściej zadawane pytania
+                                </h2>
+                                <p className="mt-2 text-sm text-muted-foreground">
+                                    Szybkie odpowiedzi na najczęstsze pytania związane z tym tematem.
+                                </p>
+                                <Accordion type="single" collapsible className="mt-4 w-full">
+                                    {articleFaqs.map((faq, index) => (
+                                        <AccordionItem key={`${faq.question}-${index}`} value={`faq-${index}`}>
+                                            <AccordionTrigger className="text-left">
+                                                <span className="inline-flex items-start gap-2">
+                                                    <HelpCircle
+                                                        className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                                                        aria-hidden="true"
+                                                    />
+                                                    <span>{faq.question}</span>
+                                                </span>
+                                            </AccordionTrigger>
+                                            <AccordionContent className="pl-6 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                                                {faq.answer}
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            </section>
+                        )}
+
+                        {relatedLinks.length > 0 && (
+                            <aside className="mt-6 rounded-2xl border border-primary/12 bg-white/85 p-5 sm:p-6">
+                                <h2 className="text-xl font-semibold text-primary">
+                                    Powiązane usługi
+                                </h2>
+                                <p className="mt-2 text-sm text-muted-foreground">
+                                    Najczęściej wybierane usługi powiązane z tym tematem.
+                                </p>
+                                <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                                    {relatedLinks.map((link) => (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            className="brand-focus inline-flex items-center justify-between rounded-xl border border-primary/15 bg-white px-3.5 py-2.5 text-sm font-medium text-primary transition hover:bg-primary/5"
+                                        >
+                                            <span>{link.label}</span>
+                                            <ArrowRight className="h-4 w-4 shrink-0" />
+                                        </Link>
+                                    ))}
+                                </div>
+                            </aside>
+                        )}
 
                         <div className="mt-8 border-t border-primary/10 pt-6">
                             <div className="flex flex-wrap items-center justify-end gap-2">

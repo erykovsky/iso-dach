@@ -78,6 +78,11 @@ export function WebPageSchema({
     image: image,
     datePublished: datePublished,
     dateModified: dateModified,
+    author: {
+      "@type": "Organization",
+      name: "ISO-DACH",
+      url: "https://iso-dach.eu",
+    },
     publisher: {
       "@type": "Organization",
       name: "ISO-DACH",

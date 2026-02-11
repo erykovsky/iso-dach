@@ -6,7 +6,7 @@ import { WebPageSchema } from "@/components/schema/webpage-schema";
 import { CheckCircle, Award, Users, Clock, MapPin, Phone, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "O nas",
+  title: "O nas i doświadczenie zespołu",
   description:
     "Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków. Profesjonalne ocieplanie wełną celulozową. Szczecin i okolice.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://iso-dach.eu/o-nas",
   },
   openGraph: {
-    title: "O nas",
+    title: "O nas i doświadczenie zespołu",
     description: "Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków.",
     url: "https://iso-dach.eu/o-nas",
     type: "website",
@@ -145,6 +145,9 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70}
                 />
               </div>
             </div>
@@ -280,6 +283,9 @@ export default function AboutPage() {
                     fill
                     className="object-contain p-2"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    loading="eager"
+                    fetchPriority="high"
                   />
                 </div>
               </article>

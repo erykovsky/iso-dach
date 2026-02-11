@@ -82,16 +82,6 @@ export function LocalBusinessSchema() {
         },
         {
           "@type": "Offer",
-          url: "https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna",
-          itemOffered: {
-            "@type": "Service",
-            name: "Ocieplenie ścian z pustką powietrzną",
-            description:
-              "Docieplanie ścian trójwarstwowych metodą wdmuchiwania materiału izolacyjnego.",
-          },
-        },
-        {
-          "@type": "Offer",
           url: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
           itemOffered: {
             "@type": "Service",

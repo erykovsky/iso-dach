@@ -8,6 +8,8 @@ import { IntentAnswersSection, homeIntentFaqs } from "@/components/intent-answer
 import { CelluloseContentSection } from "@/components/cellulose-content-section";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
+import { OrganizationSchema } from "@/components/schema/organization-schema";
+import { LocalBusinessSchema } from "@/components/schema/local-business-schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +21,8 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <>
+            <OrganizationSchema />
+            <LocalBusinessSchema />
             <WebPageSchema
                 title="Izolacje dachów, stropów i piwnic – firma ISO-DACH"
                 description="Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%."

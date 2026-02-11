@@ -10,6 +10,8 @@ interface ServiceSchemaProps {
   url: string;
   image?: string;
   reviews?: ServiceReview[];
+  datePublished?: string;
+  dateModified?: string;
 }
 
 const formatSegmentName = (segment: string) =>
@@ -62,10 +64,12 @@ export function ServiceSchema({
   url,
   image = "https://iso-dach.eu/img/home/slide.jpg",
   reviews,
+  datePublished = "2024-01-01",
+  dateModified = "2026-02-11",
 }: ServiceSchemaProps) {
-  const schema = {
-    "@context": "https://schema.org",
+  const serviceEntity = {
     "@type": "Service",
+    "@id": `${url}#service`,
     name,
     serviceType: name,
     description,
@@ -91,10 +95,6 @@ export function ServiceSchema({
         name,
       },
     },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: getServiceBreadcrumbs(url, name),
-    },
     ...(reviews && reviews.length > 0
       ? {
           review: reviews.map((review) => ({
@@ -113,6 +113,49 @@ export function ServiceSchema({
           })),
         }
       : {}),
+  };
+
+  const breadcrumbEntity = {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: getServiceBreadcrumbs(url, name),
+  };
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        ...serviceEntity,
+        mainEntityOfPage: {
+          "@id": url,
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": url,
+        url,
+        name,
+        datePublished,
+        dateModified,
+        author: {
+          "@type": "Organization",
+          name: "ISO-DACH",
+          url: "https://iso-dach.eu",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "ISO-DACH",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://iso-dach.eu/logo.svg",
+          },
+        },
+        breadcrumb: {
+          "@id": `${url}#breadcrumb`,
+        },
+      },
+      breadcrumbEntity,
+    ],
   };
 
   return (

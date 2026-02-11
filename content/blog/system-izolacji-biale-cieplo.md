@@ -4,8 +4,15 @@ slug: "system-izolacji-biale-cieplo"
 excerpt: "Poznaj innowacyjny system izolacji termiczno-akustycznej Białe Ciepło. Szybka aplikacja, doskonałe parametry izolacyjne i certyfikowana jakość."
 category: "technologie"
 image: "/img/blog/1.jpg"
-date: "2021-07-19"
+date: "2024-03-18"
 readTime: 8
+faqs:
+  - question: "Do czego stosuje się system Białe Ciepło?"
+    answer: "Najczęściej do izolacji stropów piwnic, garaży i obiektów, gdzie liczy się szybka aplikacja natryskowa oraz dobra izolacja cieplna i akustyczna."
+  - question: "Czy Białe Ciepło jest materiałem palnym?"
+    answer: "Nie, system ma klasę reakcji na ogień A1, czyli jest niepalny."
+  - question: "Czy powierzchnię po natrysku można wykończyć?"
+    answer: "Tak, po wyschnięciu warstwę można malować i dopasować do estetyki pomieszczenia."
 ---
 
 ## Czym jest system „Białe Ciepło®"?
