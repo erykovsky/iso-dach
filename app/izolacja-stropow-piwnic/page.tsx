@@ -1,195 +1,352 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Metadata } from "next";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
+import { GeoAnswerSection } from "@/components/geo-answer-section";
 
 export const metadata: Metadata = {
-  title: "Izolacja stropów piwnic",
+  title: "Ocieplanie stropu piwnicy",
   description:
-    "Profesjonalna izolacja stropów piwnic. Kompleksowe rozwiązania poprawiające komfort cieplny domu, ograniczające straty energii i chroniące konstrukcję przed wilgocią.",
+    "Ocieplanie stropu piwnicy systemem Białe Ciepło i płytami ISOVER Stropmax 31. Skuteczna redukcja strat ciepła, lepsza akustyka i szybka realizacja.",
+  keywords: [
+    "ocieplanie stropu piwnicy",
+    "izolacja stropu nad piwnicą",
+    "Białe Ciepło",
+    "ISOVER Stropmax 31",
+    "natryskowa izolacja stropu piwnicy",
+    "ocieplenie piwnicy Szczecin",
+  ],
   alternates: {
     canonical: "https://iso-dach.eu/izolacja-stropow-piwnic",
   },
+  openGraph: {
+    title: "Ocieplanie stropu piwnicy",
+    description:
+      "Natryskowa izolacja Białe Ciepło oraz płyty ISOVER Stropmax 31. Skuteczne docieplenie stropów piwnic.",
+    url: "https://iso-dach.eu/izolacja-stropow-piwnic",
+    type: "article",
+    images: [
+      {
+        url: "/img/izolacja-stropow-piwnic/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ocieplanie stropu piwnicy - ISO-DACH",
+      },
+    ],
+  },
 };
 
+const bialeCieploFeatures = [
+  "Lambda deklarowana λ = 0,034 W/(mK), fizyczna λ = 0,031 W/(mK).",
+  "Ultralekki materiał o gęstości 45-55 kg/m3.",
+  "Śnieżnobiała barwa w masie i estetyczny efekt po aplikacji.",
+  "System mineralny, ekologiczny i niepalny (klasa A1).",
+  "Bardzo dobre właściwości akustyczne i pełna paroprzepuszczalność.",
+  "Brak mostków termicznych i możliwość natrysku do 250 mm.",
+  "Szybka aplikacja: około 50-100 m2 / 8h (zależnie od grubości).",
+];
+
+const useCases = [
+  "Garaże wielkopowierzchniowe",
+  "Stropy piwnic budynków wielorodzinnych",
+  "Hale widowiskowo-sportowe",
+  "Hale produkcyjno-magazynowe",
+  "Biura, restauracje, banki i korytarze szkół",
+  "Obiekty specjalistyczne: statki i platformy wiertnicze",
+];
+
+const basementFaqs = [
+  {
+    question: "Czy ocieplenie stropu piwnicy można wykonać bez remontu mieszkania?",
+    answer:
+      "Tak. Prace prowadzimy od strony piwnicy lub garażu, dzięki czemu nie ingerujemy w wykończenie części mieszkalnej.",
+  },
+  {
+    question: "Kiedy lepsze jest Białe Ciepło, a kiedy płyty ISOVER Stropmax 31?",
+    answer:
+      "Przy nieregularnych powierzchniach i trudnych detalach często lepiej sprawdza się natrysk Białe Ciepło. Płyty ISOVER Stropmax 31 to z kolei szybki montaż na równych powierzchniach.",
+  },
+  {
+    question: "Czy izolacja stropu piwnicy poprawia także akustykę?",
+    answer:
+      "Tak. Odpowiednio dobrana izolacja ogranicza nie tylko straty ciepła, ale też przenoszenie części hałasów między kondygnacjami.",
+  },
+];
+
+const basementCeilingGalleryImages = Array.from({ length: 17 }, (_, index) => ({
+  src: `/img/izolacja-stropow-piwnic/${index + 1}.jpg`,
+  alt: `Izolacja stropów piwnic - realizacja ${index + 1}`,
+}));
 
 export default function IzolacjaStropowPiwnicPage() {
   return (
     <>
       <ServiceSchema
         name="Izolacja stropów piwnic"
-        description="Profesjonalna izolacja stropów piwnic poprawiająca komfort cieplny i ograniczająca straty energii."
+        description="Profesjonalne ocieplanie stropów piwnic systemem natryskowym Białe Ciepło i płytami ISOVER Stropmax 31."
         url="https://iso-dach.eu/izolacja-stropow-piwnic"
-        image="https://iso-dach.eu/img/izolacja-piwnicy-biale-cieplo.jpg"
+        image="https://iso-dach.eu/img/izolacja-stropow-piwnic/hero.jpg"
       />
-      <div className="min-h-screen marketing-page">
-        <section className="marketing-hero py-16 md:py-20">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-4xl text-center">
-              <h1 className="text-3xl font-bold text-white md:text-5xl">
-                Izolacja stropów piwnic
-              </h1>
-              <p className="mx-auto mt-5 max-w-3xl text-lg text-white/85">
-                Kompleksowe rozwiązania poprawiające komfort cieplny domu,
-                ograniczające straty energii i chroniące konstrukcję przed
-                wilgocią.
-              </p>
-            </div>
-          </div>
-        </section>
+      <FAQPageSchema faqs={basementFaqs} />
 
-        <div className="container mx-auto px-4 py-12 md:py-16">
-          <section className="mb-14 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-            <div className="marketing-section">
-              <div className="relative mx-auto aspect-square w-full max-w-[560px] marketing-image-frame">
+      <div className="min-h-screen marketing-page">
+        <section className="marketing-hero py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+              <div>
+<h1 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+                  Ocieplanie stropu piwnicy
+                </h1>
+                <p className="mb-8 text-lg text-white/90">
+                  Natryskowy system izolacji termiczno-akustycznej Białe Ciepło
+                  oraz płyty ISOVER Stropmax 31 to skuteczny sposób na
+                  ograniczenie strat ciepła i poprawę komfortu nad piwnicą.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button
+                    size="lg"
+                    asChild
+                    className="bg-white text-primary hover:bg-gray-100"
+                  >
+                    <Link href="/kontakt">Bezpłatna wycena</Link>
+                  </Button>
+                  <Button size="lg" variant="secondary" asChild>
+                    <Link href="#materialy">Zobacz materiały</Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="relative h-64 marketing-image-frame md:h-96">
                 <Image
-                  src="/img/izolacja-piwnicy-biale-cieplo.jpg"
-                  alt="Izolacja stropów piwnic"
+                  src="/img/izolacja-stropow-piwnic/hero.jpg"
+                  alt="Ocieplanie stropu piwnicy"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
               </div>
-              <p className="mt-5 text-center text-muted-foreground">
-                Profesjonalna izolacja stropów piwnic to klucz do komfortu
-                termicznego i oszczędności energii w Twoim domu.
-              </p>
             </div>
+          </div>
+        </section>
 
-            <div className="marketing-section-alt rounded-2xl p-6 md:p-8">
-              <h2 className="text-2xl font-semibold text-primary mb-4">
-                Dlaczego izolacja stropów piwnic jest ważna?
-              </h2>
-              <ul className="list-disc list-inside space-y-2 text-foreground/85">
-                <li>
-                  <strong>Redukcja strat ciepła:</strong> izolacja minimalizuje
-                  ucieczkę ciepła przez strop piwnicy, co obniża koszty ogrzewania.
-                </li>
-                <li>
-                  <strong>Ochrona przed wilgocią:</strong> zapobiega kondensacji i
-                  rozwojowi pleśni, chroniąc konstrukcję budynku.
-                </li>
-                <li>
-                  <strong>Poprawa komfortu:</strong> stabilna temperatura
-                  pomieszczeń nad piwnicą zwiększa komfort użytkowania.
-                </li>
-                <li>
-                  <strong>Oszczędność energii:</strong> mniejsze zużycie energii to
-                  korzyść dla środowiska i domowego budżetu.
-                </li>
-              </ul>
+        <GeoAnswerSection
+          title="Ocieplenie stropu piwnicy poprawia komfort na parterze i ogranicza straty ciepła bez ingerencji w część mieszkalną."
+          answer="Strop nad nieogrzewaną piwnicą to częsty punkt ucieczki energii. Zastosowanie systemu natryskowego lub płyt izolacyjnych pozwala szybko poprawić parametry cieplne i akustyczne budynku."
+          bullets={[
+            "Lepszy komfort cieplny podłogi na kondygnacji mieszkalnej.",
+            "Mniejsze zużycie energii potrzebnej do ogrzewania budynku.",
+            "Skuteczna izolacja również w obiektach wielkopowierzchniowych.",
+          ]}
+          qa={[
+            {
+              question: "Czy prace można zrobić bez remontu mieszkań?",
+              answer:
+                "Tak. Ocieplenie wykonujemy od strony piwnicy lub garażu, więc nie trzeba ingerować w wykończenie pomieszczeń mieszkalnych.",
+            },
+            {
+              question: "Co wybrać: Białe Ciepło czy płyty?",
+              answer:
+                "Dobór zależy od konstrukcji stropu i oczekiwanego efektu. Przy nieregularnych powierzchniach często lepiej sprawdza się natrysk.",
+            },
+            {
+              question: "Czy taka izolacja pomaga też akustycznie?",
+              answer:
+                "Tak. Oprócz poprawy termiki materiał ogranicza przenoszenie części hałasów między kondygnacjami.",
+            },
+          ]}
+          localNote="Usługi izolacji stropów piwnic najczęściej realizujemy w Szczecinie i okolicach, ale dojeżdżamy także do innych miast."
+          relatedLinks={[
+            { href: "/termomodernizacja", label: "Kompleksowa termomodernizacja" },
+            { href: "/ocieplanie-stropodachu", label: "Ocieplanie stropodachu" },
+            { href: "/blog/system-izolacji-biale-cieplo", label: "System Białe Ciepło®" },
+          ]}
+        />
+
+        <section className="section-shell py-16 md:py-20">
+          <div className="section-inner container mx-auto px-4">
+            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <article className="soft-card reveal-up rounded-2xl p-6 md:p-8">
+                <h2 className="text-3xl font-bold text-primary">
+                  System Białe Ciepło
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Natryskowy system izolacji termiczno-akustycznej Białe
+                  Ciepło zrewolucjonizował rynek izolacji dzięki bardzo dobrym
+                  parametrom i wszechstronnemu zastosowaniu. Odpowiednią grubość
+                  warstwy wykonujemy agregatem, a następnie nadajemy strukturę
+                  gładką lub porowatą.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Po całkowitym wyschnięciu powierzchnię można malować. Materiał
+                  jest lekki, trwały i skutecznie wspiera izolację cieplną oraz
+                  akustyczną stropów piwnic.
+                </p>
+              </article>
+
+              <aside className="soft-card reveal-up reveal-delay-1 rounded-2xl p-6 md:p-8">
+                <h3 className="text-2xl font-bold text-primary">
+                  Cechy wyróżniające
+                </h3>
+                <ul className="mt-5 space-y-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  {bialeCieploFeatures.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="marketing-section mb-14">
-            <h2 className="text-2xl font-semibold text-primary mb-4">
-              Technologie izolacji stropów piwnic
+        <section className="marketing-section py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-10 text-center text-3xl font-bold">
+              Realizacje izolacji stropów piwnic
             </h2>
-            <p className="text-foreground/85 mb-4">
-              Oferujemy różnorodne metody izolacji stropów piwnic, dopasowane do
-              specyfiki budynku i oczekiwań inwestora:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-foreground/85">
-              <li>
-                <strong>Białe Ciepło (izolacja natryskowa):</strong> dociera w
-                najtrudniejsze miejsca i szczeliny, dzięki czemu skutecznie
-                ogranicza mostki termiczne oraz straty ciepła.
-              </li>
-              <li>
-                <strong>ISOVER Stropmax 31 (płyty montowane):</strong> to
-                rozwiązanie o dobrych parametrach cieplnych i akustycznych,
-                cenione za szybki i łatwy montaż.
-              </li>
-            </ul>
-          </section>
-
-          <section className="marketing-section mb-14">
-            <h2 className="text-2xl font-semibold text-primary mb-6">
-              Materiały izolacyjne, które stosujemy
-            </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {[
-                {
-                  title: "Białe Ciepło",
-                  description:
-                    "Izolacja natryskowa, która dociera w trudno dostępne miejsca i pomaga dokładnie uszczelnić strop.",
-                  image: "/img/biale-cieplo-korytarz.jpg",
-                },
-                {
-                  title: "ISOVER Stropmax 31",
-                  description:
-                    "Płyty montowane o dobrych parametrach termoizolacyjnych i akustycznych, z szybkim i łatwym montażem.",
-                  image: "/img/isover-stropmax-31.jpg",
-                },
-              ].map((material) => (
-                <article key={material.title} className="marketing-tile">
-                  <div className="relative h-72">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+              {basementCeilingGalleryImages.map((image) => (
+                <article
+                  key={image.src}
+                  className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
+                >
+                  <div className="relative aspect-4/3">
                     <Image
-                      src={material.image || "/img/izolacje-budynkow-hero.jpg"}
-                      alt={material.title}
+                      src={image.src}
+                      alt={image.alt}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      {material.title}
-                    </h3>
-                    <p className="text-muted-foreground">{material.description}</p>
                   </div>
                 </article>
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="marketing-section-alt mb-14 rounded-2xl p-6 md:p-8">
-            <h2 className="text-2xl font-semibold text-primary mb-4">
-              Jak wygląda proces izolacji stropów piwnic?
+        <section id="materialy" className="marketing-section py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-10 text-center text-3xl font-bold">
+              Materiały, które stosujemy
             </h2>
-            <ol className="list-decimal list-inside space-y-2 text-foreground/85">
-              <li>
-                <strong>Audyt i ocena:</strong> szczegółowa analiza stanu stropu
-                i dobór technologii.
-              </li>
-              <li>
-                <strong>Przygotowanie powierzchni:</strong> oczyszczenie i
-                przygotowanie stropu do montażu izolacji.
-              </li>
-              <li>
-                <strong>Montaż izolacji:</strong> wykonanie prac zgodnie z
-                wybraną technologią i standardem jakości.
-              </li>
-              <li>
-                <strong>Kontrola jakości:</strong> sprawdzenie szczelności,
-                poprawności wykonania i skuteczności izolacji.
-              </li>
-            </ol>
-          </section>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <article className="marketing-tile">
+                <div className="relative h-64">
+                  <Image
+                    src="/img/izolacja-stropow-piwnic/hero2.jpg"
+                    alt="Białe Ciepło"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-primary">Białe Ciepło</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    Izolacja natryskowa, która dociera do najtrudniejszych miejsc,
+                    szczelnie pokrywa powierzchnię i skutecznie ogranicza mostki
+                    termiczne.
+                  </p>
+                </div>
+              </article>
 
-          <ServiceIntentSection
-            points={[
-              "Podłogi na parterze są chłodne mimo normalnego ogrzewania.",
-              "Piwnica jest zawilgocona i chcesz ograniczyć ryzyko kondensacji.",
-              "Zależy Ci na lepszym bilansie energetycznym całego domu.",
-            ]}
-          />
+              <article className="marketing-tile">
+                <div className="relative h-64">
+                  <Image
+                    src="/img/izolacja-stropow-piwnic/hero3.jpg"
+                    alt="ISOVER Stropmax 31"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-primary">
+                    ISOVER Stropmax 31
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    Płyty montowane o dobrych parametrach cieplnych i akustycznych.
+                    Rozwiązanie cenione za szybki i prosty montaż.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
 
-          <section className="marketing-cta-band rounded-2xl p-8 text-center md:p-10">
-            <h2 className="text-2xl font-semibold text-primary mb-3">
-              Skontaktuj się z nami
+        <section className="marketing-section-alt py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
+              <article className="soft-card rounded-2xl p-6 md:p-8">
+                <h2 className="text-3xl font-bold text-primary">
+                  Gdzie sprawdza się ta technologia
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  System stosujemy wszędzie tam, gdzie potrzebna jest izolacja
+                  ograniczająca straty ciepła i wyciszająca hałas:
+                </p>
+                <ul className="mt-5 grid gap-2 text-sm text-foreground/90 md:text-base">
+                  {useCases.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="soft-card rounded-2xl p-6 md:p-8">
+                <h2 className="text-3xl font-bold text-primary">
+                  Kiedy konieczne jest ocieplenie stropu piwnicy?
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Pomijanie stropu piwnicy podczas ocieplania budynku to częsty
+                  i kosztowny błąd. Skutkiem są duże straty ciepła, wyższe koszty
+                  ogrzewania oraz niższy komfort cieplny pomieszczeń nad piwnicą.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Dobrze wykonana izolacja pozwala utrzymać chłodniejszy klimat w
+                  piwnicy, a jednocześnie ogranicza wychładzanie części mieszkalnej.
+                  To realna oszczędność na eksploatacji budynku.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Wykonujemy także naprawy izolacji dachów i innych przegród,
+                  wykorzystując nowoczesne rozwiązania oraz wysokiej jakości
+                  materiały izolacyjne.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <ServiceIntentSection
+          title="Czy ocieplenie stropu piwnicy jest dla Ciebie?"
+          points={[
+            "Podłoga na parterze jest chłodna mimo pracy ogrzewania.",
+            "Chcesz ograniczyć rachunki i straty ciepła przez strop nad piwnicą.",
+            "Potrzebujesz izolacji, która dodatkowo poprawi akustykę.",
+          ]}
+        />
+
+        <section className="marketing-cta-band py-16 md:py-24">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="mb-5 text-3xl font-bold">
+              Zleć ocieplenie stropu piwnicy
             </h2>
-            <p className="text-foreground/80 mb-6 max-w-2xl mx-auto">
-              Zainteresowany izolacją stropów piwnic? Przygotujemy bezpłatną
-              wycenę i zaproponujemy optymalne rozwiązanie dla Twojego budynku.
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
+              Przygotujemy odpowiedni zakres prac i dobierzemy najlepszą metodę:
+              natrysk Białe Ciepło albo montaż płyt ISOVER Stropmax 31.
             </p>
-            <Button asChild size="lg">
-              <Link href="/kontakt">Bezpłatna konsultacja</Link>
+            <Button size="lg" asChild>
+              <Link href="/kontakt">Skontaktuj się z nami</Link>
             </Button>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const partners = [
-  { name: "Termex", logo: "/img/termex-fiber-logo.png" },
-  { name: "Knauf", logo: "/img/knauf-insulation-logo.png" },
-  { name: "Białe Ciepło", logo: "/img/biale-cieplo-logo.png" },
-  { name: "URSA", logo: "/img/ursa-logo.png" },
+  { name: "Termex", logo: "/img/home/termex-fiber-logo.png" },
+  { name: "Knauf", logo: "/img/home/knauf-insulation-logo.png" },
+  { name: "Białe Ciepło", logo: "/img/home/biale-cieplo-logo.png" },
+  { name: "URSA", logo: "/img/home/ursa-logo.png" },
 ];
 
 export const PartnersSection = () => {

@@ -12,7 +12,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
-import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
+import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Izolacja poddaszy wełną celulozową",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/img/izolacje-budynkow-hero.jpg",
+        url: "/img/izolacja-poddaszy/hero.jpg",
         width: 1200,
         height: 630,
         alt: "Izolacja poddaszy wełną celulozową - ISO-DACH",
@@ -75,6 +76,11 @@ const atticInsulationFAQs = [
   },
 ];
 
+const atticGalleryImages = Array.from({ length: 7 }, (_, index) => ({
+  src: `/img/izolacja-poddaszy/${index + 1}.jpg`,
+  alt: `Izolacja poddaszy - realizacja ${index + 1}`,
+}));
+
 export default function IzolacjaPoddaszyPage() {
   return (
     <>
@@ -82,7 +88,7 @@ export default function IzolacjaPoddaszyPage() {
         name="Izolacja poddaszy wełną celulozową"
         description="Profesjonalna izolacja poddaszy wełną celulozową poprawiająca komfort cieplny i obniżająca rachunki za ogrzewanie."
         url="https://iso-dach.eu/izolacja-poddaszy"
-        image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
+        image="https://iso-dach.eu/img/izolacja-poddaszy/hero.jpg"
       />
       <FAQPageSchema faqs={atticInsulationFAQs} />
       <div className="min-h-screen marketing-page">
@@ -91,7 +97,7 @@ export default function IzolacjaPoddaszyPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
                   Profesjonalna izolacja poddaszy
                 </h1>
                 <p className="text-white/90 text-lg mb-8">
@@ -118,14 +124,147 @@ export default function IzolacjaPoddaszyPage() {
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
                 <Image
-                  src="/img/izolacje-budynkow-hero.jpg"
-                  alt="Izolacja poddasza"
+                  src="/img/izolacja-poddaszy/hero.jpg"
+                  alt="Realizacja izolacji poddasza"
                   fill
                   className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        <GeoAnswerSection
+          title="Izolacja poddasza celulozą to najszybszy sposób na ograniczenie strat ciepła przez dach."
+          answer="W praktyce poddasze odpowiada za dużą część ucieczki ciepła z budynku. Wdmuchiwana celuloza szczelnie wypełnia puste przestrzenie, ogranicza mostki termiczne i poprawia komfort zarówno zimą, jak i latem."
+          bullets={[
+            "Szczelne wypełnienie trudno dostępnych miejsc pod dachem.",
+            "Realna poprawa komfortu na najwyższej kondygnacji.",
+            "Możliwość naprawy istniejącej izolacji bez pełnego remontu.",
+          ]}
+          qa={[
+            {
+              question: "Czy trzeba zrywać całe wykończenie poddasza?",
+              answer:
+                "Najczęściej nie. W wielu przypadkach wystarczy wykonanie otworów technologicznych i uzupełnienie izolacji.",
+            },
+            {
+              question: "Jaka grubość izolacji sprawdza się najczęściej?",
+              answer:
+                "W domach jednorodzinnych zazwyczaj celujemy w zakres 25-35 cm, po ocenie konstrukcji i oczekiwanego efektu.",
+            },
+            {
+              question: "Po jakim czasie widać efekt?",
+              answer:
+                "Poprawa komfortu jest odczuwalna od razu po realizacji, a oszczędności na ogrzewaniu widać w kolejnych okresach rozliczeniowych.",
+            },
+          ]}
+          localNote="Najczęściej realizujemy ocieplenia poddaszy w Szczecinie, Stargardzie, Gorzowie Wielkopolskim i okolicach, ale obsługujemy również zlecenia z całej Polski."
+          relatedLinks={[
+            { href: "/naprawa-ocieplenia-poddasza", label: "Naprawa ocieplenia poddasza" },
+            { href: "/termowizja", label: "Badania termowizyjne" },
+            { href: "/blog/jak-wybrac-najlepszy-material-izolacyjny", label: "Jak wybrać materiał izolacyjny" },
+          ]}
+        />
+
+        <section className="section-shell py-16 md:py-20">
+          <div className="section-inner container mx-auto px-4">
+            <div className="mx-auto max-w-6xl">
+              <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+                <article className="soft-card reveal-up rounded-2xl p-6 md:p-8">
+                  <h2 className="text-3xl font-bold text-primary">Ocieplanie poddaszy</h2>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                    Wykonanie ocieplenia poddasza celulozą zapewnia lepszą izolację niż
+                    warstwy tradycyjnych materiałów, takich jak wełna mineralna czy
+                    styropian. Ułożenie z nich szczelnej powłoki jest trudne, a z
+                    biegiem lat mostki termiczne stają się coraz większe i izolacja
+                    traci skuteczność.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                    Poddasze jest szczególnie narażone na utratę ciepła. Skośne dachy
+                    sprzyjają zsuwaniu się izolacji, a miejsca styku z kominem, oknami
+                    połaciowymi czy krokwiami są trudne do szczelnego wypełnienia.
+                    Badanie kamerą termowizyjną najczęściej wykrywa liczne miejsca
+                    ucieczki ciepła, których powierzchnia z czasem rośnie.
+                  </p>
+                  <h3 className="mt-6 text-2xl font-semibold text-primary">
+                    Jak przebiega ocieplenie poddasza?
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                    Kluczowe jest prawidłowe ułożenie izolacji przy użyciu
+                    specjalistycznego sprzętu. W przypadku celulozy stosujemy
+                    profesjonalne dmuchawy generujące wysokie ciśnienie. Dbamy o
+                    równomierne rozprowadzenie materiału, jego napowietrzenie i
+                    właściwą gęstość, aby uzyskać maksymalną skuteczność.
+                  </p>
+                </article>
+
+                <aside className="soft-card reveal-up reveal-delay-1 rounded-2xl p-6 md:p-8">
+                  <h2 className="text-2xl font-bold text-primary">
+                    Dlaczego celuloza działa tak skutecznie?
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                    Wdmuchiwana pod ciśnieniem celuloza szczelnie wypełnia wolne
+                    przestrzenie pod dachem. Drobinki izolacji tworzą zwartą warstwę,
+                    która ogranicza straty ciepła i minimalizuje mostki termiczne.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-base">
+                    Przed nadmuchiwaniem wykonujemy drobne otwory w okładzinie, a po
+                    zakończeniu prac je maskujemy. W wielu budynkach wystarczy uzupełnić
+                    istniejącą izolację zamiast wykonywać wszystko od nowa.
+                  </p>
+                  <ul className="mt-5 space-y-2 text-sm text-foreground/90 md:text-base">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                      <span>Oszczędność ciepła nawet do około 30%.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                      <span>Krótki czas prac i mała ingerencja w wykończenie.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                      <span>Skuteczna naprawa istniejącej izolacji po termowizji.</span>
+                    </li>
+                  </ul>
+                </aside>
+              </div>
+
+              <div className="reveal-up reveal-delay-2 mt-6 rounded-2xl border border-primary/15 bg-primary/4 p-5 md:p-6">
+                <p className="text-sm leading-relaxed text-foreground/90 md:text-base">
+                  Najczęściej pracujemy w Szczecinie, Gorzowie Wielkopolskim,
+                  Stargardzie i okolicach, ale zlecenia przyjmujemy z terenu całej
+                  Polski.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="marketing-section py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-10 text-center text-3xl font-bold">
+              Realizacje izolacji poddaszy
+            </h2>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+              {atticGalleryImages.map((image) => (
+                <article
+                  key={image.src}
+                  className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
+                >
+                  <div className="relative aspect-4/3">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -171,7 +310,7 @@ export default function IzolacjaPoddaszyPage() {
               ].map((benefit, index) => (
                 <Card
                   key={index}
-                  className="border-none shadow-md hover:shadow-lg transition-shadow"
+                  className="soft-card rounded-2xl border-0 shadow-none"
                 >
                   <CardContent className="p-4 sm:p-5">
                     <div className="flex items-start gap-4">
@@ -189,7 +328,7 @@ export default function IzolacjaPoddaszyPage() {
         </section>
 
         {/* Proces Section */}
-        <section className="marketing-section-alt py-16 md:py-24">
+        <section className="marketing-section-alt py-16 md:py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">
               Jak wygląda proces izolacji poddasza?
@@ -228,11 +367,6 @@ export default function IzolacjaPoddaszyPage() {
                       "Instalacja płyt gipsowo-kartonowych lub innych materiałów wykończeniowych na stelażu.",
                   },
                   {
-                    title: "Wykończenie powierzchni",
-                    description:
-                      "Szpachlowanie, gruntowanie i malowanie powierzchni, nadając poddaszu estetyczny wygląd.",
-                  },
-                  {
                     title: "Kontrola jakości",
                     description:
                       "Przeprowadzamy szczegółową kontrolę wykonanych prac, aby zapewnić najwyższą jakość usługi.",
@@ -263,19 +397,19 @@ export default function IzolacjaPoddaszyPage() {
                   title: "Wełna skalna",
                   description:
                     "Wytrzymały materiał izolacyjny o bardzo dobrych właściwościach termicznych i akustycznych, niepalny i paroprzepuszczalny, dostępny w postaci mat i płyt.",
-                  image: "/img/welna-skalna.png",
+                  image: "/img/izolacja-poddaszy/hero2.jpg",
                 },
                 {
                   title: "Wełna szklana",
                   description:
                     "Lekki materiał o dobrych właściwościach izolacyjnych, łatwy w montażu i przyjazny dla alergików.",
-                  image: "/img/welna-szklana.png",
+                  image: "/img/izolacja-poddaszy/hero3.jpg",
                 },
                 {
                   title: "Celuloza",
                   description:
                     "Ekologiczny materiał izolacyjny z recyklingu papieru, aplikowany metodą wdmuchiwania. Doskonale wypełnia trudno dostępne miejsca.",
-                  image: "/img/welna-celulozowa.png",
+                  image: "/img/izolacja-poddaszy/hero4.jpg",
                 },
               ].map((material, index) => (
                 <div
@@ -284,7 +418,7 @@ export default function IzolacjaPoddaszyPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={material.image || "/img/izolacje-budynkow-hero.jpg"}
+                      src={material.image || "/img/home/slide.jpg"}
                       alt={material.title}
                       fill
                       className="object-cover"

@@ -22,7 +22,12 @@ const services = [
     name: "Ocieplenie ścian z pustką powietrzną",
     href: "/ocieplenie-scian-z-pustka-powietrzna",
   },
+  { name: "Termomodernizacja", href: "/termomodernizacja" },
   { name: "Naprawa izolacji po kunach", href: "/naprawa-izolacji-po-kunach" },
+  {
+    name: "Naprawa ocieplenia poddasza",
+    href: "/naprawa-ocieplenia-poddasza",
+  },
   { name: "Badania termowizyjne", href: "/termowizja" },
 ];
 
@@ -143,7 +148,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary/10 bg-white/85 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 border-b border-primary/15 bg-white shadow-[0_10px_28px_-24px_rgba(75,0,18,0.55)]">
       <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
         <Link
           href="/"

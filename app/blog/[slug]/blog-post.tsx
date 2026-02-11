@@ -12,13 +12,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { BlogPost as BlogPostType } from "@/lib/blog";
+import { getBlogCategoryName } from "@/lib/blog-categories";
 
 interface BlogPostProps {
     post: BlogPostType;
 }
 
 export function BlogPost({ post }: BlogPostProps) {
-    // Formatowanie daty
     const formatDate = (dateString: string) => {
         if (!dateString) return "";
         try {
@@ -34,7 +34,6 @@ export function BlogPost({ post }: BlogPostProps) {
         }
     };
 
-    // Funkcje do udostępniania artykułu na różnych platformach
     const shareOnFacebook = () => {
         const url = encodeURIComponent(window.location.href);
         window.open(
@@ -62,121 +61,106 @@ export function BlogPost({ post }: BlogPostProps) {
 
     return (
         <div className="min-h-screen marketing-page">
-            {/* Hero section */}
-            <div className="marketing-hero py-16">
+            <section className="marketing-hero py-16 md:py-20">
                 <div className="container mx-auto px-4">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <div className="mx-auto max-w-3xl text-center">
+<h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
                             {post.title}
                         </h1>
-                        <p className="text-white/80 mb-6">{post.excerpt}</p>
-                        <div className="flex items-center justify-center text-white/70 text-sm">
+                        <p className="mb-6 text-white/85">{post.excerpt}</p>
+                        <div className="flex flex-wrap items-center justify-center gap-y-1 text-sm text-white/70">
                             <CalendarIcon size={14} className="mr-1" />
                             <span>{formatDate(post.date)}</span>
                             <span className="mx-3">•</span>
                             <Clock size={14} className="mr-1" />
                             <span>{post.readTime} min czytania</span>
+                            <span className="mx-3">•</span>
+                            <span>{getBlogCategoryName(post.category)}</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Article content */}
-            <div className="container mx-auto px-4 py-12">
-                <div className="max-w-3xl mx-auto">
-                    {/* Back to blog button */}
-                    <div className="mb-8">
-                        <Button asChild variant="outline" size="sm">
-                            <Link href="/blog" className="flex items-center">
-                                <ArrowLeft size={16} className="mr-2" />
-                                Powrót do bloga
-                            </Link>
-                        </Button>
-                    </div>
-
-                    {/* Featured image */}
-                    <div className="relative h-64 md:h-96 mb-8 marketing-image-frame">
-                        <Image
-                            src={post.image || "/placeholder.svg"}
-                            alt={post.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 768px"
-                            priority
-                        />
-                    </div>
-
-                    {/* Article body */}
-                    <article className="prose prose-lg max-w-none">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: post.content || "",
-                            }}
-                        />
-                    </article>
-
-                    {/* Share buttons */}
-                    <div className="mt-12 border-t border-primary/10 pt-6">
-                        <div className="flex flex-wrap justify-end items-center gap-2">
-                            <span className="mr-2 text-muted-foreground">
-                                Udostępnij:
-                            </span>
+            <section className="section-shell py-10 md:py-14">
+                <div className="section-inner container mx-auto px-4">
+                    <div className="mx-auto max-w-3xl">
+                        <div className="mb-8">
                             <Button
+                                asChild
                                 variant="outline"
-                                size="icon"
-                                onClick={shareOnFacebook}
-                                className="rounded-full bg-white hover:bg-blue-100 hover:text-blue-600 border-gray-200"
+                                size="sm"
+                                className="border-primary/20"
                             >
-                                <Facebook size={18} />
-                                <span className="sr-only">
-                                    Udostępnij na Facebooku
-                                </span>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={shareOnTwitter}
-                                className="rounded-full bg-white hover:bg-blue-50 hover:text-blue-400 border-gray-200"
-                            >
-                                <Twitter size={18} />
-                                <span className="sr-only">
-                                    Udostępnij na X (Twitter)
-                                </span>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={shareOnLinkedIn}
-                                className="rounded-full bg-white hover:bg-blue-50 hover:text-blue-700 border-gray-200"
-                            >
-                                <Linkedin size={18} />
-                                <span className="sr-only">
-                                    Udostępnij na LinkedIn
-                                </span>
+                                <Link href="/blog" className="flex items-center">
+                                    <ArrowLeft size={16} className="mr-2" />
+                                    Powrót do bloga
+                                </Link>
                             </Button>
                         </div>
-                    </div>
 
-                    {/* Related articles placeholder */}
-                    <div className="mt-16">
-                        <h2 className="text-2xl font-bold mb-6">
-                            Powiązane artykuły
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Placeholder for related articles */}
-                            <div className="marketing-surface p-6">
-                                <h3 className="text-lg font-semibold mb-2">
-                                    Artykuły powiązane pojawią się tutaj
-                                </h3>
-                                <p className="text-muted-foreground">
-                                    W przyszłości będziemy wyświetlać tutaj
-                                    artykuły powiązane z tematyką tego wpisu.
-                                </p>
+                        <div className="relative mb-8 h-64 marketing-image-frame md:h-96">
+                            <Image
+                                src={post.image || "/placeholder.svg"}
+                                alt={post.title}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 768px"
+                                priority
+                            />
+                        </div>
+
+                        <article className="marketing-surface p-5 sm:p-6 md:p-8">
+                            <div
+                                className="prose prose-lg max-w-none"
+                                dangerouslySetInnerHTML={{
+                                    __html: post.content || "",
+                                }}
+                            />
+                        </article>
+
+                        <div className="mt-8 border-t border-primary/10 pt-6">
+                            <div className="flex flex-wrap items-center justify-end gap-2">
+                                <span className="mr-2 text-sm text-muted-foreground">
+                                    Udostępnij:
+                                </span>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={shareOnFacebook}
+                                    className="rounded-full border-primary/20 bg-white hover:bg-primary/5 hover:text-primary"
+                                >
+                                    <Facebook size={18} />
+                                    <span className="sr-only">
+                                        Udostępnij na Facebooku
+                                    </span>
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={shareOnTwitter}
+                                    className="rounded-full border-primary/20 bg-white hover:bg-primary/5 hover:text-primary"
+                                >
+                                    <Twitter size={18} />
+                                    <span className="sr-only">
+                                        Udostępnij na X (Twitter)
+                                    </span>
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={shareOnLinkedIn}
+                                    className="rounded-full border-primary/20 bg-white hover:bg-primary/5 hover:text-primary"
+                                >
+                                    <Linkedin size={18} />
+                                    <span className="sr-only">
+                                        Udostępnij na LinkedIn
+                                    </span>
+                                </Button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }

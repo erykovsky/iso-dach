@@ -5,6 +5,7 @@ import { HeroCarousel } from "@/components/hero-carousel";
 import { PartnersSection } from "@/components/partners-section";
 import { ReviewsSection } from "@/components/reviews-section";
 import { IntentAnswersSection, homeIntentFaqs } from "@/components/intent-answers-section";
+import { CelluloseContentSection } from "@/components/cellulose-content-section";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 import type { Metadata } from "next";
@@ -29,6 +30,7 @@ export default function Home() {
                     <HeroCarousel />
                     <ServicesSection />
                     <IntentAnswersSection />
+                    <CelluloseContentSection />
                     <BenefitsSection />
                     <ReviewsSection />
                     <PartnersSection />

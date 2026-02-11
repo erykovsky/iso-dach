@@ -8,8 +8,31 @@ export const metadata: Metadata = {
     title: "Blog",
     description:
         "Artykuły i porady na temat ocieplania, termomodernizacji i efektywności energetycznej budynków.",
+    keywords: [
+        "blog o ociepleniu domu",
+        "porady izolacja poddasza",
+        "termomodernizacja poradnik",
+        "mostki termiczne",
+        "wełna celulozowa blog",
+        "ISO-DACH blog",
+    ],
     alternates: {
         canonical: "https://iso-dach.eu/blog",
+    },
+    openGraph: {
+        title: "Blog ISO-DACH",
+        description:
+            "Artykuły i porady o ocieplaniu, termomodernizacji i efektywności energetycznej budynków.",
+        url: "https://iso-dach.eu/blog",
+        type: "website",
+        images: [
+            {
+                url: "/img/blog/1.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Blog ISO-DACH",
+            },
+        ],
     },
 };
 

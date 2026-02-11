@@ -10,7 +10,6 @@ export type ContactFormState = {
     phone?: string;
     email?: string;
     consentPrivacy?: boolean;
-    consentMarketing?: boolean;
 };
 
 const getFormValue = (value: FormDataEntryValue | null): string =>
@@ -40,18 +39,21 @@ const contactFormSchema = z.object({
         .max(100, "Adres e-mail nie może przekraczać 100 znaków"),
     phone: z
         .string()
-        .min(9, "Numer telefonu musi mieć co najmniej 9 cyfr")
-        .max(20, "Numer telefonu nie może przekraczać 20 znaków")
-        .regex(/^[\d\s\+\-\(\)]+$/, "Podaj prawidłowy numer telefonu"),
+        .max(30, "Numer telefonu nie może przekraczać 30 znaków")
+        .refine((value) => value === "" || /^[\d\s\+\-\(\)]+$/.test(value), {
+            message: "Podaj prawidłowy numer telefonu",
+        })
+        .refine((value) => value === "" || value.replace(/\D/g, "").length >= 7, {
+            message: "Numer telefonu musi mieć co najmniej 7 cyfr",
+        }),
     message: z
         .string()
-        .max(2000, "Wiadomość nie może przekraczać 2000 znaków")
-        .optional()
-        .default("-"),
+        .trim()
+        .min(1, "Treść wiadomości jest wymagana")
+        .max(2000, "Wiadomość nie może przekraczać 2000 znaków"),
     consentPrivacy: z.boolean().refine((val) => val === true, {
         message: "Wymagana zgoda na przetwarzanie danych",
     }),
-    consentMarketing: z.boolean().optional().default(false),
 });
 
 export async function sendWycenaAction(
@@ -63,9 +65,8 @@ export async function sendWycenaAction(
         name: getFormValue(formData.get("name")),
         email: getFormValue(formData.get("email")),
         phone: getFormValue(formData.get("phone")),
-        message: getFormValue(formData.get("message")) || "-",
+        message: getFormValue(formData.get("message")),
         consentPrivacy: formData.get("consentPrivacy") === "on",
-        consentMarketing: formData.get("consentMarketing") === "on",
     };
 
     // Walidacja Zod
@@ -80,7 +81,7 @@ export async function sendWycenaAction(
         };
     }
 
-    const { name, email, phone, message, consentMarketing } = validationResult.data;
+    const { name, email, phone, message } = validationResult.data;
 
     // Sprawdź czy zmienne środowiskowe są ustawione
     if (
@@ -119,18 +120,16 @@ export async function sendWycenaAction(
 Nowe zapytanie o wycenę:
 Imię i nazwisko: ${name}
 Email: ${email}
-Telefon: ${phone}
+Telefon: ${phone || "Nie podano"}
 Treść wiadomości: ${message}
-Zgoda marketingowa: ${consentMarketing ? "TAK" : "NIE"}
     `.trim();
 
     const emailHtml = `
 <h2>Nowe zapytanie o wycenę</h2>
 <p><strong>Imię i nazwisko:</strong> ${name}</p>
 <p><strong>Email:</strong> ${email}</p>
-<p><strong>Telefon:</strong> ${phone}</p>
+<p><strong>Telefon:</strong> ${phone || "Nie podano"}</p>
 <p><strong>Treść wiadomości:</strong> ${message}</p>
-<p><strong>Zgoda marketingowa:</strong> ${consentMarketing ? "TAK" : "NIE"}</p>
     `.trim();
 
     let primaryError: unknown = null;

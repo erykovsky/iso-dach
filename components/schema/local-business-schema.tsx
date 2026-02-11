@@ -3,7 +3,7 @@ export function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "ISO-DACH",
-    image: "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
+    image: "https://iso-dach.eu/img/home/slide.jpg",
     "@id": "https://iso-dach.eu",
     url: "https://iso-dach.eu",
     telephone: "+48 660 441 941",
@@ -52,12 +52,12 @@ export function LocalBusinessSchema() {
         },
         {
           "@type": "Offer",
-          url: "https://iso-dach.eu/ocieplanie-scian",
+          url: "https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna",
           itemOffered: {
             "@type": "Service",
-            name: "Ocieplanie ścian zewnętrznych",
+            name: "Ocieplenie ścian z pustką powietrzną",
             description:
-              "Kompleksowe ocieplanie ścian zewnętrznych materiałami najwyższej jakości.",
+              "Docieplanie ścian trójwarstwowych metodą wdmuchiwania materiału izolacyjnego.",
           },
         },
         {
@@ -98,6 +98,16 @@ export function LocalBusinessSchema() {
             name: "Naprawa izolacji po kunach",
             description:
               "Naprawa uszkodzonej izolacji dachowej i przywrócenie pełnej szczelności przegrody.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/naprawa-ocieplenia-poddasza",
+          itemOffered: {
+            "@type": "Service",
+            name: "Naprawa ocieplenia poddasza",
+            description:
+              "Naprawa nieszczelnej izolacji poddasza metodą wdmuchiwania i weryfikacja efektów badaniem termowizyjnym.",
           },
         },
         {

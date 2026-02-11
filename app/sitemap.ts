@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { getSortedBlogPosts } from "@/lib/blog";
 import { BLOG_CATEGORIES } from "@/lib/blog-categories";
+import { galleryItems } from "@/app/galeria/gallery-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://iso-dach.eu";
@@ -11,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routeToFileMap: Record<string, string> = {
     "": "app/page.tsx",
     "/o-nas": "app/o-nas/page.tsx",
-    "/ocieplanie-scian": "app/ocieplanie-scian/page.tsx",
     "/izolacja-poddaszy": "app/izolacja-poddaszy/page.tsx",
     "/izolacja-stropow-piwnic": "app/izolacja-stropow-piwnic/page.tsx",
     "/ocieplanie-stropodachu": "app/ocieplanie-stropodachu/page.tsx",
     "/ocieplenie-scian-z-pustka-powietrzna":
       "app/ocieplenie-scian-z-pustka-powietrzna/page.tsx",
     "/naprawa-izolacji-po-kunach": "app/naprawa-izolacji-po-kunach/page.tsx",
+    "/naprawa-ocieplenia-poddasza": "app/naprawa-ocieplenia-poddasza/page.tsx",
     "/termomodernizacja": "app/termomodernizacja/page.tsx",
     "/termowizja": "app/termowizja/page.tsx",
     "/galeria": "app/galeria/page.tsx",
@@ -47,12 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/o-nas",
-    "/ocieplanie-scian",
     "/izolacja-poddaszy",
     "/izolacja-stropow-piwnic",
     "/ocieplanie-stropodachu",
     "/ocieplenie-scian-z-pustka-powietrzna",
     "/naprawa-izolacji-po-kunach",
+    "/naprawa-ocieplenia-poddasza",
     "/termomodernizacja",
     "/termowizja",
     "/galeria",
@@ -94,9 +95,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  // Galeria - 8 zdjęć
-  const galleryRoutes: MetadataRoute.Sitemap = [1, 2, 3, 4, 5, 6, 7, 8].map((id) => ({
-    url: `${baseUrl}/galeria/${id}`,
+  const galleryRoutes: MetadataRoute.Sitemap = galleryItems.map((item) => ({
+    url: `${baseUrl}/galeria/${item.id}`,
     lastModified: getFileLastModified("app/galeria/gallery-data.ts"),
     changeFrequency: "monthly",
     priority: 0.6,

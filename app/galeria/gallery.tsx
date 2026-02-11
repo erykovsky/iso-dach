@@ -20,76 +20,81 @@ export function Gallery() {
 
   return (
     <div className="min-h-screen marketing-page">
-      <div className="marketing-hero py-16">
+      <section className="marketing-hero py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-white text-center">
-            Galeria
-          </h1>
-          <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
-            Zapraszamy do obejrzenia galerii zdjęć prezentujących efekty naszej pracy oraz stosowane rozwiązania. To przegląd stylu, jakości i dbałości o detale.
-          </p>
+          <div className="mx-auto max-w-3xl text-center">
+<h1 className="text-4xl font-bold text-white md:text-5xl">Galeria</h1>
+            <p className="mx-auto mt-4 max-w-2xl text-white/85">
+              Zapraszamy do obejrzenia zdjęć prezentujących efekty naszej pracy oraz
+              stosowane rozwiązania.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-10">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-            {galleryCategories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`${activeCategory === category.id ? "pill-filter-active" : "pill-filter"
+      <section className="section-shell py-10 md:py-14">
+        <div className="section-inner container mx-auto px-4">
+          <div className="soft-card mb-8 rounded-2xl p-3 md:p-4">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+              {galleryCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`${
+                    activeCategory === category.id ? "pill-filter-active" : "pill-filter"
                   }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {filteredImages.map((item) => (
+              <Link
+                key={item.id}
+                href={`/galeria/${item.id}`}
+                scroll={false}
+                className="group relative block overflow-hidden rounded-xl border border-primary/12 bg-white shadow-[0_14px_30px_-24px_rgba(75,0,18,0.72)]"
               >
-                {category.name}
-              </button>
+                <span className="absolute left-2.5 top-2.5 z-10 inline-flex rounded-full border border-white/55 bg-white/85 px-2 py-0.5 text-[10px] font-semibold text-primary shadow-sm backdrop-blur-sm sm:left-3 sm:top-3 sm:text-[11px]">
+                  {categoryNameById[item.category]}
+                </span>
+                <div className="relative aspect-4/3">
+                  <Image
+                    src={item.image || "/placeholder.svg"}
+                    alt={`Realizacja ${categoryNameById[item.category]} - ISO-DACH`}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    quality={75}
+                    loading="lazy"
+                  />
+                </div>
+              </Link>
             ))}
           </div>
+
+          {filteredImages.length === 0 && (
+            <div className="py-12 text-center">
+              <p className="text-gray-500">Brak zdjęć w tej kategorii.</p>
+            </div>
+          )}
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((item) => (
-            <Link
-              key={item.id}
-              href={`/galeria/${item.id}`}
-              scroll={false}
-              className="group relative block overflow-hidden rounded-2xl border border-primary/12 bg-white/70 shadow-[0_18px_38px_-28px_rgba(75,0,18,0.72)]"
-            >
-              <div className="absolute left-3 top-3 z-10 inline-flex rounded-full border border-white/55 bg-white/85 px-2.5 py-1 text-[11px] font-semibold text-primary shadow-sm backdrop-blur-sm">
-                {categoryNameById[item.category]}
-              </div>
-              <div className="relative aspect-4/3">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={`Realizacja ${categoryNameById[item.category]} - ISO-DACH`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/28 to-transparent" />
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {filteredImages.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500">Brak zdjęć w tej kategorii.</p>
-          </div>
-        )}
-
-        <div className="mt-12 text-center">
-          <p className="mb-6 max-w-2xl mx-auto">
-            Chcesz zobaczyć więcej naszych realizacji lub omówić swój projekt?
-            Skontaktuj się z nami, aby umówić się na bezpłatną konsultację.
+      <section className="marketing-cta-band py-12 md:py-14">
+        <div className="container mx-auto px-4 text-center">
+          <p className="mx-auto mb-6 max-w-2xl text-sm text-gray-700 md:text-base">
+            Chcesz zobaczyć więcej realizacji lub omówić swój projekt?
+            Skontaktuj się z nami i umów bezpłatną konsultację.
           </p>
           <Button size="lg" asChild>
             <Link href="/kontakt">Skontaktuj się z nami</Link>
           </Button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

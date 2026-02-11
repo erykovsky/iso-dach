@@ -1,13 +1,21 @@
-import { Shield, Home, Zap, Building, PenToolIcon as Tool } from "lucide-react";
+import {
+  Shield,
+  Home,
+  Zap,
+  Building,
+  PenToolIcon as Tool,
+  Wrench,
+  Thermometer,
+} from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    title: "Ocieplanie ścian",
+    title: "Ocieplenie ścian z pustką powietrzną",
     description:
-      "Kompleksowa izolacja ścian zewnętrznych, która znacząco redukuje straty ciepła i poprawia efektywność energetyczną Twojego domu.",
+      "Skuteczne docieplenie ścian dwuwarstwowych metodą wdmuchiwania, bez pogrubiania elewacji i z minimalną ingerencją.",
     icon: Shield,
-    link: "/ocieplanie-scian",
+    link: "/ocieplenie-scian-z-pustka-powietrzna",
   },
   {
     title: "Izolacja poddaszy",
@@ -37,6 +45,20 @@ const services = [
     icon: Tool,
     link: "/naprawa-izolacji-po-kunach",
   },
+  {
+    title: "Naprawa ocieplenia poddasza",
+    description:
+      "Naprawa nieszczelnej izolacji poddasza metodą wdmuchiwania, bez kosztownego remontu i z kontrolą termowizyjną efektów.",
+    icon: Wrench,
+    link: "/naprawa-ocieplenia-poddasza",
+  },
+  {
+    title: "Termowizja",
+    description:
+      "Badania termowizyjne pozwalające szybko wykryć mostki termiczne, nieszczelności i miejsca utraty ciepła w budynku.",
+    icon: Thermometer,
+    link: "/termowizja",
+  },
 ];
 
 export const ServicesSection = () => {
@@ -56,7 +78,7 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
             <article
               key={service.link}

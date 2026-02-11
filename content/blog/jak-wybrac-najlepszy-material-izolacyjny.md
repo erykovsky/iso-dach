@@ -3,7 +3,7 @@ title: "Jak wybrać najlepszy materiał izolacyjny dla Twojego domu?"
 slug: "jak-wybrac-najlepszy-material-izolacyjny"
 excerpt: "Porównanie najpopularniejszych materiałów izolacyjnych dostępnych na rynku. Dowiedz się, który będzie najlepszy dla Twojego domu."
 category: "porady"
-image: "/img/jaki-material-wybrac.jpeg"
+image: "/img/blog/3.jpg"
 date: "2023-10-15"
 readTime: 8
 ---

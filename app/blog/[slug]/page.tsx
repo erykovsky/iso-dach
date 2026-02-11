@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BlogPost } from "./blog-post";
 import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog";
 import { ArticleSchema } from "@/components/schema/article-schema";
+import { getBlogCategoryName } from "@/lib/blog-categories";
 
 export async function generateMetadata({
     params,
@@ -24,6 +25,13 @@ export async function generateMetadata({
     return {
         title: `${post.title} | ISO-DACH Blog`,
         description: post.excerpt,
+        keywords: [
+            post.title,
+            `${getBlogCategoryName(post.category)} blog`,
+            "ocieplanie i izolacje",
+            "poradnik termomodernizacji",
+            "ISO-DACH",
+        ],
         alternates: {
             canonical: `https://iso-dach.eu/blog/${post.slug}`,
         },

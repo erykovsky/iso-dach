@@ -11,49 +11,109 @@ export type GalleryItem = {
 
 export const galleryCategories: GalleryCategory[] = [
     { id: "wszystkie", name: "Wszystkie" },
-    { id: "ocieplanie-scian", name: "Ocieplanie ścian" },
     { id: "izolacja-poddaszy", name: "Izolacja poddaszy" },
-    { id: "izolacja-stropow-piwnic", name: "Izolacja stropów piwnic" },
     { id: "izolacja-natryskowa", name: "Izolacja natryskowa" },
+    { id: "izolacja-stropow-piwnic", name: "Izolacja stropów piwnic" },
     { id: "ocieplanie-stropodachu", name: "Ocieplanie stropodachu" },
-    { id: "naprawa-izolacji", name: "Naprawa izolacji" },
+    { id: "naprawa-izolacji-poddasza", name: "Naprawa izolacji poddasza" },
+    { id: "naprawa-izolacji-po-kunach", name: "Naprawa izolacji po kunach" },
 ];
 
 export const galleryItems: GalleryItem[] = [
     {
         id: "1",
-        category: "izolacja-stropow-piwnic",
-        image: "/img/izolacja-stropu-piwnicy.jpg",
+        category: "naprawa-izolacji-po-kunach",
+        image: "/img/galeria/1.jpg",
     },
     {
         id: "2",
-        category: "izolacja-natryskowa",
-        image: "/img/izolacja-natryskowa-poddasza.jpg",
+        category: "izolacja-poddaszy",
+        image: "/img/galeria/2.jpg",
     },
     {
         id: "3",
-        category: "ocieplanie-stropodachu",
-        image: "/img/ocieplanie-stropodachu-realizacja-1.jpg",
+        category: "izolacja-poddaszy",
+        image: "/img/galeria/3.jpg",
     },
     {
         id: "4",
-        category: "ocieplanie-stropodachu",
-        image: "/img/ocieplanie-stropodachu-realizacja-2.jpg",
+        category: "izolacja-poddaszy",
+        image: "/img/galeria/4.jpg",
     },
     {
         id: "5",
-        category: "ocieplanie-stropodachu",
-        image: "/img/ocieplenie-sciany-z-pustka.jpg",
+        category: "naprawa-izolacji-poddasza",
+        image: "/img/galeria/5.jpg",
     },
     {
         id: "6",
-        category: "izolacja-poddaszy",
-        image: "/img/izolacja-poddasza-realizacja.jpeg",
+        category: "izolacja-stropow-piwnic",
+        image: "/img/galeria/6.jpg",
     },
     {
         id: "7",
-        category: "naprawa-izolacji",
-        image: "/img/naprawa-izolacji-po-kunach.jpg",
+        category: "izolacja-stropow-piwnic",
+        image: "/img/galeria/7.jpg",
+    },
+    {
+        id: "8",
+        category: "izolacja-stropow-piwnic",
+        image: "/img/galeria/8.jpg",
+    },
+    {
+        id: "9",
+        category: "ocieplanie-stropodachu",
+        image: "/img/galeria/9.jpg",
+    },
+    {
+        id: "10",
+        category: "ocieplanie-stropodachu",
+        image: "/img/galeria/10.jpg",
+    },
+    {
+        id: "11",
+        category: "ocieplanie-stropodachu",
+        image: "/img/galeria/11.jpg",
+    },
+    {
+        id: "12",
+        category: "izolacja-natryskowa",
+        image: "/img/galeria/12.jpg",
+    },
+    {
+        id: "13",
+        category: "izolacja-natryskowa",
+        image: "/img/galeria/13.jpg",
+    },
+    {
+        id: "14",
+        category: "izolacja-natryskowa",
+        image: "/img/galeria/14.jpg",
+    },
+    {
+        id: "15",
+        category: "naprawa-izolacji-po-kunach",
+        image: "/img/galeria/15.jpg",
+    },
+    {
+        id: "16",
+        category: "naprawa-izolacji-po-kunach",
+        image: "/img/galeria/16.jpg",
+    },
+    {
+        id: "17",
+        category: "naprawa-izolacji-poddasza",
+        image: "/img/galeria/17.jpg",
+    },
+    {
+        id: "18",
+        category: "naprawa-izolacji-poddasza",
+        image: "/img/galeria/18.jpg",
+    },
+    {
+        id: "19",
+        category: "naprawa-izolacji-poddasza",
+        image: "/img/galeria/19.jpg",
     },
 ];
 

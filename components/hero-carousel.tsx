@@ -7,20 +7,20 @@ import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 const slides = [
   {
-    image: "/welna_wdmuchiwana.jpg",
+    image: "/img/home/slide.jpg",
     title: "Profesjonalne ocieplenia dla Twojego domu",
     subtitle: "Zwiększ komfort i oszczędzaj na rachunkach za energię",
     highlight: "Oszczędność do 30% na ogrzewaniu",
   },
   {
-    image: "/wdmuchiwanie_celulozy.webp",
+    image: "/img/home/slide2.jpg",
     title: "Nowoczesne technologie izolacji",
     subtitle:
       "Wykorzystujemy najnowsze rozwiązania w dziedzinie termomodernizacji",
     highlight: "Certyfikowane materiały",
   },
   {
-    image: "/image.webp",
+    image: "/img/home/slide3.jpg",
     title: "Kompleksowa obsługa od A do Z",
     subtitle: "Od konsultacji po realizację, zajmiemy się wszystkim",
     highlight: "10 lat gwarancji",
@@ -87,11 +87,10 @@ export const HeroCarousel = () => {
                 <button
                   key={slide.title}
                   onClick={() => setCurrentSlide(index)}
-                  className={`brand-focus h-2.5 rounded-full transition-all ${
-                    currentSlide === index
-                      ? "w-10 bg-[#32CD32]"
-                      : "w-5 bg-white/35 hover:bg-white/55"
-                  }`}
+                  className={`brand-focus h-2.5 rounded-full transition-all ${currentSlide === index
+                    ? "w-10 bg-[#32CD32]"
+                    : "w-5 bg-white/35 hover:bg-white/55"
+                    }`}
                   aria-label={`Przejdź do slajdu ${index + 1}`}
                 />
               ))}
@@ -100,16 +99,15 @@ export const HeroCarousel = () => {
 
           <div className="order-1 lg:order-2">
             <div className="hero-glow reveal-up reveal-delay-1 relative w-full overflow-hidden rounded-[1.75rem] border border-white/15 shadow-[0_35px_70px_-35px_rgba(0,0,0,0.75)]"
-                 style={{ 
-                   aspectRatio: '4/3',
-                   minHeight: 'clamp(200px, 50vw, 400px)'
-                 }}>
+              style={{
+                aspectRatio: '4/3',
+                minHeight: 'clamp(200px, 50vw, 400px)'
+              }}>
               {slides.map((slide, index) => (
                 <div
                   key={slide.title}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    currentSlide === index ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-700 ${currentSlide === index ? "opacity-100" : "opacity-0"
+                    }`}
                 >
                   <Image
                     src={slide.image || "/placeholder.svg"}

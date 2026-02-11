@@ -3,7 +3,7 @@ title: "Termomodernizacja budynku - od czego zacząć?"
 slug: "termomodernizacja-budynku-od-czego-zaczac"
 excerpt: "Kompleksowy przewodnik po procesie termomodernizacji budynku. Poznaj kluczowe etapy, od audytu energetycznego po wykonanie prac, i dowiedz się jak zaplanować cały proces."
 category: "porady"
-image: "/img/termomodernizacja.jpeg"
+image: "/img/blog/2.jpg"
 date: "2023-09-28"
 readTime: 10
 ---

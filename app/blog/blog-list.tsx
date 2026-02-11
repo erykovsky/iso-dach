@@ -71,119 +71,121 @@ export function BlogList({
 
     return (
         <div className="min-h-screen marketing-page">
-            <div className="marketing-hero py-16">
+            <section className="marketing-hero py-16 md:py-20">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-4xl font-bold text-white text-center">
-                        Blog ISO-DACH
-                    </h1>
-                    <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
-                        Artykuły, porady i aktualności ze świata ocieplania i
-                        termomodernizacji budynków. Dzielimy się wiedzą i
-                        doświadczeniem.
-                    </p>
-                </div>
-            </div>
-
-            <div className="container mx-auto px-4 py-12">
-                {/* Wyszukiwarka */}
-                <div className="mb-8">
-                    <Input
-                        type="text"
-                        placeholder="Szukaj artykułów..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="max-w-md mx-auto"
-                    />
-                </div>
-
-                {/* Filtry kategorii */}
-                <div className="mb-10">
-                    <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-                        {[
-                            { id: BLOG_ALL_CATEGORY_ID, name: "Wszystkie" },
-                            ...BLOG_CATEGORIES,
-                        ].map((category) => (
-                            <Link
-                                key={category.id}
-                                href={
-                                    category.id === BLOG_ALL_CATEGORY_ID
-                                        ? "/blog"
-                                        : `/blog/kategoria/${category.id}`
-                                }
-                                className={`${
-                                    activeCategory === category.id
-                                        ? "pill-filter-active"
-                                        : "pill-filter"
-                                }`}
-                            >
-                                {category.name}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Lista artykułów */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredPosts.map((post) => (
-                        <article
-                            key={post.id}
-                            className="marketing-tile flex flex-col"
-                        >
-                            <Link
-                                href={`/blog/${post.slug}`}
-                                className="block relative h-48"
-                            >
-                                <Image
-                                    src={post.image || "/placeholder.svg"}
-                                    alt={post.title || ""}
-                                    fill
-                                    className="object-cover"
-                                />
-                                <div className="absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full">
-                                    {getBlogCategoryName(post.category)}
-                                </div>
-                            </Link>
-                            <div className="p-6 grow flex flex-col">
-                                <div className="mb-3 flex items-center text-sm text-muted-foreground">
-                                    <CalendarIcon size={14} className="mr-1" />
-                                    <span>{formatDate(post.date)}</span>
-                                    <span className="mx-2">•</span>
-                                    <Clock size={14} className="mr-1" />
-                                    <span>
-                                        {post.readTime || 5} min czytania
-                                    </span>
-                                </div>
-                                <h2 className="text-xl font-semibold mb-3 hover:text-primary transition-colors">
-                                    <Link href={`/blog/${post.slug}`}>
-                                        {post.title}
-                                    </Link>
-                                </h2>
-                                <p className="mb-4 grow text-muted-foreground">
-                                    {post.excerpt}
-                                </p>
-                                <Button
-                                    asChild
-                                    variant="outline"
-                                    className="w-full mt-auto"
-                                >
-                                    <Link href={`/blog/${post.slug}`}>
-                                        Czytaj więcej
-                                    </Link>
-                                </Button>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-
-                {filteredPosts.length === 0 && (
-                    <div className="text-center py-12">
-                        <p className="text-gray-500">
-                            Nie znaleziono artykułów spełniających kryteria
-                            wyszukiwania.
+                    <div className="mx-auto max-w-3xl text-center">
+<h1 className="text-4xl font-bold text-white md:text-5xl">
+                            Blog ISO-DACH
+                        </h1>
+                        <p className="mx-auto mt-4 max-w-2xl text-white/85">
+                            Artykuły, porady i aktualności ze świata ocieplania i
+                            termomodernizacji budynków.
                         </p>
                     </div>
-                )}
-            </div>
+                </div>
+            </section>
+
+            <section className="section-shell py-10 md:py-14">
+                <div className="section-inner container mx-auto px-4">
+                    <div className="soft-card mb-8 rounded-2xl p-4 md:p-5">
+                        <div className="mx-auto max-w-md">
+                            <Input
+                                type="text"
+                                placeholder="Szukaj artykułów..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="h-10 border-primary/15 bg-white/90"
+                            />
+                        </div>
+                        <div className="mt-4 flex flex-wrap justify-center gap-2 md:gap-3">
+                            {[
+                                { id: BLOG_ALL_CATEGORY_ID, name: "Wszystkie" },
+                                ...BLOG_CATEGORIES,
+                            ].map((category) => (
+                                <Link
+                                    key={category.id}
+                                    href={
+                                        category.id === BLOG_ALL_CATEGORY_ID
+                                            ? "/blog"
+                                            : `/blog/kategoria/${category.id}`
+                                    }
+                                    className={`${
+                                        activeCategory === category.id
+                                            ? "pill-filter-active"
+                                            : "pill-filter"
+                                    }`}
+                                >
+                                    {category.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                        {filteredPosts.map((post) => (
+                            <article
+                                key={post.id}
+                                className="marketing-tile flex flex-col"
+                            >
+                                <Link
+                                    href={`/blog/${post.slug}`}
+                                    className="group block"
+                                >
+                                    <div className="relative h-48 overflow-hidden">
+                                        <Image
+                                            src={post.image || "/placeholder.svg"}
+                                            alt={post.title || ""}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                        />
+                                        <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/35 to-transparent" />
+                                        <span className="absolute right-3 top-3 rounded-full border border-white/50 bg-white/88 px-2.5 py-1 text-[11px] font-semibold text-primary shadow-sm backdrop-blur-sm">
+                                            {getBlogCategoryName(post.category)}
+                                        </span>
+                                    </div>
+                                </Link>
+                                <div className="flex grow flex-col p-5 md:p-6">
+                                    <div className="mb-3 flex items-center text-sm text-muted-foreground">
+                                        <CalendarIcon size={14} className="mr-1" />
+                                        <span>{formatDate(post.date)}</span>
+                                        <span className="mx-2">•</span>
+                                        <Clock size={14} className="mr-1" />
+                                        <span>
+                                            {post.readTime || 5} min czytania
+                                        </span>
+                                    </div>
+                                    <h2 className="mb-3 text-xl font-semibold hover:text-primary transition-colors">
+                                        <Link href={`/blog/${post.slug}`}>
+                                            {post.title}
+                                        </Link>
+                                    </h2>
+                                    <p className="mb-5 grow text-sm leading-relaxed text-muted-foreground md:text-base">
+                                        {post.excerpt}
+                                    </p>
+                                    <Button
+                                        asChild
+                                        variant="outline"
+                                        className="mt-auto w-full border-primary/20 hover:bg-primary/5"
+                                    >
+                                        <Link href={`/blog/${post.slug}`}>
+                                            Czytaj więcej
+                                        </Link>
+                                    </Button>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    {filteredPosts.length === 0 && (
+                        <div className="py-12 text-center">
+                            <p className="text-gray-500">
+                                Nie znaleziono artykułów spełniających kryteria
+                                wyszukiwania.
+                            </p>
+                        </div>
+                    )}
+                </div>
+            </section>
         </div>
     );
 }

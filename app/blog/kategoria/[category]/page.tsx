@@ -35,6 +35,13 @@ export async function generateMetadata({
   return {
     title: `${categoryName} | Blog ISO-DACH`,
     description: categoryDescription,
+    keywords: [
+      `${categoryName.toLowerCase()} blog`,
+      `${categoryName.toLowerCase()} porady`,
+      "ocieplanie i izolacje",
+      "termomodernizacja",
+      "ISO-DACH blog",
+    ],
     alternates: {
       canonical: categoryUrl,
     },
