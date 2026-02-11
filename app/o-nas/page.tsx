@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { WebPageSchema } from "@/components/schema/webpage-schema";
 import { CheckCircle, Award, Users, Clock, MapPin, Phone, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -37,7 +38,17 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <WebPageSchema
+        title="O nas"
+        description="Poznaj ISO-DACH - firmę z wieloletnim doświadczeniem w izolacjach budynków."
+        url="https://iso-dach.eu/o-nas"
+        breadcrumbs={[
+          { name: "Strona główna", url: "https://iso-dach.eu" },
+          { name: "O nas", url: "https://iso-dach.eu/o-nas" },
+        ]}
+      />
+      <div className="min-h-screen marketing-page">
       {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -331,6 +342,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

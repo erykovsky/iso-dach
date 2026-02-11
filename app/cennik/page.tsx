@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FileText, Calculator, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WebPageSchema } from "@/components/schema/webpage-schema";
 import {
   Table,
   TableBody,
@@ -31,7 +32,17 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <WebPageSchema
+        title="Cennik"
+        description="Cennik usług ocieplenia i izolacji ISO-DACH."
+        url="https://iso-dach.eu/cennik"
+        breadcrumbs={[
+          { name: "Strona główna", url: "https://iso-dach.eu" },
+          { name: "Cennik", url: "https://iso-dach.eu/cennik" },
+        ]}
+      />
+      <div className="min-h-screen marketing-page">
       {/* Hero Section */}
       <section className="marketing-hero py-16">
         <div className="container mx-auto px-4">
@@ -252,6 +263,7 @@ export default function PricingPage() {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
