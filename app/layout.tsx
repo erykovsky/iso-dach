@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%.",
     images: [
       {
-        url: "/img/9.jpg",
+        url: "/img/izolacje-budynkow-hero.jpg",
         width: 1200,
         height: 630,
         alt: "ISO-DACH - profesjonalne izolacje budynków",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Izolacje dachów, stropów i piwnic – firma ISO-DACH",
     description:
       "Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic.",
-    images: ["/img/9.jpg"],
+    images: ["/img/izolacje-budynkow-hero.jpg"],
   },
   category: "business",
   classification: "Construction Services",

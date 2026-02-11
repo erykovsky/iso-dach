@@ -48,7 +48,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                 name="Ocieplenie ścian z pustką powietrzną"
                 description="Specjalistyczna metoda ocieplania ścian z pustką powietrzną przez wdmuchiwanie materiału izolacyjnego."
                 url="https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna"
-                image="https://iso-dach.eu/img/5.jpg"
+                image="https://iso-dach.eu/img/ocieplenie-sciany-z-pustka.jpg"
             />
             <FAQPageSchema faqs={cavityWallFaqSchema} />
             <div className="min-h-screen marketing-page">
@@ -88,7 +88,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                         </div>
                         <div className="relative h-64 md:h-96 marketing-image-frame">
                             <Image
-                                src="/img/5.jpg"
+                                src="/img/ocieplenie-sciany-z-pustka.jpg"
                                 alt="Ocieplenie ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
@@ -171,7 +171,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-64 md:h-96 marketing-image-frame">
                             <Image
-                                src="/img/5.jpg"
+                                src="/img/ocieplenie-sciany-z-pustka.jpg"
                                 alt="Proces ocieplania ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
@@ -265,19 +265,19 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 title: "Granulat wełny mineralnej",
                                 description:
                                     "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
-                                image: "/img/9.jpg",
+                                image: "/img/izolacje-budynkow-hero.jpg",
                             },
                             {
                                 title: "Granulat wełny szklanej",
                                 description:
                                     "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
-                                image: "/img/9.jpg",
+                                image: "/img/izolacje-budynkow-hero.jpg",
                             },
                             {
                                 title: "Granulat celulozowy",
                                 description:
                                     "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
-                                image: "/img/9.jpg",
+                                image: "/img/izolacje-budynkow-hero.jpg",
                             },
                         ].map((material, index) => (
                             <div
@@ -287,7 +287,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 <div className="relative h-48">
                                     <Image
                                         src={
-                                            material.image || "/img/9.jpg"
+                                            material.image || "/img/izolacje-budynkow-hero.jpg"
                                         }
                                         alt={material.title}
                                         fill

@@ -55,7 +55,7 @@ export function WebPageSchema({
   title,
   description,
   url,
-  image = "https://iso-dach.eu/img/9.jpg",
+  image = "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
   datePublished = "2024-01-01",
   dateModified = new Date().toISOString().split("T")[0],
   breadcrumbs,

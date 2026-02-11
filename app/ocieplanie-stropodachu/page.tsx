@@ -48,7 +48,7 @@ export default function OcieplanieStropodachuPage() {
         name="Ocieplanie stropodachu"
         description="Profesjonalne ocieplanie stropodachu metodą wdmuchiwania. Skuteczna izolacja termiczna i ograniczenie strat ciepła."
         url="https://iso-dach.eu/ocieplanie-stropodachu"
-        image="https://iso-dach.eu/img/9.jpg"
+        image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
       />
       <FAQPageSchema faqs={stropodachFaqSchema} />
       <div className="min-h-screen marketing-page">
@@ -84,7 +84,7 @@ export default function OcieplanieStropodachuPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/img/9.jpg"
+                src="/img/izolacje-budynkow-hero.jpg"
                 alt="Ocieplanie stropodachu"
                 fill
                 className="object-cover"
@@ -163,7 +163,7 @@ export default function OcieplanieStropodachuPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/img/9.jpg"
+                src="/img/izolacje-budynkow-hero.jpg"
                 alt="Technologia wdmuchiwania izolacji"
                 fill
                 className="object-cover"
@@ -227,19 +227,19 @@ export default function OcieplanieStropodachuPage() {
                 title: "Granulat wełny mineralnej",
                 description:
                   "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Granulat wełny szklanej",
                 description:
                   "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Granulat celulozowy",
                 description:
                   "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
             ].map((material, index) => (
               <div
@@ -248,7 +248,7 @@ export default function OcieplanieStropodachuPage() {
               >
                 <div className="relative h-48">
                   <Image
-                    src={material.image || "/img/9.jpg"}
+                    src={material.image || "/img/izolacje-budynkow-hero.jpg"}
                     alt={material.title}
                     fill
                     className="object-cover"

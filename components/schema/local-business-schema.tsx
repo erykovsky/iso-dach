@@ -3,7 +3,7 @@ export function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "ISO-DACH",
-    image: "https://iso-dach.eu/img/9.jpg",
+    image: "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
     "@id": "https://iso-dach.eu",
     url: "https://iso-dach.eu",
     telephone: "+48 660 441 941",

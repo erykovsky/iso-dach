@@ -60,7 +60,7 @@ export function ServiceSchema({
   name,
   description,
   url,
-  image = "https://iso-dach.eu/img/9.jpg",
+  image = "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
   reviews,
 }: ServiceSchemaProps) {
   const schema = {

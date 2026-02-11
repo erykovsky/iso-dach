@@ -84,7 +84,7 @@ export default function TermomodernizacjaPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/img/9.jpg"
+                src="/img/izolacje-budynkow-hero.jpg"
                 alt="Termomodernizacja budynku"
                 fill
                 className="object-cover"
@@ -371,7 +371,7 @@ export default function TermomodernizacjaPage() {
                 className="relative h-64 marketing-image-frame"
               >
                 <Image
-                  src={`/img/9.jpg`}
+                  src={`/img/izolacje-budynkow-hero.jpg`}
                   alt={`Realizacja termomodernizacji ${index + 1}`}
                   fill
                   className="object-cover"

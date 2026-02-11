@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/img/9.jpg",
+        url: "/img/izolacje-budynkow-hero.jpg",
         width: 1200,
         height: 630,
         alt: "Ocieplanie ścian zewnętrznych - ISO-DACH",
@@ -82,7 +82,7 @@ export default function OcieplanieScianPage() {
         name="Ocieplanie ścian zewnętrznych"
         description="Profesjonalne ocieplanie ścian zewnętrznych poprawiające efektywność energetyczną budynków."
         url="https://iso-dach.eu/ocieplanie-scian"
-        image="https://iso-dach.eu/img/9.jpg"
+        image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
       />
       <FAQPageSchema faqs={wallInsulationFAQs} />
       <div className="min-h-screen marketing-page">
@@ -118,7 +118,7 @@ export default function OcieplanieScianPage() {
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
                 <Image
-                  src="/img/9.jpg"
+                  src="/img/izolacje-budynkow-hero.jpg"
                   alt="Ocieplanie ścian zewnętrznych"
                   fill
                   className="object-cover"
@@ -258,19 +258,19 @@ export default function OcieplanieScianPage() {
                   title: "Styropian EPS",
                   description:
                     "Najpopularniejszy materiał izolacyjny, oferujący dobry stosunek ceny do jakości. Dostępny w różnych grubościach i gęstościach.",
-                  image: "/img/9.jpg",
+                  image: "/img/izolacje-budynkow-hero.jpg",
                 },
                 {
                   title: "Styropian Grafitowy",
                   description:
                     "Zaawansowany materiał o lepszych właściwościach izolacyjnych niż tradycyjny styropian, pozwalający na stosowanie cieńszych warstw.",
-                  image: "/img/9.jpg",
+                  image: "/img/izolacje-budynkow-hero.jpg",
                 },
                 {
                   title: "Wełna Mineralna",
                   description:
                     "Doskonała izolacja termiczna i akustyczna, niepalna i paroprzepuszczalna, idealna dla budynków wymagających oddychających ścian.",
-                  image: "/img/9.jpg",
+                  image: "/img/izolacje-budynkow-hero.jpg",
                 },
               ].map((material, index) => (
                 <div
@@ -279,7 +279,7 @@ export default function OcieplanieScianPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={material.image || "/img/9.jpg"}
+                      src={material.image || "/img/izolacje-budynkow-hero.jpg"}
                       alt={material.title}
                       fill
                       className="object-cover"
@@ -306,7 +306,7 @@ export default function OcieplanieScianPage() {
                   className="relative h-64 marketing-image-frame"
                 >
                   <Image
-                    src={`/img/9.jpg`}
+                    src={`/img/izolacje-budynkow-hero.jpg`}
                     alt={`Realizacja ocieplania ścian ${index + 1}`}
                     fill
                     className="object-cover"

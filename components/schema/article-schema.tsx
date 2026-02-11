@@ -13,7 +13,7 @@ export function ArticleSchema({
   url,
   datePublished,
   dateModified,
-  image = "https://iso-dach.eu/img/9.jpg",
+  image = "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
 }: ArticleSchemaProps) {
   const breadcrumbItems = [
     {

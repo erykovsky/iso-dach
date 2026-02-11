@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         type: "article",
         images: [
             {
-                url: "/img/9.jpg",
+                url: "/img/izolacje-budynkow-hero.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Naprawa izolacji po kunach - ISO-DACH",
@@ -82,21 +82,21 @@ export default function NaprawaIzolacjiPoKunachPage() {
                 name="Naprawa izolacji po kunach"
                 description="Specjalistyczna naprawa i odtworzenie izolacji uszkodzonej przez kuny wraz z zabezpieczeniem budynku."
                 url="https://iso-dach.eu/naprawa-izolacji-po-kunach"
-                image="https://iso-dach.eu/img/9.jpg"
+                image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
             />
             <FAQPageSchema faqs={martenRepairFaqSchema} />
             <HowToSchema
                 name="Jak przebiega naprawa izolacji po kunach"
                 description="Etapy naprawy izolacji uszkodzonej przez kuny i zabezpieczenia budynku."
                 url="https://iso-dach.eu/naprawa-izolacji-po-kunach"
-                image="https://iso-dach.eu/img/9.jpg"
+                image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
                 totalTime="P5D"
                 steps={martenRepairHowToSteps}
             />
             <VideoObjectSchema
                 title="Naprawa izolacji po kunach - zabezpieczenie poddasza"
                 description="Materiał wideo pokazujący proces naprawy izolacji uszkodzonej przez kuny oraz metody skutecznego zabezpieczenia poddasza."
-                thumbnailUrl="https://iso-dach.eu/img/9.jpg"
+                thumbnailUrl="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
                 uploadDate="2024-01-15"
                 videoUrl="https://www.youtube.com/watch?v=aonxLOo1Poo"
                 embedUrl="https://www.youtube-nocookie.com/embed/aonxLOo1Poo"
@@ -139,7 +139,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             </div>
                             <div className="relative h-64 md:h-96 marketing-image-frame">
                                 <Image
-                                    src="/img/9.jpg"
+                                    src="/img/izolacje-budynkow-hero.jpg"
                                     alt="Naprawa izolacji po kunach"
                                     fill
                                     className="object-cover"
@@ -219,7 +219,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/img/9.jpg"
+                                        src="/img/izolacje-budynkow-hero.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -227,7 +227,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/img/9.jpg"
+                                        src="/img/izolacje-budynkow-hero.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -235,7 +235,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/img/9.jpg"
+                                        src="/img/izolacje-budynkow-hero.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -243,7 +243,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/img/9.jpg"
+                                        src="/img/izolacje-budynkow-hero.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -363,37 +363,37 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     title: "Siatki zabezpieczające",
                                     description:
                                         "Montaż specjalnych siatek o odpowiedniej gęstości oczek, które uniemożliwiają kunom dostęp do poddasza czy stropodachu.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                                 {
                                     title: "Blachy ochronne",
                                     description:
                                         "Instalacja blach ochronnych w miejscach potencjalnego wejścia kun, które uniemożliwiają im przegryzienie się do wnętrza.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                                 {
                                     title: "Elektroniczne odstraszacze",
                                     description:
                                         "Montaż urządzeń emitujących ultradźwięki lub zmienne pole elektromagnetyczne, które są nieprzyjemne dla kun, ale nieszkodliwe dla ludzi i zwierząt domowych.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                                 {
                                     title: "Repelenty zapachowe",
                                     description:
                                         "Stosowanie naturalnych lub syntetycznych repelentów zapachowych, które odstraszają kuny dzięki nieprzyjemnemu dla nich zapachowi.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                                 {
                                     title: "Uszczelnienie otworów",
                                     description:
                                         "Dokładne uszczelnienie wszelkich otworów i szczelin w dachu i elewacji, przez które kuny mogłyby się dostać do budynku.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                                 {
                                     title: "Systemy hybrydowe",
                                     description:
                                         "Połączenie różnych metod zabezpieczeń dla uzyskania maksymalnej skuteczności ochrony przed kunami.",
-                                    image: "/img/9.jpg",
+                                    image: "/img/izolacje-budynkow-hero.jpg",
                                 },
                             ].map((method, index) => (
                                 <div
@@ -402,7 +402,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 >
                                     <div className="relative h-48">
                                         <Image
-                                            src={method.image || "/img/9.jpg"}
+                                            src={method.image || "/img/izolacje-budynkow-hero.jpg"}
                                             alt={method.title}
                                             fill
                                             className="object-cover"

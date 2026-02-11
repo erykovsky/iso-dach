@@ -23,37 +23,37 @@ export const galleryItems: GalleryItem[] = [
     {
         id: "1",
         category: "izolacja-stropow-piwnic",
-        image: "/img/1.jpg",
+        image: "/img/izolacja-stropu-piwnicy.jpg",
     },
     {
         id: "2",
         category: "izolacja-natryskowa",
-        image: "/img/2.jpg",
+        image: "/img/izolacja-natryskowa-poddasza.jpg",
     },
     {
         id: "3",
         category: "ocieplanie-stropodachu",
-        image: "/img/3.jpg",
+        image: "/img/ocieplanie-stropodachu-realizacja-1.jpg",
     },
     {
         id: "4",
         category: "ocieplanie-stropodachu",
-        image: "/img/4.jpg",
+        image: "/img/ocieplanie-stropodachu-realizacja-2.jpg",
     },
     {
         id: "5",
         category: "ocieplanie-stropodachu",
-        image: "/img/5.jpg",
+        image: "/img/ocieplenie-sciany-z-pustka.jpg",
     },
     {
         id: "6",
         category: "izolacja-poddaszy",
-        image: "/img/6.jpeg",
+        image: "/img/izolacja-poddasza-realizacja.jpeg",
     },
     {
         id: "7",
         category: "naprawa-izolacji",
-        image: "/img/8.jpg",
+        image: "/img/naprawa-izolacji-po-kunach.jpg",
     },
 ];
 

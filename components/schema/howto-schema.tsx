@@ -16,7 +16,7 @@ export function HowToSchema({
   name,
   description,
   url,
-  image = "https://iso-dach.eu/img/9.jpg",
+  image = "https://iso-dach.eu/img/izolacje-budynkow-hero.jpg",
   totalTime = "P3D",
   steps,
 }: HowToSchemaProps) {

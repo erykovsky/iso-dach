@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/img/9.jpg",
+        url: "/img/izolacje-budynkow-hero.jpg",
         width: 1200,
         height: 630,
         alt: "Izolacja poddaszy wełną celulozową - ISO-DACH",
@@ -82,7 +82,7 @@ export default function IzolacjaPoddaszyPage() {
         name="Izolacja poddaszy wełną celulozową"
         description="Profesjonalna izolacja poddaszy wełną celulozową poprawiająca komfort cieplny i obniżająca rachunki za ogrzewanie."
         url="https://iso-dach.eu/izolacja-poddaszy"
-        image="https://iso-dach.eu/img/9.jpg"
+        image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
       />
       <FAQPageSchema faqs={atticInsulationFAQs} />
       <div className="min-h-screen marketing-page">
@@ -118,7 +118,7 @@ export default function IzolacjaPoddaszyPage() {
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
                 <Image
-                  src="/img/9.jpg"
+                  src="/img/izolacje-budynkow-hero.jpg"
                   alt="Izolacja poddasza"
                   fill
                   className="object-cover"
@@ -284,7 +284,7 @@ export default function IzolacjaPoddaszyPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={material.image || "/img/9.jpg"}
+                      src={material.image || "/img/izolacje-budynkow-hero.jpg"}
                       alt={material.title}
                       fill
                       className="object-cover"

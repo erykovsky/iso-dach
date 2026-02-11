@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/img/9.jpg",
+        url: "/img/izolacje-budynkow-hero.jpg",
         width: 1200,
         height: 630,
         alt: "Kontakt z ISO-DACH - profesjonalne izolacje",

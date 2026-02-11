@@ -48,7 +48,7 @@ export default function TermowizjaPage() {
         name="Badania termowizyjne"
         description="Profesjonalne badania termowizyjne budynków. Wykrywanie mostków termicznych, strat ciepła i problemów z izolacją."
         url="https://iso-dach.eu/termowizja"
-        image="https://iso-dach.eu/img/9.jpg"
+        image="https://iso-dach.eu/img/izolacje-budynkow-hero.jpg"
       />
       <FAQPageSchema faqs={thermographyFaqSchema} />
       <div className="min-h-screen marketing-page">
@@ -85,7 +85,7 @@ export default function TermowizjaPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/img/9.jpg"
+                src="/img/izolacje-budynkow-hero.jpg"
                 alt="Badanie termowizyjne budynku"
                 fill
                 className="object-cover"
@@ -226,37 +226,37 @@ export default function TermowizjaPage() {
                 title: "Straty ciepła przez ściany",
                 description:
                   "Niedostateczna lub uszkodzona izolacja ścian zewnętrznych, która prowadzi do znacznych strat energii.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Nieszczelności okien i drzwi",
                 description:
                   "Miejsca, gdzie zimne powietrze przenika do wnętrza, a ciepłe ucieka na zewnątrz.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Problemy z dachem",
                 description:
                   "Braki w izolacji dachu, przecieki i miejsca ucieczki ciepła przez połać dachową.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Mostki termiczne",
                 description:
                   "Elementy konstrukcyjne o zwiększonej przewodności cieplnej, takie jak belki czy słupy.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Zawilgocenia i przecieki",
                 description:
                   "Miejsca, gdzie wilgoć przenika przez przegrody budowlane, zagrażając konstrukcji i zdrowiu mieszkańców.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
               {
                 title: "Problemy z wentylacją",
                 description:
                   "Niewłaściwe działanie systemu wentylacji mechanicznej lub grawitacyjnej.",
-                image: "/img/9.jpg",
+                image: "/img/izolacje-budynkow-hero.jpg",
               },
             ].map((item, index) => (
               <div
@@ -265,7 +265,7 @@ export default function TermowizjaPage() {
               >
                 <div className="relative h-48">
                   <Image
-                    src={item.image || "/img/9.jpg"}
+                    src={item.image || "/img/izolacje-budynkow-hero.jpg"}
                     alt={item.title}
                     fill
                     className="object-cover"
