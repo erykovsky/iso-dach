@@ -130,7 +130,3 @@ export function getAllBlogSlugs() {
         return [];
     }
 }
-
-export function getBlogPostsByCategory(category: string): BlogPost[] {
-    return getSortedBlogPosts().filter((post) => post.category === category);
-}
