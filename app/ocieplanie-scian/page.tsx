@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -121,6 +122,8 @@ export default function OcieplanieScianPage() {
                   alt="Ocieplanie ścian zewnętrznych"
                   fill
                   className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
                 />
               </div>
             </div>
@@ -318,6 +321,14 @@ export default function OcieplanieScianPage() {
             </div>
           </div>
         </section>
+
+        <ServiceIntentSection
+          points={[
+            "Zimą ściany są wyraźnie zimne, a pomieszczenia szybko tracą ciepło.",
+            "Na elewacji pojawiają się oznaki zawilgocenia lub mostków termicznych.",
+            "Chcesz obniżyć koszty ogrzewania i poprawić komfort bez przegrzewania domu latem.",
+          ]}
+        />
 
         {/* FAQ Section */}
         <section className="marketing-section py-16 md:py-24">

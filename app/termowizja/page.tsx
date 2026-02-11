@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle, Thermometer } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -88,6 +89,8 @@ export default function TermowizjaPage() {
                 alt="Badanie termowizyjne budynku"
                 fill
                 className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
               />
             </div>
           </div>
@@ -335,6 +338,14 @@ export default function TermowizjaPage() {
           </div>
         </div>
       </section>
+
+      <ServiceIntentSection
+        points={[
+          "Nie wiesz, którędy ucieka ciepło i chcesz podjąć decyzję na podstawie danych.",
+          "Planujesz ocieplenie i chcesz zacząć od precyzyjnej diagnostyki budynku.",
+          "Podejrzewasz mostki termiczne, nieszczelności lub miejscowe zawilgocenia.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="marketing-section-alt py-16 md:py-24">

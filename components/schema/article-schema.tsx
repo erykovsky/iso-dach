@@ -15,6 +15,27 @@ export function ArticleSchema({
   dateModified,
   image = "https://iso-dach.eu/img/9.jpg",
 }: ArticleSchemaProps) {
+  const breadcrumbItems = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Strona główna",
+      item: "https://iso-dach.eu",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://iso-dach.eu/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: headline,
+      item: url,
+    },
+  ];
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -40,6 +61,10 @@ export function ArticleSchema({
         "@type": "ImageObject",
         url: "https://iso-dach.eu/logo.svg",
       },
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
     },
     inLanguage: "pl-PL",
   };

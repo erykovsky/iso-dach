@@ -4,6 +4,8 @@ import { ContactSection } from "@/components/contact-section";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { PartnersSection } from "@/components/partners-section";
 import { ReviewsSection } from "@/components/reviews-section";
+import { IntentAnswersSection, homeIntentFaqs } from "@/components/intent-answers-section";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 import type { Metadata } from "next";
 
@@ -21,10 +23,12 @@ export default function Home() {
                 description="Profesjonalne ocieplanie budynków wełną celulozową. Izolacja poddaszy, ścian, stropów i piwnic. Oszczędność energii do 40%."
                 url="https://iso-dach.eu"
             />
+            <FAQPageSchema faqs={homeIntentFaqs} />
             <div className="flex flex-col min-h-screen">
                 <div className="grow">
                     <HeroCarousel />
                     <ServicesSection />
+                    <IntentAnswersSection />
                     <BenefitsSection />
                     <ReviewsSection />
                     <PartnersSection />

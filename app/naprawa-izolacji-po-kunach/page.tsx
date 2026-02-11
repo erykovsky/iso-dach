@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { HowToSchema } from "@/components/schema/howto-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { ArrowRight, HelpCircle, AlertTriangle } from "lucide-react";
 
@@ -142,6 +143,8 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     alt="Naprawa izolacji po kunach"
                                     fill
                                     className="object-cover"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                priority
                                 />
                             </div>
                         </div>
@@ -418,6 +421,14 @@ export default function NaprawaIzolacjiPoKunachPage() {
                         </div>
                     </div>
                 </section>
+
+                <ServiceIntentSection
+                    points={[
+                        "Słyszysz hałasy na poddaszu i widzisz oznaki zniszczeń izolacji.",
+                        "Po kunach pojawił się zapach lub podejrzewasz skażenie materiału izolacyjnego.",
+                        "Chcesz nie tylko naprawić szkody, ale też trwale zabezpieczyć dach przed nawrotem problemu.",
+                    ]}
+                />
 
                 {/* FAQ Section */}
                 <section className="marketing-section py-16 md:py-24">

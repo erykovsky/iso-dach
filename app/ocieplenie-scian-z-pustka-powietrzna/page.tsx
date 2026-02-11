@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -91,6 +92,8 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 alt="Ocieplenie ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            priority
                             />
                         </div>
                     </div>
@@ -371,6 +374,14 @@ export default function OciepleniePustkaPowietrznaPage() {
                     </div>
                 </div>
             </section>
+
+            <ServiceIntentSection
+                points={[
+                    "Masz budynek warstwowy i chcesz poprawić izolację bez skuwania elewacji.",
+                    "Szukasz krótkiej realizacji, która nie paraliżuje codziennego funkcjonowania domu.",
+                    "Widzisz straty ciepła na ścianach i chcesz szybko je ograniczyć.",
+                ]}
+            />
 
             {/* FAQ Section */}
             <section className="marketing-section-alt py-16 md:py-24">

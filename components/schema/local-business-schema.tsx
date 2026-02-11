@@ -42,15 +42,17 @@ export function LocalBusinessSchema() {
       itemListElement: [
         {
           "@type": "Offer",
+          url: "https://iso-dach.eu/izolacja-poddaszy",
           itemOffered: {
             "@type": "Service",
-            name: "Izolacja poddaszy wełną celulozową",
+            name: "Izolacja poddaszy",
             description:
-              "Profesjonalna izolacja poddaszy z wykorzystaniem wełny celulozowej. Oszczędność energii do 40%.",
+              "Profesjonalna izolacja poddaszy poprawiająca komfort cieplny i obniżająca rachunki za ogrzewanie.",
           },
         },
         {
           "@type": "Offer",
+          url: "https://iso-dach.eu/ocieplanie-scian",
           itemOffered: {
             "@type": "Service",
             name: "Ocieplanie ścian zewnętrznych",
@@ -60,6 +62,57 @@ export function LocalBusinessSchema() {
         },
         {
           "@type": "Offer",
+          url: "https://iso-dach.eu/izolacja-stropow-piwnic",
+          itemOffered: {
+            "@type": "Service",
+            name: "Izolacja stropów piwnic",
+            description:
+              "Skuteczna izolacja stropów nad piwnicą ograniczająca ucieczkę ciepła z parteru.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/ocieplanie-stropodachu",
+          itemOffered: {
+            "@type": "Service",
+            name: "Ocieplanie stropodachu",
+            description:
+              "Szybkie i skuteczne ocieplenie stropodachu bez ingerencji w konstrukcję dachu.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna",
+          itemOffered: {
+            "@type": "Service",
+            name: "Ocieplenie ścian z pustką powietrzną",
+            description:
+              "Docieplanie ścian trójwarstwowych metodą wdmuchiwania materiału izolacyjnego.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/naprawa-izolacji-po-kunach",
+          itemOffered: {
+            "@type": "Service",
+            name: "Naprawa izolacji po kunach",
+            description:
+              "Naprawa uszkodzonej izolacji dachowej i przywrócenie pełnej szczelności przegrody.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/termowizja",
+          itemOffered: {
+            "@type": "Service",
+            name: "Termowizja budynków",
+            description:
+              "Badania termowizyjne pomagające wykryć mostki termiczne i miejsca strat ciepła.",
+          },
+        },
+        {
+          "@type": "Offer",
+          url: "https://iso-dach.eu/termomodernizacja",
           itemOffered: {
             "@type": "Service",
             name: "Termomodernizacja budynków",

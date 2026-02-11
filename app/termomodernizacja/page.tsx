@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -87,6 +88,8 @@ export default function TermomodernizacjaPage() {
                 alt="Termomodernizacja budynku"
                 fill
                 className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
               />
             </div>
           </div>
@@ -383,6 +386,14 @@ export default function TermomodernizacjaPage() {
           </div>
         </div>
       </section>
+
+      <ServiceIntentSection
+        points={[
+          "Chcesz kompleksowo obniżyć zużycie energii, a nie tylko poprawić jeden element budynku.",
+          "Planujesz etapowe prace i potrzebujesz spójnego planu modernizacji.",
+          "Zależy Ci na poprawie komfortu, rachunków i wartości nieruchomości jednocześnie.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="marketing-section-alt py-16 md:py-24">

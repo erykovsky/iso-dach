@@ -15,6 +15,7 @@ export type BlogPost = {
     image: string;
     date: string;
     readTime: number;
+    lastModified?: string;
     content?: string;
 };
 
@@ -28,6 +29,7 @@ export function getSortedBlogPosts(): BlogPost[] {
                 // Read markdown file as string
                 const fullPath = path.join(contentDirectory, fileName);
                 const fileContents = fs.readFileSync(fullPath, "utf8");
+                const fileStats = fs.statSync(fullPath);
 
                 // Use gray-matter to parse the post metadata section
                 const matterResult = matter(fileContents);
@@ -36,6 +38,7 @@ export function getSortedBlogPosts(): BlogPost[] {
                 return {
                     id: index + 1,
                     ...(matterResult.data as Omit<BlogPost, "id" | "content">),
+                    lastModified: fileStats.mtime.toISOString(),
                 };
             });
 
@@ -79,6 +82,7 @@ export async function getBlogPostBySlug(
 
         const fullPath = path.join(contentDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
+        const fileStats = fs.statSync(fullPath);
 
         // Use gray-matter to parse the post metadata section
         const matterResult = matter(fileContents);
@@ -97,6 +101,7 @@ export async function getBlogPostBySlug(
         return {
             id: postIndex + 1,
             ...(matterResult.data as Omit<BlogPost, "id" | "content">),
+            lastModified: fileStats.mtime.toISOString(),
             content: contentHtml,
         };
     } catch (error) {
@@ -124,4 +129,8 @@ export function getAllBlogSlugs() {
         console.error("Error getting all blog slugs:", error);
         return [];
     }
+}
+
+export function getBlogPostsByCategory(category: string): BlogPost[] {
+    return getSortedBlogPosts().filter((post) => post.category === category);
 }

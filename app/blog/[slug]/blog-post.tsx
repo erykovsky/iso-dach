@@ -101,6 +101,7 @@ export function BlogPost({ post }: BlogPostProps) {
                             alt={post.title}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 768px"
                             priority
                         />
                     </div>

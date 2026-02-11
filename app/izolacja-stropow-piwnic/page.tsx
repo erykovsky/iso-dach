@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 
 export const metadata: Metadata = {
   title: "Izolacja stropów piwnic",
@@ -47,6 +48,8 @@ export default function IzolacjaStropowPiwnicPage() {
               alt="Izolacja stropów piwnic"
               fill
               className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
             />
           </div>
           <p className="mt-5 text-center text-muted-foreground">
@@ -171,6 +174,14 @@ export default function IzolacjaStropowPiwnicPage() {
             </li>
           </ol>
         </section>
+
+        <ServiceIntentSection
+          points={[
+            "Podłogi na parterze są chłodne mimo normalnego ogrzewania.",
+            "Piwnica jest zawilgocona i chcesz ograniczyć ryzyko kondensacji.",
+            "Zależy Ci na lepszym bilansie energetycznym całego domu.",
+          ]}
+        />
 
         <section className="marketing-cta-band rounded-2xl p-8 text-center md:p-10">
           <h2 className="text-2xl font-semibold text-primary mb-3">

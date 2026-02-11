@@ -29,7 +29,11 @@ export function OrganizationSchema() {
       contactType: "customer service",
       availableLanguage: ["Polish"],
     },
-    sameAs: [],
+    sameAs: [
+      "https://www.facebook.com/iso-dach-1639181143011116",
+      "https://www.instagram.com/iso_dach",
+      "https://youtube.com/@iso-dach7799",
+    ],
     vatID: "PL8541386908",
     taxID: "8541386908",
     areaServed: {

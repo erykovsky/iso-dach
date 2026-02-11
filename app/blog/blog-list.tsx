@@ -7,22 +7,21 @@ import { CalendarIcon, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { BlogPost } from "@/lib/blog";
-
-// Kategorie artykułów
-const categories = [
-    { id: "wszystkie", name: "Wszystkie" },
-    { id: "porady", name: "Porady" },
-    { id: "technologie", name: "Technologie" },
-    { id: "dotacje", name: "Dotacje" },
-    { id: "realizacje", name: "Realizacje" },
-];
+import {
+    BLOG_ALL_CATEGORY_ID,
+    BLOG_CATEGORIES,
+    getBlogCategoryName,
+} from "@/lib/blog-categories";
 
 interface BlogListProps {
     posts: BlogPost[];
+    activeCategory?: string;
 }
 
-export function BlogList({ posts }: BlogListProps) {
-    const [activeCategory, setActiveCategory] = useState("wszystkie");
+export function BlogList({
+    posts,
+    activeCategory = BLOG_ALL_CATEGORY_ID,
+}: BlogListProps) {
     const [searchQuery, setSearchQuery] = useState("");
 
     // Użyj przekazanych postów lub fallbackPosts jeśli posts jest undefined
@@ -41,7 +40,7 @@ export function BlogList({ posts }: BlogListProps) {
     const filteredPosts = sortedBlogPosts
         .filter(
             (post) =>
-                activeCategory === "wszystkie" ||
+                activeCategory === BLOG_ALL_CATEGORY_ID ||
                 post.category === activeCategory
         )
         .filter(
@@ -100,10 +99,17 @@ export function BlogList({ posts }: BlogListProps) {
                 {/* Filtry kategorii */}
                 <div className="mb-10">
                     <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-                        {categories.map((category) => (
-                            <button
+                        {[
+                            { id: BLOG_ALL_CATEGORY_ID, name: "Wszystkie" },
+                            ...BLOG_CATEGORIES,
+                        ].map((category) => (
+                            <Link
                                 key={category.id}
-                                onClick={() => setActiveCategory(category.id)}
+                                href={
+                                    category.id === BLOG_ALL_CATEGORY_ID
+                                        ? "/blog"
+                                        : `/blog/kategoria/${category.id}`
+                                }
                                 className={`${
                                     activeCategory === category.id
                                         ? "pill-filter-active"
@@ -111,7 +117,7 @@ export function BlogList({ posts }: BlogListProps) {
                                 }`}
                             >
                                 {category.name}
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -134,9 +140,7 @@ export function BlogList({ posts }: BlogListProps) {
                                     className="object-cover"
                                 />
                                 <div className="absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full">
-                                    {categories.find(
-                                        (c) => c.id === post.category
-                                    )?.name || "Inne"}
+                                    {getBlogCategoryName(post.category)}
                                 </div>
                             </Link>
                             <div className="p-6 grow flex flex-col">

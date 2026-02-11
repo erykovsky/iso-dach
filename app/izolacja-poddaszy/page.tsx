@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -121,6 +122,8 @@ export default function IzolacjaPoddaszyPage() {
                   alt="Izolacja poddasza"
                   fill
                   className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
                 />
               </div>
             </div>
@@ -297,6 +300,14 @@ export default function IzolacjaPoddaszyPage() {
           </div>
         </section>
 
+        <ServiceIntentSection
+          points={[
+            "Na poddaszu zimą jest wyraźnie chłodniej niż na niższych kondygnacjach.",
+            "Rachunki za ogrzewanie rosną mimo normalnego użytkowania domu.",
+            "Chcesz poprawić komfort cieplny i akustyczny bez generalnego remontu.",
+          ]}
+        />
+
         {/* FAQ Section */}
         <section className="marketing-section py-16 md:py-24">
           <div className="container mx-auto px-4">
@@ -314,7 +325,7 @@ export default function IzolacjaPoddaszyPage() {
                   {
                     question: "Czy izolacja poddasza wymaga wentylacji?",
                     answer:
-                      "Tak, prawidłowa wentylacja jest kluczowa dla skutecznej izolacji poddasza. Należy zapewnić szczelinę wentylacyjną między izolacją a poszyciem dachu, aby umożliwić odp  Należy zapewnić szczelinę wentylacyjną między izolacją a poszyciem dachu, aby umożliwić odprowadzanie wilgoci i zapobiec kondensacji pary wodnej. Brak odpowiedniej wentylacji może prowadzić do zawilgocenia izolacji, rozwoju pleśni i grzybów oraz uszkodzenia konstrukcji dachu.",
+                      "Tak, prawidłowa wentylacja jest kluczowa dla skutecznej izolacji poddasza. Należy zapewnić szczelinę wentylacyjną między izolacją a poszyciem dachu, aby umożliwić odprowadzanie wilgoci i zapobiec kondensacji pary wodnej. Brak odpowiedniej wentylacji może prowadzić do zawilgocenia izolacji, rozwoju pleśni i grzybów oraz uszkodzenia konstrukcji dachu.",
                   },
                   {
                     question: "Czy można izolować poddasze zimą?",

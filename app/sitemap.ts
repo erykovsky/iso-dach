@@ -1,9 +1,48 @@
 import type { MetadataRoute } from "next";
+import fs from "fs";
+import path from "path";
 import { getSortedBlogPosts } from "@/lib/blog";
+import { BLOG_CATEGORIES } from "@/lib/blog-categories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://iso-dach.eu";
-  const staticLastModified = new Date("2026-02-11");
+  const blogPosts = getSortedBlogPosts();
+
+  const routeToFileMap: Record<string, string> = {
+    "": "app/page.tsx",
+    "/o-nas": "app/o-nas/page.tsx",
+    "/ocieplanie-scian": "app/ocieplanie-scian/page.tsx",
+    "/izolacja-poddaszy": "app/izolacja-poddaszy/page.tsx",
+    "/izolacja-stropow-piwnic": "app/izolacja-stropow-piwnic/page.tsx",
+    "/ocieplanie-stropodachu": "app/ocieplanie-stropodachu/page.tsx",
+    "/ocieplenie-scian-z-pustka-powietrzna":
+      "app/ocieplenie-scian-z-pustka-powietrzna/page.tsx",
+    "/naprawa-izolacji-po-kunach": "app/naprawa-izolacji-po-kunach/page.tsx",
+    "/termomodernizacja": "app/termomodernizacja/page.tsx",
+    "/termowizja": "app/termowizja/page.tsx",
+    "/galeria": "app/galeria/page.tsx",
+    "/cennik": "app/cennik/page.tsx",
+    "/kontakt": "app/kontakt/page.tsx",
+    "/blog": "app/blog/page.tsx",
+    "/polityka-prywatnosci": "app/polityka-prywatnosci/page.tsx",
+  };
+
+  const getFileLastModified = (relativeFilePath: string): Date => {
+    try {
+      return fs.statSync(path.join(process.cwd(), relativeFilePath)).mtime;
+    } catch {
+      return new Date();
+    }
+  };
+
+  const parseDate = (value?: string): Date => {
+    if (!value) {
+      return new Date();
+    }
+
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+  };
 
   const routes = [
     "",
@@ -25,25 +64,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: staticLastModified,
+    lastModified: getFileLastModified(routeToFileMap[route] ?? "app/page.tsx"),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1.0 : 0.8,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = getSortedBlogPosts().map((post) => ({
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.date ? new Date(post.date) : new Date(),
+    lastModified: parseDate(post.lastModified ?? post.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
+  const categoryRoutes: MetadataRoute.Sitemap = BLOG_CATEGORIES.map((category) => {
+    const categoryPosts = blogPosts.filter((post) => post.category === category.id);
+    const categoryLastModified =
+      categoryPosts.length > 0
+        ? categoryPosts.reduce<Date>((latestDate, post) => {
+            const postModified = parseDate(post.lastModified ?? post.date);
+            return postModified > latestDate ? postModified : latestDate;
+          }, parseDate(categoryPosts[0]?.lastModified ?? categoryPosts[0]?.date))
+        : getFileLastModified("app/blog/kategoria/[category]/page.tsx");
+
+    return {
+      url: `${baseUrl}/blog/kategoria/${category.id}`,
+      lastModified: categoryLastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    };
+  });
+
   // Galeria - 8 zdjęć
   const galleryRoutes: MetadataRoute.Sitemap = [1, 2, 3, 4, 5, 6, 7, 8].map((id) => ({
     url: `${baseUrl}/galeria/${id}`,
-    lastModified: staticLastModified,
+    lastModified: getFileLastModified("app/galeria/gallery-data.ts"),
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...blogRoutes, ...galleryRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...blogRoutes, ...galleryRoutes];
 }

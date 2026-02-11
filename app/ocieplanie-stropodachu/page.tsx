@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
+import { ServiceIntentSection } from "@/components/service-intent-section";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -87,6 +88,8 @@ export default function OcieplanieStropodachuPage() {
                 alt="Ocieplanie stropodachu"
                 fill
                 className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
               />
             </div>
           </div>
@@ -318,6 +321,14 @@ export default function OcieplanieStropodachuPage() {
           </div>
         </div>
       </section>
+
+      <ServiceIntentSection
+        points={[
+          "Masz stropodach i podejrzewasz duże straty ciepła przez górną przegrodę.",
+          "Szukasz szybkiej metody ocieplenia bez rozbierania całej konstrukcji.",
+          "Chcesz poprawić komfort na najwyższych kondygnacjach i ograniczyć rachunki.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="marketing-section-alt py-16 md:py-24">
