@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const slides = [
   {
@@ -29,22 +35,52 @@ const slides = [
 
 export const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   useEffect(() => {
+    if (!carouselApi) return;
+
+    const onSelect = () => {
+      setCurrentSlide(carouselApi.selectedScrollSnap());
+    };
+
+    onSelect();
+    carouselApi.on("select", onSelect);
+    carouselApi.on("reInit", onSelect);
+
+    return () => {
+      carouselApi.off("select", onSelect);
+      carouselApi.off("reInit", onSelect);
+    };
+  }, [carouselApi]);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      carouselApi.scrollNext();
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselApi]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  const nextSlide = useCallback(() => {
+    if (!carouselApi) return;
+    carouselApi.scrollNext();
+  }, [carouselApi]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const prevSlide = useCallback(() => {
+    if (!carouselApi) return;
+    carouselApi.scrollPrev();
+  }, [carouselApi]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (!carouselApi) return;
+      carouselApi.scrollTo(index);
+    },
+    [carouselApi]
+  );
 
   return (
     <section className="section-shell relative overflow-hidden bg-linear-to-br from-[#800020] via-[#6b001b] to-[#4B0012] text-white">
@@ -86,7 +122,7 @@ export const HeroCarousel = () => {
               {slides.map((slide, index) => (
                 <button
                   key={slide.title}
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => goToSlide(index)}
                   className={`brand-focus h-2.5 rounded-full transition-all ${currentSlide === index
                     ? "w-10 bg-[#32CD32]"
                     : "w-5 bg-white/35 hover:bg-white/55"
@@ -103,20 +139,32 @@ export const HeroCarousel = () => {
                 aspectRatio: '4/3',
                 minHeight: 'clamp(200px, 50vw, 400px)'
               }}>
-              <div key={slides[currentSlide].title} className="absolute inset-0 transition-opacity duration-500">
-                <Image
-                  src={slides[currentSlide].image || "/placeholder.svg"}
-                  alt={slides[currentSlide].title}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                  priority
-                  loading="eager"
-                  fetchPriority="high"
-                  quality={70}
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
-              </div>
+              <Carousel
+                className="absolute inset-0 h-full w-full *:data-[slot=carousel-content]:h-full [&>[data-slot=carousel-content]>div]:h-full"
+                setApi={setCarouselApi}
+                opts={{ loop: true, align: "start" }}
+              >
+                <CarouselContent className="ml-0 h-full">
+                  {slides.map((slide, index) => (
+                    <CarouselItem key={slide.title} className="h-full pl-0">
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={slide.image || "/placeholder.svg"}
+                          alt={slide.title}
+                          fill
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                          priority={index === 0}
+                          loading="eager"
+                          fetchPriority={index === 0 ? "high" : "auto"}
+                          quality={70}
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#330009]/55 via-transparent to-transparent" />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
 
               <div className="absolute bottom-4 right-4 z-20 flex gap-2">
                 <button
