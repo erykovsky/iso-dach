@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,9 +22,35 @@ export const metadata: Metadata = {
   },
 };
 
+const stropodachFaqSchema = [
+  {
+    question: "Jaka jest optymalna grubość izolacji stropodachu?",
+    answer:
+      "Najczęściej stosujemy warstwę 20-30 cm, zależnie od konstrukcji stropodachu i oczekiwanego efektu energetycznego.",
+  },
+  {
+    question: "Jak długo trwa ocieplanie stropodachu metodą wdmuchiwania?",
+    answer:
+      "Dla standardowego domu jednorodzinnego najczęściej 1-2 dni robocze po wcześniejszym oględzinach.",
+  },
+  {
+    question: "Czy ocieplanie stropodachu wymaga pozwolenia?",
+    answer:
+      "W większości przypadków nie, bo prace nie zmieniają bryły budynku. Weryfikujemy to indywidualnie przed realizacją.",
+  },
+];
+
 export default function OcieplanieStropodachuPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <ServiceSchema
+        name="Ocieplanie stropodachu"
+        description="Profesjonalne ocieplanie stropodachu metodą wdmuchiwania. Skuteczna izolacja termiczna i ograniczenie strat ciepła."
+        url="https://iso-dach.eu/ocieplanie-stropodachu"
+        image="https://iso-dach.eu/img/9.jpg"
+      />
+      <FAQPageSchema faqs={stropodachFaqSchema} />
+      <div className="min-h-screen marketing-page">
       {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -55,7 +83,7 @@ export default function OcieplanieStropodachuPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/9.jpg"
                 alt="Ocieplanie stropodachu"
                 fill
                 className="object-cover"
@@ -132,7 +160,7 @@ export default function OcieplanieStropodachuPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/9.jpg"
                 alt="Technologia wdmuchiwania izolacji"
                 fill
                 className="object-cover"
@@ -196,19 +224,19 @@ export default function OcieplanieStropodachuPage() {
                 title: "Granulat wełny mineralnej",
                 description:
                   "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Granulat wełny szklanej",
                 description:
                   "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Granulat celulozowy",
                 description:
                   "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
             ].map((material, index) => (
               <div
@@ -217,7 +245,7 @@ export default function OcieplanieStropodachuPage() {
               >
                 <div className="relative h-48">
                   <Image
-                    src={material.image || "/placeholder.svg"}
+                    src={material.image || "/img/9.jpg"}
                     alt={material.title}
                     fill
                     className="object-cover"
@@ -360,6 +388,7 @@ export default function OcieplanieStropodachuPage() {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

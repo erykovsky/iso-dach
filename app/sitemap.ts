@@ -3,6 +3,7 @@ import { getSortedBlogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://iso-dach.eu";
+  const staticLastModified = new Date("2026-02-11");
 
   const routes = [
     "",
@@ -24,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: staticLastModified,
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1.0 : 0.8,
   }));
@@ -39,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Galeria - 8 zdjęć
   const galleryRoutes: MetadataRoute.Sitemap = [1, 2, 3, 4, 5, 6, 7, 8].map((id) => ({
     url: `${baseUrl}/galeria/${id}`,
-    lastModified: new Date(),
+    lastModified: staticLastModified,
     changeFrequency: "monthly",
     priority: 0.6,
   }));

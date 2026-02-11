@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,9 +22,35 @@ export const metadata: Metadata = {
   },
 };
 
+const thermomodernizationFaqSchema = [
+  {
+    question: "Ile można zaoszczędzić dzięki termomodernizacji?",
+    answer:
+      "Skala oszczędności zależy od stanu budynku, ale kompleksowe prace często znacząco obniżają koszty ogrzewania.",
+  },
+  {
+    question: "Jak długo trwa proces termomodernizacji?",
+    answer:
+      "Dla domu jednorodzinnego to zwykle kilka tygodni. Harmonogram ustalamy po audycie i zakresie prac.",
+  },
+  {
+    question: "Czy można realizować termomodernizację etapami?",
+    answer:
+      "Tak, ale najlepiej według spójnego planu, aby kolejne etapy dawały maksymalny efekt energetyczny.",
+  },
+];
+
 export default function TermomodernizacjaPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <ServiceSchema
+        name="Termomodernizacja budynków"
+        description="Kompleksowa termomodernizacja budynków zwiększająca efektywność energetyczną i komfort użytkowania."
+        url="https://iso-dach.eu/termomodernizacja"
+        image="https://iso-dach.eu/img/termomodernizacja.jpeg"
+      />
+      <FAQPageSchema faqs={thermomodernizationFaqSchema} />
+      <div className="min-h-screen marketing-page">
       {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -55,7 +83,7 @@ export default function TermomodernizacjaPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/9.jpg"
                 alt="Termomodernizacja budynku"
                 fill
                 className="object-cover"
@@ -340,8 +368,7 @@ export default function TermomodernizacjaPage() {
                 className="relative h-64 marketing-image-frame"
               >
                 <Image
-                  src={`/placeholder.svg?height=400&width=600&text=Realizacja ${index + 1
-                    }`}
+                  src={`/img/9.jpg`}
                   alt={`Realizacja termomodernizacji ${index + 1}`}
                   fill
                   className="object-cover"
@@ -423,6 +450,7 @@ export default function TermomodernizacjaPage() {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

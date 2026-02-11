@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,9 +22,35 @@ export const metadata: Metadata = {
     },
 };
 
+const cavityWallFaqSchema = [
+    {
+        question: "Jak sprawdzić, czy dom ma ściany z pustką powietrzną?",
+        answer:
+            "Najczęściej dotyczy to budynków warstwowych. Potwierdzamy to podczas oględzin i pomiarów przed realizacją.",
+    },
+    {
+        question: "Czy ta metoda ocieplenia jest skuteczna?",
+        answer:
+            "Tak, prawidłowo wykonane wypełnienie pustki znacząco ogranicza straty ciepła i poprawia komfort cieplny.",
+    },
+    {
+        question: "Czy zmieni się wygląd elewacji po ociepleniu?",
+        answer:
+            "Nie, po zamknięciu otworów technologicznych elewacja zachowuje swój dotychczasowy wygląd.",
+    },
+];
+
 export default function OciepleniePustkaPowietrznaPage() {
     return (
-        <div className="min-h-screen marketing-page">
+        <>
+            <ServiceSchema
+                name="Ocieplenie ścian z pustką powietrzną"
+                description="Specjalistyczna metoda ocieplania ścian z pustką powietrzną przez wdmuchiwanie materiału izolacyjnego."
+                url="https://iso-dach.eu/ocieplenie-scian-z-pustka-powietrzna"
+                image="https://iso-dach.eu/img/5.jpg"
+            />
+            <FAQPageSchema faqs={cavityWallFaqSchema} />
+            <div className="min-h-screen marketing-page">
             {/* Hero Section */}
             <section className="marketing-hero py-16 md:py-24">
                 <div className="container mx-auto px-4">
@@ -59,7 +87,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                         </div>
                         <div className="relative h-64 md:h-96 marketing-image-frame">
                             <Image
-                                src="/cavity-wall-insulation.png"
+                                src="/img/5.jpg"
                                 alt="Ocieplenie ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
@@ -140,7 +168,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-64 md:h-96 marketing-image-frame">
                             <Image
-                                src="/cavity-wall-insulation.png"
+                                src="/img/5.jpg"
                                 alt="Proces ocieplania ścian z pustką powietrzną"
                                 fill
                                 className="object-cover"
@@ -234,19 +262,19 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 title: "Granulat wełny mineralnej",
                                 description:
                                     "Naturalny materiał o doskonałych właściwościach termoizolacyjnych i akustycznych. Niepalny, odporny na gryzonie i owady.",
-                                image: "/placeholder.svg?height=300&width=400&query=mineral wool granulate",
+                                image: "/img/9.jpg",
                             },
                             {
                                 title: "Granulat wełny szklanej",
                                 description:
                                     "Lekki materiał o dobrych właściwościach izolacyjnych, odporny na wilgoć i przyjazny dla alergików.",
-                                image: "/placeholder.svg?height=300&width=400&query=glass wool granulate",
+                                image: "/img/9.jpg",
                             },
                             {
                                 title: "Granulat celulozowy",
                                 description:
                                     "Ekologiczny materiał z recyklingu papieru, o dobrych właściwościach termoizolacyjnych i zdolności do regulacji wilgotności.",
-                                image: "/placeholder.svg?height=300&width=400&query=cellulose insulation",
+                                image: "/img/9.jpg",
                             },
                         ].map((material, index) => (
                             <div
@@ -256,7 +284,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                                 <div className="relative h-48">
                                     <Image
                                         src={
-                                            material.image || "/placeholder.svg"
+                                            material.image || "/img/9.jpg"
                                         }
                                         alt={material.title}
                                         fill
@@ -421,6 +449,7 @@ export default function OciepleniePustkaPowietrznaPage() {
                     </Button>
                 </div>
             </section>
-        </div>
+            </div>
+        </>
     );
 }

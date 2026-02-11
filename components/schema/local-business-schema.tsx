@@ -69,12 +69,6 @@ export function LocalBusinessSchema() {
         },
       ],
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "127",
-      bestRating: "5",
-    },
     paymentAccepted: ["Cash", "Credit Card", "Bank Transfer"],
     currenciesAccepted: "PLN",
   };

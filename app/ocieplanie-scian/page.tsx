@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -76,6 +77,12 @@ const wallInsulationFAQs = [
 export default function OcieplanieScianPage() {
   return (
     <>
+      <ServiceSchema
+        name="Ocieplanie ścian zewnętrznych"
+        description="Profesjonalne ocieplanie ścian zewnętrznych poprawiające efektywność energetyczną budynków."
+        url="https://iso-dach.eu/ocieplanie-scian"
+        image="https://iso-dach.eu/img/9.jpg"
+      />
       <FAQPageSchema faqs={wallInsulationFAQs} />
       <div className="min-h-screen marketing-page">
         {/* Hero Section */}
@@ -110,7 +117,7 @@ export default function OcieplanieScianPage() {
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/img/9.jpg"
                   alt="Ocieplanie ścian zewnętrznych"
                   fill
                   className="object-cover"
@@ -248,19 +255,19 @@ export default function OcieplanieScianPage() {
                   title: "Styropian EPS",
                   description:
                     "Najpopularniejszy materiał izolacyjny, oferujący dobry stosunek ceny do jakości. Dostępny w różnych grubościach i gęstościach.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/img/9.jpg",
                 },
                 {
                   title: "Styropian Grafitowy",
                   description:
                     "Zaawansowany materiał o lepszych właściwościach izolacyjnych niż tradycyjny styropian, pozwalający na stosowanie cieńszych warstw.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/img/9.jpg",
                 },
                 {
                   title: "Wełna Mineralna",
                   description:
                     "Doskonała izolacja termiczna i akustyczna, niepalna i paroprzepuszczalna, idealna dla budynków wymagających oddychających ścian.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/img/9.jpg",
                 },
               ].map((material, index) => (
                 <div
@@ -269,7 +276,7 @@ export default function OcieplanieScianPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={material.image || "/placeholder.svg"}
+                      src={material.image || "/img/9.jpg"}
                       alt={material.title}
                       fill
                       className="object-cover"
@@ -296,8 +303,7 @@ export default function OcieplanieScianPage() {
                   className="relative h-64 marketing-image-frame"
                 >
                   <Image
-                    src={`/placeholder.svg?height=400&width=600&text=Realizacja ${index + 1
-                      }`}
+                    src={`/img/9.jpg`}
                     alt={`Realizacja ocieplania ścian ${index + 1}`}
                     fill
                     className="object-cover"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
+import { ServiceSchema } from "@/components/schema/service-schema";
 
 export const metadata: Metadata = {
   title: "Izolacja stropów piwnic",
@@ -15,7 +16,14 @@ export const metadata: Metadata = {
 
 export default function IzolacjaStropowPiwnicPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <ServiceSchema
+        name="Izolacja stropów piwnic"
+        description="Profesjonalna izolacja stropów piwnic poprawiająca komfort cieplny i ograniczająca straty energii."
+        url="https://iso-dach.eu/izolacja-stropow-piwnic"
+        image="https://iso-dach.eu/img/9.jpg"
+      />
+      <div className="min-h-screen marketing-page">
       <section className="marketing-hero py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
@@ -35,7 +43,7 @@ export default function IzolacjaStropowPiwnicPage() {
         <section className="marketing-section mb-14">
           <div className="relative h-64 md:h-96 marketing-image-frame">
             <Image
-              src="/placeholder.svg?height=600&width=800&query=basement ceiling insulation"
+              src="/img/9.jpg"
               alt="Izolacja stropów piwnic"
               fill
               className="object-cover"
@@ -105,25 +113,25 @@ export default function IzolacjaStropowPiwnicPage() {
                 title: "Wełna mineralna",
                 description:
                   "Doskonała izolacja termiczna i akustyczna, niepalna i paroprzepuszczalna.",
-                image: "/placeholder.svg?height=300&width=400&query=mineral wool insulation",
+                image: "/img/9.jpg",
               },
               {
                 title: "Płyty styropianowe",
                 description:
                   "Lekki materiał o dobrych właściwościach izolacyjnych, łatwy w montażu i obróbce.",
-                image: "/placeholder.svg?height=300&width=400&query=styrofoam boards",
+                image: "/img/9.jpg",
               },
               {
                 title: "Płyty PIR/PUR",
                 description:
                   "Nowoczesny materiał o wysokich parametrach izolacyjnych i dobrej trwałości.",
-                image: "/placeholder.svg?height=300&width=400&query=PIR insulation panels",
+                image: "/img/9.jpg",
               },
             ].map((material) => (
               <article key={material.title} className="marketing-tile">
                 <div className="relative h-48">
                   <Image
-                    src={material.image || "/placeholder.svg"}
+                    src={material.image || "/img/9.jpg"}
                     alt={material.title}
                     fill
                     className="object-cover"
@@ -177,6 +185,7 @@ export default function IzolacjaStropowPiwnicPage() {
           </Button>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

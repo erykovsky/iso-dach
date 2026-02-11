@@ -8,6 +8,9 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { HowToSchema } from "@/components/schema/howto-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { ArrowRight, HelpCircle, AlertTriangle } from "lucide-react";
 
@@ -34,9 +37,61 @@ export const metadata: Metadata = {
     },
 };
 
+const martenRepairFaqSchema = [
+    {
+        question: "Jak rozpoznać, że na poddaszu są kuny?",
+        answer:
+            "Najczęstsze oznaki to hałasy nocą, zapach, odchody i uszkodzenia izolacji lub instalacji.",
+    },
+    {
+        question: "Jak długo trwa naprawa izolacji po kunach?",
+        answer:
+            "W standardowym domu zwykle 2-5 dni, zależnie od skali zniszczeń i zakresu zabezpieczeń.",
+    },
+    {
+        question: "Czy zabezpieczenia przed kunami są skuteczne?",
+        answer:
+            "Tak, przy dobrze dobranych rozwiązaniach i szczelnym zamknięciu miejsc wejścia ochrona jest bardzo skuteczna.",
+    },
+];
+
+const martenRepairHowToSteps = [
+    {
+        name: "Inspekcja i ocena szkód",
+        text: "Sprawdzamy zakres zniszczeń i miejsca wejścia kun.",
+    },
+    {
+        name: "Usunięcie kun i zniszczonej izolacji",
+        text: "Usuwamy uszkodzony materiał i przygotowujemy przestrzeń do naprawy.",
+    },
+    {
+        name: "Dezynfekcja i odtworzenie izolacji",
+        text: "Oczyszczamy przestrzeń i montujemy nową izolację termiczną.",
+    },
+    {
+        name: "Zabezpieczenie przed ponownym wtargnięciem",
+        text: "Montujemy zabezpieczenia i wykonujemy kontrolę końcową.",
+    },
+];
+
 export default function NaprawaIzolacjiPoKunachPage() {
     return (
         <>
+            <ServiceSchema
+                name="Naprawa izolacji po kunach"
+                description="Specjalistyczna naprawa i odtworzenie izolacji uszkodzonej przez kuny wraz z zabezpieczeniem budynku."
+                url="https://iso-dach.eu/naprawa-izolacji-po-kunach"
+                image="https://iso-dach.eu/img/9.jpg"
+            />
+            <FAQPageSchema faqs={martenRepairFaqSchema} />
+            <HowToSchema
+                name="Jak przebiega naprawa izolacji po kunach"
+                description="Etapy naprawy izolacji uszkodzonej przez kuny i zabezpieczenia budynku."
+                url="https://iso-dach.eu/naprawa-izolacji-po-kunach"
+                image="https://iso-dach.eu/img/9.jpg"
+                totalTime="P5D"
+                steps={martenRepairHowToSteps}
+            />
             <VideoObjectSchema
                 title="Naprawa izolacji po kunach - zabezpieczenie poddasza"
                 description="Materiał wideo pokazujący proces naprawy izolacji uszkodzonej przez kuny oraz metody skutecznego zabezpieczenia poddasza."
@@ -83,7 +138,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             </div>
                             <div className="relative h-64 md:h-96 marketing-image-frame">
                                 <Image
-                                    src="/placeholder.svg?height=600&width=800"
+                                    src="/img/9.jpg"
                                     alt="Naprawa izolacji po kunach"
                                     fill
                                     className="object-cover"
@@ -161,7 +216,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 1"
+                                        src="/img/9.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -169,7 +224,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 2"
+                                        src="/img/9.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -177,7 +232,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 3"
+                                        src="/img/9.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -185,7 +240,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 </div>
                                 <div className="relative h-48 marketing-image-frame">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=400&text=Uszkodzenia 4"
+                                        src="/img/9.jpg"
                                         alt="Uszkodzenia izolacji przez kuny"
                                         fill
                                         className="object-cover"
@@ -305,37 +360,37 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                     title: "Siatki zabezpieczające",
                                     description:
                                         "Montaż specjalnych siatek o odpowiedniej gęstości oczek, które uniemożliwiają kunom dostęp do poddasza czy stropodachu.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                                 {
                                     title: "Blachy ochronne",
                                     description:
                                         "Instalacja blach ochronnych w miejscach potencjalnego wejścia kun, które uniemożliwiają im przegryzienie się do wnętrza.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                                 {
                                     title: "Elektroniczne odstraszacze",
                                     description:
                                         "Montaż urządzeń emitujących ultradźwięki lub zmienne pole elektromagnetyczne, które są nieprzyjemne dla kun, ale nieszkodliwe dla ludzi i zwierząt domowych.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                                 {
                                     title: "Repelenty zapachowe",
                                     description:
                                         "Stosowanie naturalnych lub syntetycznych repelentów zapachowych, które odstraszają kuny dzięki nieprzyjemnemu dla nich zapachowi.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                                 {
                                     title: "Uszczelnienie otworów",
                                     description:
                                         "Dokładne uszczelnienie wszelkich otworów i szczelin w dachu i elewacji, przez które kuny mogłyby się dostać do budynku.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                                 {
                                     title: "Systemy hybrydowe",
                                     description:
                                         "Połączenie różnych metod zabezpieczeń dla uzyskania maksymalnej skuteczności ochrony przed kunami.",
-                                    image: "/placeholder.svg?height=300&width=400",
+                                    image: "/img/9.jpg",
                                 },
                             ].map((method, index) => (
                                 <div
@@ -344,7 +399,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                                 >
                                     <div className="relative h-48">
                                         <Image
-                                            src={method.image || "/placeholder.svg"}
+                                            src={method.image || "/img/9.jpg"}
                                             alt={method.title}
                                             fill
                                             className="object-cover"

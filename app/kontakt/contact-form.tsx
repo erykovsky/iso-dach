@@ -84,6 +84,7 @@ export const ContactForm = () => {
                                 type="text"
                                 placeholder="Jan Kowalski"
                                 className="h-9 px-3 md:h-10 md:px-3.5"
+                                autoComplete="name"
                                 required
                                 defaultValue={state.name || ""}
                             />
@@ -96,6 +97,8 @@ export const ContactForm = () => {
                                 type="tel"
                                 placeholder="123456789"
                                 className="h-9 px-3 md:h-10 md:px-3.5"
+                                autoComplete="tel"
+                                inputMode="tel"
                                 required
                                 defaultValue={state.phone || ""}
                             />
@@ -108,6 +111,7 @@ export const ContactForm = () => {
                                 type="email"
                                 placeholder="m@przykład.pl"
                                 className="h-9 px-3 md:h-10 md:px-3.5"
+                                autoComplete="email"
                                 required
                                 defaultValue={state.email || ""}
                             />

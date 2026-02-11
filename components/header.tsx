@@ -34,6 +34,9 @@ export const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const servicesButtonRef = useRef<HTMLButtonElement>(null);
+  const servicesMenuId = "header-services-menu";
+  const mobileServicesMenuId = "mobile-services-menu";
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -47,6 +50,80 @@ export const Header = () => {
   const toggleMobileServices = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsMobileServicesOpen((prev) => !prev);
+  };
+
+  const focusServiceLink = (index: number) => {
+    const links = servicesRef.current?.querySelectorAll<HTMLAnchorElement>(
+      '[data-service-link="true"]',
+    );
+    if (!links || links.length === 0) return;
+    const safeIndex = (index + links.length) % links.length;
+    links[safeIndex]?.focus();
+  };
+
+  const handleServicesButtonKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsServicesOpen(true);
+      requestAnimationFrame(() => focusServiceLink(0));
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setIsServicesOpen(true);
+      requestAnimationFrame(() => focusServiceLink(-1));
+      return;
+    }
+
+    if (event.key === "Escape") {
+      setIsServicesOpen(false);
+    }
+  };
+
+  const handleServicesMenuKeyDown = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+  ) => {
+    const links = servicesRef.current?.querySelectorAll<HTMLAnchorElement>(
+      '[data-service-link="true"]',
+    );
+    if (!links || links.length === 0) return;
+
+    const currentIndex = Array.from(links).findIndex(
+      (link) => link === document.activeElement,
+    );
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      focusServiceLink(currentIndex < 0 ? 0 : currentIndex + 1);
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      focusServiceLink(currentIndex < 0 ? links.length - 1 : currentIndex - 1);
+      return;
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      focusServiceLink(0);
+      return;
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      focusServiceLink(links.length - 1);
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setIsServicesOpen(false);
+      servicesButtonRef.current?.focus();
+    }
   };
 
   useEffect(() => {
@@ -91,9 +168,13 @@ export const Header = () => {
             onMouseLeave={() => setIsServicesOpen(false)}
           >
             <button
+              ref={servicesButtonRef}
               className={`${desktopLinkClass} inline-flex items-center`}
               onClick={toggleServices}
+              onKeyDown={handleServicesButtonKeyDown}
               aria-expanded={isServicesOpen}
+              aria-haspopup="menu"
+              aria-controls={servicesMenuId}
             >
               Usługi
               <ChevronDown
@@ -107,6 +188,10 @@ export const Header = () => {
             <div className="absolute left-0 top-full h-2 w-full" />
 
             <div
+              id={servicesMenuId}
+              role="menu"
+              aria-label="Usługi"
+              onKeyDown={handleServicesMenuKeyDown}
               className={`absolute left-0 top-[calc(100%+3px)] w-80 rounded-2xl border border-primary/15 bg-white p-2 shadow-[0_20px_55px_-30px_rgba(75,0,18,0.7)] transition-all duration-200 ${
                 isServicesOpen
                   ? "visible translate-y-0 opacity-100"
@@ -118,6 +203,8 @@ export const Header = () => {
                   key={service.href}
                   href={service.href}
                   prefetch
+                  role="menuitem"
+                  data-service-link="true"
                   className="brand-focus block rounded-xl px-4 py-3 text-sm font-medium text-primary/85 hover:bg-primary/10 hover:text-primary"
                   onClick={() => setIsServicesOpen(false)}
                 >
@@ -200,6 +287,8 @@ export const Header = () => {
               <button
                 className="brand-focus flex w-full items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-primary"
                 onClick={toggleMobileServices}
+                aria-expanded={isMobileServicesOpen}
+                aria-controls={mobileServicesMenuId}
               >
                 Usługi
                 <ChevronDown
@@ -211,7 +300,7 @@ export const Header = () => {
               </button>
 
               {isMobileServicesOpen && (
-                <div className="mt-1 space-y-1">
+                <div id={mobileServicesMenuId} className="mt-1 space-y-1">
                   {services.map((service) => (
                     <Link
                       key={service.href}

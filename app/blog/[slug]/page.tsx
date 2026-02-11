@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPost } from "./blog-post";
 import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog";
+import { ArticleSchema } from "@/components/schema/article-schema";
 
 export async function generateMetadata({
     params,
@@ -51,11 +52,30 @@ export default async function BlogPostPage({
     // Pobierz post z pliku Markdown na podstawie sluga
     const post = await getBlogPostBySlug(slug);
 
-    if (!post) {
-        notFound();
-    }
+  if (!post) {
+    notFound();
+  }
 
-    return <BlogPost post={post} />;
+  const articleUrl = `https://iso-dach.eu/blog/${post.slug}`;
+  const articleImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `https://iso-dach.eu${post.image}`
+    : undefined;
+
+  return (
+    <>
+      <ArticleSchema
+        headline={post.title}
+        description={post.excerpt}
+        url={articleUrl}
+        datePublished={post.date}
+        dateModified={post.date}
+        image={articleImage}
+      />
+      <BlogPost post={post} />
+    </>
+  );
 }
 
 export function generateStaticParams() {

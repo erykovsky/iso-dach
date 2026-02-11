@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle, Thermometer } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,9 +22,35 @@ export const metadata: Metadata = {
   },
 };
 
+const thermographyFaqSchema = [
+  {
+    question: "Kiedy najlepiej wykonać badanie termowizyjne?",
+    answer:
+      "Najlepiej w sezonie grzewczym, przy wyraźnej różnicy temperatur między wnętrzem budynku a otoczeniem.",
+  },
+  {
+    question: "Ile trwa badanie termowizyjne?",
+    answer:
+      "Najczęściej od 1 do 4 godzin, zależnie od wielkości budynku i zakresu analizy.",
+  },
+  {
+    question: "Co otrzymuję po badaniu?",
+    answer:
+      "Raport z termogramami, opisem wykrytych problemów i rekomendacjami dalszych działań.",
+  },
+];
+
 export default function TermowizjaPage() {
   return (
-    <div className="min-h-screen marketing-page">
+    <>
+      <ServiceSchema
+        name="Badania termowizyjne"
+        description="Profesjonalne badania termowizyjne budynków. Wykrywanie mostków termicznych, strat ciepła i problemów z izolacją."
+        url="https://iso-dach.eu/termowizja"
+        image="https://iso-dach.eu/img/9.jpg"
+      />
+      <FAQPageSchema faqs={thermographyFaqSchema} />
+      <div className="min-h-screen marketing-page">
       {/* Hero Section */}
       <section className="marketing-hero py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -56,7 +84,7 @@ export default function TermowizjaPage() {
             </div>
             <div className="relative h-64 md:h-96 marketing-image-frame">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/9.jpg"
                 alt="Badanie termowizyjne budynku"
                 fill
                 className="object-cover"
@@ -195,37 +223,37 @@ export default function TermowizjaPage() {
                 title: "Straty ciepła przez ściany",
                 description:
                   "Niedostateczna lub uszkodzona izolacja ścian zewnętrznych, która prowadzi do znacznych strat energii.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Nieszczelności okien i drzwi",
                 description:
                   "Miejsca, gdzie zimne powietrze przenika do wnętrza, a ciepłe ucieka na zewnątrz.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Problemy z dachem",
                 description:
                   "Braki w izolacji dachu, przecieki i miejsca ucieczki ciepła przez połać dachową.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Mostki termiczne",
                 description:
                   "Elementy konstrukcyjne o zwiększonej przewodności cieplnej, takie jak belki czy słupy.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Zawilgocenia i przecieki",
                 description:
                   "Miejsca, gdzie wilgoć przenika przez przegrody budowlane, zagrażając konstrukcji i zdrowiu mieszkańców.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
               {
                 title: "Problemy z wentylacją",
                 description:
                   "Niewłaściwe działanie systemu wentylacji mechanicznej lub grawitacyjnej.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/img/9.jpg",
               },
             ].map((item, index) => (
               <div
@@ -234,7 +262,7 @@ export default function TermowizjaPage() {
               >
                 <div className="relative h-48">
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={item.image || "/img/9.jpg"}
                     alt={item.title}
                     fill
                     className="object-cover"
@@ -388,6 +416,7 @@ export default function TermowizjaPage() {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
+import { ServiceSchema } from "@/components/schema/service-schema";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -76,6 +77,12 @@ const atticInsulationFAQs = [
 export default function IzolacjaPoddaszyPage() {
   return (
     <>
+      <ServiceSchema
+        name="Izolacja poddaszy wełną celulozową"
+        description="Profesjonalna izolacja poddaszy wełną celulozową poprawiająca komfort cieplny i obniżająca rachunki za ogrzewanie."
+        url="https://iso-dach.eu/izolacja-poddaszy"
+        image="https://iso-dach.eu/img/9.jpg"
+      />
       <FAQPageSchema faqs={atticInsulationFAQs} />
       <div className="min-h-screen marketing-page">
         {/* Hero Section */}
@@ -274,7 +281,7 @@ export default function IzolacjaPoddaszyPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={material.image || "/placeholder.svg"}
+                      src={material.image || "/img/9.jpg"}
                       alt={material.title}
                       fill
                       className="object-cover"
