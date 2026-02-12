@@ -184,9 +184,8 @@ export const Header = () => {
               Usługi
               <ChevronDown
                 size={16}
-                className={`ml-1 transition-transform ${
-                  isServicesOpen ? "rotate-180" : ""
-                }`}
+                className={`ml-1 transition-transform ${isServicesOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -197,11 +196,10 @@ export const Header = () => {
               role="menu"
               aria-label="Usługi"
               onKeyDown={handleServicesMenuKeyDown}
-              className={`absolute left-0 top-[calc(100%+3px)] w-80 rounded-2xl border border-primary/15 bg-white p-2 shadow-[0_20px_55px_-30px_rgba(75,0,18,0.7)] transition-all duration-200 ${
-                isServicesOpen
+              className={`absolute left-0 top-[calc(100%+3px)] w-80 rounded-2xl border border-primary/15 bg-white p-2 shadow-[0_20px_55px_-30px_rgba(75,0,18,0.7)] transition-all duration-200 ${isServicesOpen
                   ? "visible translate-y-0 opacity-100"
                   : "invisible -translate-y-1 opacity-0"
-              }`}
+                }`}
             >
               {services.map((service) => (
                 <Link
@@ -222,10 +220,10 @@ export const Header = () => {
           <Link href="/o-nas" prefetch={false} className={desktopLinkClass}>
             O nas
           </Link>
-          <Link href="/galeria" prefetch={false} className={desktopLinkClass}>
+          <Link href="/galeria" prefetch={true} className={desktopLinkClass}>
             Galeria
           </Link>
-          <Link href="/blog" prefetch={false} className={desktopLinkClass}>
+          <Link href="/blog" prefetch={true} className={desktopLinkClass}>
             Blog
           </Link>
           <Link href="/cennik" prefetch={false} className={desktopLinkClass}>
@@ -301,9 +299,8 @@ export const Header = () => {
                 Usługi
                 <ChevronDown
                   size={16}
-                  className={`ml-1 transition-transform ${
-                    isMobileServicesOpen ? "rotate-180" : ""
-                  }`}
+                  className={`ml-1 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
