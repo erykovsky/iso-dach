@@ -66,6 +66,12 @@ const repairOptions = [
   },
 ];
 
+const metalMeshGuarantee = {
+  title: "Zabezpieczenie dachu siatką metalową",
+  description:
+    "Wykonujemy również montaż metalowych siatek zabezpieczających newralgiczne miejsca dachu. Po takim zabezpieczeniu jesteśmy w stanie dać 100% gwarancję, że kuna nie zniszczy izolacji dachu.",
+};
+
 const martenSigns = [
   "Głośne odgłosy na poddaszu, zwłaszcza nocą.",
   "Charakterystyczny, nieprzyjemny zapach.",
@@ -273,6 +279,15 @@ export default function NaprawaIzolacjiPoKunachPage() {
                 </article>
               ))}
             </div>
+            <article className="marketing-surface mx-auto mt-7 max-w-4xl rounded-2xl border border-secondary/35 p-6 md:p-8">
+              <h3 className="text-2xl font-bold text-primary">{metalMeshGuarantee.title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/90 md:text-base">
+                {metalMeshGuarantee.description}
+              </p>
+              <p className="mt-4 inline-flex items-center rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-xs font-semibold text-primary md:text-sm">
+                100% gwarancji po montażu siatek metalowych
+              </p>
+            </article>
             <p className="mx-auto mt-6 max-w-4xl text-center text-sm leading-relaxed text-foreground/90 md:text-base">
               Zapraszamy do korzystania z naszych usług. Jesteśmy specjalistami w
               dziedzinie napraw izolacji i działamy na terenie całej Polski.

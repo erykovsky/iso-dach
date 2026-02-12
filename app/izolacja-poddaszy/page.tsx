@@ -76,7 +76,7 @@ const atticInsulationFAQs = [
   },
 ];
 
-const atticGalleryImages = Array.from({ length: 7 }, (_, index) => ({
+const atticGalleryImages = Array.from({ length: 4 }, (_, index) => ({
   src: `/img/izolacja-poddaszy/${index + 1}.jpg`,
   alt: `Izolacja poddaszy - realizacja ${index + 1}`,
 }));
