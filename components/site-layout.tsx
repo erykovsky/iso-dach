@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookiePolicy } from "@/components/cookie-policy";
 import { GTMWithConsent } from "@/components/gtm-with-consent";
+import { MidScrollContactCta } from "@/components/mid-scroll-contact-cta";
 import { Toaster } from "@/components/ui/sonner";
 
 export function SiteLayout({
@@ -34,6 +35,7 @@ export function SiteLayout({
       </a>
       <Header />
       <main id="main-content">{children}</main>
+      <MidScrollContactCta />
       {modal}
       <Footer />
       <CookiePolicy />
