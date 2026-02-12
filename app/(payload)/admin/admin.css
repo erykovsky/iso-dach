@@ -1,0 +1,51 @@
+.payload-admin-root {
+  min-height: 100vh;
+  background: #f6f7f9;
+  color: #111827;
+  --theme-bg: #f6f7f9;
+  --theme-input-bg: #ffffff;
+  --theme-text: #111827;
+  --theme-elevation-0: #ffffff;
+  --theme-elevation-50: #f8fafc;
+  --theme-elevation-100: #f1f5f9;
+  --theme-elevation-150: #e2e8f0;
+  --theme-elevation-200: #cbd5e1;
+  --theme-elevation-400: #64748b;
+  --theme-elevation-600: #334155;
+  --theme-elevation-700: #1f2937;
+  --theme-elevation-800: #0f172a;
+  --theme-elevation-900: #0b1220;
+  --theme-elevation-1000: #020617;
+}
+
+.payload-admin-root h1,
+.payload-admin-root h2,
+.payload-admin-root h3,
+.payload-admin-root p,
+.payload-admin-root label,
+.payload-admin-root .field-label {
+  color: var(--theme-elevation-800);
+}
+
+.payload-admin-root input,
+.payload-admin-root textarea,
+.payload-admin-root select {
+  background: #fff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.payload-admin-root input::placeholder,
+.payload-admin-root textarea::placeholder {
+  color: #64748b;
+}
+
+.payload-admin-root .btn--style-primary {
+  background: #4b0012;
+  color: #fff;
+}
+
+.payload-admin-root .btn--style-primary:hover,
+.payload-admin-root .btn--style-primary:focus-visible {
+  background: #5e0017;
+}

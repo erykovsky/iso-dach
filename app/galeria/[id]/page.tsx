@@ -3,11 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import {
-    categoryNameById,
-    getAdjacentGalleryItems,
-    getGalleryItemById,
-} from "../gallery-data";
+import { categoryNameById } from "@/lib/gallery-categories";
+import { getAdjacentGalleryItems, getGalleryItemById } from "@/lib/gallery";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
     params,
@@ -15,7 +14,7 @@ export async function generateMetadata({
     params: Promise<{ id: string }>;
 }): Promise<Metadata> {
     const { id } = await params;
-    const item = getGalleryItemById(id);
+    const item = await getGalleryItemById(id);
 
     if (!item) {
         return {
@@ -56,8 +55,10 @@ export default async function GalleryImagePage({
     params: Promise<{ id: string }>;
 }) {
     const { id } = await params;
-    const item = getGalleryItemById(id);
-    const adjacentItems = item ? getAdjacentGalleryItems(item.id) : { previous: null, next: null };
+    const item = await getGalleryItemById(id);
+    const adjacentItems = item
+        ? await getAdjacentGalleryItems(item.id)
+        : { previous: null, next: null };
 
     if (!item) {
         notFound();
@@ -82,7 +83,7 @@ export default async function GalleryImagePage({
                         </p>
                         <Image
                             src={item.image || "/placeholder.svg"}
-                            alt={`Realizacja ${categoryNameById[item.category]} - zdjęcie ${item.id}`}
+                            alt={item.alt}
                             fill
                             className="object-contain"
                             sizes="(max-width: 768px) 92vw, (max-width: 1280px) 78vw, 900px"

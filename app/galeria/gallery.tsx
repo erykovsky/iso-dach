@@ -5,25 +5,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  categoryNameById,
   galleryCategories,
-  galleryItems,
-} from "./gallery-data";
+  categoryNameById,
+} from "@/lib/gallery-categories";
+import type { GalleryItemView } from "@/lib/gallery";
 
-export function Gallery() {
+type GalleryProps = {
+  items: GalleryItemView[];
+};
+
+export function Gallery({ items }: GalleryProps) {
   const [activeCategory, setActiveCategory] = useState("wszystkie");
 
   const filteredImages =
     activeCategory === "wszystkie"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
+      ? items
+      : items.filter((item) => item.category === activeCategory);
 
   return (
     <div className="min-h-screen marketing-page">
       <section className="marketing-hero py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-<h1 className="text-4xl font-bold text-white md:text-5xl">Galeria</h1>
+            <h1 className="text-4xl font-bold text-white md:text-5xl">Galeria</h1>
             <p className="mx-auto mt-4 max-w-2xl text-white/85">
               Zapraszamy do obejrzenia zdjęć prezentujących efekty naszej pracy oraz
               stosowane rozwiązania.
@@ -67,7 +71,7 @@ export function Gallery() {
                 <div className="relative aspect-4/3">
                   <Image
                     src={item.image || "/placeholder.svg"}
-                    alt={`Realizacja ${categoryNameById[item.category]} - ISO-DACH`}
+                    alt={item.alt}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

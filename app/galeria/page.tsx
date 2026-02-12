@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { Gallery } from "./gallery";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
+import { getGalleryItems } from "@/lib/gallery";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Galeria realizacji izolacji i ociepleń",
@@ -33,7 +36,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const items = await getGalleryItems();
+
   return (
     <>
       <WebPageSchema
@@ -45,7 +50,7 @@ export default function GalleryPage() {
           { name: "Galeria", url: "https://iso-dach.eu/galeria" },
         ]}
       />
-      <Gallery />
+      <Gallery items={items} />
     </>
   );
 }

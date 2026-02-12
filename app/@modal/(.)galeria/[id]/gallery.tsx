@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { categoryNameById, getGalleryItemById } from "@/app/galeria/gallery-data";
+import { categoryNameById } from "@/lib/gallery-categories";
+import { getGalleryItemById } from "@/lib/gallery";
 
 export const Gallery = async ({ params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params;
-    const item = getGalleryItemById(id);
+    const item = await getGalleryItemById(id);
 
     if (!item) {
         notFound();
@@ -18,7 +19,7 @@ export const Gallery = async ({ params }: { params: Promise<{ id: string }> }) =
                 </p>
                 <Image
                     src={item.image || "/placeholder.svg"}
-                    alt={categoryNameById[item.category]}
+                    alt={item.alt}
                     fill
                     className="object-contain"
                     sizes="(max-width: 768px) 92vw, (max-width: 1280px) 74vw, 900px"

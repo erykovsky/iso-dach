@@ -1,9 +1,5 @@
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { CookiePolicy } from "@/components/cookie-policy";
-import { GTMWithConsent } from "@/components/gtm-with-consent";
-import { Toaster } from "@/components/ui/sonner";
+import { SiteLayout } from "@/components/site-layout";
 import { COOKIE_CONSENT_VERSION } from "@/lib/cookie-consent";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
@@ -135,21 +131,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        {gtmId ? <GTMWithConsent gtmId={gtmId} /> : null}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
-        >
-          Przejdź do treści
-        </a>
-        <Header />
-        <main id="main-content">
+        <SiteLayout gtmId={gtmId} modal={modal}>
           {children}
-        </main>
-        {modal}
-        <Footer />
-        <CookiePolicy />
-        <Toaster position="bottom-right" closeButton />
+        </SiteLayout>
       </body>
     </html>
   );

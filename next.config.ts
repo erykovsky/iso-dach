@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const cspHeader = [
   "default-src 'self'",
@@ -27,6 +28,12 @@ const nextConfig: NextConfig = {
     deviceSizes: [320, 420, 640, 750, 828],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     qualities: [70, 75, 85],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.public.blob.vercel-storage.com",
+      },
+    ],
   },
   async headers() {
     return [
@@ -45,4 +52,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);
