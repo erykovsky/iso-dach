@@ -435,6 +435,223 @@
     color: color-mix(in srgb, var(--brand-maroon) 88%, #2a1220);
   }
 
+  .blog-rich-content {
+    color: color-mix(in srgb, var(--foreground) 90%, #2a3444);
+    font-size: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+
+  .blog-rich-content > * {
+    margin: 0;
+  }
+
+  .blog-rich-content > * + * {
+    margin-top: 0.8rem;
+  }
+
+  .blog-rich-content p + p {
+    margin-top: 0.5rem;
+  }
+
+  .blog-rich-content h2,
+  .blog-rich-content h3,
+  .blog-rich-content h4 {
+    margin-top: 1.9rem;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+    letter-spacing: -0.017em;
+    line-height: 1.25;
+    color: color-mix(in srgb, var(--brand-maroon) 90%, #2a1120);
+    text-wrap: balance;
+  }
+
+  .blog-rich-content h2 {
+    font-size: clamp(1.38rem, 1.22rem + 0.7vw, 1.78rem);
+  }
+
+  .blog-rich-content h3 {
+    font-size: clamp(1.18rem, 1.08rem + 0.44vw, 1.4rem);
+  }
+
+  .blog-rich-content h4 {
+    font-size: clamp(1.06rem, 1.02rem + 0.22vw, 1.17rem);
+  }
+
+  .blog-rich-content p {
+    color: color-mix(in srgb, var(--foreground) 90%, #334155);
+  }
+
+  .blog-rich-content strong {
+    color: color-mix(in srgb, var(--brand-maroon) 88%, #2a1120);
+    font-weight: 700;
+  }
+
+  .blog-rich-content b,
+  .blog-rich-content .editor-text-bold {
+    font-weight: 700;
+  }
+
+  .blog-rich-content a {
+    color: color-mix(in srgb, var(--brand-maroon) 84%, #3b1220);
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: color-mix(in srgb, var(--brand-maroon) 40%, transparent);
+  }
+
+  .blog-rich-content a:hover {
+    color: color-mix(in srgb, var(--brand-maroon) 96%, #250912);
+    text-decoration-color: color-mix(in srgb, var(--brand-maroon) 65%, transparent);
+  }
+
+  .blog-rich-content ul,
+  .blog-rich-content ol {
+    margin-block: 1rem;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .blog-rich-content ul:not(.list-check),
+  .blog-rich-content ul.list-bullet,
+  .blog-rich-content ol,
+  .blog-rich-content ol.list-number {
+    list-style: none;
+    counter-reset: blog-ordered-list;
+  }
+
+  .blog-rich-content li {
+    margin-top: 0.35rem;
+    color: color-mix(in srgb, var(--foreground) 90%, #334155);
+  }
+
+  .blog-rich-content ul:not(.list-check) > li,
+  .blog-rich-content ul.list-bullet > li {
+    position: relative;
+    padding-left: 1.35rem;
+  }
+
+  .blog-rich-content ul:not(.list-check) > li::before,
+  .blog-rich-content ul.list-bullet > li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    font-size: 1.15em;
+    line-height: 1;
+    color: color-mix(in srgb, var(--brand-maroon) 62%, #5d1b2f);
+  }
+
+  .blog-rich-content ol > li,
+  .blog-rich-content ol.list-number > li {
+    counter-increment: blog-ordered-list;
+    position: relative;
+    padding-left: 1.55rem;
+  }
+
+  .blog-rich-content ol > li::before,
+  .blog-rich-content ol.list-number > li::before {
+    content: counter(blog-ordered-list) ".";
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: color-mix(in srgb, var(--brand-maroon) 72%, #4f1628);
+  }
+
+  .blog-rich-content li > ul,
+  .blog-rich-content li > ol {
+    margin-top: 0.45rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .blog-rich-content li::marker {
+    color: color-mix(in srgb, var(--brand-maroon) 58%, #5d1b2f);
+  }
+
+  .blog-rich-content blockquote {
+    margin-block: 1.35rem;
+    border-left: 3px solid color-mix(in srgb, var(--brand-maroon) 55%, #a8a8a8);
+    background: color-mix(in srgb, var(--brand-maroon) 4%, white);
+    border-radius: 0.75rem;
+    padding: 0.95rem 1rem;
+    color: color-mix(in srgb, var(--foreground) 82%, #3b4558);
+    font-style: italic;
+  }
+
+  .blog-rich-content hr {
+    margin-block: 1.65rem;
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, var(--brand-maroon) 16%, #e8e8e8);
+  }
+
+  .blog-rich-content :not(pre) > code {
+    background: color-mix(in srgb, var(--brand-maroon) 8%, white);
+    color: color-mix(in srgb, var(--brand-maroon) 88%, #2a1120);
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 16%, #e2e2e2);
+    border-radius: 0.42rem;
+    padding: 0.16rem 0.4rem;
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .blog-rich-content pre {
+    margin-block: 1.2rem;
+    overflow-x: auto;
+    border-radius: 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 16%, #dedede);
+    background: #101419;
+    color: #ecf1f8;
+    padding: 0.95rem 1.05rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .blog-rich-content pre code {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-radius: 0;
+    padding: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .blog-rich-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: 1.2rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 14%, #e4e4e4);
+  }
+
+  .blog-rich-content th,
+  .blog-rich-content td {
+    border-bottom: 1px solid color-mix(in srgb, var(--brand-maroon) 12%, #ececec);
+    padding: 0.62rem 0.68rem;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .blog-rich-content th {
+    font-weight: 700;
+    color: color-mix(in srgb, var(--brand-maroon) 86%, #2a1120);
+    background: color-mix(in srgb, var(--brand-maroon) 6%, white);
+  }
+
+  .blog-rich-content tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .blog-rich-content img {
+    margin-block: 1.2rem;
+    border-radius: 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--brand-maroon) 14%, #e4e4e4);
+  }
+
   .marketing-surface {
     border-radius: 1rem;
     border: 1px solid color-mix(in srgb, var(--brand-maroon) 12%, #e4e4e4);
@@ -509,5 +726,31 @@
 
   .marketing-hero::after {
     height: 56px;
+  }
+
+  .blog-rich-content {
+    font-size: 0.93rem;
+    line-height: 1.68;
+  }
+
+  .blog-rich-content h2 {
+    margin-top: 1.6rem;
+    font-size: 1.32rem;
+  }
+
+  .blog-rich-content h3 {
+    margin-top: 1.35rem;
+    font-size: 1.14rem;
+  }
+
+  .blog-rich-content ul,
+  .blog-rich-content ol {
+    padding-left: 1.15rem;
+  }
+
+  .blog-rich-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

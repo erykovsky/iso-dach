@@ -4,6 +4,8 @@ import { getSortedBlogPosts } from "@/lib/blog";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 import { BLOG_ALL_CATEGORY_ID } from "@/lib/blog-categories";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
     title: "Blog o izolacji i termomodernizacji",
     description:
@@ -36,9 +38,8 @@ export const metadata: Metadata = {
     },
 };
 
-export default function BlogPage() {
-    // Pobierz posty z plików Markdown po stronie serwera
-    const posts = getSortedBlogPosts();
+export default async function BlogPage() {
+    const posts = await getSortedBlogPosts();
 
     // Przekaż posty do komponentu BlogList
     return (

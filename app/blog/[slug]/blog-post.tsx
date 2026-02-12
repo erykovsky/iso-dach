@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import {
     Accordion,
     AccordionContent,
@@ -25,6 +26,8 @@ import { getBlogCategoryName } from "@/lib/blog-categories";
 interface BlogPostProps {
     post: BlogPostType;
 }
+
+type RichTextData = Parameters<typeof RichText>[0]["data"];
 
 type RelatedLink = {
     href: string;
@@ -99,6 +102,13 @@ const relatedLinksBySlug: Record<string, RelatedLink[]> = {
 };
 
 export function BlogPost({ post }: BlogPostProps) {
+    const lexicalContent =
+        post.contentLexical &&
+        typeof post.contentLexical === "object" &&
+        "root" in post.contentLexical
+            ? post.contentLexical
+            : null;
+
     const publishedDateIso = (() => {
         try {
             return new Date(post.date).toISOString();
@@ -223,12 +233,19 @@ export function BlogPost({ post }: BlogPostProps) {
                         </div>
 
                         <article className="marketing-surface p-5 sm:p-6 md:p-8">
-                            <div
-                                className="prose prose-lg max-w-none"
-                                dangerouslySetInnerHTML={{
-                                    __html: post.content || "",
-                                }}
-                            />
+                            {lexicalContent ? (
+                                <RichText
+                                    className="blog-rich-content max-w-none"
+                                    data={lexicalContent as unknown as RichTextData}
+                                />
+                            ) : (
+                                <div
+                                    className="blog-rich-content max-w-none"
+                                    dangerouslySetInnerHTML={{
+                                        __html: post.content || "",
+                                    }}
+                                />
+                            )}
                         </article>
 
                         {articleFaqs.length > 0 && (

@@ -7,6 +7,7 @@ import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { Users } from "./payload/collections/users";
 import { Media } from "./payload/collections/media";
 import { GalleryItems } from "./payload/collections/gallery-items";
+import { BlogPosts } from "./payload/collections/blog-posts";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -50,7 +51,7 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, GalleryItems],
+  collections: [Users, Media, GalleryItems, BlogPosts],
   endpoints: [],
   db: postgresAdapter({
     pool: {

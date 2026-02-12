@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPost } from "./blog-post";
-import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog";
+import { getBlogPostBySlug } from "@/lib/blog";
 import { ArticleSchema } from "@/components/schema/article-schema";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { getBlogCategoryName } from "@/lib/blog-categories";
+
+export const dynamic = "force-dynamic";
 
 const MAX_TITLE_LENGTH = 48;
 const MIN_DESCRIPTION_LENGTH = 120;
@@ -50,7 +52,6 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    // Pobierz post z pliku Markdown na podstawie sluga
     const post = await getBlogPostBySlug(slug);
 
     if (!post) {
@@ -111,7 +112,6 @@ export default async function BlogPostPage({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    // Pobierz post z pliku Markdown na podstawie sluga
     const post = await getBlogPostBySlug(slug);
 
   if (!post) {
@@ -143,9 +143,4 @@ export default async function BlogPostPage({
       <BlogPost post={post} />
     </>
   );
-}
-
-export function generateStaticParams() {
-    // Pobierz wszystkie slugi z plików Markdown
-    return getAllBlogSlugs();
 }

@@ -64,7 +64,7 @@ const getBaseUrl = (request: Request) => {
   return `${requestUrl.protocol}//${requestUrl.host}`;
 };
 
-const buildSitemapEntries = (baseUrl: string): SitemapEntry[] => {
+const buildSitemapEntries = async (baseUrl: string): Promise<SitemapEntry[]> => {
   const staticRoutes: SitemapEntry[] = Object.keys(staticRouteToFileMap).map((route) => {
     const changeFrequency: SitemapEntry["changeFrequency"] =
       route === "" ? "weekly" : "monthly";
@@ -77,7 +77,7 @@ const buildSitemapEntries = (baseUrl: string): SitemapEntry[] => {
     };
   });
 
-  const blogPosts = getSortedBlogPosts();
+  const blogPosts = await getSortedBlogPosts();
 
   const blogRoutes = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -109,9 +109,9 @@ const buildSitemapEntries = (baseUrl: string): SitemapEntry[] => {
 
 export const revalidate = 3600;
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
   const baseUrl = getBaseUrl(request);
-  const entries = buildSitemapEntries(baseUrl);
+  const entries = await buildSitemapEntries(baseUrl);
 
   const urlset = entries
     .map((entry) => {

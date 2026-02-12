@@ -4,11 +4,12 @@ import { BlogList } from "@/app/blog/blog-list";
 import { WebPageSchema } from "@/components/schema/webpage-schema";
 import { getSortedBlogPosts } from "@/lib/blog";
 import {
-  BLOG_CATEGORIES,
   getBlogCategoryDescription,
   getBlogCategoryName,
   isBlogCategory,
 } from "@/lib/blog-categories";
+
+export const dynamic = "force-dynamic";
 
 type CategoryPageParams = {
   category: string;
@@ -73,7 +74,7 @@ export default async function BlogCategoryPage({
     notFound();
   }
 
-  const posts = getSortedBlogPosts();
+  const posts = await getSortedBlogPosts();
   const categoryName = getBlogCategoryName(category);
   const categoryDescription = getBlogCategoryDescription(category);
   const categoryUrl = `https://iso-dach.eu/blog/kategoria/${category}`;
@@ -93,8 +94,4 @@ export default async function BlogCategoryPage({
       <BlogList posts={posts} activeCategory={category} />
     </>
   );
-}
-
-export function generateStaticParams() {
-  return BLOG_CATEGORIES.map((category) => ({ category: category.id }));
 }

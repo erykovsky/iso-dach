@@ -49,3 +49,47 @@
 .payload-admin-root .btn--style-primary:focus-visible {
   background: #5e0017;
 }
+
+/* Fix list and bold rendering inside Payload Lexical editor */
+.payload-admin-root [contenteditable="true"] ul,
+.payload-admin-root [contenteditable="true"] ol {
+  margin: 0.6rem 0;
+  padding-left: 1.4rem;
+}
+
+.payload-admin-root [contenteditable="true"] ul,
+.payload-admin-root [contenteditable="true"] ul.list-bullet {
+  list-style: disc outside;
+}
+
+.payload-admin-root [contenteditable="true"] ol,
+.payload-admin-root [contenteditable="true"] ol.list-number {
+  list-style: decimal outside;
+}
+
+.payload-admin-root [contenteditable="true"] li {
+  display: list-item;
+  margin: 0.2rem 0;
+}
+
+.payload-admin-root [contenteditable="true"] ul ul {
+  list-style-type: circle;
+}
+
+.payload-admin-root [contenteditable="true"] ul ul ul {
+  list-style-type: square;
+}
+
+.payload-admin-root [contenteditable="true"] ol ol {
+  list-style-type: lower-alpha;
+}
+
+.payload-admin-root [contenteditable="true"] ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.payload-admin-root [contenteditable="true"] strong,
+.payload-admin-root [contenteditable="true"] b,
+.payload-admin-root [contenteditable="true"] .editor-text-bold {
+  font-weight: 700;
+}
