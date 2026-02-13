@@ -13,6 +13,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -65,12 +66,33 @@ const stropodachFaqSchema = [
   },
 ];
 
-const stropodachGalleryImages = Array.from({ length: 18 }, (_, index) => ({
-  src: `/img/ocieplanie-stropodachu/${index + 1}.jpg`,
-  alt: `Realizacja ocieplania stropodachu ${index + 1}`,
-}));
+export default async function OcieplanieStropodachuPage() {
+  const pageImages = await getServicePageImagesBySlot("ocieplanie-stropodachu");
 
-export default function OcieplanieStropodachuPage() {
+  const heroImage =
+    pageImages.hero[0] ??
+    pageImages.heroSecondary[0] ??
+    pageImages.gallery[0] ??
+    pageImages.material[0] ??
+    null;
+  const stropodachGalleryImages = pageImages.gallery;
+  const heroSecondaryImage = pageImages.heroSecondary[0] ?? null;
+  const materialImages = pageImages.material;
+  const materialCards = [
+    {
+      title: "Granulat wełny mineralnej",
+      description:
+        "Sprawdzone rozwiązanie o bardzo dobrych właściwościach termoizolacyjnych i akustycznych, odporne na osiadanie.",
+      image: materialImages[0] ?? null,
+    },
+    {
+      title: "Granulat celulozowy",
+      description:
+        "Materiał aplikowany metodą wdmuchiwania, który dokładnie wypełnia przestrzenie i ogranicza mostki termiczne.",
+      image: materialImages[1] ?? null,
+    },
+  ];
+
   return (
     <>
       <ServiceSchema
@@ -108,15 +130,17 @@ export default function OcieplanieStropodachuPage() {
                 </div>
               </div>
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/ocieplanie-stropodachu/hero.jpg"
-                  alt="Realizacja ocieplania stropodachu"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -318,13 +342,15 @@ export default function OcieplanieStropodachuPage() {
                 </p>
               </div>
               <div className="relative h-full min-h-[320px] marketing-image-frame">
-                <Image
-                  src="/img/ocieplanie-stropodachu/16.jpg"
-                  alt="Wdmuchiwanie izolacji w stropodachu"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                {heroSecondaryImage ? (
+                  <Image
+                    src={heroSecondaryImage.src}
+                    alt={heroSecondaryImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -337,29 +363,18 @@ export default function OcieplanieStropodachuPage() {
               Materiały izolacyjne, które stosujemy
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {[
-                {
-                  title: "Granulat wełny mineralnej",
-                  description:
-                    "Sprawdzone rozwiązanie o bardzo dobrych właściwościach termoizolacyjnych i akustycznych, odporne na osiadanie.",
-                  image: "/img/ocieplanie-stropodachu/hero3.jpg",
-                },
-                {
-                  title: "Granulat celulozowy",
-                  description:
-                    "Materiał aplikowany metodą wdmuchiwania, który dokładnie wypełnia przestrzenie i ogranicza mostki termiczne.",
-                  image: "/img/ocieplanie-stropodachu/hero4.jpg",
-                },
-              ].map((material, index) => (
+              {materialCards.map((material, index) => (
                 <div key={index} className="marketing-tile">
-                  <div className="relative h-52">
-                    <Image
-                      src={material.image || "/img/home/slide.jpg"}
-                      alt={material.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  {material.image ? (
+                    <div className="relative h-52">
+                      <Image
+                        src={material.image.src}
+                        alt={material.image.alt || material.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : null}
                   <div className="p-4 sm:p-5">
                     <h3 className="mb-2 text-lg font-semibold">{material.title}</h3>
                     <p className="text-gray-600">{material.description}</p>

@@ -8,6 +8,7 @@ import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { VideoObjectSchema } from "@/components/schema/video-object-schema";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 
 export const metadata: Metadata = {
   title: "Naprawa izolacji po kunach",
@@ -97,11 +98,6 @@ const martenRepairFaqs = [
   },
 ];
 
-const martenRepairGalleryImages = Array.from({ length: 10 }, (_, index) => ({
-  src: `/img/naprawa-izolacji-po-kunach/${index + 1}.jpg`,
-  alt: `Naprawa izolacji po kunach - realizacja ${index + 1}`,
-}));
-
 const martenRepairVideoSchema = {
   "@context": "https://schema.org",
   "@type": "VideoObject",
@@ -123,7 +119,14 @@ const martenRepairVideoSchema = {
   },
 };
 
-export default function NaprawaIzolacjiPoKunachPage() {
+export default async function NaprawaIzolacjiPoKunachPage() {
+  const pageImages = await getServicePageImagesBySlot(
+    "naprawa-izolacji-po-kunach",
+  );
+
+  const heroImage = pageImages.hero[0] ?? pageImages.gallery[0] ?? null;
+  const martenRepairGalleryImages = pageImages.gallery;
+
   return (
     <>
       <ServiceSchema
@@ -176,15 +179,17 @@ export default function NaprawaIzolacjiPoKunachPage() {
               </div>
 
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/naprawa-izolacji-po-kunach/hero.jpg"
-                  alt="Naprawa izolacji po kunach"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -356,7 +361,7 @@ export default function NaprawaIzolacjiPoKunachPage() {
                   key={image.src}
                   className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
                 >
-                  <div className="relative aspect-[4/3]">
+                  <div className="relative aspect-4/3">
                     <Image
                       src={image.src}
                       alt={image.alt}

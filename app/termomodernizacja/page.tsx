@@ -13,6 +13,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 import { CheckCircle, ArrowRight, HelpCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -65,7 +66,11 @@ const thermomodernizationFaqSchema = [
   },
 ];
 
-export default function TermomodernizacjaPage() {
+export default async function TermomodernizacjaPage() {
+  const pageImages = await getServicePageImagesBySlot("termomodernizacja");
+
+  const heroImage = pageImages.hero[0] ?? null;
+
   return (
     <>
       <ServiceSchema
@@ -107,15 +112,17 @@ export default function TermomodernizacjaPage() {
                 </div>
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
-                <Image
-                  src="/img/termomodernizacja/hero.jpg"
-                  alt="Termomodernizacja budynku"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>

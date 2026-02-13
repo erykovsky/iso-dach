@@ -310,7 +310,7 @@ export const Header = () => {
                     <Link
                       key={service.href}
                       href={service.href}
-                      prefetch={false}
+                      prefetch={true}
                       className="brand-focus block rounded-lg px-3 py-2 text-center text-sm font-medium text-primary/85 hover:bg-white"
                       onClick={() => {
                         setIsMobileServicesOpen(false);

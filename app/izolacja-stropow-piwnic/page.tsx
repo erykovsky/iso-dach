@@ -7,6 +7,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 
 export const metadata: Metadata = {
   title: "Ocieplanie stropu piwnicy",
@@ -77,12 +78,31 @@ const basementFaqs = [
   },
 ];
 
-const basementCeilingGalleryImages = Array.from({ length: 17 }, (_, index) => ({
-  src: `/img/izolacja-stropow-piwnic/${index + 1}.jpg`,
-  alt: `Izolacja stropów piwnic - realizacja ${index + 1}`,
-}));
+export default async function IzolacjaStropowPiwnicPage() {
+  const pageImages = await getServicePageImagesBySlot("izolacja-stropow-piwnic");
 
-export default function IzolacjaStropowPiwnicPage() {
+  const heroImage =
+    pageImages.hero[0] ??
+    pageImages.gallery[0] ??
+    pageImages.material[0] ??
+    null;
+  const basementCeilingGalleryImages = pageImages.gallery;
+  const materialImages = pageImages.material;
+  const materialCards = [
+    {
+      title: "Białe Ciepło",
+      description:
+        "Izolacja natryskowa, która dociera do najtrudniejszych miejsc, szczelnie pokrywa powierzchnię i skutecznie ogranicza mostki termiczne.",
+      image: materialImages[0] ?? null,
+    },
+    {
+      title: "ISOVER Stropmax 31",
+      description:
+        "Płyty montowane o dobrych parametrach cieplnych i akustycznych. Rozwiązanie cenione za szybki i prosty montaż.",
+      image: materialImages[1] ?? null,
+    },
+  ];
+
   return (
     <>
       <ServiceSchema
@@ -121,15 +141,17 @@ export default function IzolacjaStropowPiwnicPage() {
               </div>
 
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/izolacja-stropow-piwnic/hero.jpg"
-                  alt="Ocieplanie stropu piwnicy"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -240,46 +262,27 @@ export default function IzolacjaStropowPiwnicPage() {
               Materiały, które stosujemy
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <article className="marketing-tile">
-                <div className="relative h-64">
-                  <Image
-                    src="/img/izolacja-stropow-piwnic/hero2.jpg"
-                    alt="Białe Ciepło"
-                    fill
-                    className="object-cover"
-                    quality={70}
-                  />
-                </div>
+              {materialCards.map((material) => (
+                <article key={material.title} className="marketing-tile">
+                {material.image ? (
+                  <div className="relative h-64">
+                    <Image
+                      src={material.image.src}
+                      alt={material.image.alt || material.title}
+                      fill
+                      className="object-cover"
+                      quality={70}
+                    />
+                  </div>
+                ) : null}
                 <div className="p-5">
-                  <h3 className="text-xl font-semibold text-primary">Białe Ciepło</h3>
+                  <h3 className="text-xl font-semibold text-primary">{material.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    Izolacja natryskowa, która dociera do najtrudniejszych miejsc,
-                    szczelnie pokrywa powierzchnię i skutecznie ogranicza mostki
-                    termiczne.
+                    {material.description}
                   </p>
                 </div>
               </article>
-
-              <article className="marketing-tile">
-                <div className="relative h-64">
-                  <Image
-                    src="/img/izolacja-stropow-piwnic/hero3.jpg"
-                    alt="ISOVER Stropmax 31"
-                    fill
-                    className="object-cover"
-                    quality={70}
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold text-primary">
-                    ISOVER Stropmax 31
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    Płyty montowane o dobrych parametrach cieplnych i akustycznych.
-                    Rozwiązanie cenione za szybki i prosty montaż.
-                  </p>
-                </div>
-              </article>
+              ))}
             </div>
           </div>
         </section>

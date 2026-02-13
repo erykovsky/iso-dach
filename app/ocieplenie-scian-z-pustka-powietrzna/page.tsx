@@ -7,6 +7,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 
 export const metadata: Metadata = {
   title: "Ocieplenie ścian z pustką powietrzną",
@@ -66,7 +67,14 @@ const cavityWallFaqs = [
   },
 ];
 
-export default function OciepleniePustkaPowietrznaPage() {
+export default async function OciepleniePustkaPowietrznaPage() {
+  const pageImages = await getServicePageImagesBySlot(
+    "ocieplenie-scian-z-pustka-powietrzna",
+  );
+
+  const heroImage = pageImages.hero[0] ?? pageImages.heroSecondary[0] ?? null;
+  const heroSecondaryImage = pageImages.heroSecondary[0] ?? null;
+
   return (
     <>
       <ServiceSchema
@@ -106,15 +114,17 @@ export default function OciepleniePustkaPowietrznaPage() {
               </div>
 
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/ocieplenie-scian-z-pustka-powietrzna/hero.jpg"
-                  alt="Termoizolacja ścian z pustką powietrzną"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -157,16 +167,18 @@ export default function OciepleniePustkaPowietrznaPage() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_20px_40px_-30px_rgba(75,0,18,0.6)]">
               <div className="relative aspect-video">
-                <Image
-                  src="/img/ocieplenie-scian-z-pustka-powietrzna/hero2.jpg"
-                  alt="Realizacja ocieplenia ścian z pustką powietrzną"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1280px) 100vw, 1200px"
-                  loading="lazy"
-                  decoding="async"
-                  quality={70}
-                />
+                {heroSecondaryImage ? (
+                  <Image
+                    src={heroSecondaryImage.src}
+                    alt={heroSecondaryImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1280px) 100vw, 1200px"
+                    loading="lazy"
+                    decoding="async"
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>

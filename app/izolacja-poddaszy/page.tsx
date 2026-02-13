@@ -13,6 +13,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 import { CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -76,12 +77,37 @@ const atticInsulationFAQs = [
   },
 ];
 
-const atticGalleryImages = Array.from({ length: 4 }, (_, index) => ({
-  src: `/img/izolacja-poddaszy/${index + 1}.jpg`,
-  alt: `Izolacja poddaszy - realizacja ${index + 1}`,
-}));
+export default async function IzolacjaPoddaszyPage() {
+  const pageImages = await getServicePageImagesBySlot("izolacja-poddaszy");
 
-export default function IzolacjaPoddaszyPage() {
+  const heroImage =
+    pageImages.hero[0] ??
+    pageImages.gallery[0] ??
+    pageImages.material[0] ??
+    null;
+  const atticGalleryImages = pageImages.gallery;
+  const atticMaterialImages = pageImages.material;
+  const atticMaterials = [
+    {
+      title: "Wełna skalna",
+      description:
+        "Wytrzymały materiał izolacyjny o bardzo dobrych właściwościach termicznych i akustycznych, niepalny i paroprzepuszczalny, dostępny w postaci mat i płyt.",
+      image: atticMaterialImages[0] ?? null,
+    },
+    {
+      title: "Wełna szklana",
+      description:
+        "Lekki materiał o dobrych właściwościach izolacyjnych, łatwy w montażu i przyjazny dla alergików.",
+      image: atticMaterialImages[1] ?? null,
+    },
+    {
+      title: "Celuloza",
+      description:
+        "Ekologiczny materiał izolacyjny z recyklingu papieru, aplikowany metodą wdmuchiwania. Doskonale wypełnia trudno dostępne miejsca.",
+      image: atticMaterialImages[2] ?? null,
+    },
+  ];
+
   return (
     <>
       <ServiceSchema
@@ -123,15 +149,17 @@ export default function IzolacjaPoddaszyPage() {
                 </div>
               </div>
               <div className="relative h-64 md:h-96 marketing-image-frame">
-                <Image
-                  src="/img/izolacja-poddaszy/hero.jpg"
-                  alt="Realizacja izolacji poddasza"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -395,38 +423,21 @@ export default function IzolacjaPoddaszyPage() {
               Materiały izolacyjne, które stosujemy
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Wełna skalna",
-                  description:
-                    "Wytrzymały materiał izolacyjny o bardzo dobrych właściwościach termicznych i akustycznych, niepalny i paroprzepuszczalny, dostępny w postaci mat i płyt.",
-                  image: "/img/izolacja-poddaszy/hero2.jpg",
-                },
-                {
-                  title: "Wełna szklana",
-                  description:
-                    "Lekki materiał o dobrych właściwościach izolacyjnych, łatwy w montażu i przyjazny dla alergików.",
-                  image: "/img/izolacja-poddaszy/hero3.jpg",
-                },
-                {
-                  title: "Celuloza",
-                  description:
-                    "Ekologiczny materiał izolacyjny z recyklingu papieru, aplikowany metodą wdmuchiwania. Doskonale wypełnia trudno dostępne miejsca.",
-                  image: "/img/izolacja-poddaszy/hero4.jpg",
-                },
-              ].map((material, index) => (
+              {atticMaterials.map((material, index) => (
                 <div
                   key={index}
                   className="marketing-tile"
                 >
-                  <div className="relative h-48">
-                    <Image
-                      src={material.image || "/img/home/slide.jpg"}
-                      alt={material.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  {material.image ? (
+                    <div className="relative h-48">
+                      <Image
+                        src={material.image.src}
+                        alt={material.image.alt || material.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : null}
                   <div className="p-6">
                     <h3 className="font-semibold text-lg mb-2">{material.title}</h3>
                     <p className="text-gray-600">{material.description}</p>

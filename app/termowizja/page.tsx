@@ -12,6 +12,7 @@ import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceSchema } from "@/components/schema/service-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 import { CheckCircle, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -64,7 +65,11 @@ const thermographyFaqSchema = [
   },
 ];
 
-export default function TermowizjaPage() {
+export default async function TermowizjaPage() {
+  const pageImages = await getServicePageImagesBySlot("termowizja");
+
+  const heroImage = pageImages.hero[0] ?? null;
+
   return (
     <>
       <ServiceSchema
@@ -80,7 +85,7 @@ export default function TermowizjaPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
               <div>
-<h1 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+                <h1 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
                   Termowizja
                 </h1>
                 <p className="mb-8 text-lg text-white/90">
@@ -103,15 +108,17 @@ export default function TermowizjaPage() {
               </div>
 
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/termowizja/hero.jpg"
-                  alt="Badanie termowizyjne budynku"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>

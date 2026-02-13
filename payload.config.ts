@@ -8,6 +8,7 @@ import { Users } from "./payload/collections/users";
 import { Media } from "./payload/collections/media";
 import { GalleryItems } from "./payload/collections/gallery-items";
 import { BlogPosts } from "./payload/collections/blog-posts";
+import { ServicePageImages } from "./payload/collections/service-page-images";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -51,7 +52,7 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, GalleryItems, BlogPosts],
+  collections: [Users, Media, GalleryItems, BlogPosts, ServicePageImages],
   endpoints: [],
   db: postgresAdapter({
     pool: {

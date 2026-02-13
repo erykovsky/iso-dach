@@ -12,6 +12,7 @@ import { ServiceSchema } from "@/components/schema/service-schema";
 import { FAQPageSchema } from "@/components/schema/faq-schema";
 import { ServiceIntentSection } from "@/components/service-intent-section";
 import { GeoAnswerSection } from "@/components/geo-answer-section";
+import { getServicePageImagesBySlot } from "@/lib/service-page-images";
 import { ArrowRight, CheckCircle, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -77,12 +78,14 @@ const commonDefects = [
   "Zbyt cienka warstwa materiału izolacyjnego względem wymaganych parametrów.",
 ];
 
-const atticRepairGalleryImages = [1, 2].map((index) => ({
-  src: `/img/naprawa-ocieplenia-poddasza/${index}.jpg`,
-  alt: `Naprawa ocieplenia poddasza - realizacja ${index}`,
-}));
+export default async function NaprawaOciepleniaPoddaszaPage() {
+  const pageImages = await getServicePageImagesBySlot(
+    "naprawa-ocieplenia-poddasza",
+  );
 
-export default function NaprawaOciepleniaPoddaszaPage() {
+  const heroImage = pageImages.hero[0] ?? pageImages.gallery[0] ?? null;
+  const atticRepairGalleryImages = pageImages.gallery;
+
   return (
     <>
       <ServiceSchema
@@ -121,15 +124,17 @@ export default function NaprawaOciepleniaPoddaszaPage() {
                 </div>
               </div>
               <div className="relative h-64 marketing-image-frame md:h-96">
-                <Image
-                  src="/img/naprawa-ocieplenia-poddasza/hero.jpg"
-                  alt="Naprawa izolacji dachu"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={70}
-                />
+                {heroImage ? (
+                  <Image
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    quality={70}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -267,7 +272,7 @@ export default function NaprawaOciepleniaPoddaszaPage() {
                   key={image.src}
                   className="group overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_18px_35px_-28px_rgba(75,0,18,0.7)]"
                 >
-                  <div className="relative aspect-[4/3]">
+                  <div className="relative aspect-4/3">
                     <Image
                       src={image.src}
                       alt={image.alt}
